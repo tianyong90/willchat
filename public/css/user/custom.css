@@ -1,0 +1,348 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+    border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+    border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+    border-radius: 0px 0px 4px 4px !important;
+}
+*/
+
+/*
+Change Quick Sidebar Width
+*/
+
+/*
+.page-quick-sidebar-wrapper {
+  right: -370px;
+  width: 370px;
+}
+
+.page-quick-sidebar-open.page-quick-sidebar-push-content .page-sidebar-wrapper {
+  margin-left: -370px;
+}
+
+.page-quick-sidebar-open.page-quick-sidebar-push-content .page-footer {
+  margin-right: 370px;
+  margin-left: -370px;
+}
+
+.page-sidebar-reversed.page-quick-sidebar-open.page-quick-sidebar-push-content .page-sidebar-wrapper {
+  margin-right: 370px;
+}
+
+.page-quick-sidebar-open.page-quick-sidebar-push-content.page-quick-sidebar-full-height .page-header {
+  margin-left: -370px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-list {
+  width: 370px !important;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-item {
+  width: 370px !important;
+  margin-left: 370px;
+}
+
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-content-item-shown .page-quick-sidebar-list {
+  margin-left: -370px;
+}
+*/
+
+
+#cardpreview {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 350px;
+    height: 220px;
+    background-size: cover;
+    border-radius: 20px !important;
+}
+#cardpreview #vipname {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 23px;
+    font-family: "微软雅黑";
+}
+#cardpreview #cardlogo {
+    display: block;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    width: 40px;
+}
+#cardpreview #number {
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+    font-size: 20px;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;
+}
+/*模板选择*/
+.cateradio li {
+    display: inline-block;
+    width: 180px;
+    height: 290px;
+    overflow: hidden;
+}
+.cateradio li img {
+    display: block;
+    border: 2px solid transparent;
+    margin: 0;
+    padding: 2px;
+}
+.cateradio li.active img {
+    border: 2px solid red;
+}
+.tmpls-filter {
+    display: block;
+    overflow: hidden;
+    margin-left: 0;
+}
+.filterBtn {
+    display: block;
+    padding: 0;
+    margin: 10px 0;
+    overflow: hidden;
+}
+.filterBtn li {
+    display: block;
+    float: left;
+    cursor: pointer;
+    padding: 5px 10px;
+    line-height: 18px;
+    margin: 2px 5px;
+    color: #4E4A6F;
+    background-color: #98AFF7;
+    font-weight: 700;
+}
+.filterBtn li.active {
+    background-color: #2D68FF;
+    color: #fff;
+}
+.tmpllist .mix {
+    margin-bottom: 20px;
+}
+.tpl-select {
+    display: block;
+    position: relative;
+}
+.tpl-select img {
+    display: block;
+    padding: 2px;
+    margin: 0 auto;
+    border: 2px solid transparent;
+}
+.ck img {
+    border: 2px solid red;
+}
+.tpl-select .tplinfo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    padding-top: 20px;
+    display: none;
+    background-color: #469AEC;
+    color: #fff;
+}
+.tpl-select .tplinfo .tpldescription {
+    font-size: 12px;
+    padding: 10px 20px;
+    color: #eee;
+}
+.menuicons {
+    display: block;
+    margin: 0;
+    padding: 0;
+    background: #00f;
+}
+.menuicons img {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #7882A4;
+    float: left;
+    margin: 4px;
+    cursor: pointer;
+}
+.menuicons img.active {
+    background-color: #c00;
+}
+/*表格中小图片预览*/
+.preview-small {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.page-content {
+    background-color: #eaeaea;
+}
+
+.page-header.navbar .hor-menu .navbar-nav > li > a {
+    padding: 13px 45px;
+}
+.page-header.navbar .hor-menu {
+    margin-left: 100px;
+}
+
+.theme-panel {
+  position: absolute;
+  right: 30px;
+  bottom: 60px;
+}
+.theme-panel>.theme-options {
+  top: auto;
+  bottom: 0;
+}
+
+.page-header.navbar .page-logo .logo-default {
+  margin-top: 8px;
+}
+
+form span.error {
+  display: inline-block;
+  color: #f00;
+  margin-top: 3px;
+}
+
+.pic-control {
+  display: block;
+  overflow: hidden;
+  max-width: 220px;
+  margin: 0 5px 10px 0;
+}
+.pic-control .thumbnail {
+  display: block;
+  margin: 0 0 4px 0;
+  cursor: pointer;
+  max-width: 220px;
+  max-height: 150px;
+  overflow: hidden;
+}
+.pic-control input {
+  display: none;
+}
+.pic-control .buttons {
+  text-align: center;
+}
+.pic-control .buttons i.fa {
+  margin-right: 5px;
+}
+td.row-nodata {
+    text-align: center;
+}
+
+/*菜单图标选择预览控件*/
+.menuicon-control {
+  display: block;
+}
+.menuicon-control .icon-preview {
+  font-size: 40px;
+  line-height: 45px;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin-right: 5px;
+}
+
+/*翻页*/
+.pagination {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.pagination ul {
+  display: inline-block;
+  list-style:none;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  margin-left: 0;
+  margin-bottom: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.pagination ul > li {
+  display: inline;
+  font-size: 15px;
+}
+.pagination ul > li > a,
+.pagination ul > li > span,
+.pagination #lastspan {
+  float: left;
+  padding: 4px 15px;
+  line-height: 32px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+}
+.pagination ul>li>a:hover,
+.pagination ul>li>a:focus,
+.pagination .current {
+  background-color: #D1CFCF;
+}
+.pagination .current {
+  color: #0C0718;
+  cursor: default;
+}
+.pagination ul > li:first-child > a,
+.pagination ul > li:first-child > span {
+  border-left-width: 1px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination ul > li:last-child > a,
+.pagination ul > li:last-child > span,
+.pagination #lastspan {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
+.pagination-left {
+  text-align: left;
+}
+.pagination-centered {
+  text-align: center;
+}
+.pagination-right {
+  text-align: right;
+  float: right;
+}
+.page {
+  display: block;
+  overflow: hidden;
+}
+/*翻页结束*/

@@ -1,0 +1,47 @@
+.fl {
+    float: left;
+}
+table td {
+    padding: 10px 20px;
+}
+.help-block-error {
+    color: #f00;
+}
+
+.attr-control {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
+.attr-control input {
+  width: 90px;
+  height: 25px;
+  float: left;
+}
+.attr-control .btn-delete-attr {
+  display: inline-block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  background-color: #f00;
+  height: 25px;
+  width: 30px;
+  text-align: center;
+  color: #fff;
+  line-height: 25px;
+  cursor: pointer;
+}
+.btn-add-attr {
+  display: inline-block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  background-color: #289DEF;
+  height: 25px;
+  width: 30px;
+  text-align: center;
+  color: #fff;
+  line-height: 25px;
+  cursor: pointer;
+}

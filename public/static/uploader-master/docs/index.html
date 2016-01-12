@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple jQuery file uploading plugin.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, jQuery plugin, file upload, front-end, frontend, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Uploader</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <!-- header -->
+  <header class="navbar navbar-static-top docs-header" id="top">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">Uploader</a>
+      </div>
+      <nav class="collapse navbar-collapse" id="navbar-collapse-1" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://github.com/fengyuanchen/uploader/blob/master/README.md">Docs</a></li>
+          <li><a href="http://github.com/fengyuanchen/uploader">Github</a></li>
+          <li><a href="http://chenfengyuan.com">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron docs-jumbotron">
+    <div class="container">
+      <h1>Uploader <small class="version">v0.1.0</small></h1>
+      <p class="lead">A simple jQuery file uploading plugin.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <h2 class="page-header docs-header">Example <small><a href="advanced-example.html">Advanced Example</a></small></h2>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="page-header">Drop Zone</h3>
+        <div class="dropzone">Drop file here or <input id="file" type="file" name="file" multiple></div>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="page-header">Logging</h3>
+        <div class="logs"></div>
+      </div>
+      <div class="col-sm-12">
+        <h3 class="page-header">HTML</h3>
+        <pre class="prettyprint">&lt;div class=&quot;dropzone&quot;&gt;Drop file here or &lt;input id=&quot;file&quot; type=&quot;file&quot; name=&quot;file&quot; multiple&gt;&lt;/div&gt;</pre>
+        <h3 class="page-header">JavaScript</h3>
+        <pre class="prettyprint">$(function () {
+  var $logs = $('.logs'),
+      p = function (text) {
+        return ('&lt;p&gt;' + text + '&lt;/p&gt;');
+      };
+
+  $('#file').uploader({
+    url: 'json/request.json',
+    dataType: 'json',
+
+    // Note: The GET is for test as POST request is not allowed on Github Pages.
+    method: /github/.test(window.location.host) ? 'GET' : 'POST',
+    dropzone: '.dropzone',
+
+    upload: function (e) {
+      $logs.empty().append(p('All files uploading'));
+    },
+
+    start: function (e) {
+      $logs.append(p('* File ' + (e.index + 1) + ' uploading'));
+    },
+
+    progress: function (e) {
+      $logs.append(p('* File ' + (e.index + 1) + ' uploaded: ' + Math.round(e.loaded / e.total * 100) + '%'));
+    },
+
+    done: function (e, data) {
+      $logs.append(p('* File ' + (e.index + 1) + ' result: ' + data.result));
+    },
+
+    fail: function (e, textStatus) {
+      $logs.append(p('* File ' + (e.index + 1) + ' result: ' + textStatus));
+    },
+
+    end: function (e) {
+      $logs.append(p('* File ' + (e.index + 1) + ' completed'));
+    },
+
+    uploaded: function (e) {
+      $logs.append(p('All files uploaded'));
+    }
+  });
+});</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="docs-footer">
+    <div class="container">
+      <span class="hearts"></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script src="js/uploader.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
