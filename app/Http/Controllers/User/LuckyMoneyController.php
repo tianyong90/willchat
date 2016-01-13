@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Overtrue\WeChat\Application;
+use EasyWeChat\Foundation\Application;
 
 class LuckyMoneyController extends Controller
 {
@@ -49,7 +49,6 @@ class LuckyMoneyController extends Controller
         $app = new Application($options);
 
         $luckyMoney = $app['luckymoney'];
-
 
         $data['mch_billno'] = '133134546546';
         $data['send_name'] = '测试';

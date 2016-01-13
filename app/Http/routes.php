@@ -15,11 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//微信路径
+//微信路由
 Route::any('wechat/{token}', 'Wechat\IndexController@index');
-
-Route::get('wechat', 'User\TestWechatController@index');
-
 
 /*
 |--------------------------------------------------------------------------

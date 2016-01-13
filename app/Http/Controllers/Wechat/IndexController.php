@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Overtrue\WeChat\Application;
+
+use EasyWeChat\Foundation\Application;
 
 
 class IndexController extends Controller
@@ -58,7 +59,7 @@ class IndexController extends Controller
         $server = $app['server'];
         $user = $app['user'];
 
-        $server->setMessageHandler(function($message) use ($user) {
+        $server->setMessageHandler(function ($message) use ($user) {
             $fromUser = $user->get($message->FromUserName);
 
             return "{$fromUser['nickname']}您好！\n欢迎关注 overtrue!";
