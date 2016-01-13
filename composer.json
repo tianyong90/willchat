@@ -9,7 +9,7 @@
         "laravel/framework": "5.2.*",
         "barryvdh/laravel-ide-helper": "dev-master",
         "imagine/imagine": "^0.6.2",
-        "overtrue/wechat": "3.0.x-dev"
+        "overtrue/wechat": "develop-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
