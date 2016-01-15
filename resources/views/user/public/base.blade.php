@@ -33,11 +33,11 @@
             background-color: #e7e7e7;
         }
     </style>
-    @section('style')
-        <!-- 加载其它样式表 -->
-    @stop
+    @yeild('style')
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="__PUBLIC__/favicon.ico"/>
+
+    @yield('pre_script')
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->

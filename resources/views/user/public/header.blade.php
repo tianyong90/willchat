@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="">
+                            <a href="{{ url('avatar') }}">
                                 <i class="icon-user"></i>个人资料</a>
                         </li>
                         <li class="divider">

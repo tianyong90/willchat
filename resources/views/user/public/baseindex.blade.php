@@ -33,14 +33,10 @@
     <link href="{{ asset('css') }}/user/custom.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('static') }}/metronic/admin/pages/css/profile.css" rel="stylesheet" type="text/css"/>
-    <style>
-        .page-content {
-            background-color: #F1F3FA;
-        }
-    </style>
     @yield('style')
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="__PUBLIC__/favicon.ico"/>
+    @yield('pre_script')
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -90,17 +86,17 @@
                             <div class="profile-usermenu">
                                 <ul class="nav" id="nav">
                                     <li>
-                                        <a href="">
+                                        <a href="{{ url('/user') }}">
                                             <i class="icon-home"></i>
                                             个人中心 </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{ url('avatar') }}">
                                             <i class="icon-settings"></i>
                                             个人信息 </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{ url('document') }}">
                                             <i class="icon-info"></i>
                                             使用帮助 </a>
                                     </li>
@@ -188,12 +184,13 @@
         }
     });
 
-    $(document).ajaxStart(function(){
-        window.loadingLayerIndex = layer.load();
-    })
-    .ajaxStop(function(){
-        layer.close(loadingLayerIndex);
-    });
+    $(document)
+        .ajaxStart(function(){
+            window.loadingLayerIndex = layer.load();
+        })
+        .ajaxStop(function(){
+            layer.close(loadingLayerIndex);
+        });
 
 </script>
 <!-- END JAVASCRIPTS -->
