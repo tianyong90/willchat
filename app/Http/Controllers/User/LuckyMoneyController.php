@@ -36,19 +36,14 @@ class LuckyMoneyController extends Controller
             'payment' => [
                 'merchant_id' => env('WECHAT_MERCHANT_ID'),
                 'key' => env('WECHAT_MERCHANT_KEY'),
-                'cert_path' => '‪D:\EXIKECERT\apiclient_cert.pem',
-                'key_path' => '‪D:\EXIKECERT\apiclient_key.pem',
-                // 'device_info'     => '013467007045764',
-                // 'sub_app_id'      => '',
-                // 'sub_merchant_id' => '',
-                // ...
+                'cert_path' => 'D:\EXIKECERT\apiclient_cert.pem',
+                'key_path' => 'D:\EXIKECERT\apiclient_key.pem',
             ],
-
         ];
 
         $app = new Application($options);
 
-        $luckyMoney = $app['luckymoney'];
+        $luckyMoney = $app['lucky_money'];
 
         $data['mch_billno'] = '133134546546';
         $data['send_name'] = '测试';
@@ -59,14 +54,13 @@ class LuckyMoneyController extends Controller
         $data['client_ip'] = '192.168.0.245';
         $data['act_name'] = 'test act';
         $data['remark'] = 'remark';
+        $data['hb_type'] = 'NORMAL';
 
-        $res = $luckyMoney->query('12345678912');
+        $res = $luckyMoney->prepare($data);
+//        $res = $luckyMoney->sendGroup($data);
+
 
         dump($res);
-//
-//        $info=$user->get('oUmDhsoSkMpwajftc_eD-K8WbSYM');
-
-//        dd($info);
     }
 
     /**
