@@ -15,7 +15,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex()
     {
 
 //        $time=new \Carbon\Carbon('20030101');
@@ -44,7 +44,6 @@ class DashboardController extends Controller
 //        }
 
         $accounts = OfficialAccount::all();
-
 
         return view('user.dashboard.index', compact('accounts', 'data'));
     }

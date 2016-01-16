@@ -1,4 +1,4 @@
-@extends('wap.vip.base')
+@extends('base')
 
 <extend name="base"/>
 <block name="style">

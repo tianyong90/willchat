@@ -31,38 +31,92 @@ Route::any('wechat/{token}', 'Wechat\IndexController@index');
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('vip', 'Wap\VipController@index');
+//    Route::get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
+//    Route::post('login', 'AuthController@postLogin');
+//
+//    Route::get('mail', function () {
+//        $email = '412039588@qq.com';
+//        $name = 'tianyong';
+//        $uid = 123;
+//        $code = 'abc';
+//
+//        $data = ['email' => $email, 'name' => $name, 'uid' => $uid, 'activationcode' => $code];
+//        Mail::send('welcome', $data, function ($message) use ($data) {
+//            $message->to($data['email'], $data['name'])->subject("abadafsl哈哈");
+//        });
+//    });
 
-    Route::get('luckymoney', 'User\LuckyMoneyController@index');
+    /*
+    * Home
+    */
+    $home = [
+        'namespace' => 'Home',
+//        'middleware' => 'auth',
+    ];
 
-    Route::get('function', 'User\SystemFunctionController@index');
-
-    Route::get('document', 'User\DocumentController@index');
-
-    Route::get('user', 'User\DashboardController@index');
-    Route::get('account', 'user\OfficialAccountController@index');
-
-    Route::get('fans', 'user\FansController@index');
-
-
-    Route::get('avatar', 'User\AvatarController@index');
-    Route::post('avatar', 'User\AvatarController@store');
-
-
-
-    Route::get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
-    Route::post('login', 'AuthController@postLogin');
-
-    Route::get('mail', function () {
-        $email = '412039588@qq.com';
-        $name = 'tianyong';
-        $uid = 123;
-        $code = 'abc';
-
-        $data = ['email' => $email, 'name' => $name, 'uid' => $uid, 'activationcode' => $code];
-        Mail::send('welcome', $data, function ($message) use ($data) {
-            $message->to($data['email'], $data['name'])->subject("abadafsl哈哈");
+    Route::group($home, function () {
+        Route::get('/', function () {
+            return view('welcome');
         });
+    });
+
+    /*
+    * User
+    */
+    $user = [
+        'prefix' => 'user',
+        'namespace' => 'User',
+//        'middleware' => 'auth',
+    ];
+
+    Route::group($user, function () {
+        Route::get('/', 'DashboardController@getIndex');
+//        Route::controller('account', 'AccountController');
+//        Route::controller('auth', 'AuthController');
+
+        Route::get('fans', 'FansController@getIndex');
+
+        Route::get('luckymoney', 'LuckyMoneyController@index');
+
+        Route::get('function', 'SystemFunctionController@index');
+
+        Route::get('document', 'DocumentController@index');
+
+        Route::get('fans', 'user\FansController@index');
+        Route::get('menu', 'user\MenuController@index');
+
+
+        Route::get('avatar', 'AvatarController@index');
+        Route::post('avatar', 'AvatarController@store');
+
+//        Route::group(['middleware' => 'account'], function () {
+//            Route::controllers([
+//                'user' => 'UserController',
+//                'fan' => 'FanController',
+//                'fan-group' => 'FanGroupController',
+//                'menu' => 'MenuController',
+//                'material' => 'MaterialController',
+//                'staff' => 'StaffController',
+//                'message' => 'MessageController',
+//                'reply' => 'ReplyController',
+//                'upload' => 'UploadController',
+//            ]);
+//        });
+    });
+
+    /*
+    * Mobile
+    */
+    $mobile = [
+        'prefix' => 'mobile',
+        'namespace' => 'Mobile',
+//        'middleware' => 'auth',
+    ];
+
+    Route::group($mobile, function () {
+        Route::get('/', 'VipController@getIndex');
+
+
     });
 
 });

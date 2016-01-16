@@ -3,7 +3,7 @@
     <div class="page-header-inner">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="{{ url('user/') }}">
+            <a href="{{ user_url('user/') }}">
                 <img src="{{ asset('images') }}/user/logo.png" alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler hide">
@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="{{ url('avatar') }}">
+                            <a href="{{ user_url('avatar') }}">
                                 <i class="icon-user"></i>个人资料</a>
                         </li>
                         <li class="divider">
@@ -38,7 +38,7 @@
                                 <i class="icon-lock"></i>锁屏</a>
                         </li>
                         <li>
-                            <a href="{{ url('auth/logout') }}">
+                            <a href="{{ user_url('auth/logout') }}">
                                 <i class="icon-key"></i>退出</a>
                         </li>
                     </ul>

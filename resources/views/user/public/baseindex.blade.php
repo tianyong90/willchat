@@ -9,12 +9,12 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>用户中心</title>
+    <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta content="" name="description"/>
-    <meta content="" name="author"/>
+    <meta content="tianyong90" name="author"/>
     {{--CSRF-TOKEN--}}
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
@@ -86,17 +86,17 @@
                             <div class="profile-usermenu">
                                 <ul class="nav" id="nav">
                                     <li>
-                                        <a href="{{ url('/user') }}">
+                                        <a href="{{ user_url('/') }}">
                                             <i class="icon-home"></i>
                                             个人中心 </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('avatar') }}">
+                                        <a href="{{ user_url('avatar') }}">
                                             <i class="icon-settings"></i>
                                             个人信息 </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('document') }}">
+                                        <a href="{{ user_url('document') }}">
                                             <i class="icon-info"></i>
                                             使用帮助 </a>
                                     </li>

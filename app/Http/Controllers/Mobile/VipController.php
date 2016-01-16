@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\wap;
+namespace App\Http\Controllers\Mobile;
 
 use Illuminate\Http\Request;
 
@@ -14,9 +14,9 @@ class VipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex()
     {
-        return view('wap.vip.index');
+        return view('mobile.vip.index');
     }
 
     /**

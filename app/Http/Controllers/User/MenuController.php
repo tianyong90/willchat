@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use EasyWeChat\Foundation\Application;
 
-class FansController extends Controller
+class MenuController extends Controller
 {
     public function index()
     {
@@ -38,23 +38,13 @@ class FansController extends Controller
 
         $app = new Application($options);
 
-        $user = $app['user'];
-        $fansList = $user->lists();
+        $menu = $app['menu'];
 
-        dump($fansList);
+        $menuList = $menu->current();
 
-        $group = $app['user.group'];
+//        dump($menuList);
 
-        $groupList = $group->lists();
-        dump($groupList);
-
-
-        // 粉丝 openid 列表
-        $openIds = $fansList->get('data.openid');
-
-        dump($openIds);
-
-//        return view('user.fans.index');
+        return view('user.menu.index');
     }
 
     /**

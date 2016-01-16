@@ -90,7 +90,7 @@
                     <span class="caption-helper hide">3333</span>
                 </div>
                 <div class="actions">
-                    <a href="{{ url('avatar') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>&nbsp;添加公众号</a>
+                    <a href="{{ user_url('avatar') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>&nbsp;添加公众号</a>
                 </div>
             </div>
             <div class="portlet-body">
@@ -116,7 +116,7 @@
                                 <td>{{$account->created_at}}</td>
                                 <td>
                                     <a class="btn btn-primary btn-sm dialog-popup"
-                                       href="{{ url('/') }}"><i class="fa fa-edit"></i>&nbsp;修改</a>
+                                       href="{{ user_url('/') }}"><i class="fa fa-edit"></i>&nbsp;修改</a>
                                     <a class="btn btn-primary btn-sm"
                                        href=""><i class="fa fa-cog"></i>&nbsp;功能管理</a>
                                     <button class="btn btn-danger btn-sm btn-delete-confirm" data-link=""><i class="fa fa-trash-o"></i>&nbsp;删除</button>
