@@ -41,14 +41,14 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('user', 'User\DashboardController@index');
     Route::get('account', 'user\OfficialAccountController@index');
-    Route::get('login', 'User\@index');
+
+    Route::get('fans', 'user\FansController@index');
+
 
     Route::get('avatar', 'User\AvatarController@index');
     Route::post('avatar', 'User\AvatarController@store');
 
-    Route::match(['get', 'post'], 'Wechat/{token}', [
-            'as' => 'abc', 'uses' => 'Wechat\WechatController@index']
-    );
+
 
     Route::get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
     Route::post('login', 'AuthController@postLogin');

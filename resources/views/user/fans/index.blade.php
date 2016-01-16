@@ -1,9 +1,9 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('main')
 <div class="portlet light">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-users"></i>粉丝列表
+            <i class="fa fa-users"></i> 粉丝列表
         </div>
         <div class="actions">
             <!-- <a href="{:U('moveusers',array('token'=>$token))}" class="btn default blue-stripe fa fa-plus dialog-popup" target-form="ids">批量移动用户</a> -->
@@ -33,34 +33,7 @@
                 </tr>
             </thead>
             <tbody>
-                <notempty name="list">
-                    <volist name="list" id="vo">
-                        <tr>
-                            <!-- <td><input class="ids" type="checkbox" value="{$vo['openid']}" name="openids[]"></td> -->
-                            <td><img src="{$vo.headimgurl|default='__IMG__/wechatavatar.gif'}" class="preview-small" alt=""></td>
-                            <td>{$vo.nickname}</td>
-                            <td>{$vo.remark}</td>
-                            <td><eq name="vo.sex" value="1">男<else/>女</eq></td>
-                            <td>
-                                <foreach name="groups" item="group">
-                                    <eq name="group.id" value="$vo['groupid']">{$group.name}</eq>
-                                </foreach>
-                            </td>
-                            <td>{$vo.province}</td>
-                            <td>{$vo.city}</td>
-                            <td>{$vo.subscribe_time|time_format}</td>
-                            <td>
-                                <a class="btn blue btn-xs dialog-popup" href="{:U('editremark',array('openid'=>$vo['openid'],'token'=>$token,'remark'=>$vo['remark']))}">修改备注</a>
-                                <a class="btn blue btn-xs dialog-popup" href="{:U('moveuser',array('openid'=>$vo['openid'],'token'=>$token,'groupid'=>$vo['groupid']))}">移动到分组</a>
-                                <a class="btn blue btn-xs dialog-popup" href="{:U('LuckMoney/send',array('openid'=>$vo['openid'],'token'=>$token))}">发送红包</a>
-                            </td>
-                        </tr>
-                    </volist>
-                <else/>
-                <tr>
-                    <td colspan="8" style="text-align:center;">暂无数据</td>
-                </tr>
-                </notempty>
+
             </tbody>
         </table>
         <div class="page">

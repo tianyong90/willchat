@@ -116,10 +116,10 @@
                                 <td>{{$account->created_at}}</td>
                                 <td>
                                     <a class="btn btn-primary btn-sm dialog-popup"
-                                       href="{{ url('/') }}">修改</a>
+                                       href="{{ url('/') }}"><i class="fa fa-edit"></i>&nbsp;修改</a>
                                     <a class="btn btn-primary btn-sm"
-                                       href="">功能管理</a>
-                                    <button class="btn btn-danger btn-sm btn-delete-confirm" data-link="">删除</button>
+                                       href=""><i class="fa fa-cog"></i>&nbsp;功能管理</a>
+                                    <button class="btn btn-danger btn-sm btn-delete-confirm" data-link=""><i class="fa fa-trash-o"></i>&nbsp;删除</button>
                                 </td>
                             </tr>
                         @endforeach
