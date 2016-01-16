@@ -11,6 +11,8 @@ class DocumentController extends Controller
 {
     public function index()
     {
+
+
         return view('user.docment.index');
     }
 

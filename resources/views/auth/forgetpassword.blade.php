@@ -9,7 +9,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>重置密码</title>
+    <title>找回密码</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -90,7 +90,7 @@
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2015 &copy; 纳新网络科技有限公司.
+    2016 &copy; WillChat. Preducted by <a href="https://github.com/tianyong90">tianyong90</a>
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -127,7 +127,6 @@
         Layout.init(); // init current layout
         // Login.init();
 
-        // Demo.init();
         // init background slide images
         $.backstretch([
                     "{{ asset('static') }}/metronic/admin/pages/media/bg/1.jpg",

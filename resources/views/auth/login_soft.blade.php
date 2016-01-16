@@ -207,7 +207,7 @@
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2015 &copy; 纳新网络科技有限公司.
+    2016 &copy; WillChat. Preducted by <a href="https://github.com/tianyong90">tianyong90</a>
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

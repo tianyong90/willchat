@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if IE 8]> <html lang="zh-cn" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="zh-cn" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="zh-cn">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
     <head>
@@ -132,7 +132,7 @@
             <!-- END REGISTRATION FORM -->
         </div>
         <div class="copyright">
-            2015 © 微信营销管理系统.
+            2016 &copy; WillChat. Preducted by <a href="https://github.com/tianyong90">tianyong90</a>
         </div>
         <!-- END LOGIN -->
         <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('document', 'User\DocumentController@index');
 
-    Route::get('user', 'User\IndexController@index');
+    Route::get('user', 'User\DashboardController@index');
     Route::get('account', 'user\OfficialAccountController@index');
     Route::get('login', 'User\@index');
 

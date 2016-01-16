@@ -22,7 +22,7 @@
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <li class="dropdown dropdown-user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                       <img alt="" class="img-circle" id="userMinAvatarId" src="" />
+                       <img alt="" class="img-circle" id="userMinAvatarId" src="{{ asset('images') }}/user/defaultavatar.png" />
                     <span class="username username-hide-on-mobile">{{ $user['name'] }}</span>
                         <i class="fa fa-angle-down"></i>
                     </a>

@@ -63,7 +63,7 @@
                         <div class="portlet light profile-sidebar-portlet">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img id="userAvatarId" src="" class="img-responsive" alt="">
+                                <img id="userAvatarId" src="{{ asset('images') }}/user/defaultavatar.png" class="img-responsive" alt="">
                             </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
