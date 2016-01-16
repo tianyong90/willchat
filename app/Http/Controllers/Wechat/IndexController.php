@@ -62,7 +62,7 @@ class IndexController extends Controller
         $server->setMessageHandler(function ($message) use ($user) {
             $fromUser = $user->get($message->FromUserName);
 
-            return "{$fromUser['nickname']}您好！\n欢迎关注 overtrue!";
+            return "{$fromUser['nickname']}您好！\n欢迎关注 WillChat!";
         });
 
         $server->serve()->send();

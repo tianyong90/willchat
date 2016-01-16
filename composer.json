@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "tianyong90/willchat",
+    "description": "WillChat, an easy wechat management platform.",
+    "keywords": ["wechat", "willchat"],
     "license": "MIT",
     "type": "project",
     "require": {

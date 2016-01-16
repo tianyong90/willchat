@@ -13,7 +13,7 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta content="" name="description"/>
 <meta content="" name="author"/>
-<link rel="stylesheet" href="__CSS__/dialog.css" />
+<link rel="stylesheet" href="{{ asset('css') }}/user/dialog.css" />
 <style>
     .dialog-content {
         width: 550px;

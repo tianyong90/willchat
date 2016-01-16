@@ -1,10 +1,11 @@
 <extend name="Public/baseindex"/>
 @section('style')
-    <link rel="stylesheet" type="text/css" href="__CSS__/document.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css') }}/user/document.css">
 @stop
 <block name="profile-content">
     <div class="row">
         <div class="col-md-12">
+            <!-- BEGIN PORTLET -->
             <div class="portlet light ">
                 <div class="portlet-title">
                     <div class="caption caption-md">
@@ -35,23 +36,27 @@
                             </ul>
                         </div>
                         <div class="col-md-10">
-                            <ul id="article-list">
-                                <volist name="list" id="vo">
-                                    <li>
-                                        <a class="title" href="{:U('detail?id='.$vo['id'].'&category='.$_GET['category'])}" title="{$vo.title}">{$vo.title}</a>
-                                        <span class="time">{$vo.create_time|time_format}</span>
-                                    </li>
-                                </volist>
-                            </ul>
-                            <div class="page">
-                                <div class="pagination pagination-right">
-                                    {$_page|default=''}
-                                </div>
+                            <div id="article-main">
+                                <h2 class="title">{$info.title}</h2>
+                                <span class="article-info">
+                                    <span> 发表于 {$info.create_time|date='Y-m-d H:i',###}</span>
+                                    <span> 最后更新 {$info.update_time|date='Y-m-d H:i',###}</span>
+                                </span>
+                                <section id="contents">{$info.content}</section>
+                                <span class="pagination">
+                                    <article:prev name="prev" info="info">
+                                        <a href="{:U('?id='.$prev['id'].'&category='.$_GET['category'])}">上一篇</a>
+                                    </article:prev>
+                                    <article:next name="next" info="info">
+                                        <a href="{:U('?id='.$next['id'].'&category='.$_GET['category'])}">下一篇</a>
+                                    </article:next>
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- END PORTLET -->
         </div>
     </div>
 @stop

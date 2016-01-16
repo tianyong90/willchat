@@ -1,6 +1,6 @@
 @extends('user.public.baseindex')
 @section('style')
-<link rel="stylesheet" href="__CSS__/metronicuser.css"/>
+<link rel="stylesheet" href="{{ asset('css') }}/user/metronicuser.css"/>
 <link rel="stylesheet" type="text/css" href="{{ asset('static') }}/metronic/assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
 @stop
 @section('main')

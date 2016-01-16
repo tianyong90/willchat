@@ -1,6 +1,6 @@
 <extend name="Public/dcontentbase" />
 @section('style')
-<link rel="stylesheet" type="text/css" href="__CSS__/editgoods.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('css') }}/user/editgoods.css">
 <style>
     .dialog-content {
         height: auto;

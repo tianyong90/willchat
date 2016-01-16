@@ -37,6 +37,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('function', 'User\SystemFunctionController@index');
 
+    Route::get('document', 'User\DocumentController@index');
+
     Route::get('user', 'User\IndexController@index');
     Route::get('account', 'user\OfficialAccountController@index');
     Route::get('login', 'User\@index');

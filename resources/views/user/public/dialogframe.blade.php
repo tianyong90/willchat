@@ -21,7 +21,7 @@
 <!-- BEGIN THEME STYLES -->
 <link href="{{ asset('static') }}/metronic/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('static') }}/metronic/global/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="__CSS__/custom.css" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('css') }}/user/custom.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="{{ asset('static') }}/artDialog6/css/ui-dialog.css" />
 <!-- END THEME STYLES -->
 <style>
@@ -38,9 +38,8 @@
 @stop
 </head>
 <body>
-<block name="content">
-    
-@stop
+@yeild('content)
+
 <script type="text/javascript">
     //ThinkPHP对象，包含项目部分基础配置信息
     (function(){
@@ -216,9 +215,7 @@
         });
     });
 </script>
-@section('script')
-    
-@stop
+@yeild('script')
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

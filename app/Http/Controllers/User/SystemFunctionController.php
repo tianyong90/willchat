@@ -17,12 +17,10 @@ class SystemFunctionController extends Controller
      */
     public function index()
     {
-        $systemFunction=new SystemFunction();
-        $functionList=$systemFunction->all();
+        $systemFunction = new SystemFunction();
+        $functionList = $systemFunction->all();
 
-        dump($functionList);
-
-        return view('user.function.index');
+        return view('user.function.index', ['functions' => $functionList]);
     }
 
     /**

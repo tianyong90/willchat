@@ -21,7 +21,7 @@
 <!-- <link href="{{ asset('static') }}/metronic/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/> -->
 <!-- <link href="{{ asset('static') }}/metronic/global/css/plugins.css" rel="stylesheet" type="text/css"/> -->
 <!-- END THEME STYLES -->
-<link rel="stylesheet" href="__CSS__/dialog.css" />
+<link rel="stylesheet" href="{{ asset('css') }}/user/dialog.css" />
 <style>
     .dialog-content {
         width: 550px;
