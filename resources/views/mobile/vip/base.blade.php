@@ -13,20 +13,18 @@
   {{--<link rel="stylesheet" href="__CSS__/MemberCard/card.css"/>--}}
 
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-  <script>
+  @yield('css')
 
-  </script>
+  @yield('pre_script')
 </head>
 <body>
-
+@yield('main')
 @include('wap.vip.bottom')
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js"></script>
 <script src="{{asset('static')}}/layer.mobile-v1.6/layer.m/layer.m.js"></script>
-<script src="__STATIC__/think.js"></script>
 <script>
   $(function () {
-
     $("input").not('.submit-ajax').focus(function () {
       $("#navbar").hide();
     }).blur(function (event) {
@@ -34,5 +32,6 @@
     });
   })
 </script>
+@yield('script')
 </body>
 </html>
