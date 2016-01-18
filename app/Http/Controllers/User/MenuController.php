@@ -43,18 +43,29 @@ class MenuController extends Controller
         $menuList = $menu->current();
 
 //        dump($menuList);
+//        exit;
 
-        return view('user.menu.index');
+        return user_view('menu.index');
     }
 
     /**
-     * 从微信官方服务器摘取粉丝数据并保存到本地数据库
+     * 创建菜单
      */
-    public function updateFansData()
+    public function getCreate()
+    {
+        return user_view('menu.create');
+
+        
+    }
+
+    /**
+     * 保存创建菜单
+     */
+    public function postCreate()
     {
         //TODO:update fans data
 
-        
+
     }
 
     public function moveUser()

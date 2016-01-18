@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 //微信路由
@@ -51,12 +51,11 @@ Route::group(['middleware' => ['web']], function () {
     */
     $home = [
         'namespace' => 'Home',
-//        'middleware' => 'auth',
     ];
 
     Route::group($home, function () {
         Route::get('/', function () {
-            return view('welcome');
+            return view('home.index');
         });
     });
 
@@ -70,38 +69,34 @@ Route::group(['middleware' => ['web']], function () {
     ];
 
     Route::group($user, function () {
-        Route::get('/', 'DashboardController@getIndex');
+        Route::get('/', 'IndexController@index');
 //        Route::controller('account', 'AccountController');
 //        Route::controller('auth', 'AuthController');
 
-        Route::get('fans', 'FansController@getIndex');
+        //粉丝管理
+        Route::get('fans', 'FansController@index');
 
+        //粉丝分组
+        Route::get('fans-group', 'FansGroupController@index');
+        Route::get('fans-group/edit/{id}', 'FansGroupController@getEdit');
+        Route::post('fans-group/edit/{id}', 'FansGroupController@postEdit');
+
+        //微信红包
         Route::get('luckymoney', 'LuckyMoneyController@index');
 
+        //功能列表
         Route::get('function', 'SystemFunctionController@index');
 
+        //帮助文档
         Route::get('document', 'DocumentController@index');
 
-        Route::get('fans', 'user\FansController@index');
-        Route::get('menu', 'user\MenuController@index');
+        //自定义菜单
+        Route::get('menu', 'MenuController@index');
 
-
+        //头像设置
         Route::get('avatar', 'AvatarController@index');
         Route::post('avatar', 'AvatarController@store');
 
-//        Route::group(['middleware' => 'account'], function () {
-//            Route::controllers([
-//                'user' => 'UserController',
-//                'fan' => 'FanController',
-//                'fan-group' => 'FanGroupController',
-//                'menu' => 'MenuController',
-//                'material' => 'MaterialController',
-//                'staff' => 'StaffController',
-//                'message' => 'MessageController',
-//                'reply' => 'ReplyController',
-//                'upload' => 'UploadController',
-//            ]);
-//        });
     });
 
     /*
@@ -114,7 +109,7 @@ Route::group(['middleware' => ['web']], function () {
     ];
 
     Route::group($mobile, function () {
-        Route::get('/', 'VipController@getIndex');
+        Route::get('/', 'VipController@index');
 
 
     });

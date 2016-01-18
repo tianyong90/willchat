@@ -47,3 +47,39 @@ function make_api_url($tag)
 {
     return url('/api?t='.$tag);
 }
+
+/**
+ * 获取微信公众号配置参数
+ *
+ * @param int $id
+ * @param int $type
+ *
+ * @return array
+ */
+function get_wechat_options($id = 1, $type = 1)
+{
+    $options = [
+        'debug' => true,
+        'app_id' => env('WECHAT_APPID'),
+        'secret' => env('WECHAT_APPSECRET'),
+        'token' => env('WECHAT_TOKEN'),
+        // log
+        'log' => [
+            'level' => \Monolog\Logger::DEBUG,
+            'file' => storage_path('logs\easywechat.log'),
+        ],
+        // oauth
+        'oauth' => [
+            'scopes' => ['snsapi_userinfo'],
+            'callback' => '/examples/oauth_callback.php',
+        ],
+        'payment' => [
+            'merchant_id' => env('WECHAT_MERCHANT_ID'),
+            'key' => env('WECHAT_MERCHANT_KEY'),
+            'cert_path' => 'D:\EXIKECERT\apiclient_cert.pem',
+            'key_path' => 'D:\EXIKECERT\apiclient_key.pem',
+        ],
+    ];
+
+    return $options;
+}

@@ -32,14 +32,14 @@
           type="text/css"/>
     <link href="{{ asset('static') }}/metronic/global/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('static') }}/metronic/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('static') }}/metronic/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('static') }}/metronic/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css') }}/user/custom.css" rel="stylesheet" type="text/css"/>
     <style>
         .page-content {
             background-color: #e7e7e7;
         }
     </style>
-    @yeild('style')
+    @yield('style')
    <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="/favicon.ico"/>
 
@@ -47,8 +47,7 @@
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
-<!-- 根据参数fullwidth决定是否水平全宽显示 -->
-<body class="page-header-fixed page-quick-sidebar-over-content <notempty name='fullwidth'>page-full-width</notempty>">
+<body class="page-header-fixed page-quick-sidebar-over-content">
 <!-- BEGIN HEADER -->
 @include('user.public.header')
 <!-- END HEADER -->
@@ -65,8 +64,6 @@
             <!-- BEGIN STYLE CUSTOMIZER -->
             @include('user.public.stylecustomizer')
             <!-- END STYLE CUSTOMIZER -->
-            <!-- BEGIN PAGE HEADER-->
-            <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
             <div class="col-md-12">
                 @yield('main')
@@ -91,34 +88,24 @@
 <script src="{{ asset('static') }}/metronic/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <script src="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js"
-        type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
-        type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
-        type="text/javascript"></script>
+<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="{{ asset('static') }}/metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="{{ asset('static') }}/jquery.cookies.2.2.0.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js"
-        type="text/javascript"></script>
-<!-- <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script> -->
+<script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <script src="{{ asset('static') }}/metronic/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="{{ asset('static') }}/metronic/admin/layout/scripts/layout.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/admin/layout/scripts/demo.js" type="text/javascript"></script>
-
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js"
-        type="text/javascript"></script>
+<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="{{ asset('static') }}/layer/layer.js"></script>
 <script src="{{ asset('js/user') }}/base.js"></script>
-
 <script>
     jQuery(document).ready(function () {
         Metronic.setAssetsPath("{{ asset('static') }}/metronic/");//设置模板文件根路径
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
-        Demo.init(); // init demo features
-        Base.initNormalPage(); //常规页面中菜单高亮等操作初始
+        // Base.initNormalPage(); //常规页面中菜单高亮等操作初始
 
         //点击锁屏时保存当前页面地址以便解锁时跳转
         $('a#lockscreen').click(function (event) {
@@ -207,11 +194,41 @@
         });
 
         //弹出编辑框
+        $('.dialog-popup').on('click', function () {
+            var triggerItem=$(this); //触发弹出层的元素
+            var data=triggerItem.data();
+            var url=$(this).attr('href');
+
+            layer.open({
+                type: 2,
+                title: ' ',
+                shadeClose: false,
+                shade: [0.75, '#000'],
+                area: ['600px', '70%'],
+                content: url
+            });
+            return false;
+        });
+        
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document)
+            .ajaxStart(function(){
+                window.loadingLayerIndex = layer.load();
+            })
+            .ajaxStop(function(){
+                layer.close(loadingLayerIndex);
+            });
 
     });
 </script>
 <!-- END JAVASCRIPTS -->
-@yeild('script')
+@yield('script')
 </body>
 <!-- END BODY -->
 </html>

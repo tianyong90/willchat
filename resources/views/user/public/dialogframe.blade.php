@@ -33,12 +33,10 @@
         padding: 5px;
     }
 </style>
-@section('style')
-    <!-- 加载其它CSS -->
-@stop
+@yield()'style')
 </head>
 <body>
-@yeild('content)
+@yield('content')
 
 <script type="text/javascript">
     //ThinkPHP对象，包含项目部分基础配置信息
@@ -215,7 +213,7 @@
         });
     });
 </script>
-@yeild('script')
+@yield('script')
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
