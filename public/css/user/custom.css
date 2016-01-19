@@ -346,3 +346,8 @@ td.row-nodata {
   overflow: hidden;
 }
 /*翻页结束*/
+
+.btn .fa,
+button .fa {
+  margin-right: 5px;
+}

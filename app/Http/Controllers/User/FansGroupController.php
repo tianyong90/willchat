@@ -29,7 +29,7 @@ class FansGroupController extends Controller
      */
     public function getEdit()
     {
-        return user_view('fans_grop.edit');
+        return user_view('fans_group.edit');
     }
 
     /**
