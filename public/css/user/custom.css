@@ -268,8 +268,8 @@ td.row-nodata {
 
 /*翻页*/
 .pagination {
-  margin-top: 15px;
-  margin-left: 20px;
+  float: right;
+  margin: 25px;
 }
 .pagination ul {
   display: inline-block;

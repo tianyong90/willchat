@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use DB;
 
 use EasyWeChat\Foundation\Application;
 
@@ -13,12 +14,9 @@ class QRCodeController extends Controller
 {
     public function index()
     {
-//        $qrcodeList = DB::table('qrcodes')->get();
-//
-//        dump($qrcodeList);
-//        exit;
+        $qrcodeList = DB::table('qrcodes')->paginate(3);
 
-        return user_view('qrcode.index');
+        return user_view('qrcode.index', ['qrcodes' => $qrcodeList]);
     }
 
     /**

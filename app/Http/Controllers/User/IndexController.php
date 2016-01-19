@@ -30,7 +30,7 @@ class IndexController extends Controller
         $data['orderCount'] = 100;
         $data['memberCount'] = 100;
 
-        $officialAccount = new OfficialAccount();
+        $officialAccount = new \App\Models\OfficialAccount();
 
 //        for ($i = 0; $i < 5; $i++) {
 //            $officialAccount->name = str_random(5);
@@ -43,9 +43,9 @@ class IndexController extends Controller
 //            $officialAccount->save();
 //        }
 
-        $accounts = OfficialAccount::all();
+        $accounts = $officialAccount::all();
 
-        return view('user.dashboard.index', compact('accounts', 'data'));
+        return user_view('index.index', compact('accounts', 'data'));
     }
 
     /**
