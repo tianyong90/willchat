@@ -37,7 +37,7 @@
               <td>{$item.scancount}</td>
               <td>
                 <button class="btn red btn-xs btn-delete-confirm"
-                        data-link="{:U('delete',array('token'=>$token,'id'=>$item['id']))}">删除
+                        data-link="{{ user_url('/') }}">删除
                 </button>
               </td>
             </tr>
@@ -54,7 +54,7 @@
       $('#createQrcode').click(function (event) {
         var $inpKeyword = $('#keyword');
         if ($inpKeyword.val()) {
-          var url = "{:U('createQrcode')}";
+          var url = "{{ user_url('/') }}";
           $.ajax({
                 url: url,
                 type: 'POST',

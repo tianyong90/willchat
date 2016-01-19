@@ -8,7 +8,7 @@
       <div class="actions">
         <!-- <a href="#modal-industry" data-toggle="modal" class="btn circle grey btn-xs">
             <i class="fa fa-cog"></i>&nbsp;所属行业设置</a> -->
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe btn-xs dialog-popup"><i
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
               class="fa fa-plus"></i>&nbsp;添加消息模板</a>
       </div>
     </div>
@@ -47,9 +47,9 @@
                 <td>{$vo.useage}</td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('edit',array('id'=>$vo['id'],'token'=>$token))}">修改</a>
+                     href="{{ user_url('/') }}">修改</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteTmpl',array('id'=>$vo['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

@@ -76,6 +76,9 @@ Route::group(['middleware' => ['web']], function () {
         //粉丝管理
         Route::get('fans', 'FansController@index');
 
+        //二维码
+        Route::get('qrcode', 'QrcodeController@index');
+
         //粉丝分组
         Route::get('fans-group', 'FansGroupController@index');
         Route::get('fans-group/edit/{id}', 'FansGroupController@getEdit');

@@ -6,15 +6,15 @@
         <i class="fa fa-list"></i>微网站导航菜单
       </div>
       <div class="actions">
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe btn-xs dialog-popup"><i
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
               class="fa fa-plus"></i>&nbsp;添加菜单</a>
-        <button url="{:U('setStatus',array('Model'=>'WapHomeMenu','status'=>1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'WapHomeMenu','status'=>0))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'WapHomeMenu','status'=>-1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
         </button>
       </div>
@@ -64,9 +64,9 @@
               </td>
               <td>
                 <a class="btn blue btn-xs dialog-popup"
-                   href="{:U('edit',array('id'=>$class['id'],'token'=>$token))}">修改</a>
+                   href="{{ user_url('/') }}">修改</a>
                 <button class="btn red btn-xs btn-delete-confirm"
-                        data-link="{:U('deleteMenu',array('id'=>$class['id']))}">删除
+                        data-link="{{ user_url('/') }}">删除
                 </button>
               </td>
             </tr>
@@ -91,9 +91,9 @@
                 </td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('edit',array('id'=>$class1['id'],'token'=>$token))}">修改</a>
+                     href="{{ user_url('/') }}">修改</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteMenu',array('id'=>$class1['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

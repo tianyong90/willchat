@@ -34,12 +34,12 @@
     <li
     <eq name="type" value="focus">class="active"</eq>
     >
-    <a href="{:U('',array('type'=>'focus'))}">幻灯片</a>
+    <a href="{{ user_url('/') }}">幻灯片</a>
     </li>
     <li
     <eq name="type" value="background">class="active"</eq>
     >
-    <a href="{:U('',array('type'=>'background'))}">全屏背景</a>
+    <a href="{{ user_url('/') }}">全屏背景</a>
     </li>
   </ul>
   <div class="tab-content">

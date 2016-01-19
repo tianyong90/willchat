@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('style')
   <link rel="stylesheet" href="{{ asset('static') }}/page/page.css"/>
 @stop
@@ -6,12 +6,12 @@
   <div class="portlet light">
     <div class="portlet-title">
       <div class="caption">
-        <i class="fa fa-qrcode"></i> 二维码管理
+        <i class="fa fa-qrcode"></i> 二维码
       </div>
       <div class="actions">
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe btn-xs dialog-popup"><i
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
               class="fa fa-plus"></i>&nbsp;创建二维码</a>
-        <button url="{:U('setStatus',array('Model'=>'Qrcode','status'=>-1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
         </button>
       </div>
@@ -52,10 +52,8 @@
                 <td>{$item.create_time|time_format}</td>
                 <td>{$item.scancount}</td>
                 <td>
-                  <!-- <a class="btn blue btn-xs download-pic" id="pic1" onclick="downLoadImage("{$item.url}")">下载</a> -->
-                  <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteQrcode',array('token'=>$token,'id'=>$item['id']))}">删除
-                  </button>
+                  <a class="btn blue btn-xs download-pic" id="pic1"><i class="fa fa-download"></i>下载</a>
+                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('/') }}"><i class="fa fa-trash-o"></i>删除</button>
                 </td>
               </tr>
             </volist>

@@ -100,7 +100,7 @@
         //模板消息类型改变后自动重新解析模板
         $('select#type').change(function (event) {
           if ($('textarea#tmpl_content').val() !== "") {
-            var url = "{:U('parseTmpl')}";
+            var url = "{{ user_url('/') }}";
             var postData = {
               tmplType: $('select#type').val(),
               id: "{$info.id}",
@@ -123,7 +123,7 @@
         //手动解析模板
         $('a#parse-tmpl').click(function (event) {
           if ($('textarea#tmpl_content').val() !== "") {
-            var url = "{:U('parseTmpl')}";
+            var url = "{{ user_url('/') }}";
             var postData = {
               tmplType: $('select#type').val(),
               id: "{$info.id}",

@@ -6,7 +6,7 @@
         <i class="fa fa-photo"></i>粉丝分组管理
       </div>
       <div class="actions">
-        <a href="{:U('addgroup',array('token'=>$token))}"
+        <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加分组</a>
       </div>
     </div>
@@ -39,9 +39,9 @@
                 <td>{$group.count}</td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('editgroup',array('id'=>$group['id'],'token'=>$token,'name'=>$group['name']))}">编辑</a>
+                     href="{{ user_url('/') }}">编辑</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteGroup',array('token'=>$token,'id'=>$group['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

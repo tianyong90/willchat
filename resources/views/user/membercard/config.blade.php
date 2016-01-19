@@ -115,14 +115,14 @@
                   <label class="col-md-2 control-label">卡号规则</label>
 
                   <div class="col-md-9">
-                    <a href="{:U('numberrule',array('token'=>$token))}" class="btn btn-primary btn-sm dialog-popup">点击设置规则</a>
+                    <a href="{{ user_url('/') }}" class="btn btn-primary btn-sm dialog-popup">点击设置规则</a>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-md-2 control-label">会员注册字段</label>
 
                   <div class="col-md-9">
-                    <a href="{:U('registerfields',array('token'=>$token))}" class="btn btn-primary btn-sm dialog-popup">点击设置字段</a>
+                    <a href="{{ user_url('/') }}" class="btn btn-primary btn-sm dialog-popup">点击设置字段</a>
                   </div>
                 </div>
               </div>

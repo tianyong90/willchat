@@ -10,15 +10,15 @@
         </i>
       </div>
       <div class="actions">
-        <a href="{:U('add',array('token'=>$token,'type'=>$_GET['type']))}"
+        <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
-        <button url="{:U('setStatus',array('Model'=>'Slide','status'=>1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'Slide','status'=>0))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'Slide','status'=>-1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
         </button>
       </div>
@@ -61,9 +61,9 @@
                 </td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('edit',array('id'=>$item['id'],'token'=>$token,'type'=>$_GET['type']))}">编辑</a>
+                     href="{{ user_url('/') }}">编辑</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteSlide',array('token'=>$token,'id'=>$item['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

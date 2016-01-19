@@ -384,7 +384,7 @@
       //接口测试
       $.ajax({
         type: "get",
-        url: "{:u('nakeapiTest')}",
+        url: "{{ user_url('/') }}",
         dataType: "json",
         data: data,
         success: function (response) {

@@ -23,7 +23,7 @@
 
 </head>
 <body style="width:800px;overflow:auto;" id="crop-avatar">
-<form class="avatar-form" action="{:U('User/CropUpload/index')}" enctype="multipart/form-data" method="post">
+<form class="avatar-form" action="{{ user_url('/') }}" enctype="multipart/form-data" method="post">
   <div class="avatar-body">
     <!-- Upload image and data -->
     <div class="avatar-upload">

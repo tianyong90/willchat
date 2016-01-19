@@ -10,7 +10,7 @@
             <span class="caption-subject font-blue-madison bold uppercase">帮助中心</span>
           </div>
           <!-- <div class="actions">
-              <a href="{:U('edit')}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>&nbsp;添加公众号</a>
+              <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>&nbsp;添加公众号</a>
           </div> -->
         </div>
         <div class="portlet-body">

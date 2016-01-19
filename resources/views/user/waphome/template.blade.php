@@ -12,19 +12,19 @@
         <li
         <eq name="type" value="1"> class="active"</eq>
         >
-        <a href="{:U('',array('token'=>$token,'type'=>'1'))}">
+        <a href="{{ user_url('/') }}">
           栏目首页模板 </a>
         </li>
         <li
         <eq name="type" value="2"> class="active"</eq>
         >
-        <a href="{:U('',array('token'=>$token,'type'=>'2'))}">
+        <a href="{{ user_url('/') }}">
           图文列表模板 </a>
         </li>
         <li
         <eq name="type" value="3"> class="active"</eq>
         >
-        <a href="{:U('',array('token'=>$token,'type'=>'3'))}">
+        <a href="{{ user_url('/') }}">
           图文详细页模板 </a>
         </li>
       </ul>
@@ -83,7 +83,7 @@
       $("a.tpl-select").click(function (e) {
         e.preventDefault();
         $(this).parent('div.mix').addClass('ck').siblings('div.mix').removeClass('ck');
-        var url = "{:U('changeTpl',array('token'=>$token,'type'=>$_GET['type']))}";
+        var url = "{{ user_url('/') }}";
         var tmplid = $(this).attr('data-tplid');
         var postData = {"tmplid": tmplid};
         $.post(url, postData, function (data) {

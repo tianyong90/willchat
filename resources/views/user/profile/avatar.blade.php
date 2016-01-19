@@ -14,13 +14,13 @@
           </div>
           <ul class="nav nav-tabs">
             <li>
-              <a href="{:U('userinfo')}">个人信息设置</a>
+              <a href="{{ user_url('/') }}">个人信息设置</a>
             </li>
             <li class="active">
-              <a href="{:U('avatar')}">头像设置</a>
+              <a href="{{ user_url('/') }}">头像设置</a>
             </li>
             <li>
-              <a href="{:U('updatepwd')}">修改密码</a>
+              <a href="{{ user_url('/') }}">修改密码</a>
             </li>
           </ul>
         </div>

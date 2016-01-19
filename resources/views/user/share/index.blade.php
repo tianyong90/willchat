@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="tab-pane" id="tab_15_3">
-            <form class="form-horizontal" role="form" method="post" action="{:U('User/Index/insert')}">
+            <form class="form-horizontal" role="form" method="post" action="{{ user_url('/') }}">
               <div class="form-body">
                 <div class="form-group">
                   <label class="col-md-3 control-label">分数</label>

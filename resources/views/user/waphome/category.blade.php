@@ -8,15 +8,15 @@
         <i class="fa fa-cube"></i>内容分类管理
       </div>
       <div class="actions">
-        <a href="{:U('addCategory',array('token'=>$token))}"
+        <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
-        <button url="{:U('setStatus',array('Model'=>'WapHomeCategory','status'=>1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'WapHomeCategory','status'=>0))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
         </button>
-        <!-- <button url="{:U('setStatus',array('Model'=>'WapHomeCategory','status'=>-1))}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除</button> -->
+        <!-- <button url="{{ user_url('/') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除</button> -->
       </div>
     </div>
     <div class="portlet-body">
@@ -62,9 +62,9 @@
                 </td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('editCategory',array('id'=>$vo['id'],'token'=>$token))}">修改</a>
+                     href="{{ user_url('/') }}">修改</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteCategory',array('id'=>$vo['id'],'token'=>$token))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>
@@ -93,9 +93,9 @@
                     </td>
                     <td>
                       <a class="btn blue btn-xs dialog-popup"
-                         href="{:U('editCategory',array('id'=>$vo_sub['id'],'token'=>$token))}">修改</a>
+                         href="{{ user_url('/') }}">修改</a>
                       <button class="btn red btn-xs btn-delete-confirm"
-                              data-link="{:U('deleteCategory',array('id'=>$vo_sub['id'],'token'=>$token))}">删除
+                              data-link="{{ user_url('/') }}">删除
                       </button>
                     </td>
                   </tr>

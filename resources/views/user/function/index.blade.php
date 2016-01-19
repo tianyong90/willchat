@@ -43,7 +43,7 @@
           type="text/javascript"></script>
   <script>
     $('input.make-switch').on('switchChange.bootstrapSwitch', function (event, state) {
-      var url = "{:U('toggleFunction',null,false,false)}";
+      var url = "{{ user_url('/') }}";
       var postData = {
         'token': '{$token}',
         'fid': $(this).data('id'),

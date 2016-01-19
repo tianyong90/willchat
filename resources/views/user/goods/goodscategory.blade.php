@@ -9,15 +9,15 @@
         <i class="fa fa-list"></i> 商品分类管理
       </div>
       <div class="actions">
-        <a href="{:U('addcategory',array('token'=>$token))}"
+        <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
-        <button url="{:U('setStatus',array('Model'=>'GoodsCategory','status'=>1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'GoodsCategory','status'=>0))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
         </button>
-        <!-- <button url="{:U('setStatus',array('Model'=>'GoodsCategory','status'=>-1))}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除</button> -->
+        <!-- <button url="{{ user_url('/') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除</button> -->
       </div>
     </div>
     <div class="portlet-body">
@@ -52,9 +52,9 @@
                 </td>
                 <td class="norightborder">
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('editcategory',array('id'=>$vo['id'],'token'=>$token))}">编辑</a>
+                     href="{{ user_url('/') }}">编辑</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteCategory',array('token'=>$token,'id'=>$vo['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

@@ -9,14 +9,14 @@
         <i class="fa fa-bell"></i>通知列表
       </div>
       <div class="actions">
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
-        <button url="{:U('setStatus',array('Model'=>'MemberNotice','status'=>1))}"
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
+        <button url="{{ user_url('/') }}"
                 class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'MemberNotice','status'=>0))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'MemberNotice','status'=>-1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
         </button>
       </div>
@@ -52,9 +52,9 @@
                   </eq>
                 </td>
                 <td>
-                  <a class="btn blue btn-xs dialog-popup" href="{:U('edit',array('id'=>$item['id'],'token'=>$token))}">修改</a>
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('/') }}">修改</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteNotice',array('id'=>$item['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

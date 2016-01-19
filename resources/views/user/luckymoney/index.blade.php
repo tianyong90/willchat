@@ -10,7 +10,7 @@
       <div class="actions">
         <a href="javascript:;" id="create-wxmenu" class="btn default green-stripe btn-xa"><i class="fa fa-save"></i>&nbsp;生成菜单</a>
         <a href="javascript:;" class="btn default red-stripe btn-xa" id="clear-all"><i class="fa fa-trash-o"></i>&nbsp;清除全部菜单</a>
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe btn-xs dialog-popup"><i
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
               class="fa fa-plus"></i>&nbsp;添加菜单</a>
       </div>
     </div>
@@ -60,9 +60,9 @@
                 </td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('edit',array('id'=>$class['id'],'token'=>$token))}">修改</a>
+                     href="{{ user_url('/') }}">修改</a>
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteMenu',array('id'=>$class['id'],'token'=>$token))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>
@@ -86,9 +86,9 @@
                   </td>
                   <td>
                     <a class="btn blue btn-xs dialog-popup"
-                       href="{:U('edit',array('id'=>$class1['id'],'token'=>$token))}">修改</a>
+                       href="{{ user_url('/') }}">修改</a>
                     <button class="btn red btn-xs btn-delete-confirm"
-                            data-link="{:U('deleteMenu',array('id'=>$class1['id'],'token'=>$token))}">删除
+                            data-link="{{ user_url('/') }}">删除
                     </button>
                   </td>
                 </tr>
@@ -111,7 +111,7 @@
       //生成菜单按钮动作
       $('a#create-wxmenu').click(function (event) {
         event.preventDefault();
-        var url = "{:U('saveMenu?token='.$token)}";
+        var url = "{{ user_url('/') }}";
         $.get(url, function (data) {
           if (data.status) {
             Base.success(data.info);
@@ -128,7 +128,7 @@
       $('a#clear-all').click(function (event) {
         event.preventDefault();
         if (confirm("您确定要清空全部菜单？")) {
-          var url = "{:U('clearAll?token='.$token)}";
+          var url = "{{ user_url('/') }}";
           console.log(url);
           $.get(url, function (data) {
             if (data.status) {

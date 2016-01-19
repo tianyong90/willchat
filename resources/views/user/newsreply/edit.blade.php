@@ -53,7 +53,7 @@
           <div class="input-group">
             <input type="text" name="url" value="{$info.url}" id="url" class="form-control" placeholder="手动输入或从功能模块选择">
             <span class="input-group-btn"><a class="btn green" data-toggle="modal" data-target="#linkselect"
-                                             href="{:U('User/Link/insert',array('targetid'=>'url'))}"><i
+                                             href="{{ user_url('/') }}"><i
                     class="fa fa-link"></i></a></span>
           </div>
           <span class="help-block">如果填写了图文详细内容，这里请留空，不要设置！</span>

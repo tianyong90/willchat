@@ -15,7 +15,7 @@
         可使用条码扫描枪进行输入。<br/>
       </div>
       <div class="form">
-        <form action="{:U('consumeCode',array('token'=>$token))}" class="form-horizontal" role="form">
+        <form action="{{ user_url('/') }}" class="form-horizontal" role="form">
           <fieldset>
             <legend>CODE核销</legend>
             <div class="form-body">
@@ -38,7 +38,7 @@
           </fieldset>
         </form>
 
-        <form action="{:U('unavailableCode',array('token'=>$token))}" class="form-horizontal" role="form">
+        <form action="{{ user_url('/') }}" class="form-horizontal" role="form">
           <fieldset>
             <legend>设置CODE失效</legend>
             <div class="form-body">

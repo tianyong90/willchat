@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i>会员卡列表
       </div>
       <div class="actions">
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>&nbsp;添加会员卡</a>
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>&nbsp;添加会员卡</a>
       </div>
     </div>
     <div class="portlet-body">
@@ -33,15 +33,15 @@
                 <td>{$card.create_time|date='Y-m-d H:i:s',###}</td>
                 <td>
                   <a class="btn btn-primary btn-xs"
-                     href="{:U('members',array('token'=>$token,'cid'=>$card['id']))}">会员管理</a>
+                     href="{{ user_url('/') }}">会员管理</a>
                   <a class="btn btn-primary btn-xs"
-                     href="{:U('edit',array('token'=>$token,'cid'=>$card['id']))}">设计</a>
+                     href="{{ user_url('/') }}">设计</a>
                   <a class="btn btn-primary btn-xs dialog-popup"
-                     href="{:U('numberrule',array('token'=>$token,'cid'=>$card['id']))}">卡号规则</a>
+                     href="{{ user_url('/') }}">卡号规则</a>
                   <a class="btn btn-primary btn-xs dialog-popup"
-                     href="{:U('registerfields',array('token'=>$token,'cid'=>$card['id']))}">注册字段</a>
+                     href="{{ user_url('/') }}">注册字段</a>
                   <button class="btn btn-danger btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteCard',array('token'=>$token,'cid'=>$card['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

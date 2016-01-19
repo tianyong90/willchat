@@ -8,7 +8,7 @@
         <i class="fa fa-users"></i>卡券列表
       </div>
       <div class="actions">
-        <a class="btn default blue-stripe btn-xs" href="{:U('createCard',array('token'=>$token))}"><i
+        <a class="btn default blue-stripe btn-xs" href="{{ user_url('/') }}"><i
               class="fa fa-plus"></i>&nbsp;创建卡券</a>
       </div>
     </div>
@@ -45,13 +45,13 @@
               <td>{$item[$temp]['base_info']['sku']['quantity']}</td>
               <td>
                 <a class="btn blue btn-xs dialog-popup"
-                   href="{:U('cardQrcode',array('token'=>$token,'cardid'=>$item[$temp]['base_info']['id']))}">查看二维码</a>
+                   href="{{ user_url('/') }}">查看二维码</a>
                 <a class="btn blue btn-xs dialog-popup"
-                   href="{:U('modifyStock',array('token'=>$token,'id'=>$item[$temp]['base_info']['id']))}">更新库存</a>
+                   href="{{ user_url('/') }}">更新库存</a>
                 <a class="btn blue btn-xs"
-                   href="{:U('updateCard',array('token'=>$token,'card_id'=>$item[$temp]['base_info']['id']))}">编辑</a>
+                   href="{{ user_url('/') }}">编辑</a>
                 <button class="btn red btn-xs btn-delete-confirm"
-                        data-link="{:U('deleteCard',array('token'=>$token,'card_id'=>$item[$temp]['base_info']['id']))}">
+                        data-link="{{ user_url('/') }}">
                   删除
                 </button>
               </td>

@@ -133,7 +133,7 @@
             padding: 10,
             data: data,
             zIndex: 99999,
-            url: "{:U('User/Dialog/uploadfile',array('token'=>$token))}",
+            url: "{{ user_url('/') }}",
             okValue: '确定',
             cancelValue: '取消',
             ok: function () {
@@ -167,7 +167,7 @@
             padding: 10,
             data: data,
             zIndex: 99999,
-            url: "{:U('User/Dialog/selectfile',array('token'=>$token))}",
+            url: "{{ user_url('/') }}",
             okValue: '确定',
             cancelValue: '取消',
             ok: function () {

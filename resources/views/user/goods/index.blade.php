@@ -9,15 +9,15 @@
         <i class="fa fa-cubes"></i> 商品列表
       </div>
       <div class="actions">
-        <a href="{:U('editgoods',array('token'=>$token))}"
+        <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
-        <button url="{:U('setStatus',array('Model'=>'Goods','status'=>1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'Goods','status'=>0))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
         </button>
-        <button url="{:U('setStatus',array('Model'=>'Goods','status'=>-1))}"
+        <button url="{{ user_url('/') }}"
                 class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
         </button>
       </div>
@@ -58,10 +58,10 @@
                 </td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('editgoods',array('id'=>$vo['id'],'token'=>$token))}">编辑</a>
-                  <!--  <a class="btn btn-primary btn-xs" href="{:U('Store/comment', array('pid'=>$vo['id'],'token'=>$token,'catid'=>$catid))}">用户评论</a> -->
+                     href="{{ user_url('/') }}">编辑</a>
+                  <!--  <a class="btn btn-primary btn-xs" href="{{ user_url('/') }}">用户评论</a> -->
                   <button class="btn btn-danger btn-xs btn-delete-confirm"
-                          data-link="{:U('setStatus',array('Model'=>'Goods','status'=>-1,'ids'=>$vo['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </td>
               </tr>

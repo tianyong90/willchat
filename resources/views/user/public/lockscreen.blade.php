@@ -57,7 +57,7 @@
       <div class="pull-left lock-avatar-block">
         <img src="{:get_avatar(cookie(uid))}" class="lock-avatar">
       </div>
-      <form class="lock-form pull-left" action="{:u('Public/login')}" method="post">
+      <form class="lock-form pull-left" action="{{ user_url('/') }}" method="post">
         <h4>{:get_username(cookie(uid))}</h4>
 
         <div class="form-group">
@@ -75,7 +75,7 @@
       </form>
     </div>
     <div class="lock-bottom">
-      <a href="{:U('Public/login')}">使用其它账号登录</a>
+      <a href="{{ user_url('/') }}">使用其它账号登录</a>
     </div>
   </div>
   <div class="page-footer-custom">

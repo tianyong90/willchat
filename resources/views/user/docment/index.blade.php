@@ -29,7 +29,7 @@
                   <li>
                     <if condition="$Think.get.category eq $cate">class="active"</if>
                     >
-                    <a href="{:U('index?category='.$cate)}">
+                    <a href="{{ user_url('/') }}">
                       <i class="fa fa-briefcase"></i>{:get_category_title($cate)}</a>
                                     <span class="after">
                                     </span>
@@ -42,7 +42,7 @@
                 <volist name="list" id="vo">
                   <li>
                     <a class="title"
-                       href="{:U('detail?id='.$vo['id'].'&category='.$_GET['category'])}"
+                       href="{{ user_url('/') }}"
                        title="{$vo.title}">{$vo.title}</a>
                     <span class="time">{$vo.create_time|time_format}</span>
                   </li>

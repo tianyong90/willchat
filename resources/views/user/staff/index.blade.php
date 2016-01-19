@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i>客服列表
       </div>
       <div class="actions">
-        <a href="{:U('add',array('token'=>$token))}" class="btn default blue-stripe btn-xs dialog-popup"><i
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
               class="fa fa-plus"></i>&nbsp;添加客服</a>
       </div>
     </div>
@@ -52,10 +52,10 @@
               </td>
               <td>
                 <a class="btn blue btn-xs dialog-popup"
-                   href="{:U('edit',array('token'=>$token,'kf_account'=>$vo['kf_account'],'kf_nick'=>$vo['kf_nick']))}">修改信息</a>
-                <!-- <a class="btn blue btn-xs dialog-popup" href="{:U('moveuser',array('openid'=>$vo['openid'],'token'=>$token,'groupid'=>$vo['groupid']))}">设置头像</a> -->
+                   href="{{ user_url('/') }}">修改信息</a>
+                <!-- <a class="btn blue btn-xs dialog-popup" href="{{ user_url('/') }}">设置头像</a> -->
                 <button class="btn red btn-xs btn-delete-confirm"
-                        data-link="{:U('delete',array('token'=>$token,'kf_account'=>$vo['kf_account']))}">删除
+                        data-link="{{ user_url('/') }}">删除
                 </button>
               </td>
             </tr>

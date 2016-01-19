@@ -425,7 +425,7 @@
               padding: 10,
               data: data,
               zIndex: 99999,
-              url: "{:U('User/Dialog/wechatUploadImg',array('token'=>$token))}",
+              url: "{{ user_url('/') }}",
               okValue: '确定',
               cancelValue: '取消',
               ok: function () {

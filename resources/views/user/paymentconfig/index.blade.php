@@ -31,7 +31,7 @@
               </td>
               <td>
                 <a class="btn blue btn-xs dialog-popup"
-                   href="{:U('editConfig',array('token'=>$token,'type'=>$item['type']))}">修改配置</a>
+                   href="{{ user_url('/') }}">修改配置</a>
               </td>
             </tr>
           </volist>

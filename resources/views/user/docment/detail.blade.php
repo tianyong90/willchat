@@ -29,7 +29,7 @@
                   <li
                   <if condition="$Think.get.category eq $cate">class="active"</if>
                   >
-                  <a href="{:U('index?category='.$cate)}">
+                  <a href="{{ user_url('/') }}">
                     <i class="fa fa-briefcase"></i>{:get_category_title($cate)}</a>
                                     <span class="after">
                                     </span>
@@ -47,10 +47,10 @@
                 <section id="contents">{$info.content}</section>
                                 <span class="pagination">
                                     <article:prev name="prev" info="info">
-                                      <a href="{:U('?id='.$prev['id'].'&category='.$_GET['category'])}">上一篇</a>
+                                      <a href="{{ user_url('/') }}">上一篇</a>
                                     </article:prev>
                                     <article:next name="next" info="info">
-                                      <a href="{:U('?id='.$next['id'].'&category='.$_GET['category'])}">下一篇</a>
+                                      <a href="{{ user_url('/') }}">下一篇</a>
                                     </article:next>
                                 </span>
               </div>

@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i> 粉丝列表
       </div>
       <div class="actions">
-        <!-- <a href="{:U('moveusers',array('token'=>$token))}" class="btn default blue-stripe fa fa-plus dialog-popup" target-form="ids">批量移动用户</a> -->
+        <!-- <a href="{{ user_url('/') }}" class="btn default blue-stripe fa fa-plus dialog-popup" target-form="ids">批量移动用户</a> -->
       </div>
     </div>
     <div class="portlet-body">

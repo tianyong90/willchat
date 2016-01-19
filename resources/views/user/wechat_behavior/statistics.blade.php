@@ -9,10 +9,10 @@
       </div>
       <ul class="nav nav-tabs">
         <li class="active">
-          <a href="{:U('statistics')}">七日行为分析</a>
+          <a href="{{ user_url('/') }}">七日行为分析</a>
         </li>
         <li>
-          <a href="{:U('statisticsTrend')}">行为趋势分析</a>
+          <a href="{{ user_url('/') }}">行为趋势分析</a>
         </li>
       </ul>
     </div>

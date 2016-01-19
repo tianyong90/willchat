@@ -41,14 +41,14 @@
               <td>{$vo.create_time|time_format}</td>
               <td>
                 <a class="btn blue btn-xs dialog-popup"
-                   href="{:U('orderdetail',array('id'=>$vo['id'],'token'=>$token))}">详情</a>
+                   href="{{ user_url('/') }}">详情</a>
                 <eq name="vo.status" value="2">
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{:U('delivery',array('id'=>$vo['id'],'token'=>$token))}">发货</a>
+                     href="{{ user_url('/') }}">发货</a>
                 </eq>
                 <eq name="vo.status" value="1">
                   <button class="btn red btn-xs btn-delete-confirm"
-                          data-link="{:U('deleteOrder',array('token'=>$token,'id'=>$vo['id']))}">删除
+                          data-link="{{ user_url('/') }}">删除
                   </button>
                 </eq>
               </td>
