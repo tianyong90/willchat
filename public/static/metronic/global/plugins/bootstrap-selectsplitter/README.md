@@ -2,7 +2,7 @@
 
 ## Presentation
 
-Transforms SELECT containing one or more OPTGROUP in two chained SELECT.
+Transforms a &lt;select&gt; containing one or more &lt;optgroup&gt; in two chained &lt;select&gt;.
 
 This:
 
@@ -14,11 +14,13 @@ Becomes this:
 
 ## Demo
 
-See the [online demo](http://jsfiddle.net/ae7fxdyy/).
+See the [online demo](http://jsfiddle.net/ae7fxdyy/7/).
 
 ## How to use
 
-Create a SELECT tag containing one or more OPTGROUP:
+Create a &lt;select&gt; with at least one &lt;optgroup&gt;:
+
+NB: each &lt;option&gt; of your &lt;select&gt; must have a unique value.
 
 ```HTML
 <select data-selectsplitter-selector>
@@ -63,8 +65,20 @@ bower install bootstrap-selectsplitter
 ##CDN
 
 ```HTML
-<script src="//cdn.jsdelivr.net/bootstrap.selectsplitter/0.1.0/bootstrap-selectsplitter.min.js"></script>
+<script src="//cdn.jsdelivr.net/bootstrap.selectsplitter/0.1.2/bootstrap-selectsplitter.min.js"></script>
 ```
+
+##Changes
+0.1.3 : Resolves two issues with the plugin
+  - Plugin now work properly when used multiple times on the same page. ([Issue 6](https://github.com/xavierfaucon/bootstrap-selectsplitter/issues/6))
+  - Two jQuery selectors have been corrected. ([Issue 5](https://github.com/xavierfaucon/bootstrap-selectsplitter/issues/5))
+
+0.1.2 : Option elements are now displayed by index ([Issue 3](https://github.com/xavierfaucon/bootstrap-selectsplitter/issues/3))
+
+0.1.1 : Minimum "size" attribute for both select tags has been set to "2" ([Issue 1](https://github.com/xavierfaucon/bootstrap-selectsplitter/issues/1))
+
+0.1.0 : Initial release
+
 
 ## Copyright and license
 

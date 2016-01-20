@@ -5,9 +5,12 @@
         bold: 'Fed',
         italic: 'Kursiv',
         underline: 'Understreget',
-        strikethrough: 'Genemstreget',
         clear: 'Fjern formatering',
         height: 'Højde',
+        name: 'Skrifttype',
+        strikethrough: 'Gennemstreget',
+        subscript: 'Sænket skrift',
+        superscript: 'Hævet skrift',
         size: 'Skriftstørrelse'
       },
       image: {
@@ -19,10 +22,17 @@
         floatLeft: 'Venstrestillet',
         floatRight: 'Højrestillet',
         floatNone: 'Fjern formatering',
+        shapeRounded: 'Form: Runde kanter',
+        shapeCircle: 'Form: Cirkel',
+        shapeThumbnail: 'Form: Miniature',
+        shapeNone: 'Form: Ingen',
         dragImageHere: 'Træk billede hertil',
+        dropImage: 'Slip billede',
         selectFromFiles: 'Vælg billed-fil',
+        maximumFileSize: 'Maks fil størrelse',
+        maximumFileSizeError: 'Filen er større end maks tilladte fil størrelse!',
         url: 'Billede URL',
-		remove: 'Fjern billede'
+        remove: 'Fjern billede'
       },
       link: {
         link: 'Link',
@@ -32,13 +42,6 @@
         textToDisplay: 'Visningstekst',
         url: 'Hvor skal linket pege hen?',
         openInNewWindow: 'Åbn i nyt vindue'
-      },
-      video: {
-        video: 'Video',
-        videoLink: 'Video Link',
-        insert: 'Indsæt Video',
-        url: 'Video URL?',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion, or Youku)'
       },
       table: {
         table: 'Tabel'
@@ -81,7 +84,7 @@
         more: 'Flere farver',
         background: 'Baggrund',
         foreground: 'Forgrund',
-        transparent: 'Transparetn',
+        transparent: 'Transparent',
         setTransparent: 'Sæt transparent',
         reset: 'Nulstil',
         resetToDefault: 'Gendan standardindstillinger'
@@ -96,7 +99,7 @@
       },
       history: {
         undo: 'Fortryd',
-        redo: 'Anuller fortryd'
+        redo: 'Annuller fortryd'
       }
 
     }

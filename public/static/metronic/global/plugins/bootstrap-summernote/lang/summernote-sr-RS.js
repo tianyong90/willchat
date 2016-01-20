@@ -5,9 +5,9 @@
         bold: 'Подебљано',
         italic: 'Курзив',
         underline: 'Подвучено',
-        strikethrough: 'Прецртано',
         clear: 'Уклони стилове фонта',
         height: 'Висина линије',
+        strikethrough: 'Прецртано',
         size: 'Величина фонта'
       },
       image: {
@@ -32,13 +32,6 @@
         textToDisplay: 'Текст за приказ',
         url: 'Интернет адреса',
         openInNewWindow: 'Отвори у новом прозору'
-      },
-      video: {
-        video: 'Видео',
-        videoLink: 'Веза ка видеу',
-        insert: 'Уметни видео',
-        url: 'URL видео',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion или Youku)'
       },
       table: {
         table: 'Табела'

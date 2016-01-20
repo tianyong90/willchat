@@ -26,7 +26,7 @@
 }
 
 
-.tt-dropdown-menu {
+.tt-menu {
   min-width: 160px;
   margin-top: 2px;
   padding: 5px 0;
@@ -40,7 +40,7 @@
   max-height: 250px;
 }
 
-.tt-dropdown-menu h3 {
+.tt-menu h3 {
   margin: 5px 0;
   padding: 6px 12px;
   font-size: 18px;
@@ -48,20 +48,19 @@
   border-bottom: 1px solid #eee;
 }
 
-.modal-open .tt-dropdown-menu {
+.modal-open .tt-menu {
   z-index: 10055 !important;
 }
 
 .tt-suggestion {
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 16px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 16px;
 }
 
-.tt-suggestion.tt-cursor {
-  cursor: pointer;
-  background-color: #eee;
-
+.tt-suggestion:hover {
+    cursor: pointer;
+    background: #eee;
 }
 
 .tt-suggestion p {

@@ -8,7 +8,7 @@
         {
             "id":"world",
             "title":"World",
-            "map":"../../../theme/assets/admin/layout7/img/map.png",
+            "map":"../assets/layouts/layout7/img/map.png",
             "locations":[
                 {
                     "id": "gb",

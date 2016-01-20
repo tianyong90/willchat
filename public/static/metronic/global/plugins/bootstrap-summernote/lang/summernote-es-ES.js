@@ -2,15 +2,15 @@
   $.extend($.summernote.lang, {
     'es-ES': {
       font: {
-        name:'Fuente',
         bold: 'Negrita',
         italic: 'Cursiva',
         underline: 'Subrayado',
-        superscript: 'Superíndice',
-        subscript: 'Subíndice',
-        strikethrough: 'Tachado',
         clear: 'Quitar estilo de fuente',
         height: 'Altura de línea',
+        name: 'Fuente',
+        strikethrough: 'Tachado',
+        superscript: 'Superíndice',
+        subscript: 'Subíndice',
         size: 'Tamaño de la fuente'
       },
       image: {
@@ -34,13 +34,6 @@
         textToDisplay: 'Texto para mostrar',
         url: '¿Hacia que URL lleva el link?',
         openInNewWindow: 'Abrir en una nueva ventana'
-      },
-      video: {
-        video: 'Video',
-        videoLink: 'Link del video',
-        insert: 'Insertar video',
-        url: '¿URL del video?',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion, o Youku)'
       },
       table: {
         table: 'Tabla'

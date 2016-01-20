@@ -1,6 +1,8 @@
 +function ($) {
   'use strict';
 
+ 	// Minified with jscompress.com
+
     // CLASS DEFINITION
     // ===============================
     
@@ -52,14 +54,21 @@
             var $that = $(this);
             
             var currentOptionCount = 0;
+            var temporaryFullCategoryList = {};
             $(this).find('option').each(function() {
-                self.fullCategoryList[$that.attr('label')][$(this).attr('value')] = $(this).text();
+                var x = $(this).attr('value');
+                var y = $(this).text();
+                temporaryFullCategoryList[$(this).index()] = { 
+                                                                'x': x, 
+                                                                'y': y 
+                                                              };
                 currentOptionCount++;
-
-
             });
 
             if (currentOptionCount > longestOptionCount) { longestOptionCount = currentOptionCount ;}
+            
+            self.fullCategoryList[$that.attr('label')] = temporaryFullCategoryList;
+                        
             optgroupCount++;
         });
 
@@ -82,11 +91,8 @@
         self.$secondSelect = $('select[data-selectsplitter-secondselect-selector]', self.$wrapper); // improved by keenthemes
         
         // Define $firstSelect and $secondSelect size attribute
-        var selectSize = Math.max(optgroupCount, longestOptionCount);
+        var selectSize = Math.max(optgroupCount, longestOptionCount, 2);
         selectSize = Math.min(selectSize, 10);
-        if (self.options.selectSize) {
-            selectSize = self.options.selectSize; // improved by keenthemes
-        }
         self.$firstSelect.attr('size', selectSize);
         self.$secondSelect.attr('size', selectSize);
         
@@ -131,8 +137,8 @@
         
         for (var key in self.fullCategoryList[self.currentParentCategory]) {
             if (self.fullCategoryList[self.currentParentCategory].hasOwnProperty(key)) {
-                optionsHtml = optionsHtml + '<option value="' + key + '">' +
-                                                self.fullCategoryList[self.currentParentCategory][key] +                            
+                optionsHtml = optionsHtml + '<option value="' + self.fullCategoryList[self.currentParentCategory][key]['x'] + '">' +
+                                                self.fullCategoryList[self.currentParentCategory][key]['y'] +                            
                                             '</option>';
             }
         }
@@ -140,7 +146,7 @@
         self.$secondSelect.append(optionsHtml);
         
         if ( self.$selectedOption ) {
-            self.$secondSelect.find( 'option[value=' + self.$selectedOption.attr('value') + ']' ).attr('selected', 'selected');
+            self.$secondSelect.find( 'option[value="' + self.$selectedOption.attr('value') + '"]' ).attr('selected', 'selected');
         }
     };
     
@@ -155,7 +161,7 @@
         self.$element.find('option[selected=selected]').removeAttr('selected');
 
         // Add selected attribute to the new selected OPTION.
-        self.$element.find('option[value=' + self.currentChildCategory + ']').attr('selected', 'selected'); // Note: Adding attr also updates val().
+        self.$element.find('option[value="' + self.currentChildCategory + '"]').attr('selected', 'selected'); // Note: Adding attr also updates val().
         self.$element.trigger('change'); // Required for external plugins.
 
         self.$selectedOption = self.$element.find('option[selected=selected]');

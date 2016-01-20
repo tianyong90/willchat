@@ -5,9 +5,9 @@
         bold: 'Negreta',
         italic: 'Cursiva',
         underline: 'Subratllat',
-        strikethrough: 'Ratllat',
         clear: 'Treure estil de lletra',
         height: 'Alçada de línia',
+        strikethrough: 'Ratllat',
         size: 'Mida de lletra'
       },
       image: {
@@ -25,19 +25,12 @@
       },
       link: {
         link: 'Enllaç',
-       insert: 'Inserir enllaç',
+        insert: 'Inserir enllaç',
         unlink: 'Treure enllaç',
         edit: 'Editar',
         textToDisplay: 'Text per mostrar',
         url: 'Cap a quina URL porta l\'enllaç?',
         openInNewWindow: 'Obrir en una finestra nova'
-      },
-      video: {
-       video: 'Video',
-        videoLink: 'Enllaç del video',
-        insert: 'Inserir video',
-        url: 'URL del video?',
-        providers: '(YouTube, Vimeo, Vine, Instagram, DailyMotion, o Youku)'
       },
       table: {
         table: 'Taula'
@@ -78,7 +71,7 @@
       color: {
         recent: 'Últim color',
         more: 'Més colors',
-       background: 'Color de fons',
+        background: 'Color de fons',
         foreground: 'Color de lletra',
         transparent: 'Transparent',
         setTransparent: 'Establir transparent',

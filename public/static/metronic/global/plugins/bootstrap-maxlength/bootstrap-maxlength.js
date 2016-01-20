@@ -2,7 +2,7 @@
   'use strict';
   /**
    * We need an event when the elements are destroyed
-   * because if an input is remvoed, we have to remove the
+   * because if an input is removed, we have to remove the
    * maxlength object associated (if any).
    * From:
    * http://stackoverflow.com/questions/2200494/jquery-trigger-event-when-an-element-is-removed-from-the-dom
@@ -32,14 +32,14 @@
           postText: '',
           showMaxLength: true,
           placement: 'bottom',
+          message: null, // an alternative way to provide the message text
           showCharsTyped: true, // show the number of characters typed and not the number of characters remaining
           validate: false, // if the browser doesn't support the maxlength attribute, attempt to type more than
           // the indicated chars, will be prevented.
           utf8: false, // counts using bytesize rather than length. eg: '£' is counted as 2 characters.
           appendToParent: false, // append the indicator to the input field's parent instead of body
           twoCharLinebreak: true,  // count linebreak as 2 characters to match IE/Chrome textarea validation. As well as DB storage.
-          allowOverMax: false  // false = use maxlength attribute and browswer functionality.
-          // true = removes maxlength attribute and replaces with 'data-bs-mxl'.
+          customMaxAttribute: null  // null = use maxlength attribute and browser functionality, string = use specified attribute instead.
           // Form submit validation is handled on your own.  when maxlength has been exceeded 'overmax' class added to element
         };
 
@@ -153,10 +153,11 @@
        *
        * @param indicator
        */
-      function showRemaining(indicator) {
+      function showRemaining(currentInput, indicator) {
         indicator.css({
           display: 'block'
         });
+        currentInput.trigger('maxlength.shown');
       }
 
       /**
@@ -164,10 +165,11 @@
        *
        * @param indicator
        */
-      function hideRemaining(indicator) {
+      function hideRemaining(currentInput, indicator) {
         indicator.css({
           display: 'none'
         });
+        currentInput.trigger('maxlength.hidden');
       }
 
       /**
@@ -177,12 +179,16 @@
       * @param typedChars
       * @return String
       */
-      function updateMaxLengthHTML(maxLengthThisInput, typedChars) {
+      function updateMaxLengthHTML(currentInputText, maxLengthThisInput, typedChars) {
         var output = '';
         if (options.message) {
-          output = options.message.replace('%charsTyped%', typedChars)
+          if (typeof options.message === 'function') {
+            output = options.message(currentInputText, maxLengthThisInput);
+          } else {
+            output = options.message.replace('%charsTyped%', typedChars)
               .replace('%charsRemaining%', maxLengthThisInput - typedChars)
               .replace('%charsTotal%', maxLengthThisInput);
+          }
         } else {
           if (options.preText) {
             output += options.preText;
@@ -214,19 +220,21 @@
        * @param maxLengthIndicator
        */
       function manageRemainingVisibility(remaining, currentInput, maxLengthCurrentInput, maxLengthIndicator) {
-        maxLengthIndicator.html(updateMaxLengthHTML(maxLengthCurrentInput, (maxLengthCurrentInput - remaining)));
+        if (maxLengthIndicator) {
+          maxLengthIndicator.html(updateMaxLengthHTML(currentInput.val(), maxLengthCurrentInput, (maxLengthCurrentInput - remaining)));
 
-        if (remaining > 0) {
-          if (charsLeftThreshold(currentInput, options.threshold, maxLengthCurrentInput)) {
-            showRemaining(maxLengthIndicator.removeClass(options.limitReachedClass).addClass(options.warningClass));
+          if (remaining > 0) {
+            if (charsLeftThreshold(currentInput, options.threshold, maxLengthCurrentInput)) {
+              showRemaining(currentInput, maxLengthIndicator.removeClass(options.limitReachedClass).addClass(options.warningClass));
+            } else {
+              hideRemaining(currentInput, maxLengthIndicator);
+            }
           } else {
-            hideRemaining(maxLengthIndicator);
+            showRemaining(currentInput, maxLengthIndicator.removeClass(options.warningClass).addClass(options.limitReachedClass));
           }
-        } else {
-          showRemaining(maxLengthIndicator.removeClass(options.warningClass).addClass(options.limitReachedClass));
         }
 
-        if (options.allowOverMax) {
+        if (options.customMaxAttribute) {
           // class to use for form validation on custom maxlength attribute
           if (remaining < 0) {
             currentInput.addClass('overmax');
@@ -262,8 +270,21 @@
        *
        */
       function place(currentInput, maxLengthIndicator) {
-        var pos = getPosition(currentInput),
-          inputOuter = currentInput.outerWidth(),
+        var pos = getPosition(currentInput);
+
+        // Supports custom placement handler
+        if ($.type(options.placement) === 'function'){
+          options.placement(currentInput, maxLengthIndicator, pos);
+          return;
+        }
+
+        // Supports custom placement via css positional properties
+        if ($.isPlainObject(options.placement)){
+          placeWithCSS(options.placement, maxLengthIndicator);
+          return;
+        }
+
+        var inputOuter = currentInput.outerWidth(),
           outerWidth = maxLengthIndicator.outerWidth(),
           actualWidth = maxLengthIndicator.width(),
           actualHeight = maxLengthIndicator.height();
@@ -320,6 +341,53 @@
       }
 
       /**
+       * This function places the maxLengthIndicator based on placement config object.
+       *
+       * @param {object} placement
+       * @param {$} maxLengthIndicator
+       * @return null
+       *
+       */
+      function placeWithCSS(placement, maxLengthIndicator) {
+        if (!placement || !maxLengthIndicator){
+          return;
+        }
+
+        var POSITION_KEYS = [
+          'top',
+          'bottom',
+          'left',
+          'right',
+          'position'
+        ];
+
+        var cssPos = {};
+
+        // filter css properties to position
+        $.each(POSITION_KEYS, function (i, key) {
+          var val = options.placement[key];
+          if (typeof val !== 'undefined'){
+            cssPos[key] = val;
+          }
+        });
+
+        maxLengthIndicator.css(cssPos);
+
+        return;
+      }
+
+      /**
+       * This function returns true if the indicator position needs to
+       * be recalculated when the currentInput changes
+       *
+       * @return {boolean}
+       *
+       */
+      function isPlacementMutable() {
+        return options.placement === 'bottom-right-inside' || options.placement === 'top-right-inside' || typeof options.placement === 'function' || (options.message && typeof options.message === 'function');
+      }
+
+      /**
        * This function retrieves the maximum length of currentInput
        *
        * @param currentInput
@@ -327,11 +395,19 @@
        *
        */
       function getMaxLength(currentInput) {
-        var attr = 'maxlength';
-        if (options.allowOverMax) {
-          attr = 'data-bs-mxl';
+        var max = currentInput.attr('maxlength');
+
+        if (options.customMaxAttribute) {
+          var custom = currentInput.attr(options.customMaxAttribute);
+          if (!max || custom < max) {
+            max = custom;
+          }
         }
-        return currentInput.attr(attr) || currentInput.attr('size');
+
+        if (!max) {
+          max = currentInput.attr('size');
+        }
+        return max;
       }
 
       return this.each(function () {
@@ -346,13 +422,8 @@
           }
         });
 
-        if (options.allowOverMax) {
-          $(this).attr('data-bs-mxl', $(this).attr('maxlength'));
-          $(this).removeAttr('maxlength');
-        }
-
         function firstInit() {
-          var maxlengthContent = updateMaxLengthHTML(maxLengthCurrentInput, '0');
+          var maxlengthContent = updateMaxLengthHTML(currentInput.val(), maxLengthCurrentInput, '0');
           maxLengthCurrentInput = getMaxLength(currentInput);
 
           if (!maxLengthIndicator) {
@@ -401,6 +472,11 @@
           });
         }
 
+        currentInput.on('maxlength.reposition', function () {
+          place(currentInput, maxLengthIndicator);
+        });
+
+
         currentInput.on('destroyed', function () {
           if (maxLengthIndicator) {
             maxLengthIndicator.remove();
@@ -425,8 +501,7 @@
             manageRemainingVisibility(remaining, currentInput, maxLengthCurrentInput, maxLengthIndicator);
           }
 
-          //reposition the indicator if placement "bottom-right-inside" & "top-right-inside" is used
-          if (options.placement === 'bottom-right-inside' || options.placement === 'top-right-inside') {
+          if (isPlacementMutable()) {
             place(currentInput, maxLengthIndicator);
           }
 

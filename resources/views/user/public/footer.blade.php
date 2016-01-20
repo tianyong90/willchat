@@ -1,8 +1,8 @@
 <div class="page-footer">
-  <div class="page-footer-inner">
-    2016 &copy; WillChat. Preducted by <a href="https://github.com/tianyong90">tianyong90</a>
-  </div>
-  <div class="scroll-to-top">
-    <i class="icon-arrow-up"></i>
-  </div>
+    <div class="page-footer-inner"> 2016 &copy; WillChat by Tianyong90.
+        <a href="" title="" target="_blank">View on GitHub.</a>
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
 </div>
