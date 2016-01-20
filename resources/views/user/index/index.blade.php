@@ -91,7 +91,7 @@
           </div>
           <div class="actions">
             <a href="{{ user_url('avatar') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
-                  class="fa fa-plus"></i>&nbsp;添加公众号</a>
+                  class="fa fa-plus"></i>添加公众号</a>
           </div>
         </div>
         <div class="portlet-body">
@@ -119,7 +119,7 @@
                     <a class="btn btn-primary btn-sm dialog-popup"
                        href="{{ user_url('/') }}"><i class="fa fa-edit"></i>修改</a>
                     <a class="btn btn-primary btn-sm"
-                       href=""><i class="fa fa-cog"></i>功能管理</a>
+                       href="{{ user_url('menu/') }}"><i class="fa fa-cog"></i>功能管理</a>
                     <button class="btn btn-danger btn-sm btn-delete-confirm" data-link=""><i class="fa fa-trash-o"></i>删除
                     </button>
                   </td>

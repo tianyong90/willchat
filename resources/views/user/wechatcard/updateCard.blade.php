@@ -112,7 +112,7 @@
                 <div class="col-md-9">
                   <div id="reportrange" class="btn default">
                     <i class="fa fa-calendar"></i>
-                    &nbsp; <span>
+                     <span>
                                     </span>
                     <b class="fa fa-angle-down"></b>
                   </div>

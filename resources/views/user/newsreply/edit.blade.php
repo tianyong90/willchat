@@ -33,7 +33,7 @@
                 <volist name="treeitem._child" id="child">
                   <option value="{$child.id}"
                   <eq name="info.cate_id" value="$child.id">selected</eq>
-                  >&nbsp;┕──{$child.name}</option>
+                  >┕──{$child.name}</option>
                 </volist>
               </notempty>
             </volist>

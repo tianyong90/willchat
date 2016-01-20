@@ -9,7 +9,7 @@
       </div>
       <div class="actions">
         <a class="btn default blue-stripe btn-xs" href="{{ user_url('/') }}"><i
-              class="fa fa-plus"></i>&nbsp;创建卡券</a>
+              class="fa fa-plus"></i>创建卡券</a>
       </div>
     </div>
     <div class="portlet-body">

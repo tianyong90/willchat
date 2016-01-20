@@ -95,7 +95,7 @@
 <script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
         type="text/javascript"></script>
 <script src="{{ asset('static') }}/metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/jquery.cookies.2.2.0.min.js" type="text/javascript"></script>
+<script src="{{ asset('static') }}/jquery.cookie.js" type="text/javascript"></script>
 <script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js"
         type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
@@ -110,7 +110,7 @@
     Metronic.setAssetsPath("{{ asset('static') }}/metronic/");//设置模板文件根路径
     Metronic.init(); // init metronic core components
     Layout.init(); // init current layout
-    // Base.initNormalPage(); //常规页面中菜单高亮等操作初始
+    Base.initNormalPage(); //常规页面中菜单高亮等操作初始
 
     //点击锁屏时保存当前页面地址以便解锁时跳转
     $('a#lockscreen').click(function (event) {

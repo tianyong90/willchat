@@ -11,7 +11,7 @@
       </div>
       <div class="actions">
         <button url="{{ user_url('/') }}"
-                class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
+                class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>删除
         </button>
       </div>
     </div>

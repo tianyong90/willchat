@@ -1,7 +1,4 @@
 @extends('user.public.base')
-@section('style')
-  <link rel="stylesheet" href="{{ asset('static') }}/page/page.css"/>
-@stop
 @section('main')
   <div class="portlet light">
     <div class="portlet-title">
@@ -9,8 +6,8 @@
         <i class="fa fa-qrcode"></i> 二维码
       </div>
       <div class="actions">
-        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>&nbsp;创建二维码</a>
-        <button url="{{ user_url('/') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除 </button>
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>创建二维码</a>
+        <button url="{{ user_url('/') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>删除 </button>
       </div>
     </div>
     <div class="portlet-body">
@@ -36,7 +33,7 @@
                   <td><input class="ids" type="checkbox" value="{{ $qrcode->id }}" name="ids[]"></td>
                   <td>{{ $qrcode->keyword }}</td>
                   <td>{{ $qrcode->description }}</td>
-                  <td><img src="{{ $qrcode->ticket }}" class="preview-small"/></td>
+                  <td><img src="" class="preview-small"/></td>
                   <td>{{ $qrcode->create_time }}</td>
                   <td>{{ $qrcode->scancount }}</td>
                   <td>

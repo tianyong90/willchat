@@ -8,9 +8,9 @@
         <i class="fa fa-list"></i> 自定义菜单
       </div>
       <div class="actions">
-        <a href="javascript:;" id="create-wxmenu" class="btn default green-stripe btn-xa"><i class="fa fa-save"></i>&nbsp;生成菜单</a>
-        <a href="javascript:;" class="btn default red-stripe btn-xa" id="clear-all"><i class="fa fa-trash-o"></i>&nbsp;清除菜单</a>
-        <a href="{{ user_url('add') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>&nbsp;添加菜单</a>
+        <a href="javascript:;" id="create-wxmenu" class="btn default green-stripe btn-xa"><i class="fa fa-save"></i>生成菜单</a>
+        <a href="javascript:;" class="btn default red-stripe btn-xa" id="clear-all"><i class="fa fa-trash-o"></i>清除菜单</a>
+        <a href="{{ user_url('add') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>添加菜单</a>
       </div>
     </div>
     <div class="portlet-body">

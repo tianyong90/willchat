@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\OfficialAccount;
+use App\Models\OfficialAccount;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,20 +17,12 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-//        $time=new \Carbon\Carbon('20030101');
-//
-//        dd($time->diffForHumans());
-//
-
-
-
         $data['newsCount'] = 100;
         $data['textCount'] = 100;
         $data['orderCount'] = 100;
         $data['memberCount'] = 100;
 
-        $officialAccount = new \App\Models\OfficialAccount();
+        $officialAccount = new OfficialAccount();
 
 //        for ($i = 0; $i < 5; $i++) {
 //            $officialAccount->name = str_random(5);

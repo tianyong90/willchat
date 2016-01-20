@@ -14,7 +14,7 @@ class QRCodeController extends Controller
 {
     public function index()
     {
-        $qrcodeList = DB::table('qrcodes')->paginate(3);
+        $qrcodeList = DB::table('qrcodes')->paginate(15);
 
         return user_view('qrcode.index', ['qrcodes' => $qrcodeList]);
     }

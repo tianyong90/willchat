@@ -11,12 +11,12 @@
         <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
         <button url="{{ user_url('/') }}"
-                class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
+                class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>启用
         </button>
         <button url="{{ user_url('/') }}"
-                class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
+                class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>禁用
         </button>
-        <!-- <button url="{{ user_url('/') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除</button> -->
+        <!-- <button url="{{ user_url('/') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>删除</button> -->
       </div>
     </div>
     <div class="portlet-body">
@@ -72,7 +72,7 @@
                 <volist name="vo.subcate" id="vo_sub">
                   <tr>
                     <td><input class="ids" type="checkbox" value="{$vo_sub['id']}" name="ids[]"></td>
-                    <td>&nbsp;&nbsp;|---{$vo_sub.name}</td>
+                    <td>|---{$vo_sub.name}</td>
                     <td>{$vo_sub.description}</td>
                     <td>{$vo_sub.sort}</td>
                     <td><img class="preview-small" src="__ROOT__{$vo_sub.pic_url}"/></td>

@@ -7,7 +7,7 @@
       </div>
       <div class="actions">
         <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
-              class="fa fa-plus"></i>&nbsp;添加客服</a>
+              class="fa fa-plus"></i>添加客服</a>
       </div>
     </div>
     <div class="portlet-body">

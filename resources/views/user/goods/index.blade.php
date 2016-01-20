@@ -12,13 +12,13 @@
         <a href="{{ user_url('/') }}"
            class="btn default blue-stripe fa fa-plus dialog-popup">添加</a>
         <button url="{{ user_url('/') }}"
-                class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>&nbsp;启用
+                class="btn default green-stripe btn-xs ajax-post" target-form="ids"><i class="fa fa-check"></i>启用
         </button>
         <button url="{{ user_url('/') }}"
-                class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>&nbsp;禁用
+                class="btn default yellow-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-times"></i>禁用
         </button>
         <button url="{{ user_url('/') }}"
-                class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>&nbsp;删除
+                class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>删除
         </button>
       </div>
     </div>

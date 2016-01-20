@@ -7,9 +7,9 @@
       </div>
       <div class="actions">
         <!-- <a href="#modal-industry" data-toggle="modal" class="btn circle grey btn-xs">
-            <i class="fa fa-cog"></i>&nbsp;所属行业设置</a> -->
+            <i class="fa fa-cog"></i>所属行业设置</a> -->
         <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs dialog-popup"><i
-              class="fa fa-plus"></i>&nbsp;添加消息模板</a>
+              class="fa fa-plus"></i>添加消息模板</a>
       </div>
     </div>
     <div class="portlet-body">

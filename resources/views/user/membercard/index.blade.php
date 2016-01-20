@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i>会员卡列表
       </div>
       <div class="actions">
-        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>&nbsp;添加会员卡</a>
+        <a href="{{ user_url('/') }}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>添加会员卡</a>
       </div>
     </div>
     <div class="portlet-body">

@@ -195,34 +195,7 @@ var Base=function(){
         return false;
     });
 
-    // //侧栏高亮,rewrite URL模式匹配
-    // var highlightSidebar = function(){
-    //     //侧栏菜单中的全部有链接菜单项
-    //     var sidebarLinks = $("#page-sidebar-menu").find('a');
-    //     if(sidebarLinks.length > 0){
-    //         //当前页面URL
-    //         var url = document.URL;
-    //         var flagMatched = false;
-    //         sidebarLinks.each(function (index, el) {
-    //             var href = $(el).attr('href');
-    //             if (url.match(href) !== null) {
-    //                 //设置当前高亮菜单项
-    //                 Layout.setSidebarMenuActiveLink('click', $(this));
-    //                 //保存当前活动菜单项索引至cookie便于在未匹配的情况下使用
-    //                 $.cookie("menuindex", index, {expires:7, path:'/'});
-    //                 flagMatched = true;
-    //                 return false;
-    //             }
-    //         });
-    //         //如果未找到与当前URL匹配的菜单项，则高亮上一次被高亮的菜单项
-    //         if(!flagMatched){
-    //             var menuindex = $.cookie("menuindex");
-    //             Layout.setSidebarMenuActiveLink('click', sidebarLinks.eq(menuindex));
-    //         }
-    //     }
-    // }
-
-        //侧栏高亮,普通 URL模式匹配
+    //侧栏高亮,rewrite URL模式匹配
     var highlightSidebar = function(){
         //侧栏菜单中的全部有链接菜单项
         var sidebarLinks = $("#page-sidebar-menu").find('a');
@@ -230,29 +203,17 @@ var Base=function(){
             //当前页面URL
             var url = document.URL;
             var flagMatched = false;
-            var reg = /g\=.*$/i;
-
-            var address;
-            try {
-                //当前地址中的模块和操作部分
-                address = url.match(reg)[0] || '';  //
-            } catch (e) {
-                // console.log(e);
-            }
-            if (address) {
-                sidebarLinks.each(function (index, el) {
-                    var href = $(el).attr('href');
-                    if (href.match(reg) && href.match(reg)[0] == address) {
-                        //设置当前高亮菜单项
-                        Layout.setSidebarMenuActiveLink('click', $(this));
-                        //保存当前活动菜单项索引至cookie便于在未匹配的情况下使用
-                        $.cookie("menuindex", index, {expires:7, path:'/'});
-                        flagMatched = true;
-                        return false;
-                    }
-                });
-            }
-            
+            sidebarLinks.each(function (index, el) {
+                var href = $(el).attr('href');
+                if (url.match(href) !== null) {
+                    //设置当前高亮菜单项
+                    Layout.setSidebarMenuActiveLink('click', $(this));
+                    //保存当前活动菜单项索引至cookie便于在未匹配的情况下使用
+                    $.cookie("menuindex", index, {expires:7, path:'/'});
+                    flagMatched = true;
+                    return false;
+                }
+            });
             //如果未找到与当前URL匹配的菜单项，则高亮上一次被高亮的菜单项
             if(!flagMatched){
                 var menuindex = $.cookie("menuindex");
@@ -260,36 +221,6 @@ var Base=function(){
             }
         }
     }
-
-    // //侧栏高亮，兼容URL模式匹配
-    // var highlightSidebar = function(menuid){
-    //     if (menuid==="auto_highlight") {
-    //         var url = document.URL;
-
-    //         var reg = /s\=\/([\w\/]*)/i;
-    //         var address;
-    //         try {
-    //             address = url.match(reg)[1] || '';  //当前地址中的模块和操作部分
-    //         } catch (e) {
-    //             console.log(e);
-    //         }
-    //         if (address) {
-    //             var href = "";
-    //             $("#page-sidebar-menu").find('a').each(function (index, el) {
-    //                 href = $(el).attr('href');
-    //                 if (address && href.search(address) != -1) {
-    //                     //设置当前高亮菜单项
-    //                     Layout.setSidebarMenuActiveLink('click', $(this));
-    //                     return false;
-    //                 }
-    //             });
-    //         }
-    //     } else {
-    //         var menu=$("#page-sidebar-menu").find('a#'+menuid);
-    //         //设置当前高亮菜单项
-    //         Layout.setSidebarMenuActiveLink('click', menu);
-    //     };
-    // }
 
     //操作结果提示
     var success=function(msg){
