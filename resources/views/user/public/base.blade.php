@@ -66,27 +66,7 @@
                                 <a href="javascript:;">
                                     <i class="icon-docs"></i> New Post </a>
                             </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-tag"></i> New Comment </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-share"></i> Share </a>
-                            </li>
                             <li class="divider"> </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-flag"></i> Comments
-                                    <span class="badge badge-success">4</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-users"></i> Feedbacks
-                                    <span class="badge badge-danger">2</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -95,9 +75,9 @@
                 <div class="page-top">
                     <!-- BEGIN HEADER SEARCH BOX -->
                     <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-                    <form class="search-form" action="page_general_search_2.html" method="GET">
+                    <form class="search-form" action="" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+                            <input type="text" class="form-control input-sm" placeholder="搜索" name="query">
                             <span class="input-group-btn">
                                 <a href="javascript:;" class="btn submit">
                                     <i class="icon-magnifier"></i>
@@ -222,33 +202,21 @@
                                     <img alt="" class="img-circle" src="{{ asset('static') }}/metronic/layouts/layout4/img/avatar9.jpg" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="page_user_profile_1.html">
+                                        <a href="{{ user_url('lock/') }}">
                                             <i class="icon-user"></i> 个人信息 </a>
-                                    </li>
-                                    <li>
-                                        <a href="app_inbox.html">
-                                            <i class="icon-envelope-open"></i> My Inbox
-                                            <span class="badge badge-danger"> 3 </span>
-                                        </a>
                                     </li>
                                     <li class="divider"> </li>
                                     <li>
-                                        <a href="page_user_lock_1.html">
+                                        <a href="{{ user_url('lock/') }}">
                                             <i class="icon-lock"></i> 锁屏 </a>
                                     </li>
                                     <li>
-                                        <a href="page_user_login_1.html">
+                                        <a href="{{ user_url('logout/') }}">
                                             <i class="icon-key"></i> 退出 </a>
                                     </li>
                                 </ul>
                             </li>
                             <!-- END USER LOGIN DROPDOWN -->
-                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                            <li class="dropdown dropdown-extended quick-sidebar-toggler">
-                                <span class="sr-only">Toggle Quick Sidebar</span>
-                                <i class="icon-logout"></i>
-                            </li>
-                            <!-- END QUICK SIDEBAR TOGGLER -->
                         </ul>
                     </div>
                     <!-- END TOP NAVIGATION MENU -->
@@ -281,11 +249,6 @@
                         <!-- END PAGE TITLE -->
                         <!-- BEGIN PAGE TOOLBAR -->
                         <div class="page-toolbar">
-                            <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height green" data-placement="top" data-original-title="Change dashboard date range">
-                                <i class="icon-calendar"></i>&nbsp;
-                                <span class="thin uppercase hidden-xs"></span>&nbsp;
-                                <i class="fa fa-angle-down"></i>
-                            </div>
                             <!-- BEGIN THEME PANEL -->
                             <div class="btn-group btn-theme-panel">
                                 <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -294,67 +257,67 @@
                                 <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <h3>THEME</h3>
+                                            <h3>主题</h3>
                                             <ul class="theme-colors">
                                                 <li class="theme-color theme-color-default" data-theme="default">
                                                     <span class="theme-color-view"></span>
-                                                    <span class="theme-color-name">Dark Header</span>
+                                                    <span class="theme-color-name">暗色页头</span>
                                                 </li>
                                                 <li class="theme-color theme-color-light active" data-theme="light">
                                                     <span class="theme-color-view"></span>
-                                                    <span class="theme-color-name">Light Header</span>
+                                                    <span class="theme-color-name">亮色页头</span>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12 seperator">
-                                            <h3>LAYOUT</h3>
+                                            <h3>页面布局</h3>
                                             <ul class="theme-settings">
-                                                <li> Theme Style
+                                                <li> 主题风格
                                                     <select class="layout-style-option form-control input-small input-sm">
-                                                        <option value="square">Square corners</option>
-                                                        <option value="rounded" selected="selected">Rounded corners</option>
+                                                        <option value="square">方角</option>
+                                                        <option value="rounded" selected="selected">圆角</option>
                                                     </select>
                                                 </li>
-                                                <li> Layout
+                                                <li> 布局
                                                     <select class="layout-option form-control input-small input-sm">
-                                                        <option value="fluid" selected="selected">Fluid</option>
-                                                        <option value="boxed">Boxed</option>
+                                                        <option value="fluid" selected="selected">流式</option>
+                                                        <option value="boxed">固定</option>
                                                     </select>
                                                 </li>
-                                                <li> Header
+                                                <li> 页头
                                                     <select class="page-header-option form-control input-small input-sm">
-                                                        <option value="fixed" selected="selected">Fixed</option>
-                                                        <option value="default">Default</option>
+                                                        <option value="fixed" selected="selected">固定</option>
+                                                        <option value="default">默认</option>
                                                     </select>
                                                 </li>
-                                                <li> Top Dropdowns
+                                                <li> 顶部下拉
                                                     <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
-                                                        <option value="light">Light</option>
-                                                        <option value="dark" selected="selected">Dark</option>
+                                                        <option value="light">亮色</option>
+                                                        <option value="dark" selected="selected">暗色</option>
                                                     </select>
                                                 </li>
-                                                <li> Sidebar Mode
+                                                <li> 侧栏模式
                                                     <select class="sidebar-option form-control input-small input-sm">
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="default" selected="selected">Default</option>
+                                                        <option value="fixed">固定</option>
+                                                        <option value="default" selected="selected">默认</option>
                                                     </select>
                                                 </li>
-                                                <li> Sidebar Menu
+                                                <li> 侧栏菜单
                                                     <select class="sidebar-menu-option form-control input-small input-sm">
-                                                        <option value="accordion" selected="selected">Accordion</option>
-                                                        <option value="hover">Hover</option>
+                                                        <option value="accordion" selected="selected">手风琴</option>
+                                                        <option value="hover">悬停弹出</option>
                                                     </select>
                                                 </li>
-                                                <li> Sidebar Position
+                                                <li> 侧栏位置
                                                     <select class="sidebar-pos-option form-control input-small input-sm">
-                                                        <option value="left" selected="selected">Left</option>
-                                                        <option value="right">Right</option>
+                                                        <option value="left" selected="selected">左侧</option>
+                                                        <option value="right">右侧</option>
                                                     </select>
                                                 </li>
-                                                <li> Footer
+                                                <li> 页脚
                                                     <select class="page-footer-option form-control input-small input-sm">
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="default" selected="selected">Default</option>
+                                                        <option value="fixed">固定</option>
+                                                        <option value="default" selected="selected">默认</option>
                                                     </select>
                                                 </li>
                                             </ul>
@@ -379,7 +342,7 @@
                     </ul>
                     <!-- END PAGE BREADCRUMB -->
                     <!-- BEGIN PAGE BASE CONTENT -->
-                    <div class="note note-info">
+                    <div class="note note-danger">
                         <p> A black page template with a minimal dependency assets to use as a base for any custom page you create </p>
                     </div>
                     <!-- END PAGE BASE CONTENT -->

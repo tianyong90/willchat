@@ -100,6 +100,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('avatar', 'AvatarController@index');
         Route::post('avatar', 'AvatarController@store');
 
+        Route::get('lock', 'LockController@index');
     });
 
     /*
