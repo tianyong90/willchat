@@ -7,18 +7,17 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title>{{ $title or 'WillChat' }}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta content="" name="description" />
-        <meta content="" name="author" />
+        <meta content="" name="WillChat" />
+        <meta content="" name="tianyong90" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.useso.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="{{ asset('static') }}/metronic/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="{{ asset('static') }}/metronic/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
         <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="{{ asset('static') }}/metronic/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="{{ asset('static') }}/metronic/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -31,11 +30,9 @@
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
-
     @yield('style')
-
+    
     @yield('pre_js')
-
     <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
         <!-- BEGIN HEADER -->
         <div class="page-header navbar navbar-fixed-top">
@@ -44,7 +41,7 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="index.html">
-                        <img src="{{ asset('static') }}/metronic/layouts/layout4/img/logo-light.png" alt="logo" class="logo-default" /> </a>
+                        <img src="{{ asset('images') }}/user/logo_purple.png" alt="logo" class="logo-default" height="25" /> </a>
                     <div class="menu-toggler sidebar-toggler">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                     </div>
@@ -53,24 +50,6 @@
                 <!-- BEGIN RESPONSIVE MENU TOGGLER -->
                 <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
                 <!-- END RESPONSIVE MENU TOGGLER -->
-                <!-- BEGIN PAGE ACTIONS -->
-                <!-- DOC: Remove "hide" class to enable the page header actions -->
-                <div class="page-actions">
-                    <div class="btn-group">
-                        <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <span class="hidden-sm hidden-xs">Actions&nbsp;</span>
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-docs"></i> New Post </a>
-                            </li>
-                            <li class="divider"> </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- END PAGE ACTIONS -->
                 <!-- BEGIN PAGE TOP -->
                 <div class="page-top">
                     <!-- BEGIN HEADER SEARCH BOX -->
@@ -101,7 +80,7 @@
                                     <li class="external">
                                         <h3>
                                             <span class="bold">12 pending</span> notifications</h3>
-                                        <a href="page_user_profile_1.html">view all</a>
+                                        <a href="{{ user_url('/') }}">view all</a>
                                     </li>
                                     <li>
                                         <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
@@ -112,78 +91,6 @@
                                                         <span class="label label-sm label-icon label-success">
                                                             <i class="fa fa-plus"></i>
                                                         </span> New user registered. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">3 mins</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> Server #12 overloaded. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">10 mins</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-warning">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span> Server #2 not responding. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">14 hrs</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-info">
-                                                            <i class="fa fa-bullhorn"></i>
-                                                        </span> Application error. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">2 days</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> Database overloaded 68%. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">3 days</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> A user IP blocked. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">4 days</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-warning">
-                                                            <i class="fa fa-bell-o"></i>
-                                                        </span> Storage Server #4 not responding dfdfdfd. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">5 days</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-info">
-                                                            <i class="fa fa-bullhorn"></i>
-                                                        </span> System Error. </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">9 days</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-danger">
-                                                            <i class="fa fa-bolt"></i>
-                                                        </span> Storage server failed. </span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -232,7 +139,32 @@
         <!-- BEGIN CONTAINER -->
         <div class="page-container">
             <!-- BEGIN SIDEBAR -->
-            @include('user.public.sidebar')
+            <div class="page-sidebar-wrapper">
+                <!-- BEGIN SIDEBAR -->
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="heading">
+                            <h3 class="uppercase">Pages</h3>
+                        </li>
+                        <li class="nav-item start ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-home"></i>
+                                <span class="title">用户中心</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('/') }}" class="nav-link ">
+                                        <span class="title">主页</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- END SIDEBAR MENU -->
+                </div>
+                <!-- END SIDEBAR -->
+            </div>
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
@@ -342,9 +274,7 @@
                     </ul>
                     <!-- END PAGE BREADCRUMB -->
                     <!-- BEGIN PAGE BASE CONTENT -->
-                    <div class="note note-danger">
-                        <p> A black page template with a minimal dependency assets to use as a base for any custom page you create </p>
-                    </div>
+                    @yield('main')
                     <!-- END PAGE BASE CONTENT -->
                 </div>
                 <!-- END CONTENT BODY -->
@@ -355,7 +285,7 @@
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
             <div class="page-footer-inner"> 2016 &copy; WillChat by Tianyong90.
-                <a href="" title="" target="_blank">View on GitHub.</a>
+                <a href="https://github.com/tianyong90/willchat" title="" target="_blank">View on GitHub.</a>
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
@@ -374,7 +304,6 @@
         <script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <script src="{{ asset('static') }}/metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
         <script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="{{ asset('static') }}/metronic/global/scripts/app.min.js" type="text/javascript"></script>
@@ -385,7 +314,7 @@
 
         <script>
           $(function(){
-            // App.setAssetsPath("{{ asset('static') }/metronic/}");
+            {{--App.setAssetsPath("{{ asset('static') }/metronic/}");--}}
           })
         </script>
         @yield('js')

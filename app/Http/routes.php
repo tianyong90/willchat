@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('home.index');
+    return view('welcome');
 });
 
 //微信路由
-Route::any('wechat/{token}', 'Wechat\IndexController@index');
+Route::any('wechat/{token}', 'Server\ServeController@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ Route::group(['middleware' => ['web']], function () {
     $user = [
         'prefix' => 'user',
         'namespace' => 'User',
-//        'middleware' => 'auth',
+//        'middleware' => 'auth', 
     ];
 
     Route::group($user, function () {
