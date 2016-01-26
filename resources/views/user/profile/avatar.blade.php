@@ -1,9 +1,9 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('style')
   <link href="{{ asset('static') }}/cropper-master/dist/cropper.min.css" rel="stylesheet">
   <link href="{{ asset('css/user') }}/avatar.css" rel="stylesheet">
 @stop
-@section('content')
+@section('main')
   <div class="row">
     <div class="col-md-12">
       <div class="portlet light">

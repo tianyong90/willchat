@@ -1,4 +1,4 @@
-<extend name="Public/baseindex"/>
+<extend name="Public/base"/>
 <block name="profile-content">
   <div class="row">
     <div class="col-md-12">

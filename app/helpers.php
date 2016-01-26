@@ -76,8 +76,8 @@ function get_wechat_options($id = 1, $type = 1)
         'payment' => [
             'merchant_id' => env('WECHAT_MERCHANT_ID'),
             'key' => env('WECHAT_MERCHANT_KEY'),
-            'cert_path' => 'D:\EXIKECERT\apiclient_cert.pem',
-            'key_path' => 'D:\EXIKECERT\apiclient_key.pem',
+            'cert_path' => env('CERT_PATH'),
+            'key_path' => env('KEY_PATH'),
         ],
     ];
 

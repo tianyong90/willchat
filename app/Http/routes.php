@@ -49,15 +49,15 @@ Route::group(['middleware' => ['web']], function () {
     /*
     * Home
     */
-    $home = [
-        'namespace' => 'Home',
-    ];
-
-    Route::group($home, function () {
-        Route::get('/', function () {
-            return view('home.index');
-        });
-    });
+//    $home = [
+//        'namespace' => 'Home',
+//    ];
+//
+//    Route::group($home, function () {
+//        Route::get('/', function () {
+//            return view('home.index');
+//        });
+//    });
 
     /*
     * User
@@ -101,6 +101,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('avatar', 'AvatarController@store');
 
         Route::get('lock', 'LockController@index');
+        Route::get('logout', 'LockController@index');
     });
 
     /*
