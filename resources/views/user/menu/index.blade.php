@@ -99,7 +99,7 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
   <script>
     $(document).ready(function () {
       //生成菜单按钮动作

@@ -62,6 +62,6 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
 
 @stop

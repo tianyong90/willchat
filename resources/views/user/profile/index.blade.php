@@ -70,7 +70,7 @@
     </div>
   </div>
 @endsection
-@section('script')
+@section('js')
   <script>
     $(function () {
     })

@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('main')
   <div class="portlet light">
     <div class="portlet-title">
@@ -87,7 +87,7 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
   <script type="text/javascript" charset="utf-8" src="{{ asset('static') }}/ueditor/ueditor-front.config.js"></script>
   <script type="text/javascript" charset="utf-8" src="{{ asset('static') }}/ueditor/ueditor.all.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="{{ asset('static') }}/ueditor/lang/zh-cn/zh-cn.js"></script>

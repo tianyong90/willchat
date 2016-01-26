@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('style')
   <link rel="stylesheet" href="{{ asset('css') }}/user/metronicuser.css"/>
   <link rel="stylesheet" type="text/css"
@@ -393,7 +393,7 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
   <script type="text/javascript"
           src="{{ asset('static') }}/metronic/global/plugins/bootstrap-daterangepicker/moment.min.js"></script>
   <script type="text/javascript"

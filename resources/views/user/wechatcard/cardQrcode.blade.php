@@ -19,7 +19,7 @@
   </div>
   <!-- END PAGE CONTENT-->
   @stop
-  @section('script')
+  @section('js')
     <script>
       $(function () {
 

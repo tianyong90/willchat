@@ -47,7 +47,7 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
   <script>
     $(document).ready(function () {
     });

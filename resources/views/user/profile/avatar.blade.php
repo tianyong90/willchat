@@ -1,5 +1,6 @@
 @extends('user.public.base')
 @section('style')
+  <link rel="stylesheet" href="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.css">
   <link href="{{ asset('static') }}/cropper-master/dist/cropper.min.css" rel="stylesheet">
   <link href="{{ asset('css/user') }}/avatar.css" rel="stylesheet">
 @stop
@@ -62,7 +63,8 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
+  <script src="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.js"></script>
   <script src="{{ asset('static') }}/cropper-master/dist/cropper.min.js"></script>
   <script src="{{ asset('static') }}/uploader-master/dist/uploader.min.js"></script>
   <script type="text/javascript" charset="utf-8">

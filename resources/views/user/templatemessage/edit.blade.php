@@ -94,7 +94,7 @@
   </div>
   <!-- END PAGE CONTENT-->
   @stop
-  @section('script')
+  @section('js')
     <script>
       $(function () {
         //模板消息类型改变后自动重新解析模板

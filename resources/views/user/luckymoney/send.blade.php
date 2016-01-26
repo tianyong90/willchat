@@ -53,7 +53,7 @@
   </div>
   <!-- END PAGE CONTENT-->
   @stop
-  @section('script')
+  @section('js')
     <script>
       $(function () {
         //根据菜单类型显示或隐藏相应的输入项

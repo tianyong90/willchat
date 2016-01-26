@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('style')
 @stop
 @section('main')

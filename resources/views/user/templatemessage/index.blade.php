@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('main')
   <div class="portlet light">
     <div class="portlet-title">
@@ -65,7 +65,7 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
   <script>
     $(document).ready(function () {
 

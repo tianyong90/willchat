@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('style')
 @stop
 @section('main')
@@ -105,7 +105,7 @@
     </div>
   </div>
 @stop
-@section('script')
+@section('js')
   <script>
     $(document).ready(function () {
       //生成菜单按钮动作
