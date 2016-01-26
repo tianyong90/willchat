@@ -52,51 +52,9 @@
                 <!-- END RESPONSIVE MENU TOGGLER -->
                 <!-- BEGIN PAGE TOP -->
                 <div class="page-top">
-                    <!-- BEGIN HEADER SEARCH BOX -->
-                    <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-                    <form class="search-form" action="" method="GET">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm" placeholder="搜索" name="query">
-                            <span class="input-group-btn">
-                                <a href="javascript:;" class="btn submit">
-                                    <i class="icon-magnifier"></i>
-                                </a>
-                            </span>
-                        </div>
-                    </form>
-                    <!-- END HEADER SEARCH BOX -->
                     <!-- BEGIN TOP NAVIGATION MENU -->
                     <div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
-                            <li class="separator hide"> </li>
-                            <!-- BEGIN NOTIFICATION DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="icon-bell"></i>
-                                    <span class="badge badge-success"> 7 </span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="external">
-                                        <h3>
-                                            <span class="bold">12 pending</span> notifications</h3>
-                                        <a href="{{ user_url('/') }}">view all</a>
-                                    </li>
-                                    <li>
-                                        <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <span class="time">just now</span>
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-success">
-                                                            <i class="fa fa-plus"></i>
-                                                        </span> New user registered. </span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
                             <!-- END NOTIFICATION DROPDOWN -->
                             <li class="separator hide"> </li>
                             
@@ -109,7 +67,7 @@
                                     <img alt="" class="img-circle" src="{{ asset('static') }}/metronic/layouts/layout4/img/avatar9.jpg" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="{{ user_url('lock/') }}">
+                                        <a href="{{ user_url('profile/index') }}">
                                             <i class="icon-user"></i> 个人信息 </a>
                                     </li>
                                     <li class="divider"> </li>
@@ -142,10 +100,8 @@
             <div class="page-sidebar-wrapper">
                 <!-- BEGIN SIDEBAR -->
                 <div class="page-sidebar navbar-collapse collapse">
-                    <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                        <li class="heading">
-                            <h3 class="uppercase">Pages</h3>
-                        </li>
+                    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true"
+                        data-slide-speed="200">
                         <li class="nav-item start ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-home"></i>
@@ -160,6 +116,98 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title">基础设置</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('/') }}" class="nav-link ">
+                                        <span class="title">主页</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-users"></i>
+                                <span class="title">粉丝管理</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('fans/') }}" class="nav-link ">
+                                        <span class="title">粉丝列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('fans_group/') }}" class="nav-link ">
+                                        <span class="title">粉丝分组</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-speech"></i>
+                                <span class="title">高级群发</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('fans/') }}" class="nav-link ">
+                                        <span class="title">文本群发</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('fans_group/') }}" class="nav-link ">
+                                        <span class="title">图文群发</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-bar-chart"></i>
+                                <span class="title">统计数据</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('fans/') }}" class="nav-link ">
+                                        <span class="title">粉丝列表</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('fans_group/') }}" class="nav-link ">
+                                        <span class="title">粉丝分组</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-info"></i>
+                                <span class="title">帮助中心</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('document/guide') }}" class="nav-link ">
+                                        <span class="title">操作指南</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('document/troubleshooting') }}" class="nav-link ">
+                                        <span class="title">常见问题</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>
@@ -170,109 +218,6 @@
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-                    <!-- BEGIN PAGE HEAD-->
-                    <div class="page-head">
-                        <!-- BEGIN PAGE TITLE -->
-                        <div class="page-title">
-                            <h1>{{ $title or 'title' }}
-                                <small>{{ $small or 'small' }}</small>
-                            </h1>
-                        </div>
-                        <!-- END PAGE TITLE -->
-                        <!-- BEGIN PAGE TOOLBAR -->
-                        <div class="page-toolbar">
-                            <!-- BEGIN THEME PANEL -->
-                            <div class="btn-group btn-theme-panel">
-                                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-settings"></i>
-                                </a>
-                                <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <h3>主题</h3>
-                                            <ul class="theme-colors">
-                                                <li class="theme-color theme-color-default" data-theme="default">
-                                                    <span class="theme-color-view"></span>
-                                                    <span class="theme-color-name">暗色页头</span>
-                                                </li>
-                                                <li class="theme-color theme-color-light active" data-theme="light">
-                                                    <span class="theme-color-view"></span>
-                                                    <span class="theme-color-name">亮色页头</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-12 seperator">
-                                            <h3>页面布局</h3>
-                                            <ul class="theme-settings">
-                                                <li> 主题风格
-                                                    <select class="layout-style-option form-control input-small input-sm">
-                                                        <option value="square">方角</option>
-                                                        <option value="rounded" selected="selected">圆角</option>
-                                                    </select>
-                                                </li>
-                                                <li> 布局
-                                                    <select class="layout-option form-control input-small input-sm">
-                                                        <option value="fluid" selected="selected">流式</option>
-                                                        <option value="boxed">固定</option>
-                                                    </select>
-                                                </li>
-                                                <li> 页头
-                                                    <select class="page-header-option form-control input-small input-sm">
-                                                        <option value="fixed" selected="selected">固定</option>
-                                                        <option value="default">默认</option>
-                                                    </select>
-                                                </li>
-                                                <li> 顶部下拉
-                                                    <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
-                                                        <option value="light">亮色</option>
-                                                        <option value="dark" selected="selected">暗色</option>
-                                                    </select>
-                                                </li>
-                                                <li> 侧栏模式
-                                                    <select class="sidebar-option form-control input-small input-sm">
-                                                        <option value="fixed">固定</option>
-                                                        <option value="default" selected="selected">默认</option>
-                                                    </select>
-                                                </li>
-                                                <li> 侧栏菜单
-                                                    <select class="sidebar-menu-option form-control input-small input-sm">
-                                                        <option value="accordion" selected="selected">手风琴</option>
-                                                        <option value="hover">悬停弹出</option>
-                                                    </select>
-                                                </li>
-                                                <li> 侧栏位置
-                                                    <select class="sidebar-pos-option form-control input-small input-sm">
-                                                        <option value="left" selected="selected">左侧</option>
-                                                        <option value="right">右侧</option>
-                                                    </select>
-                                                </li>
-                                                <li> 页脚
-                                                    <select class="page-footer-option form-control input-small input-sm">
-                                                        <option value="fixed">固定</option>
-                                                        <option value="default" selected="selected">默认</option>
-                                                    </select>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END THEME PANEL -->
-                        </div>
-                        <!-- END PAGE TOOLBAR -->
-                    </div>
-                    <!-- END PAGE HEAD-->
-                    <!-- BEGIN PAGE BREADCRUMB -->
-                    <ul class="page-breadcrumb breadcrumb">
-                        <li>
-                            <a href="{{ user_url('/') }}">主页</a>
-                            <i class="fa fa-circle"></i>
-                        </li>
-                        <li>
-                            <span class="active">Blank Page</span>
-                        </li>
-                    </ul>
-                    <!-- END PAGE BREADCRUMB -->
                     <!-- BEGIN PAGE BASE CONTENT -->
                     @yield('main')
                     <!-- END PAGE BASE CONTENT -->

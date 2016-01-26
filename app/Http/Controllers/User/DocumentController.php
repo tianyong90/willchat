@@ -13,7 +13,7 @@ class DocumentController extends Controller
     {
 
 
-        return view('user.docment.index');
+        return user_view('docment.index');
     }
 
 

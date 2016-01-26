@@ -1,8 +1,8 @@
-<extend name="Public/baseindex"/>
+@extends('user.public.base')
 @section('style')
   <link rel="stylesheet" type="text/css" href="{{ asset('css') }}/user/document.css">
 @stop
-<block name="profile-content">
+@section('main')
   <div class="row">
     <div class="col-md-12">
       <!-- BEGIN PORTLET -->

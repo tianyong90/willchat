@@ -91,7 +91,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('function', 'SystemFunctionController@index');
 
         //帮助文档
-        Route::get('document', 'DocumentController@index');
+        Route::get('document/{type}', 'DocumentController@index');
 
         //自定义菜单
         Route::get('menu', 'MenuController@index');
@@ -102,6 +102,10 @@ Route::group(['middleware' => ['web']], function () {
 
         Route::get('lock', 'LockController@index');
         Route::get('logout', 'LockController@index');
+
+        Route::get('profile/index', 'ProfileController@index');
+
+        Route::get('profile/password', 'ProfileController@password');
     });
 
     /*

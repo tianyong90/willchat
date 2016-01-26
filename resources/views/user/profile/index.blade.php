@@ -1,5 +1,5 @@
-<extend name="Public/base"/>
-<block name="profile-content">
+@extends('user.public.base')
+@section('main')
   <div class="row">
     <div class="col-md-12">
       <div class="portlet light">
@@ -10,13 +10,13 @@
           </div>
           <ul class="nav nav-tabs">
             <li class="active">
-              <a href="{{ user_url('/') }}">个人信息设置</a>
+              <a href="{{ user_url('profile/index') }}">个人信息设置</a>
             </li>
             <li>
-              <a href="{{ user_url('/') }}">头像设置</a>
+              <a href="{{ user_url('avatar') }}">头像设置</a>
             </li>
             <li>
-              <a href="{{ user_url('/') }}">修改密码</a>
+              <a href="{{ user_url('profile/password') }}">修改密码</a>
             </li>
           </ul>
         </div>
@@ -69,10 +69,10 @@
       </div>
     </div>
   </div>
-  @stop
-  @section('script')
-    <script>
-      $(function () {
-      })
-    </script>
-@stop
+@endsection
+@section('script')
+  <script>
+    $(function () {
+    })
+  </script>
+@endsection

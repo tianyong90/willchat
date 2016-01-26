@@ -20,20 +20,14 @@ class FansController extends Controller
         $user = $app['user'];
         $fansList = $user->lists();
 
-        dump($fansList);
 
-        $group = $app['user.group'];
-
-        $groupList = $group->lists();
-        dump($groupList);
 
 
         // 粉丝 openid 列表
         $openIds = $fansList->get('data.openid');
 
-        dump($openIds);
 
-//        return view('user.fans.index');
+        return user_view('fans.index');
     }
 
     /**
@@ -55,8 +49,5 @@ class FansController extends Controller
     {
 
     }
-
-
-
 
 }

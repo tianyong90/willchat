@@ -1,9 +1,9 @@
-@extends('user.public.baseindex')
+@extends('user.public.base')
 @section('style')
   <link rel="stylesheet" type="text/css" href="{{ asset('css') }}/user/document.css">
 @stop
 
-@section('content')
+@section('main')
   <div class="row">
     <div class="col-md-12">
       <div class="portlet light ">
