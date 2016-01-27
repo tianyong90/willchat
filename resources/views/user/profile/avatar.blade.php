@@ -111,7 +111,7 @@
         cropData._token = '{{ csrf_token() }}';
         //上传
         $avatarFileInput.uploader({
-          url: '{{ user_url('avatar') }}',
+          url: "{{ user_url('avatar') }}",
           dataType: 'json',
           autoUpload: false,
           method: 'POST',
