@@ -198,26 +198,22 @@ var Base=function(){
     //侧栏高亮,rewrite URL模式匹配
     var highlightSidebar = function(){
         //侧栏菜单中的全部有链接菜单项
-        var sidebarLinks = $("#page-sidebar-menu").find('a');
-        if(sidebarLinks.length > 0){
+        var sidebarLinks = $(".page-sidebar-menu .nav-item").find('a');
+        if(sidebarLinks.length > 0) {
             //当前页面URL
             var url = document.URL;
-            var flagMatched = false;
-            sidebarLinks.each(function (index, el) {
-                var href = $(el).attr('href');
-                if (url.match(href) !== null) {
-                    //设置当前高亮菜单项
-                    Layout.setSidebarMenuActiveLink('click', $(this));
-                    //保存当前活动菜单项索引至cookie便于在未匹配的情况下使用
-                    $.cookie("menuindex", index, {expires:7, path:'/'});
-                    flagMatched = true;
-                    return false;
-                }
-            });
-            //如果未找到与当前URL匹配的菜单项，则高亮上一次被高亮的菜单项
-            if(!flagMatched){
-                var menuindex = $.cookie("menuindex");
-                Layout.setSidebarMenuActiveLink('click', sidebarLinks.eq(menuindex));
+
+            var activeNavItem = $(".page-sidebar-menu .nav-item").find("a[href='"+url+"']").first();
+
+            if (activeNavItem) {
+                //保存当前高亮菜单项 index 到 cookie 中
+                var menuIndex = activeNavItem.index(sidebarLinks);
+                Cookies.set('menuindex', menuIndex);
+                Layout.setSidebarMenuActiveLink('click', activeNavItem);
+            } else {
+                //侧栏中没有与当前 URL 匹配的，则高亮上一次高亮的项
+                var menuIndex = Cookies.get('menuindex');
+                Layout.setSidebarMenuActiveLink('click', sidebarLinks.eq(menuIndex));
             }
         }
     }
@@ -246,11 +242,11 @@ var Base=function(){
             initAjaxForm();
             initCheckAll();
         },
-        initConfirmation:initConfirmation,
+        initConfirmation: initConfirmation,
 
-        success:success,
-        error:error,
-        info:info
+        success: success,
+        error: error,
+        info: info
     }
 }();
     

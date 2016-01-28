@@ -13,37 +13,13 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $options = [
-            'debug' => true,
-            'app_id' => env('WECHAT_APPID'),
-            'secret' => env('WECHAT_APPSECRET'),
-            'token' => env('WECHAT_TOKEN'),
-            // log
-            'log' => [
-                'level' => \Monolog\Logger::DEBUG,
-                'file' => storage_path('logs\easywechat.log'),
-            ],
-            // oauth
-            'oauth' => [
-                'scopes' => ['snsapi_userinfo'],
-                'callback' => '/examples/oauth_callback.php',
-            ],
-            'payment' => [
-                'merchant_id' => env('WECHAT_MERCHANT_ID'),
-                'key' => env('WECHAT_MERCHANT_KEY'),
-                'cert_path' => 'D:\EXIKECERT\apiclient_cert.pem',
-                'key_path' => 'D:\EXIKECERT\apiclient_key.pem',
-            ],
-        ];
+        $options = get_wechat_options();
 
         $app = new Application($options);
 
-        $menu = $app['menu'];
+        $menu = $app->menu;
 
         $menuList = $menu->current();
-
-//        dump($menuList);
-//        exit;
 
         return user_view('menu.index');
     }

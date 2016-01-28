@@ -15,7 +15,7 @@ class AvatarController extends Controller
 {
     public function index()
     {
-        return view('user.profile.avatar');
+        return user_view('profile.avatar');
     }
 
     /**

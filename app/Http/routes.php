@@ -77,7 +77,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('fans', 'FansController@index');
 
         //二维码
-        Route::get('qrcode', 'QrcodeController@index');
+        Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index');
 
         //粉丝分组
         Route::get('fans-group', 'FansGroupController@index');
@@ -95,6 +95,9 @@ Route::group(['middleware' => ['web']], function () {
 
         //自定义菜单
         Route::get('menu', 'MenuController@index');
+
+        //数据统计与分析
+        Route::get('stats', 'DataStatsController@index');
 
         //头像设置
         Route::get('avatar', 'AvatarController@index');

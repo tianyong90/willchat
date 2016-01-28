@@ -38,8 +38,6 @@ class QRCodeController extends Controller
 
 
         return user_view('menu.create');
-
-        
     }
 
     /**
