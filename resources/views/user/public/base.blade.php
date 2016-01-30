@@ -103,18 +103,11 @@
                     <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true"
                         data-slide-speed="200">
                         <li class="nav-item start ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
+                            <a href="{{ user_url('/') }}" class="nav-link nav-toggle">
                                 <i class="icon-home"></i>
                                 <span class="title">用户中心</span>
-                                <span class="arrow"></span>
+                                <!-- <span class="arrow"></span> -->
                             </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item start ">
-                                    <a href="{{ user_url('/') }}" class="nav-link ">
-                                        <span class="title">账户管理</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-item ">
                             <a href="javascript:;" class="nav-link nav-toggle">
@@ -158,12 +151,12 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('fans/') }}" class="nav-link ">
+                                    <a href="{{ user_url('broadcast/text') }}" class="nav-link ">
                                         <span class="title">文本群发</span>
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('fans_group/') }}" class="nav-link ">
+                                    <a href="{{ user_url('broadcast/text') }}" class="nav-link ">
                                         <span class="title">图文群发</span>
                                     </a>
                                 </li>
@@ -180,11 +173,6 @@
                                 <li class="nav-item start ">
                                     <a href="{{ user_url('stats/') }}" class="nav-link ">
                                         <span class="title">粉丝增减</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item start ">
-                                    <a href="{{ user_url('fans_group/') }}" class="nav-link ">
-                                        <span class="title">粉丝分组</span>
                                     </a>
                                 </li>
                             </ul>

@@ -16,7 +16,6 @@
     <div class="portlet-body">
       <div class="note note-info">
         <h4 class="block">使用提示：</h4>
-
         <p>
           (使用前提是已经拥有了自定义菜单的用户才能够使用，)<br>
           第二步:添加菜单，<br>

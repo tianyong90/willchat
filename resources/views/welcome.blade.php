@@ -42,7 +42,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <a href="{{ url('/user') }}"><div class="title">Will Chat!</div></a>
+                <!-- <a href="{{ url('/user') }}"><div class="title">Will Chat!</div></a> -->
+                <a href="javascript:;"><div class="title">Will Chat!</div></a>
             </div>
         </div>
     </body>
