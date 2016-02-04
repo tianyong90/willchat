@@ -2,7 +2,6 @@
 @section('style')
   <link rel="stylesheet" type="text/css" href="{{ asset('css') }}/user/document.css">
 @stop
-
 @section('main')
   <div class="row">
     <div class="col-md-12">
@@ -22,37 +21,19 @@
           </div>
         </div>
         <div class="portlet-body">
-          <div class="row">
-            <div class="col-md-2">
-              <ul class="ver-inline-menu tabbable margin-bottom-10">
-                <foreach name="catelist" item="cate">
-                  <li>
-                    <if condition="$Think.get.category eq $cate">class="active"</if>
-                    >
-                    <a href="{{ user_url('/') }}">
-                      <i class="fa fa-briefcase"></i>{:get_category_title($cate)}</a>
-                                    <span class="after">
-                                    </span>
-                  </li>
-                </foreach>
-              </ul>
-            </div>
-            <div class="col-md-10">
-              <ul id="article-list">
-                <volist name="list" id="vo">
-                  <li>
-                    <a class="title"
-                       href="{{ user_url('/') }}"
-                       title="{$vo.title}">{$vo.title}</a>
-                    <span class="time">{$vo.create_time|time_format}</span>
-                  </li>
-                </volist>
-              </ul>
-              <div class="page">
-                <div class="pagination pagination-right">
-                  {$_page|default=''}
-                </div>
-              </div>
+          <ul id="article-list">
+            <volist name="list" id="vo">
+              <li>
+                <a class="title"
+                   href="{{ user_url('/') }}"
+                   title="{$vo.title}">{$vo.title}</a>
+                <span class="time">{$vo.create_time|time_format}</span>
+              </li>
+            </volist>
+          </ul>
+          <div class="page">
+            <div class="pagination pagination-right">
+              {$_page|default=''}
             </div>
           </div>
         </div>

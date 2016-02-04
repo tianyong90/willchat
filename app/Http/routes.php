@@ -31,21 +31,6 @@ Route::any('wechat/{token}', 'Server\ServeController@index');
 
 Route::group(['middleware' => ['web']], function () {
 
-//    Route::get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
-//    Route::post('login', 'AuthController@postLogin');
-//
-//    Route::get('mail', function () {
-//        $email = '412039588@qq.com';
-//        $name = 'tianyong';
-//        $uid = 123;
-//        $code = 'abc';
-//
-//        $data = ['email' => $email, 'name' => $name, 'uid' => $uid, 'activationcode' => $code];
-//        Mail::send('welcome', $data, function ($message) use ($data) {
-//            $message->to($data['email'], $data['name'])->subject("abadafsl哈哈");
-//        });
-//    });
-
     /*
     * Home
     */
@@ -54,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
 //    ];
 //
 //    Route::group($home, function () {
-//        Route::get('/', function () {
+//        Route::get('', function () {
 //            return view('home.index');
 //        });
 //    });
@@ -65,7 +50,7 @@ Route::group(['middleware' => ['web']], function () {
     $user = [
         'prefix' => 'user',
         'namespace' => 'User',
-//        'middleware' => 'auth', 
+//        'middleware' => 'auth',
     ];
 
     Route::group($user, function () {
@@ -77,7 +62,10 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('fans', 'FansController@index');
 
         //二维码
-        Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index');
+        Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
+        Route::get('qrcode/create', 'QrcodeController@getCreate');
+        Route::post('qrcode/create', 'QrcodeController@postCreate');
+        Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
 
         //粉丝分组
         Route::get('fans-group', 'FansGroupController@index');
@@ -116,12 +104,11 @@ Route::group(['middleware' => ['web']], function () {
     */
     $mobile = [
         'prefix' => 'mobile',
-        'namespace' => 'Mobile',
-//        'middleware' => 'auth',
+        'namespace' => 'Mobile'
     ];
 
     Route::group($mobile, function () {
-        Route::get('/', 'VipController@index');
+        Route::get('shop', 'ShopController@index');
 
 
     });

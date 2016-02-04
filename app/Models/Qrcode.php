@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Qrcode extends Model
 {
     protected $hidden = ['created_at', 'deleted_at', 'updated_at'];
 
@@ -15,7 +15,6 @@ class Menu extends Model
      */
     protected $fillable = [
         'account_id',
-        'parent_id',
         'name',
         'type',
         'key',

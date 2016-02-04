@@ -1,5 +1,5 @@
-<extend name="Public/dcontentbase"/>
-<block name="content">
+@extends('user.public.base')
+@section('main')
   <!-- BEGIN PAGE CONTENT-->
   <div class="dialog-content form">
     <form action="__SELF__" method="post">

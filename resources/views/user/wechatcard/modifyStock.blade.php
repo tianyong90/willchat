@@ -1,4 +1,4 @@
-<extend name="Public/dcontentbase"/>
+@extends('user.public.base')
 @section('style')
   <style>
     .dialog-content {
@@ -6,7 +6,7 @@
     }
   </style>
 @stop
-<block name="content">
+@section('main')
   <div class="dialog-content form">
     <form class="validate" action="__SELF__" method="post">
       <div class="form-body">

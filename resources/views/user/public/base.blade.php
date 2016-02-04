@@ -8,6 +8,7 @@
     <head>
         <meta charset="utf-8" />
         <title>{{ $title or 'WillChat' }}</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="WillChat" />
@@ -278,6 +279,15 @@
         <script>
             jQuery(document).ready(function () {
                 Base.initNormalPage(); //常规页面中菜单高亮等操作初始
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                console.log($('meta[name="csrf-token"]').attr('content'));
+
 
                 //上传文件对话框
                 $('.btn-uploadfile').on('click', function () {

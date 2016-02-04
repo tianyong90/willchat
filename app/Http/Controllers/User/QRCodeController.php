@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -25,10 +25,10 @@ class QRCodeController extends Controller
     public function getCreate()
     {
         $options = get_wechat_options();
-
-        $app = new Application($options);
-
-        $menu = $app['menu'];
+//
+//        $app = new Application($options);
+//
+//        $menu = $app['menu'];
 
 //        $menuList = $menu->current();
 
@@ -37,7 +37,7 @@ class QRCodeController extends Controller
 
 
 
-        return user_view('menu.create');
+        return user_view('qrcode.create');
     }
 
     /**
@@ -50,17 +50,18 @@ class QRCodeController extends Controller
 
     }
 
-    public function moveUser()
+    /**
+     * 删除二维码
+     *
+     * @param Request $request
+     */
+    public function destroy(Request $request)
     {
+        $ids = $request->route('ids');
+
+        DB::table('qrcodes')->delete($ids);
+        return Response::json(['status' => 1, 'info' => '删除成功']);
 
     }
-
-    public function editRemark()
-    {
-
-    }
-
-
-
 
 }

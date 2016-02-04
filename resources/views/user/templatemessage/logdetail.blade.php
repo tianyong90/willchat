@@ -1,4 +1,4 @@
-<extend name="Public/dcontentbase"/>
+@extends('user.public.base')
 @section('style')
   <style type="text/css">
     .dialog-content {
@@ -23,7 +23,7 @@
     }
   </style>
 @stop
-<block name="content">
+@section('main')
   <div class="dialog-content">
     <ul>
       <li><span class="title">接收者昵称：</span>{$info.nickname}</li>

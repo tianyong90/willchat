@@ -1,9 +1,16 @@
-<extend name="Public/dcontentbase"/>
-<block name="content">
-  <div class="dialog-content form">
-    <form action="__SELF__" method="post">
-      <div class="form-body">
-        <empty name="Think.get.is_shop_qrcode">
+@extends('user.public.base')
+@section('main')
+  <div class="portlet light">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-qrcode"></i> 创建二维码
+      </div>
+      <div class="actions">
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form action="" method="post">
+        <div class="form-body">
           <div class="form-group">
             <label>二维码类型</label>
             <select name="type" id="type" class="form-control">
@@ -13,39 +20,29 @@
             <span class="help-block"></span>
           </div>
           <div class="form-group">
-            <label>关键词</label>
-            <input type="text" name="keyword" value="{$info.keyword}" class="form-control" placeholder="">
+            <label>二维码参数</label>
+            <input type="text" name="keyword" value="" class="form-control" placeholder="">
             <span class="help-block"></span>
           </div>
           <div class="form-group" id="expr">
             <label>有效期</label>
-            <input type="text" name="expire" value="{$info.expire}" class="form-control" placeholder="">
+            <input type="text" name="expire" value="" class="form-control" placeholder="">
             <span class="help-block">临时二维码的有效期，单位为秒</span>
           </div>
-          <else/>
           <div class="form-group">
-            <label>对应店铺</label>
-            <select name="keyword" class="form-control">
-              <foreach name="shop_list" item="shop">
-                <option value="shopid_{$shop.ID}">{$shop.Name}</option>
-              </foreach>
-            </select>
-            <span class="help-block">选择二维码对应的分店</span>
+            <label>备注</label>
+            <input type="text" name="description" value="" class="form-control" placeholder="">
+            <span class="help-block"></span>
           </div>
-        </empty>
-        <div class="form-group">
-          <label>备注</label>
-          <input type="text" name="description" value="{$info.description}" class="form-control" placeholder="">
-          <span class="help-block"></span>
         </div>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn btn-primary">保存</button>
-        <button type="button" class="btn btn-danger btn-closedialog">取消</button>
-      </div>
-    </form>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">保存</button>
+          <button type="button" class="btn btn-danger btn-closedialog">取消</button>
+        </div>
+      </form>
+    </div>
   </div>
-  @stop
+  @endsection
   @section('js')
     <script>
       $(function () {
