@@ -6,7 +6,7 @@
         <i class="fa fa-qrcode"></i> 二维码
       </div>
       <div class="actions">
-        <a href="{{ user_url('qrcode/create') }}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>创建二维码</a>
+        <a href="{{ user_url('qrcode/create') }}" class="btn default blue-stripe btn-xs"><i class="fa fa-plus"></i>新建</a>
         <button url="{{ user_url('qrcode/destroy') }}" class="btn default red-stripe btn-xs ajax-post confirm" target-form="ids"><i class="fa fa-trash-o"></i>删除 </button>
       </div>
     </div>
@@ -37,7 +37,7 @@
                   <td>{{ $qrcode->create_time }}</td>
                   <td>{{ $qrcode->scancount }}</td>
                   <td>
-                    <a class="btn blue btn-xs download-pic" id="pic1"><i class="fa fa-download"></i>下载</a>
+                    <a class="btn blue btn-xs" href="{{ user_url('qrcode/download/'.$qrcode->id) }}"><i class="fa fa-download"></i>下载</a>
                     <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('qrcode/destroy/'.$qrcode->id) }}"><i class="fa fa-trash-o"></i>删除</button>
                   </td>
                 </tr>

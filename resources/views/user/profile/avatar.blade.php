@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.public.baseindex')
 @section('style')
   <link rel="stylesheet" href="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.css">
   <link href="{{ asset('static') }}/cropper-master/dist/cropper.min.css" rel="stylesheet">

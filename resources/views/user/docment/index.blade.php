@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.public.baseindex')
 @section('style')
   <link rel="stylesheet" type="text/css" href="{{ asset('css') }}/user/document.css">
 @stop

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use EasyWeChat\Foundation\Application;
 
-class FansGroupController extends Controller
+class FanGroupController extends Controller
 {
     public function index()
     {
@@ -21,7 +21,7 @@ class FansGroupController extends Controller
         //获取分组数据
         $groupList = $group->lists();
 
-        return user_view('fans_group.index', ['groups' => $groupList['groups']]);
+        return user_view('fan_group.index', ['groups' => $groupList['groups']]);
     }
 
     /**
@@ -29,7 +29,7 @@ class FansGroupController extends Controller
      */
     public function getEdit()
     {
-        return user_view('fans_group.edit');
+        return user_view('fan_group.edit');
     }
 
     /**
@@ -42,7 +42,7 @@ class FansGroupController extends Controller
 
     public function getCreate()
     {
-
+        return user_view('fan_group.edit');
     }
 
     public function postCreate()
@@ -51,11 +51,13 @@ class FansGroupController extends Controller
     }
 
     /**
-     * 删除菜单
+     * 删除粉丝分组
+     *
+     * @param int $id
      */
-    public function destroy()
+    public function destroy($id)
     {
-        
+        return success('删除成功！');
     }
 
 

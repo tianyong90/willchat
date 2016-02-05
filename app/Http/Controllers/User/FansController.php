@@ -17,16 +17,22 @@ class FansController extends Controller
 
         $app = new Application($options);
 
-        $user = $app['user'];
+        $user = $app->user;
         $fansList = $user->lists();
-
-
 
 
         // 粉丝 openid 列表
         $openIds = $fansList->get('data.openid');
 
+//        foreach ($openIds as $key => $openId) {
+//            $fanInfo = $user->get($openId);
+//            dump($fanInfo);
+//        }
 
+        $info = $user->batchGet($openIds);
+        dump($info);
+
+        exit;
         return user_view('fans.index');
     }
 
@@ -37,7 +43,7 @@ class FansController extends Controller
     {
         //TODO:update fans data
 
-        
+
     }
 
     public function moveUser()

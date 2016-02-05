@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i> 粉丝分组
       </div>
       <div class="actions">
-        <a href="{{ user_url('create') }}" class="btn default blue-stripe fa fa-plus dialog-popup">添加分组</a>
+        <a href="{{ user_url('fan_group/create') }}" class="btn default blue-stripe fa fa-plus dialog-popup">添加分组</a>
       </div>
     </div>
     <div class="portlet-body">
@@ -33,10 +33,10 @@
               <td>{{ $group['name'] }}</td>
               <td>{{ $group['count'] }}</td>
               <td>
-                <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fans-group/edit/'.$group['id']) }}"><i
+                <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan_group/edit/'.$group['id']) }}"><i
                       class="fa fa-edit"></i>编辑</a>
                 <button class="btn red btn-xs btn-delete-confirm"
-                        data-link="{{ user_url('fans-group/delete/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
+                        data-link="{{ user_url('fan_group/destroy/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
                 </button>
               </td>
             </tr>

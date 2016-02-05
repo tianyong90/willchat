@@ -55,8 +55,13 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group($user, function () {
         Route::get('/', 'IndexController@index');
-//        Route::controller('account', 'AccountController');
-//        Route::controller('auth', 'AuthController');
+
+        //公众号管理
+        Route::get('account/add', 'AccountController@getAdd');
+        Route::post('account/add', 'AccountController@postAdd');
+        Route::get('account/edit/{id}', 'AccountController@getEdit');
+        Route::post('account/edit/{id}', 'AccountController@postEdit');
+        Route::get('account/destroy/{id}', 'AccountController@destroy');
 
         //粉丝管理
         Route::get('fans', 'FansController@index');
@@ -65,12 +70,16 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
         Route::get('qrcode/create', 'QrcodeController@getCreate');
         Route::post('qrcode/create', 'QrcodeController@postCreate');
+        Route::get('qrcode/download/{id?}', 'QrcodeController@download');
         Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
 
         //粉丝分组
-        Route::get('fans-group', 'FansGroupController@index');
-        Route::get('fans-group/edit/{id}', 'FansGroupController@getEdit');
-        Route::post('fans-group/edit/{id}', 'FansGroupController@postEdit');
+        Route::get('fan_group', 'FanGroupController@index');
+        Route::get('fan_group/create', 'FanGroupController@getCreate');
+        Route::post('fan_group/create', 'FanGroupController@postCreate');
+        Route::get('fan_group/edit/{id}', 'FanGroupController@getEdit');
+        Route::post('fan_group/edit/{id}', 'FanGroupController@postEdit');
+        Route::get('fan_group/destroy/{id}', 'FanGroupController@destroy');
 
         //微信红包
         Route::get('luckymoney', 'LuckyMoneyController@index');
@@ -79,7 +88,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('function', 'SystemFunctionController@index');
 
         //帮助文档
-        Route::get('document/{type}', 'DocumentController@index');
+        Route::get('document/index/{type}/{keyword?}', 'DocumentController@index');
+        Route::get('document/detail/{id}', 'DocumentController@detail');
 
         //自定义菜单
         Route::get('menu', 'MenuController@index');

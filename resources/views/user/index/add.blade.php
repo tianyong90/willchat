@@ -3,22 +3,11 @@
   <div class="row">
     <div class="col-md-12">
       <div class="portlet light">
-        <div class="portlet-title tabbable-line">
+        <div class="portlet-title">
           <div class="caption caption-md">
             <i class="icon-globe theme-font hide"></i>
-            <span class="caption-subject font-blue-madison bold uppercase">个人信息</span>
+            <span class="caption-subject font-blue-madison bold uppercase">添加公众号</span>
           </div>
-          <ul class="nav nav-tabs">
-            <li class="active">
-              <a href="{{ user_url('profile/index') }}">个人信息设置</a>
-            </li>
-            <li>
-              <a href="{{ user_url('avatar') }}">头像设置</a>
-            </li>
-            <li>
-              <a href="{{ user_url('profile/password') }}">修改密码</a>
-            </li>
-          </ul>
         </div>
         <div class="portlet-body form">
           <form action="" method="post" class="form-horizontal" role="form">

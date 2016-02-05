@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Collection;
+
 trait BaseRepository
 {
     /**
@@ -33,10 +35,23 @@ trait BaseRepository
      *
      * @param int $id
      *
-     * @return App\Models\Model
+     * @return Collection
      */
     public function getById($id)
     {
         return $this->model->find($id);
+    }
+
+    /**
+     * Get paginated list.
+     *
+     * @param     $where
+     * @param int $rows
+     *
+     * @return Collection
+     */
+    public function getPaginationList($where, $rows = 15)
+    {
+        return $this->model->where($where)->paginate($rows);
     }
 }

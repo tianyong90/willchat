@@ -29,11 +29,13 @@
         <link href="{{ asset('static') }}/metronic/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="{{ asset('static') }}/metronic/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" /> 
+
+        @yield('style')
+        
+        @yield('pre_js')
+    </head>
     <!-- END HEAD -->
-    @yield('style')
-    
-    @yield('pre_js')
     <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
         <!-- BEGIN HEADER -->
         <div class="page-header navbar navbar-fixed-top">
@@ -126,6 +128,35 @@
                         </li>
                         <li class="nav-item ">
                             <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-speech"></i>
+                                <span class="title">自动回复</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                        <span class="title">文本回复</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                        <span class="title">图文回复</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                        <span class="title">关注回复</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item start ">
+                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                        <span class="title">默认回复</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-users"></i>
                                 <span class="title">粉丝管理</span>
                                 <span class="arrow"></span>
@@ -137,7 +168,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('fans_group/') }}" class="nav-link ">
+                                    <a href="{{ user_url('fan_group/') }}" class="nav-link ">
                                         <span class="title">粉丝分组</span>
                                     </a>
                                 </li>
@@ -204,25 +235,6 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-info"></i>
-                                <span class="title">帮助中心</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item start ">
-                                    <a href="{{ user_url('document/guide') }}" class="nav-link ">
-                                        <span class="title">操作指南</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item start ">
-                                    <a href="{{ user_url('document/troubleshooting') }}" class="nav-link ">
-                                        <span class="title">常见问题</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>
@@ -285,9 +297,6 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-
-                console.log($('meta[name="csrf-token"]').attr('content'));
-
 
                 //上传文件对话框
                 $('.btn-uploadfile').on('click', function () {

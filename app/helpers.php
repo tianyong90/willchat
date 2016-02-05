@@ -9,26 +9,26 @@
  */
 function user_url($uri)
 {
-    return url('user/'.$uri);
+    return url('user/' . $uri);
 }
 
 function user_view($name)
 {
     $args = func_get_args();
-    $args[0] = 'user.'.$name;
+    $args[0] = 'user.' . $name;
 
     return call_user_func_array('view', $args);
 }
 
 function admin_url($uri)
 {
-    return url('admin/'.$uri);
+    return url('admin/' . $uri);
 }
 
 function admin_view($name)
 {
     $args = func_get_args();
-    $args[0] = 'admin.'.$name;
+    $args[0] = 'admin.' . $name;
 
     return call_user_func_array('view', $args);
 }
@@ -45,7 +45,7 @@ function account()
 
 function make_api_url($tag)
 {
-    return url('/api?t='.$tag);
+    return url('/api?t=' . $tag);
 }
 
 /**
@@ -82,4 +82,14 @@ function get_wechat_options($id = 1, $type = 1)
     ];
 
     return $options;
+}
+
+function success($info, $redirectUrl = '')
+{
+    return response()->json(['status' => 1, 'info' => $info, 'url' => $redirectUrl]);
+}
+
+function error($info, $redirectUrl = '')
+{
+    return response()->json(['status' => 0, 'info' => $info, 'url' => $redirectUrl]);
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class OfficialAccountController extends Controller
+class AccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,9 +24,9 @@ class OfficialAccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getAdd()
     {
-        return view('user.officialaccount.edit');
+        return user_view('index.add');
     }
 
     /**
