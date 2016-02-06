@@ -51,7 +51,7 @@ class Reply extends Model
         'trigger_type',
         'group_ids',
         'content',
-                          ];
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -66,5 +66,5 @@ class Reply extends Model
         'trigger_type' => '触发类型',
         'group_ids' => '适用组id',
         'content' => '回复内容',
-                             ];
+    ];
 }

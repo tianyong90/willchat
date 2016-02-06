@@ -33,7 +33,7 @@
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="{{ asset('static') }}/metronic/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="{{ asset('static') }}/metronic/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="{{ asset('static') }}/metronic/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css') }}/user/custom.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 

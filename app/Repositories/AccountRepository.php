@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Account;
+use Illuminate\Http\Request;
 use Session;
 
 /**
@@ -39,8 +40,7 @@ class AccountRepository
     /**
      * store.
      *
-     * @param App\Models\Menu $menu
-     * @param array           $input
+     * @param Request $input
      */
     public function store($input)
     {
@@ -62,8 +62,8 @@ class AccountRepository
     /**
      * update.
      *
-     * @param int   $id
-     * @param array $input
+     * @param int     $id
+     * @param Request $input
      */
     public function update($id, $input)
     {

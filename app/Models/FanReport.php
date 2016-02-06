@@ -18,7 +18,7 @@ class FanReport extends Model
         'account_id',
         'openid',
         'type',
-                          ];
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -29,5 +29,5 @@ class FanReport extends Model
         'account_id' => '公众号ID',
         'openid' => 'OPENID',
         'type' => '操作类型',
-                         ];
+    ];
 }

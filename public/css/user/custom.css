@@ -1,127 +1,8 @@
-#cardpreview {
-    display: block;
-    overflow: hidden;
-    position: relative;
-    width: 350px;
-    height: 220px;
-    background-size: cover;
-    border-radius: 20px !important;
+body {
+  font-family: "Microsoft Yahei";
 }
-#cardpreview #vipname {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 30px;
-    font-size: 23px;
-    font-family: "微软雅黑";
-}
-#cardpreview #cardlogo {
-    display: block;
-    position: absolute;
-    top: 25px;
-    left: 30px;
-    width: 40px;
-}
-#cardpreview #number {
-    display: block;
-    position: absolute;
-    bottom: 15px;
-    right: 30px;
-    font-size: 20px;
-    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;
-}
-/*模板选择*/
-.cateradio li {
-    display: inline-block;
-    width: 180px;
-    height: 290px;
-    overflow: hidden;
-}
-.cateradio li img {
-    display: block;
-    border: 2px solid transparent;
-    margin: 0;
-    padding: 2px;
-}
-.cateradio li.active img {
-    border: 2px solid red;
-}
-.tmpls-filter {
-    display: block;
-    overflow: hidden;
-    margin-left: 0;
-}
-.filterBtn {
-    display: block;
-    padding: 0;
-    margin: 10px 0;
-    overflow: hidden;
-}
-.filterBtn li {
-    display: block;
-    float: left;
-    cursor: pointer;
-    padding: 5px 10px;
-    line-height: 18px;
-    margin: 2px 5px;
-    color: #4E4A6F;
-    background-color: #98AFF7;
-    font-weight: 700;
-}
-.filterBtn li.active {
-    background-color: #2D68FF;
-    color: #fff;
-}
-.tmpllist .mix {
-    margin-bottom: 20px;
-}
-.tpl-select {
-    display: block;
-    position: relative;
-}
-.tpl-select img {
-    display: block;
-    padding: 2px;
-    margin: 0 auto;
-    border: 2px solid transparent;
-}
-.ck img {
-    border: 2px solid red;
-}
-.tpl-select .tplinfo {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    text-align: center;
-    padding-top: 20px;
-    display: none;
-    background-color: #469AEC;
-    color: #fff;
-}
-.tpl-select .tplinfo .tpldescription {
-    font-size: 12px;
-    padding: 10px 20px;
-    color: #eee;
-}
-.menuicons {
-    display: block;
-    margin: 0;
-    padding: 0;
-    background: #00f;
-}
-.menuicons img {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #7882A4;
-    float: left;
-    margin: 4px;
-    cursor: pointer;
-}
-.menuicons img.active {
-    background-color: #c00;
+.portlet-body {
+  overflow: hidden;
 }
 /*表格中小图片预览*/
 .preview-small {
@@ -129,37 +10,6 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-}
-
-.page-content {
-    background-color: #eaeaea;
-}
-
-.page-header.navbar .hor-menu .navbar-nav > li > a {
-    padding: 13px 45px;
-}
-.page-header.navbar .hor-menu {
-    margin-left: 100px;
-}
-
-.theme-panel {
-  position: absolute;
-  right: 30px;
-  bottom: 60px;
-}
-.theme-panel>.theme-options {
-  top: auto;
-  bottom: 0;
-}
-
-.page-header.navbar .page-logo .logo-default {
-  margin-top: 8px;
-}
-
-form span.error {
-  display: inline-block;
-  color: #f00;
-  margin-top: 3px;
 }
 
 .pic-control {
@@ -188,21 +38,6 @@ form span.error {
 td.row-nodata {
     text-align: center;
 }
-
-/*菜单图标选择预览控件*/
-.menuicon-control {
-  display: block;
-}
-.menuicon-control .icon-preview {
-  font-size: 40px;
-  line-height: 45px;
-  width: 45px;
-  height: 45px;
-  border: 1px solid #ccc;
-  text-align: center;
-  margin-right: 5px;
-}
-
 /*翻页*/
 .pagination {
   float: right;

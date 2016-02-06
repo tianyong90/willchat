@@ -13,13 +13,13 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $options = get_wechat_options();
-
-        $app = new Application($options);
-
-        $menu = $app->menu;
-
-        $menuList = $menu->current();
+//        $options = get_wechat_options();
+//
+//        $app = new Application($options);
+//
+//        $menu = $app->menu;
+//
+//        $menuList = $menu->current();
 
         return user_view('menu.index');
     }
@@ -30,8 +30,6 @@ class MenuController extends Controller
     public function getCreate()
     {
         return user_view('menu.create');
-
-        
     }
 
     /**
@@ -48,13 +46,5 @@ class MenuController extends Controller
     {
 
     }
-
-    public function editRemark()
-    {
-
-    }
-
-
-
 
 }

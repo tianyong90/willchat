@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\OfficialAccount;
+use App\Models\Account;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,27 +17,11 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $data['newsCount'] = 100;
-        $data['textCount'] = 100;
-        $data['orderCount'] = 100;
-        $data['memberCount'] = 100;
+        $account = new Account();
 
-        $officialAccount = new OfficialAccount();
+        $accounts = $account::all();
 
-//        for ($i = 0; $i < 5; $i++) {
-//            $officialAccount->name = str_random(5);
-//            $officialAccount->token = str_random(5);
-//            $officialAccount->appid = str_random(5);
-//            $officialAccount->appsecret = str_random(5);
-//            $officialAccount->encodingaeskey = str_random(5);
-//            $officialAccount->type = 1;
-//
-//            $officialAccount->save();
-//        }
-
-        $accounts = $officialAccount::all();
-
-        return user_view('index.index', compact('accounts', 'data'));
+        return user_view('index.index', compact('accounts'));
     }
 
     /**

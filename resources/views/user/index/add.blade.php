@@ -11,53 +11,57 @@
         </div>
         <div class="portlet-body form">
           <form action="" method="post" class="form-horizontal" role="form">
-            <div class="form-group">
-              <label class="col-md-2 control-label">用户名</label>
-              <div class="col-md-6">
-                <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 control-label">公众号名</label>
+                <div class="col-md-6">
+                  <input type="text" name="name" value="{{ $accountInfo->name or old('name') }}" placeholder="如：willchat" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">token</label>
+                <div class="col-md-6">
+                  <input type="text" name="token" value="{{ $accountInfo->token or old('token') }}" placeholder="如：tokenwillchat" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">AppId</label>
+                <div class="col-md-6">
+                  <input type="text" name="app_id" value="{{ $accountInfo->app_id or old('app_id') }}" placeholder="请填写Appid" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">AppSecret</label>
+                <div class="col-md-6">
+                  <input type="text" name="app_secret" value="{{ $accountInfo->app_secret or old('app_secret') }}" placeholder="请填写 AppSecret" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">EncodingAESkey</label>
+                <div class="col-md-6">
+                  <input type="text" name="aes_key" value="{{ $accountInfo->aes_key or old('aes_key') }}" placeholder="请填写 EncodingAESkey" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">公众号类型</label>
+                <div class="col-md-6">
+                  <select name="type" class="form-control">
+                    <option value="1">订阅号</option>
+                    <option value="2">认证订阅号</option>
+                    <option value="3">服务号</option>
+                    <option value="4">认证服务号</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">昵称</label>
-              <div class="col-md-6">
-                <input type="text" name="nickname" value="field" placeholder="" class="form-control"/>
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-offset-2 col-md-6">
+                  <button type="submit" class="btn green">保存</button>
+                  <a href="javascript:history.go(-1);" class="btn default">
+                    取消 </a>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">Email</label>
-              <div class="col-md-6">
-                <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">联系电话</label>
-              <div class="col-md-6">
-                <input type="text" name="mobile" value="field" placeholder="" class="form-control" readonly/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">QQ号码</label>
-              <div class="col-md-6">
-                <input type="text" name="qq" value="field" placeholder="" class="form-control"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">生日</label>
-              <div class="col-md-6">
-                <input type="text" name="birthday" value="field" placeholder="" class="form-control"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">最后登录IP</label>
-              <div class="col-md-6">
-                <input type="text" name="" value="field" placeholder="" class="form-control"
-                       readonly/>
-              </div>
-            </div>
-            <div class="margiv-top-10">
-              <button type="submit" class="btn green-haze">保存修改</button>
-              <a href="javascript:history.go(-1);" class="btn default">
-                取消 </a>
             </div>
           </form>
         </div>

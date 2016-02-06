@@ -57,14 +57,17 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/', 'IndexController@index');
 
         //公众号管理
-        Route::get('account/add', 'AccountController@getAdd');
-        Route::post('account/add', 'AccountController@postAdd');
+        Route::get('account/create', 'AccountController@getCreate');
+        Route::post('account/create', 'AccountController@postCreate');
         Route::get('account/edit/{id}', 'AccountController@getEdit');
         Route::post('account/edit/{id}', 'AccountController@postEdit');
         Route::get('account/destroy/{id}', 'AccountController@destroy');
+        Route::get('account/interface/{id}', 'AccountController@showInterface');
+        Route::get('account/manage/{id}', 'AccountController@getManage');
 
         //粉丝管理
         Route::get('fans', 'FansController@index');
+        Route::get('fans/sync', 'FansController@updateFansData');
 
         //二维码
         Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
@@ -72,6 +75,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('qrcode/create', 'QrcodeController@postCreate');
         Route::get('qrcode/download/{id?}', 'QrcodeController@download');
         Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
+
 
         //粉丝分组
         Route::get('fan_group', 'FanGroupController@index');
@@ -104,8 +108,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('lock', 'LockController@index');
         Route::get('logout', 'LockController@index');
 
+        //个人信息
         Route::get('profile/index', 'ProfileController@index');
-
         Route::get('profile/password', 'ProfileController@password');
     });
 

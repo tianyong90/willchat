@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Fan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,27 +14,9 @@ class FansController extends Controller
 {
     public function index()
     {
-        $options = get_wechat_options();
+        $fanList = Fan::paginate(15);
 
-        $app = new Application($options);
-
-        $user = $app->user;
-        $fansList = $user->lists();
-
-
-        // 粉丝 openid 列表
-        $openIds = $fansList->get('data.openid');
-
-//        foreach ($openIds as $key => $openId) {
-//            $fanInfo = $user->get($openId);
-//            dump($fanInfo);
-//        }
-
-        $info = $user->batchGet($openIds);
-        dump($info);
-
-        exit;
-        return user_view('fans.index');
+        return user_view('fans.index', compact('fanList'));
     }
 
     /**
@@ -41,9 +24,21 @@ class FansController extends Controller
      */
     public function updateFansData()
     {
-        //TODO:update fans data
+        $options = get_wechat_options();
 
+        $app = new Application($options);
 
+        $user = $app->user;
+        $fansList = $user->lists();
+
+        // 粉丝 openid 列表
+        $openIds = $fansList->get('data.openid');
+
+        $info = $user->batchGet($openIds)->get('user_info_list');
+
+        Fan::insert($info);
+
+        return redirect(user_url('fans'))->withMessage('同步成功！');
     }
 
     public function moveUser()

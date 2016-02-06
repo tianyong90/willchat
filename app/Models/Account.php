@@ -27,12 +27,14 @@ class Account extends Model
      */
     protected $fillable = [
         'name',
+        'token',
         'original_id',
         'wechat_account',
         'app_id',
         'app_secret',
-        'account_type',
-                          ];
+        'aes_key',
+        'type',
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -45,6 +47,6 @@ class Account extends Model
         'wechat_account' => '微信账号',
         'app_id' => '应用ID',
         'app_secret' => '应用secret',
-        'account_type' => '账户类型',
-                             ];
+        'type' => '账户类型',
+    ];
 }

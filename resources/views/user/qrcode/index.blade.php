@@ -49,8 +49,8 @@
             @endif
           </tbody>
         </table>
-        {!! $qrcodes->render() !!}
       </div>
+      {!! $qrcodes->render() !!}
     </div>
   </div>
 @endsection

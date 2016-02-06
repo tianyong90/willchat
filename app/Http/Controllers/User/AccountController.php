@@ -2,86 +2,113 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Repositories\AccountRepository;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    private $accountRepository;
 
+    /**
+     * AccountController constructor.
+     *
+     * @param AccountRepository $account
+     */
+    public function __construct(AccountRepository $account)
+    {
+        $this->accountRepository = $account;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 显示添加公众号表单.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAdd()
+    public function getCreate()
     {
         return user_view('index.add');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 保存添加公众号数据.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postCreate(Request $request)
     {
-        //
+        $this->accountRepository->store($request);
+
+        return success('添加成功！');
     }
 
     /**
-     * Display the specified resource.
+     * 显示编辑公众号表单.
      *
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getEdit($id)
     {
-        //
+        $accountInfo = $this->accountRepository->getById($id);
+
+        return user_view('index.add', compact('accountInfo'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 保存编辑后的公众号数据.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function postEdit(Request $request, $id)
     {
-        return view('user.officialaccount.edit');
+        $this->accountRepository->update($id, $request);
+
+        return success('修改成功！');
     }
 
     /**
-     * Update the specified resource in storage.
+     * 查看公众号对应接口信息
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function showInterface($id)
     {
-        //
+        return user_view('index.interface');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param $id
      *
-     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function getManage($id)
+    {
+        //记录当前操作的公众号ID到会话
+        $this->accountRepository->change($id);
+
+        return redirect(user_url('menu'));
+    }
+
+    /**
+     * 删除公众号
+     *
+     * @param  int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-
+        $this->accountRepository->destroy($id);
+        return success('删除成功！');
     }
 }

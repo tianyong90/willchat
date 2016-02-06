@@ -20,7 +20,7 @@ class FanGroup extends Model
         'title',
         'fan_count',
         'is_default',
-                          ];
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -33,5 +33,5 @@ class FanGroup extends Model
         'title' => '组名称',
         'fan_count' => '粉丝数',
         'is_default' => '是否为系统默认组',
-                         ];
+    ];
 }

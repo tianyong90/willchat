@@ -22,53 +22,59 @@
         </div>
         <div class="portlet-body form">
           <form action="" method="post" class="form-horizontal" role="form">
-            <div class="form-group">
-              <label class="col-md-2 control-label">用户名</label>
-              <div class="col-md-6">
-                <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 control-label">用户名</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">昵称</label>
+                <div class="col-md-6">
+                  <input type="text" name="nickname" value="field" placeholder="" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">联系电话</label>
+                <div class="col-md-6">
+                  <input type="text" name="mobile" value="field" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">QQ号码</label>
+                <div class="col-md-6">
+                  <input type="text" name="qq" value="field" placeholder="" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">生日</label>
+                <div class="col-md-6">
+                  <input type="text" name="birthday" value="field" placeholder="" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">最后登录IP</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="field" placeholder="" class="form-control"
+                         readonly/>
+                </div>
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">昵称</label>
-              <div class="col-md-6">
-                <input type="text" name="nickname" value="field" placeholder="" class="form-control"/>
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-offset-2 col-md-6">
+                  <button type="submit" class="btn green">保存</button>
+                  <a href="javascript:history.go(-1);" class="btn default">
+                    取消 </a>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">Email</label>
-              <div class="col-md-6">
-                <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">联系电话</label>
-              <div class="col-md-6">
-                <input type="text" name="mobile" value="field" placeholder="" class="form-control" readonly/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">QQ号码</label>
-              <div class="col-md-6">
-                <input type="text" name="qq" value="field" placeholder="" class="form-control"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">生日</label>
-              <div class="col-md-6">
-                <input type="text" name="birthday" value="field" placeholder="" class="form-control"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-2 control-label">最后登录IP</label>
-              <div class="col-md-6">
-                <input type="text" name="" value="field" placeholder="" class="form-control"
-                       readonly/>
-              </div>
-            </div>
-            <div class="margiv-top-10">
-              <button type="submit" class="btn green-haze">保存修改</button>
-              <a href="javascript:history.go(-1);" class="btn default">
-                取消 </a>
             </div>
           </form>
         </div>

@@ -32,6 +32,4 @@ class DocumentController extends Controller
 
         return user_view('docment.detail');
     }
-
-
 }
