@@ -1,21 +1,20 @@
-@extends('user.public.base')
+@extends('user.public.dialogframe')
 @section('style')
   <style>
-    .dialog-content {
-      width: 400px;
-    }
   </style>
 @stop
 @section('main')
   <div class="dialog-content form">
-    <form action="__SELF__" method="post">
+    <form action="" method="post">
       <div class="form-body">
         <div class="form-group">
-          <label>分组名称</label>
-          <input type="text" name="name" value="{$Think.get.name}" class="form-control" placeholder="">
-          <span class="help-block"></span>
+          <label>选择目标分组</label>
+          <select name="groupid" class="form-control">
+            @foreach($groups as $key => $group)
+              <option value="{{ $group['id'] }}" >{{ $group['name'] }}</option>
+            @endforeach
+          </select>
         </div>
-
       </div>
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">保存</button>
@@ -23,4 +22,4 @@
       </div>
     </form>
   </div>
-@stop
+@endsection

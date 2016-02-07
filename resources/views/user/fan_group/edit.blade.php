@@ -1,15 +1,15 @@
 @extends('user.public.dialogframe')
-@section('style')
-
-@stop
-@section('content')
+@section('main')
   <div class="dialog-content form">
-    <form action="" method="post">
+    @if(isset($id))
+    <form action="{{ user_url('fan_group/edit/'.$id) }}" method="post">
+    @else
+    <form action="{{ user_url('fan_group/create') }}" method="post">
+    @endif
       <div class="form-body">
         <div class="form-group">
           <label>分组名称</label>
-          <input type="text" name="name" value="" class="form-control" placeholder="">
-          <span class="help-block"></span>
+          <input type="text" name="name" value="{{ $name or '' }}" class="form-control" placeholder="请输入分组名称">
         </div>
       </div>
       <div class="form-actions">
@@ -18,4 +18,4 @@
       </div>
     </form>
   </div>
-@stop
+@endsection

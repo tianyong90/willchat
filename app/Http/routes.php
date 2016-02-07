@@ -68,6 +68,10 @@ Route::group(['middleware' => ['web']], function () {
         //粉丝管理
         Route::get('fans', 'FansController@index');
         Route::get('fans/sync', 'FansController@updateFansData');
+        Route::get('fans/editremark/{id}', 'FansController@getEditRemark');
+        Route::post('fans/editremark/{id}', 'FansController@postEditRemark');
+        Route::get('fans/moveto/{id}', 'FansController@getMoveTo');
+        Route::post('fans/moveto/{id}', 'FansController@postMoveTo');
 
         //二维码
         Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
@@ -81,7 +85,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('fan_group', 'FanGroupController@index');
         Route::get('fan_group/create', 'FanGroupController@getCreate');
         Route::post('fan_group/create', 'FanGroupController@postCreate');
-        Route::get('fan_group/edit/{id}', 'FanGroupController@getEdit');
+        Route::get('fan_group/edit/{id}/{name}', 'FanGroupController@getEdit');
         Route::post('fan_group/edit/{id}', 'FanGroupController@postEdit');
         Route::get('fan_group/destroy/{id}', 'FanGroupController@destroy');
 

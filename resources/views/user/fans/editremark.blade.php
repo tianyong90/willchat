@@ -1,21 +1,16 @@
-@extends('user.public.base')
+@extends('user.public.dialogframe')
 @section('style')
   <style>
-    .dialog-content {
-      width: 400px;
-    }
   </style>
 @stop
 @section('main')
   <div class="dialog-content form">
-    <form action="__SELF__" method="post">
+    <form action="" method="post">
       <div class="form-body">
         <div class="form-group">
           <label>粉丝备注</label>
-          <input type="text" name="remark" value="{$Think.get.remark}" class="form-control" placeholder="">
-          <span class="help-block"></span>
+          <input type="text" name="remark" value="{{ $remark }}" class="form-control" placeholder="请输入备注">
         </div>
-
       </div>
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">保存</button>
@@ -23,4 +18,4 @@
       </div>
     </form>
   </div>
-@stop
+@endsection

@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i> 粉丝列表
       </div>
       <div class="actions">
-        <a href="{{ user_url('fans/sync') }}" class="btn default blue-stripe" target-form="ids"><i class="fa fa-refresh"></i>同步粉丝数据</a>
+        <a href="javascript:;" class="btn default blue-stripe" id="sync"><i class="fa fa-refresh"></i>同步粉丝数据</a>
         <a href="{{ user_url('/') }}" class="btn default blue-stripe dialog-popup" target-form="ids"><i class="fa fa-hand-paper-o"></i>批量移动用户</a>
       </div>
     </div>
@@ -43,7 +43,8 @@
                 <td>{{ $fan->city }}</td>
                 <td>{{ $fan->subscribe_time }}</td>
                 <td>
-                  <a class="btn blue btn-xs" href="{{ user_url('fan/editremark/'.$fan->id) }}"><i class="fa fa-edit"></i>修改备注</a>
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fans/editremark/'.$fan->id) }}"><i class="fa fa-edit"></i>修改备注</a>
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fans/moveto/'.$fan->id) }}"><i class="fa fa-hand-paper-o"></i>移动至分组</a>
                 </td>
               </tr>
             @endforeach
@@ -62,6 +63,21 @@
 @section('js')
   <script>
     $(function () {
+      $('a#sync').click(function(event) {
+        event.preventDefault();
+        var url = "{{ user_url('fans/sync') }}";
+        $.get(url, function(data) {
+          if(data.status) {
+            Base.success(data.info);
+            setTimeout(fucntion(){
+              window.location.reload();
+            }, 2000);
+          } else {
+            Base.error(data.info);
+          }
+        });
+        // return;
+      });
     })
   </script>
 @endsection

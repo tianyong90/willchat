@@ -298,6 +298,14 @@
                     }
                 });
 
+                $(document)
+                    .ajaxStart(function() {
+                        document.loaderIndex = layer.load();
+                    })
+                    .ajaxStop(function() {
+                        layer.close(document.loaderIndex);
+                    });
+
                 //上传文件对话框
                 $('.btn-uploadfile').on('click', function () {
                     var triggerItem=$(this); //触发弹出层的元素
@@ -330,94 +338,19 @@
                     return false;
                 });
 
-                //选择图片文件对话框
-                $('.btn-selectfile').on('click', function () {
-                    //按钮上的参数
-                    var triggerItem=$(this); //触发弹出层的元素
-                    var data=triggerItem.data();
-                    top.dialog({
-                        id: 'dialog-selectfile',
-                        title: '选择文件',
-                        fixed:true,
-                        quickClose: true,
-                        padding: 10,
-                        data: data,
-                        zIndex: 99999,
-                        url: "{:U('User/Dialog/selectfile',array('token'=>$token))}",
-                        okValue: '确定',
-                        cancelValue: '取消',
-                        ok: function() {
-                            //如果选定了文件
-                            if (this.data.filepath) {
-                                var picControl=triggerItem.parents('.pic-control');
-                                //更新输入框值
-                                picControl.find("input.pic-path").val(this.data.filepath);
-                                //更新预览图片
-                                picControl.find("img").attr("src", "__ROOT__"+this.data.filepath);
-                            };
-                            this.close().remove();
-                        },
-                        cancel: function() {
-                        }
-                    })
-                    .show();
-                    return false;
-                });
-
-                //重置图片
-                $('.btn-resetfile').on('click', function () {
-                    var picControl=$(this).parents('.pic-control');
-                    //更新输入框值
-                    picControl.find("input.pic-path").val("");
-                    //更新预览图片
-                    picControl.find("img").attr("src", "__ROOT__/Public/User/images/no_picture.gif");
-                });
-
-                //选择图片文件对话框
-                $('.btn-selectfile').on('click', function () {
-                    var triggerItem=$(this);  //触发弹出层的元素
-                    var data=triggerItem.data();  //按钮上的参数
-                    top.dialog({
-                        id: 'dialog-selectfile',
-                        title: '选择文件',
-                        fixed:true,
-                        quickClose: true,
-                        padding: 10,
-                        data: data,
-                        zIndex: 99999,
-                        url: "{:U('User/Dialog/selectfile')}",
-                        okValue: '确定',
-                        cancelValue: '取消',
-                        ok: function() {
-                            // if (this.data.url) {
-                            //     var inputItem=triggerItem.parents('.input-group').find('input');
-                            //     //更新输入框值
-                            //     inputItem.val(this.data.url);
-                            // };
-                            this.close().remove();
-                        },
-                        cancel: function() {
-                        }
-                    })
-                    .show();
-                    return false;
-                });
-
                 //弹出编辑框
                 $('.dialog-popup').on('click', function () {
-                    var triggerItem=$(this); //触发弹出层的元素
-                    var data=triggerItem.data();
-                    var url=$(this).attr('href');
-                    top.dialog({
-                        id: 'popup-dialog',
+                    var triggerItem = $(this); //触发弹出层的元素
+                    var data = triggerItem.data();
+                    var url = $(this).attr('href');
+                    layer.open({
                         title: ' ',
-                        fixed:true,
-                        data: data,
-                        quickClose: false,
-                        zIndex: 99999,
-                        url: url
-                    })
-                    .show();
+                        type: 2,
+                        shift: 2,
+                        fixed: true,
+                        shadeClose: false, //开启遮罩关闭
+                        content: url
+                    });
                     return false;
                 });
             });

@@ -6,16 +6,10 @@
         <i class="fa fa-users"></i> 粉丝分组
       </div>
       <div class="actions">
-        <a href="{{ user_url('fan_group/create') }}" class="btn default blue-stripe fa fa-plus dialog-popup">添加分组</a>
+        <a href="{{ user_url('fan_group/create') }}" class="btn default blue-stripe dialog-popup"><i class="fa fa-plus"></i>创建分组</a>
       </div>
     </div>
     <div class="portlet-body">
-      <!-- <div class="note note-info">
-          <h4 class="block">特别提示</h4>
-          <p>1、由于微信公众平台接口调用频率有限制，请尽量不要太频繁操作用户分组。若系统提示已超出接口调用频率限制，请稍隔一段时间后再进行操作。</p>
-          <p>2、系统默认的未分组、黑名单以及星标组不允许修改。</p>
-          <p>3、删除分组后对应分组下的粉丝将会移动到默认分组中</p>
-      </div> -->
       <div class="table-scrollable">
         <table class="table table-striped table-hover">
           <thead>
@@ -33,11 +27,11 @@
               <td>{{ $group['name'] }}</td>
               <td>{{ $group['count'] }}</td>
               <td>
-                <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan_group/edit/'.$group['id']) }}"><i
-                      class="fa fa-edit"></i>编辑</a>
-                <button class="btn red btn-xs btn-delete-confirm"
-                        data-link="{{ user_url('fan_group/destroy/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
-                </button>
+                @if($key > 2)
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan_group/edit/'.$group['id'].'/'.$group['name']) }}"><i class="fa fa-edit"></i>编辑</a>
+                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('fan_group/destroy/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
+                  </button>
+                @endif
               </td>
             </tr>
           @endforeach
