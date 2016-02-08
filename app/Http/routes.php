@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('home.index');
+//});
 
 //微信路由
 Route::any('wechat/{token}', 'Server\ServeController@index');
@@ -34,15 +34,13 @@ Route::group(['middleware' => ['web']], function () {
     /*
     * Home
     */
-//    $home = [
-//        'namespace' => 'Home',
-//    ];
-//
-//    Route::group($home, function () {
-//        Route::get('', function () {
-//            return view('home.index');
-//        });
-//    });
+    $home = [
+        'namespace' => 'Home',
+    ];
+
+    Route::group($home, function () {
+        Route::get('/', 'IndexController@index');
+    });
 
     /*
     * User
@@ -50,11 +48,22 @@ Route::group(['middleware' => ['web']], function () {
     $user = [
         'prefix' => 'user',
         'namespace' => 'User',
-//        'middleware' => 'auth',
+        'middleware' => 'auth.user',
     ];
 
     Route::group($user, function () {
         Route::get('/', 'IndexController@index');
+
+        //认证路由
+        Route::get('login', 'AuthController@getLogin');
+        Route::post('login', 'AuthController@postLogin');
+        Route::get('logout', 'AuthController@getLogout');
+
+        Route::get('lock', 'AuthController@lock');
+
+        //注册路由
+        Route::get('register', 'AuthController@getRegister');
+        Route::post('register', 'AuthController@postRegister');
 
         //公众号管理
         Route::get('account/create', 'AccountController@getCreate');
@@ -79,7 +88,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('qrcode/create', 'QrcodeController@postCreate');
         Route::get('qrcode/download/{id?}', 'QrcodeController@download');
         Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
-
 
         //粉丝分组
         Route::get('fan_group', 'FanGroupController@index');
@@ -108,9 +116,6 @@ Route::group(['middleware' => ['web']], function () {
         //头像设置
         Route::get('avatar', 'AvatarController@index');
         Route::post('avatar', 'AvatarController@store');
-
-        Route::get('lock', 'LockController@index');
-        Route::get('logout', 'LockController@index');
 
         //个人信息
         Route::get('profile/index', 'ProfileController@index');

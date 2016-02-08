@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -31,13 +32,41 @@ class AuthController extends Controller
     protected $redirectTo = '/user';
 
     /**
+     * Where to redirect users after logout.
+     *
+     * @var string
+     */
+    protected $redirectAfterLogout = '/';
+
+    /**
+     * Login view.
+     *
+     * @var string
+     */
+    protected $loginView = 'user.auth.login';
+
+    /**
+     * Logout view.
+     *
+     * @var string
+     */
+    protected $registerView = 'user.auth.login';
+
+    /**
+     * Login via username.
+     *
+     * @var string
+     */
+    protected $username = 'name';
+
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+//        $this->middleware('guest', ['except' => ['user/logout', 'user/lock']]);
     }
 
     /**
@@ -68,5 +97,31 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Lockscreen.
+     *
+     * @return mixed
+     */
+    public function lock()
+    {
+        if(Auth::check()) {
+            $lockedName = Auth::user()->name;
+
+            // Store userinfo in session.
+            \Session::put('locked_name', $lockedName, 60);
+
+            // logout
+            Auth::guard($this->getGuard())->logout();
+        } else {
+            $lockedName = \Session::get('locked_name');
+        }
+
+        if(!$lockedName) {
+            return redirect('user/login');
+        }
+
+        return user_view('auth.lock')->with(['locked_name' => $lockedName]);
     }
 }

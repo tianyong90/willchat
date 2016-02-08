@@ -41,17 +41,21 @@
     <div class="lock-body">
       <div class="pull-left lock-avatar-block">
         <img src="{{ asset('static') }}/metronic/pages/media/profile/photo3.jpg" class="lock-avatar"> </div>
-      <form class="lock-form pull-left" action="index.html" method="post">
-        <h4>Tianyong90</h4>
+      <form class="lock-form pull-left" action="{{ user_url('login') }}" method="post">
+        
+        {!! csrf_field() !!}
+
+        <h4>{{ $locked_name }}</h4>
         <div class="form-group">
+          <input type="hidden" name="name" value="{{ $locked_name }}" />
           <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>
         <div class="form-actions">
-          <button type="submit" class="btn red uppercase">Login</button>
+          <button type="submit" class="btn red uppercase">登录</button>
         </div>
       </form>
     </div>
     <div class="lock-bottom">
-      <a href="">换用其它账号登录</a>
+      <a href="{{ user_url('login') }}">换用其它账号登录</a>
     </div>
   </div>
   <div class="page-footer-custom"> 2016 &copy; WillChat by Tianyong90. </div>

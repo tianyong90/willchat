@@ -69,14 +69,11 @@
         $.get(url, function(data) {
           if(data.status) {
             Base.success(data.info);
-            setTimeout(fucntion(){
-              window.location.reload();
-            }, 2000);
+            setTimeout(function(){window.location.reload()}, 2000);
           } else {
             Base.error(data.info);
           }
         });
-        // return;
       });
     })
   </script>
