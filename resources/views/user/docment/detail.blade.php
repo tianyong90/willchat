@@ -23,20 +23,23 @@
         </div>
         <div class="portlet-body">
           <div id="article-main">
-            <h2 class="title">{$info.title}</h2>
-                            <span class="article-info">
-                                <span> 发表于 {$info.create_time|date='Y-m-d H:i',###}</span>
-                                <span> 最后更新 {$info.update_time|date='Y-m-d H:i',###}</span>
-                            </span>
-            <section id="contents">{$info.content}</section>
-                            <span class="pagination">
-                                <article:prev name="prev" info="info">
-                                  <a href="{{ user_url('/') }}">上一篇</a>
-                                </article:prev>
-                                <article:next name="next" info="info">
-                                  <a href="{{ user_url('/') }}">下一篇</a>
-                                </article:next>
-                            </span>
+            <h2 class="title">{{ $article->title }}</h2>
+              <span class="article-info">
+                <span> 发表于 {{ $article->published_at }}</span>
+                <span> 最后更新 {{ $article->updated_at }}</span>
+              </span>
+            <div id="contents">{{ $article->content }}</div>
+            <span class="return-list">
+              <a href="{{ user_url('document') }}">返回文档列表</a>
+            </span>
+            <span class="pagination">
+              <article:prev name="prev" info="info">
+                <a href="{{ user_url('document/detail/'.$prevId) }}">上一篇</a>
+              </article:prev>
+              <article:next name="next" info="info">
+                <a href="{{ user_url('document/detail/'.$nextId) }}">下一篇</a>
+              </article:next>
+            </span>
           </div>
         </div>
       </div>

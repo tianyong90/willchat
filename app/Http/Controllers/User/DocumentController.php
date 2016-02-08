@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 
 class DocumentController extends Controller
 {
@@ -16,8 +17,9 @@ class DocumentController extends Controller
      */
     public function index()
     {
+        $articles = Article::paginate(10);
 
-        return user_view('docment.index');
+        return user_view('docment.index', compact('articles'));
     }
 
     /**
@@ -29,7 +31,11 @@ class DocumentController extends Controller
      */
     public function detail($id)
     {
+        $article = Article::find($id);
 
-        return user_view('docment.detail');
+        $prevId = $id > 1 ? $id-1 : 1;
+        $nextId = $id > 1 ? $id-1 : 1;
+
+        return user_view('docment.detail', compact('article', 'prevId', 'nextId'));
     }
 }

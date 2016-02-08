@@ -18,6 +18,9 @@ class ProfileController extends Controller
     {
     }
 
+    /**
+     * @return mixed
+     */
     public function getIndex()
     {
         $user = auth()->user();
@@ -25,11 +28,30 @@ class ProfileController extends Controller
         return user_view('profile.index', compact('user'));
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postIndex(Request $request)
+    {
+
+        return success('修改成功');
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return user_view('profile.password');
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function postPassword(Request $request)
     {
         //TODO: 发送改密通知邮件

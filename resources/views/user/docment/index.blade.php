@@ -22,20 +22,14 @@
         </div>
         <div class="portlet-body">
           <ul id="article-list">
-            <volist name="list" id="vo">
+            @foreach($articles as $key => $article)
               <li>
-                <a class="title"
-                   href="{{ user_url('/') }}"
-                   title="{$vo.title}">{$vo.title}</a>
-                <span class="time">{$vo.create_time|time_format}</span>
+                <a class="title" href="{{ user_url('document/detail/'.$article->id) }}" title="{{ $article->title }}">{{ str_limit($article->title, 40) }}</a>
+                <span class="time">{{ $article->published_at }}</span>
               </li>
-            </volist>
+            @endforeach
           </ul>
-          <div class="page">
-            <div class="pagination pagination-right">
-              {$_page|default=''}
-            </div>
-          </div>
+          {!! $articles->render() !!}
         </div>
       </div>
     </div>
