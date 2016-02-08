@@ -21,7 +21,7 @@
           </ul>
         </div>
         <div class="portlet-body form">
-          <form action="__SELF__" method="post" class="form-horizontal" role="form">
+          <form action="" method="post" class="form-horizontal" role="form">
             <div class="form-body">
               <div class="form-group">
                 <label class="col-md-2 control-label">原密码</label>
@@ -38,7 +38,7 @@
               <div class="form-group">
                 <label class="col-md-2 control-label">确认新密码</label>
                 <div class="col-md-6">
-                  <input type="password" name="repassword" class="form-control"/>
+                  <input type="password" name="password_confirmation" class="form-control"/>
                 </div>
               </div>
             </div>

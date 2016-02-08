@@ -40,15 +40,16 @@
     <div class="lock-head"> 锁屏中…… </div>
     <div class="lock-body">
       <div class="pull-left lock-avatar-block">
-        <img src="{{ asset('static') }}/metronic/pages/media/profile/photo3.jpg" class="lock-avatar"> </div>
+        <img src="{{ asset($lockedAvatar) }}" class="lock-avatar"> </div>
       <form class="lock-form pull-left" action="{{ user_url('login') }}" method="post">
         
         {!! csrf_field() !!}
 
-        <h4>{{ $locked_name }}</h4>
+        <h4>{{ $lockedName }}</h4>
         <div class="form-group">
-          <input type="hidden" name="name" value="{{ $locked_name }}" />
-          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>
+          <input type="hidden" name="name" value="{{ $lockedName }}" />
+          <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" />
+        </div>
         <div class="form-actions">
           <button type="submit" class="btn red uppercase">登录</button>
         </div>

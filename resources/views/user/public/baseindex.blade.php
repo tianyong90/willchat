@@ -51,7 +51,7 @@
                 <div class="page-logo">
                     <a href="{{ user_url('/') }}">
                         <img src="{{ asset('images') }}/user/logo_purple.png" alt="logo" class="logo-default" height="25" /> </a>
-                    <div class="menu-toggler sidebar-toggler">
+                    <div class="menu-toggler sidebar-toggler hide">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                     </div>
                 </div>
@@ -71,9 +71,10 @@
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user dropdown-dark">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <span class="username username-hide-on-mobile"> Nick </span>
+                                    <span class="username username-hide-on-mobile"> {{ auth()->user()->name }} </span>
                                     <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                                    <img alt="" class="img-circle" src="{{ asset('images') }}/user/defaultavatar.png" /> </a>
+                                    <!-- <img alt="" class="img-circle" src="{{ asset('images') }}/user/defaultavatar.png" /> </a> -->
+                                    <img alt="" class="img-circle" src="{{ asset('') . auth()->user()->avatar }}" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
                                         <a href="{{ user_url('profile/index') }}">
@@ -118,11 +119,11 @@
                                 <div class="portlet light profile-sidebar-portlet bordered">
                                     <!-- SIDEBAR USERPIC -->
                                     <div class="profile-userpic">
-                                        <img src="{{ asset('images') }}/user/defaultavatar.png" class="img-responsive" alt=""> </div>
+                                        <img src="{{ asset('') . auth()->user()->avatar }}" class="img-responsive" alt=""> </div>
                                     <!-- END SIDEBAR USERPIC -->
                                     <!-- SIDEBAR USER TITLE -->
                                     <div class="profile-usertitle">
-                                        <div class="profile-usertitle-name"> Marcus Doe </div>
+                                        <div class="profile-usertitle-name"> {{ auth()->user()->name }} </div>
                                         <div class="profile-usertitle-job"> Developer </div>
                                     </div>
                                     <!-- END SIDEBAR USER TITLE -->

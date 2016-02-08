@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-sm-5">
                   <div class="avatar-wrapper">
-                    <img id="avatar" src="" alt="">
+                    <img id="avatar" src="{{ asset(auth()->user()->avatar) }}" alt="">
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -108,7 +108,9 @@
       $('button#save-avatar').click(function (event) {
         var cropData = $avatar.cropper('getData', true);
 
+        // 设置csrf_token，否则 CSRF 验证会失败
         cropData._token = '{{ csrf_token() }}';
+
         //上传
         $avatarFileInput.uploader({
           url: "{{ user_url('avatar') }}",

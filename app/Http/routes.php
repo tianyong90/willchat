@@ -118,8 +118,10 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('avatar', 'AvatarController@store');
 
         //个人信息
-        Route::get('profile/index', 'ProfileController@index');
-        Route::get('profile/password', 'ProfileController@password');
+        Route::get('profile/index', 'ProfileController@getIndex');
+        Route::post('profile/index', 'ProfileController@postIndex');
+        Route::get('profile/password', 'ProfileController@getPassword');
+        Route::post('profile/password', 'ProfileController@postPassword');
     });
 
     /*

@@ -108,20 +108,23 @@ class AuthController extends Controller
     {
         if(Auth::check()) {
             $lockedName = Auth::user()->name;
+            $lockedAvatar = Auth::user()->avatar;
 
             // Store userinfo in session.
             \Session::put('locked_name', $lockedName, 60);
+            \Session::put('locked_avatar', $lockedAvatar, 60);
 
             // logout
             Auth::guard($this->getGuard())->logout();
         } else {
             $lockedName = \Session::get('locked_name');
+            $lockedAvatar = \Session::get('locked_avatar');
         }
 
         if(!$lockedName) {
             return redirect('user/login');
         }
 
-        return user_view('auth.lock')->with(['locked_name' => $lockedName]);
+        return user_view('auth.lock', compact('lockedName', 'lockedAvatar'));
     }
 }

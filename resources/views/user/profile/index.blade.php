@@ -26,43 +26,44 @@
               <div class="form-group">
                 <label class="col-md-2 control-label">用户名</label>
                 <div class="col-md-6">
-                  <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-2 control-label">昵称</label>
-                <div class="col-md-6">
-                  <input type="text" name="nickname" value="field" placeholder="" class="form-control"/>
+                  <input type="text" name="" value="{{ $user->name }}" placeholder="" class="form-control" readonly/>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-2 control-label">Email</label>
                 <div class="col-md-6">
-                  <input type="text" name="" value="field" placeholder="" class="form-control" readonly/>
+                  <input type="text" name="" value="{{ $user->email }}" placeholder="" class="form-control" readonly/>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-2 control-label">联系电话</label>
+                <label class="col-md-2 control-label">昵称</label>
                 <div class="col-md-6">
-                  <input type="text" name="mobile" value="field" placeholder="" class="form-control" readonly/>
+                  <input type="text" name="nickname" value="{{ $user->nickname }}" placeholder="" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">手机号</label>
+                <div class="col-md-6">
+                  <input type="text" name="mobile" value="{{ $user->mobile }}" placeholder="" class="form-control" />
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-2 control-label">QQ号码</label>
                 <div class="col-md-6">
-                  <input type="text" name="qq" value="field" placeholder="" class="form-control"/>
+                  <input type="text" name="qq" value="{{ $user->qq }}" placeholder="" class="form-control"/>
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-md-2 control-label">生日</label>
+                <label class="col-md-2 control-label">最后登录时间</label>
                 <div class="col-md-6">
-                  <input type="text" name="birthday" value="field" placeholder="" class="form-control"/>
+                  <input type="text" name="" value="{{ $user->last_login_at }}" placeholder="" class="form-control"
+                         readonly/>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-2 control-label">最后登录IP</label>
                 <div class="col-md-6">
-                  <input type="text" name="" value="field" placeholder="" class="form-control"
+                  <input type="text" name="" value="{{ $user->last_login_ip }}" placeholder="" class="form-control"
                          readonly/>
                 </div>
               </div>
