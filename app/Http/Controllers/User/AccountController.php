@@ -28,7 +28,7 @@ class AccountController extends Controller
      */
     public function getCreate()
     {
-        return user_view('index.add');
+        return user_view('account.add');
     }
 
     /**
@@ -56,7 +56,7 @@ class AccountController extends Controller
     {
         $accountInfo = $this->accountRepository->getById($id);
 
-        return user_view('index.add', compact('accountInfo'));
+        return user_view('account.add', compact('accountInfo'));
     }
 
     /**
@@ -86,7 +86,7 @@ class AccountController extends Controller
         //公众号对应的 token
         $token = $this->accountRepository->getById($id)->token;
 
-        return user_view('index.interface', compact('token'));
+        return user_view('account.interface', compact('token'));
     }
 
     /**

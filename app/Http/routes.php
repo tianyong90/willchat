@@ -48,7 +48,7 @@ Route::group(['middleware' => ['web']], function () {
     ];
 
     Route::group($user, function () {
-        Route::get('/', 'IndexController@index');
+        Route::get('/', 'DashboardController@index');
 
         //认证路由
         Route::get('login', 'AuthController@getLogin');

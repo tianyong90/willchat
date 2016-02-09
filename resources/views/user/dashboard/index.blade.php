@@ -1,4 +1,4 @@
-@extends('user.public.baseindex')
+@extends('user.layouts.baseindex')
 @section('main')
   <!-- BEGIN PORTLET -->
   <div class="portlet light ">

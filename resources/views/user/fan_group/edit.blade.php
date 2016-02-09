@@ -1,4 +1,4 @@
-@extends('user.public.dialogframe')
+@extends('user.layouts.dialogframe')
 @section('main')
   <div class="dialog-content form">
     @if(isset($id))

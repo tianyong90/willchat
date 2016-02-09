@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.layouts.base')
 @section('main')
   <div class="portlet light">
     <div class="portlet-title">

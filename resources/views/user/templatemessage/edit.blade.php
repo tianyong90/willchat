@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.layouts.base')
 @section('main')
   <!-- BEGIN PAGE CONTENT-->
   <div class="dialog-content form">

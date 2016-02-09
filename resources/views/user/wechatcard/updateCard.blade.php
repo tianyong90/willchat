@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.layouts.base')
 @section('style')
   <link rel="stylesheet" href="{{ asset('css') }}/user/metronicuser.css"/>
   <link rel="stylesheet" type="text/css"
