@@ -108,12 +108,10 @@
       $('button#save-avatar').click(function (event) {
         var cropData = $avatar.cropper('getData', true);
 
-        console.log(cropData);
-
         // 设置csrf_token，否则 CSRF 验证会失败
         cropData._token = '{{ csrf_token() }}';
 
-        //上传
+        // 上传
         $avatarFileInput.uploader({
           url: "{{ user_url('avatar') }}",
           dataType: 'json',
@@ -151,21 +149,21 @@
         $avatarFileInput.uploader('upload');
       });
 
-      //图片转动滑块
+      // 旋转图片
+      function rotateImg() {
+        var rotatedDegree = $("#rotate-slider").slider('value');
+        $avatar.cropper('setData', {rotate: rotatedDegree});
+      }
+
+      // 图片转动滑块
       $("#rotate-slider").slider({
         min: 0,
         max: 360,
-        step: 10,
+        step: 1,
         value: 0,
-        change: function (event, ui) {
-          var data = $avatar.cropper('getData');
-          //之前已经旋转的角度
-          var oldDegree = data.rotate;
-          var rotateDegree = ui.value - oldDegree;
-          $avatar.cropper('rotate', rotateDegree);
-        }
+        change: rotateImg,
+        slide: rotateImg
       });
-
     })
   </script>
 @stop
