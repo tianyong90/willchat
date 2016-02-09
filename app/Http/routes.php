@@ -70,45 +70,6 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('account/interface/{id}', 'AccountController@showInterface');
         Route::get('account/manage/{id}', 'AccountController@getManage');
 
-        //粉丝管理
-        Route::get('fans', 'FansController@index');
-        Route::get('fans/sync', 'FansController@updateFansData');
-        Route::get('fans/editremark/{id}', 'FansController@getEditRemark');
-        Route::post('fans/editremark/{id}', 'FansController@postEditRemark');
-        Route::get('fans/moveto/{id}', 'FansController@getMoveTo');
-        Route::post('fans/moveto/{id}', 'FansController@postMoveTo');
-
-        //二维码
-        Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
-        Route::get('qrcode/create', 'QrcodeController@getCreate');
-        Route::post('qrcode/create', 'QrcodeController@postCreate');
-        Route::get('qrcode/download/{id?}', 'QrcodeController@download');
-        Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
-
-        //粉丝分组
-        Route::get('fan_group', 'FanGroupController@index');
-        Route::get('fan_group/create', 'FanGroupController@getCreate');
-        Route::post('fan_group/create', 'FanGroupController@postCreate');
-        Route::get('fan_group/edit/{id}/{name}', 'FanGroupController@getEdit');
-        Route::post('fan_group/edit/{id}', 'FanGroupController@postEdit');
-        Route::get('fan_group/destroy/{id}', 'FanGroupController@destroy');
-
-        //微信红包
-        Route::get('luckymoney', 'LuckyMoneyController@index');
-
-        //功能列表
-        Route::get('function', 'SystemFunctionController@index');
-
-        //帮助文档
-        Route::get('document/index/{type}/{keyword?}', 'DocumentController@index');
-        Route::get('document/detail/{id}', 'DocumentController@detail');
-
-        //自定义菜单
-        Route::get('menu', 'MenuController@index');
-
-        //数据统计与分析
-        Route::get('stats', 'DataStatsController@index');
-
         //头像设置
         Route::get('avatar', 'AvatarController@index');
         Route::post('avatar', 'AvatarController@store');
@@ -118,6 +79,51 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('profile/index', 'ProfileController@postIndex');
         Route::get('profile/password', 'ProfileController@getPassword');
         Route::post('profile/password', 'ProfileController@postPassword');
+
+        //帮助文档
+        Route::get('document/index/{type}/{keyword?}', 'DocumentController@index');
+        Route::get('document/detail/{id}', 'DocumentController@detail');
+
+        // 某一公众号相关的路由
+        Route::group(['middleware' => 'account'], function() {
+            //粉丝管理
+            Route::get('fans', 'FansController@index');
+            Route::get('fans/sync', 'FansController@updateFansData');
+            Route::get('fans/editremark/{id}', 'FansController@getEditRemark');
+            Route::post('fans/editremark/{id}', 'FansController@postEditRemark');
+            Route::get('fans/moveto/{id}', 'FansController@getMoveTo');
+            Route::post('fans/moveto/{id}', 'FansController@postMoveTo');
+
+            //二维码
+            Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
+            Route::get('qrcode/create', 'QrcodeController@getCreate');
+            Route::post('qrcode/create', 'QrcodeController@postCreate');
+            Route::get('qrcode/download/{id?}', 'QrcodeController@download');
+            Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
+
+            //粉丝分组
+            Route::get('fan_group', 'FanGroupController@index');
+            Route::get('fan_group/create', 'FanGroupController@getCreate');
+            Route::post('fan_group/create', 'FanGroupController@postCreate');
+            Route::get('fan_group/edit/{id}/{name}', 'FanGroupController@getEdit');
+            Route::post('fan_group/edit/{id}', 'FanGroupController@postEdit');
+            Route::get('fan_group/destroy/{id}', 'FanGroupController@destroy');
+
+            //微信红包
+            Route::get('luckymoney', 'LuckyMoneyController@index');
+
+            //功能列表
+            Route::get('function', 'SystemFunctionController@index');
+
+            //自定义菜单
+            Route::get('menu', 'MenuController@index');
+
+            //数据统计与分析
+            Route::get('stats', 'DataStatsController@index');
+
+
+
+        });
     });
 
     /*
