@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Events\PasswordUpdated;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -58,7 +59,8 @@ class ProfileController extends Controller
      */
     public function postPassword(Request $request)
     {
-        //TODO: 发送改密通知邮件
+        // 发送改密通知邮件
+        event(new PasswordUpdated(auth()->user()));
 
         $this->validate($request, [
             'old' => 'required',

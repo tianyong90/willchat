@@ -10,7 +10,10 @@
           </div>
         </div>
         <div class="portlet-body">
-          <p>Interface information goes here.</p>
+          <div class="note note-info">
+            服务器URL：{{ config('app.url') . '/wechat/' .$accountInfo->token  }}<br />
+            TOKEN：{{ $accountInfo->token }}
+          </div>
         </div>
       </div>
     </div>

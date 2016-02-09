@@ -14,13 +14,13 @@ class FanRepository
     /**
      * Fan.
      *
-     * @var Fans
+     * @var
      */
     protected $model;
 
-    public function __construct()
+    public function __construct(Fan $fan)
     {
-        $this->model = new Fan();
+        $this->model = $fan;
     }
 
     /**

@@ -13,13 +13,13 @@ class MenuController extends Controller
 {
     public function index()
     {
-//        $options = get_wechat_options();
-//
-//        $app = new Application($options);
-//
-//        $menu = $app->menu;
-//
-//        $menuList = $menu->current();
+        $options = get_wechat_options(1);
+
+        $app = new Application($options);
+
+        $menu = $app->menu;
+
+        $menuList = $menu->current();
 
         return user_view('menu.index');
     }

@@ -51,18 +51,20 @@ function make_api_url($tag)
 /**
  * 获取微信公众号配置参数
  *
- * @param int $id
- * @param int $type
+ * @param int  $accountId
+ * @param bool $byToken
  *
  * @return array
  */
-function get_wechat_options($id = 1, $type = 1)
+function get_wechat_options($accountId = 1, $byToken = false)
 {
+    $accountData = \App\Models\Account::find($accountId);
+
     $options = [
         'debug' => true,
-        'app_id' => env('WECHAT_APPID'),
-        'secret' => env('WECHAT_APPSECRET'),
-        'token' => env('WECHAT_TOKEN'),
+        'app_id' => $accountData->app_id,
+        'secret' => $accountData->app_secret,
+        'token' => $accountData->token,
         // log
         'log' => [
             'level' => \Monolog\Logger::DEBUG,
@@ -74,10 +76,10 @@ function get_wechat_options($id = 1, $type = 1)
             'callback' => '/examples/oauth_callback.php',
         ],
         'payment' => [
-            'merchant_id' => env('WECHAT_MERCHANT_ID'),
-            'key' => env('WECHAT_MERCHANT_KEY'),
-            'cert_path' => env('CERT_PATH'),
-            'key_path' => env('KEY_PATH'),
+            'merchant_id' => $accountData->merchant_id,
+            'key' => $accountData->key,
+            'cert_path' => $accountData->cert_path,
+            'key_path' => $accountData->key_path,
         ],
     ];
 

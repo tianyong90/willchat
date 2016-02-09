@@ -14,13 +14,17 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('token', 20)->unique();
-            $table->integer('owner_id');
-            $table->string('name', 25);
-            $table->tinyInteger('type');
-            $table->char('app_id', 18);
-            $table->char('app_secret', 33);
-            $table->char('aes_key', 44);
+            $table->string('token', 20)->unique()->comment('公众号TOKEN');
+            $table->integer('owner_id')->comment('公众号主人ID');
+            $table->string('name', 25)->comment('公众号名称');
+            $table->tinyInteger('type')->comment('类型');
+            $table->char('app_id', 18)->comment('appid');
+            $table->char('app_secret', 33)->comment('appsecret');
+            $table->char('aes_key', 44)->comment('encodingaeskey');
+            $table->char('merchant_id', 10)->comment('商户号');
+            $table->char('key', 33)->comment('支付密码');
+            $table->string('cert_path', 125)->comment('商户证书路径');
+            $table->string('key_path', 125)->comment('密钥证书路径');
             $table->softDeletes();
             $table->timestamps();
         });

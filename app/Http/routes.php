@@ -12,7 +12,7 @@
 */
 
 //微信路由
-Route::any('wechat/{token}', 'Server\ServeController@index');
+Route::any('wechat/{token}', 'Server\ServeController@serv');
 
 /*
 |--------------------------------------------------------------------------

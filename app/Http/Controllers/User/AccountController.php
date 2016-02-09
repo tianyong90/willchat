@@ -83,7 +83,9 @@ class AccountController extends Controller
      */
     public function showInterface($id)
     {
-        return user_view('index.interface');
+        $accountInfo = $this->accountRepository->getById($id);
+
+        return user_view('index.interface', compact('accountInfo'));
     }
 
     /**
@@ -109,6 +111,7 @@ class AccountController extends Controller
     public function destroy($id)
     {
         $this->accountRepository->destroy($id);
+
         return success('删除成功！');
     }
 }

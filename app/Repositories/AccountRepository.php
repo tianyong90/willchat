@@ -50,13 +50,13 @@ class AccountRepository
     /**
      * 根据tag获取公众号.
      *
-     * @param string $tag tag
+     * @param string $token tag
      *
      * @return Model
      */
-    public function getByTag($tag)
+    public function getByToken($token)
     {
-        return $this->model->where('tag', $tag)->first();
+        return $this->model->where('token', $token)->first();
     }
 
     /**
