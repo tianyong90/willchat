@@ -35,6 +35,10 @@ class ProfileController extends Controller
      */
     public function postIndex(Request $request)
     {
+        $user = Auth::user();
+
+        $user->fill($request->all());
+        $user->save();
 
         return success('修改成功');
     }
@@ -56,11 +60,17 @@ class ProfileController extends Controller
     {
         //TODO: 发送改密通知邮件
 
-        $oldPassword = $request->input('old');
+        $this->validate($request, [
+            'old' => 'required',
+            'password' => 'required|confirmed',
+        ]);
 
         // 验证原密码
-        if (Auth::attempt(array('name' => Auth::user()->name, 'password' => $oldPassword), true)) {
-            //TODO: 修改密码
+        if (Auth::attempt(array('name' => Auth::user()->name, 'password' => $request->old), true)) {
+            // 修改密码
+            $user = Auth::user();
+            $user->password = bcrypt($request->password);
+            $user->save();
 
             return success('修改成功');
         } else {

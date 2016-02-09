@@ -108,6 +108,8 @@
       $('button#save-avatar').click(function (event) {
         var cropData = $avatar.cropper('getData', true);
 
+        console.log(cropData);
+
         // 设置csrf_token，否则 CSRF 验证会失败
         cropData._token = '{{ csrf_token() }}';
 

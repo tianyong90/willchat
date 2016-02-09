@@ -11,10 +11,6 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('home.index');
-//});
-
 //微信路由
 Route::any('wechat/{token}', 'Server\ServeController@index');
 
