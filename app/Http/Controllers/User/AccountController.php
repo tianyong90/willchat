@@ -83,9 +83,10 @@ class AccountController extends Controller
      */
     public function showInterface($id)
     {
-        $accountInfo = $this->accountRepository->getById($id);
+        //公众号对应的 token
+        $token = $this->accountRepository->getById($id)->token;
 
-        return user_view('index.interface', compact('accountInfo'));
+        return user_view('index.interface', compact('token'));
     }
 
     /**
