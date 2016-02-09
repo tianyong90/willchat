@@ -23,23 +23,42 @@ var Base=function(){
         });
     };
 
-    var initAjaxForm=function(){
+    var initAjaxForm = function() {
         //表单默认以AJAX提交并提示处理结果，提升用户体验，如果不要AJAX提交则在form添加no-ajax类
         $("form").not('.validate').submit(function (event) {
             var url = $(this).attr('action');
             var submitData = $(this).serialize();
-            $.post(url, submitData, function (data, textStatus, xhr) {
-                if (data.status) {
-                    Base.success(data.info);
-                    if(data.url){
-                        setTimeout(function(){top.location.href=data.url}, 2000);
-                    }else{
-                        setTimeout(function(){top.location.reload()}, 2000);
-                    }
-                } else {
-                    Base.error(data.info);
+            $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: submitData,
+            })
+            .done(function(data, textStatus, jqXHR) {
+                Base.success(data.info);
+                if(data.url){
+                    setTimeout(function(){top.location.href=data.url}, 2000);
+                }else{
+                    setTimeout(function(){top.location.reload()}, 2000);
                 }
-            }, 'json');
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                var errors = jqXHR.responseJSON;
+                var formItem = $('form');
+                // 清除旧的错误提示
+                formItem.find('.alert').remove();
+
+                $.each(errors, function(index, val) {
+                    var errorMsg = val[0];
+
+                    var errorAlert = $("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\"></button><strong>验证错误!</strong> "+errorMsg+" </div>");
+                    formItem.prepend(errorAlert);
+                });
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
             return false;
         });
     };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Events\PasswordUpdated;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\User\Profile\UserinfoRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 USE Illuminate\Support\Facades\Auth;
@@ -33,12 +34,18 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postIndex(Request $request)
+    public function postIndex(UserinfoRequest $request)
     {
-        $user = Auth::user();
+//        $this->validate($request, [
+//            'aaa' => 'required'
+//        ]);
 
-        $user->fill($request->all());
-        $user->save();
+//        $user = Auth::user();
+//
+//        $user->fill($request->all());
+//        $user->save();
+
+//        return redirect(user_url(''))->withMessage('创建成功！');
 
         return success('修改成功');
     }

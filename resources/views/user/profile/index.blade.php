@@ -22,6 +22,7 @@
         </div>
         <div class="portlet-body form">
           <form action="" method="post" class="form-horizontal" role="form">
+            {!! csrf_field() !!}
             <div class="form-body">
               <div class="form-group">
                 <label class="col-md-2 control-label">用户名</label>
