@@ -36,16 +36,10 @@ class ProfileController extends Controller
      */
     public function postIndex(UserinfoRequest $request)
     {
-//        $this->validate($request, [
-//            'aaa' => 'required'
-//        ]);
+        $user = Auth::user();
 
-//        $user = Auth::user();
-//
-//        $user->fill($request->all());
-//        $user->save();
-
-//        return redirect(user_url(''))->withMessage('创建成功！');
+        $user->fill($request->all());
+        $user->save();
 
         return success('修改成功');
     }
