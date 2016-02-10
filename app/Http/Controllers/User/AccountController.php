@@ -6,6 +6,8 @@ use App\Repositories\AccountRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\CreateRequest;
+use App\Http\Requests\Account\UpdateRequest;
 
 class AccountController extends Controller
 {
@@ -38,7 +40,7 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postCreate(Request $request)
+    public function postCreate(CreateRequest $request)
     {
         $this->accountRepository->store($request);
 
@@ -67,7 +69,7 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postEdit(Request $request, $id)
+    public function postEdit(UpdateRequest $request, $id)
     {
         $this->accountRepository->update($id, $request);
 

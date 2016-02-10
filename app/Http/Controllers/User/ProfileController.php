@@ -5,8 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Events\PasswordUpdated;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\User\Profile\UserinfoRequest;
-use App\Http\Requests\User\Profile\PasswordRequest;
+use App\Http\Requests\User\UserinfoRequest;
+use App\Http\Requests\User\PasswordRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 USE Illuminate\Support\Facades\Auth;
