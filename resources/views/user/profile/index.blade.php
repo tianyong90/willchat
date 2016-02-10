@@ -55,17 +55,21 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-md-2 control-label">注册时间</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="{{ $user->created_at }}" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-md-2 control-label">最后登录时间</label>
                 <div class="col-md-6">
-                  <input type="text" name="" value="{{ $user->last_login_at }}" placeholder="" class="form-control"
-                         readonly/>
+                  <input type="text" name="" value="{{ $user->last_login_at }}" placeholder="" class="form-control" readonly/>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-2 control-label">最后登录IP</label>
                 <div class="col-md-6">
-                  <input type="text" name="" value="{{ $user->last_login_ip }}" placeholder="" class="form-control"
-                         readonly/>
+                  <input type="text" name="" value="{{ $user->last_login_ip }}" placeholder="" class="form-control" readonly/>
                 </div>
               </div>
             </div>

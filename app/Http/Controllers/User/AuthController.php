@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -97,6 +99,22 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * 登录成功后操作
+     *
+     * @param Request $request
+     * @param User    $user
+     */
+    public function authenticated(Request $request, User $user)
+    {
+        // 最后登录时间和IP
+        $user->last_login_at = \Carbon\Carbon::create();
+        $user->last_login_ip = $request->getClientIp();
+        $user->save();
+
+        return redirect()->intended($this->redirectPath());
     }
 
     /**

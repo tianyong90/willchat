@@ -6,6 +6,7 @@ use App\Events\PasswordUpdated;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\User\Profile\UserinfoRequest;
+use App\Http\Requests\User\Profile\PasswordRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 USE Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class ProfileController extends Controller
     /**
      * @return mixed
      */
-    public function getIndex()
+    public function getUserinfo()
     {
         $user = auth()->user();
 
@@ -34,7 +35,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postIndex(UserinfoRequest $request)
+    public function postUserinfo(UserinfoRequest $request)
     {
         $user = Auth::user();
 
@@ -57,22 +58,17 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postPassword(Request $request)
+    public function postPassword(PasswordRequest $request)
     {
-        // 发送改密通知邮件
-        event(new PasswordUpdated(auth()->user()));
-
-        $this->validate($request, [
-            'old' => 'required',
-            'password' => 'required|confirmed',
-        ]);
-
         // 验证原密码
         if (Auth::attempt(array('name' => Auth::user()->name, 'password' => $request->old), true)) {
             // 修改密码
             $user = Auth::user();
             $user->password = bcrypt($request->password);
             $user->save();
+
+            // 发送改密通知邮件
+            event(new PasswordUpdated(auth()->user()));
 
             return success('修改成功');
         } else {

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile', 12)->comment('手机号');
             $table->string('qq', 10)->comment('qq号');
             $table->timestamp('last_login_at')->nullable()->comment('最后登录时间');
-            $table->integer('last_login_ip')->comment('最后登录IP');
+            $table->string('last_login_ip', 45)->comment('最后登录IP');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -71,7 +71,7 @@
                                     <img alt="" class="img-circle" src="{{ asset('') . auth()->user()->avatar }}" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="{{ user_url('profile/index') }}">
+                                        <a href="{{ user_url('profile/userinfo') }}">
                                             <i class="icon-user"></i> 个人信息 </a>
                                     </li>
                                     <li class="divider"> </li>

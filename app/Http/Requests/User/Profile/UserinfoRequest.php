@@ -3,7 +3,6 @@
 namespace App\Http\Requests\User\Profile;
 
 use App\Http\Requests\Request;
-use App\Models\User;
 
 class UserinfoRequest extends Request
 {
@@ -15,8 +14,9 @@ class UserinfoRequest extends Request
     public function rules()
     {
         return [
-            'nickname' => 'required',
-            'mobile' => 'required',
+            'nickname' => 'between:1,20',
+            'mobile' => 'regex:/^1[3,5,7,8]\d{9}$/',
+            'qq' => 'digits_between:5,10',
         ];
     }
 }
