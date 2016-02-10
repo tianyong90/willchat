@@ -41,17 +41,4 @@ trait BaseRepository
     {
         return $this->model->find($id);
     }
-
-    /**
-     * Get paginated list.
-     *
-     * @param     $where
-     * @param int $rows
-     *
-     * @return Collection
-     */
-    public function getPaginationList($where, $rows = 15)
-    {
-        return $this->model->where($where)->paginate($rows);
-    }
 }

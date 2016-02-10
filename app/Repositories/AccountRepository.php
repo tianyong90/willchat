@@ -34,7 +34,7 @@ class AccountRepository
      */
     public function lists($pageSize)
     {
-        return $this->model->orderBy('id', 'desc')->paginate($pageSize);
+        return $this->model->where('owner_id', auth()->user()->id)->orderBy('id', 'desc')->paginate($pageSize);
     }
 
     /**
@@ -80,7 +80,10 @@ class AccountRepository
      */
     public function savePost($account, $input)
     {
-        $account->fill($input->all());
+        // 公众号所属账户ID
+        $ownerId = auth()->user()->id;
+
+        $account->fill(array_merge($input->all(), ['owner_id' => $ownerId]));
 
         return $account->save();
     }

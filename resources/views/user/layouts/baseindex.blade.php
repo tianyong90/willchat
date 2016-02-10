@@ -220,6 +220,25 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
+
+                function highligntSidemenu(index) {
+                    var navItem = $('.profile-usermenu .nav');
+                    navItem.children('li').eq(index).addClass('active').siblings().removeClass('active');
+                }
+                (function(){
+                    var pathname = window.location.pathname;
+
+                    if(pathname.match(/user\/(profile|avatar)/)) {
+                        console.log(1);
+                        highligntSidemenu(1);
+                    } else if(pathname.match(/user\/document/)) {
+                        console.log(2);
+                        highligntSidemenu(2);
+                    } else {
+                        console.log(0);
+                        highligntSidemenu(0);
+                    }
+                })();
             });
         </script>
         @yield('js')

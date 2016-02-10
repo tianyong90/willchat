@@ -6,6 +6,13 @@ use App\Http\Requests\Request;
 
 class CreateRequest extends Request
 {
+    public function authorize()
+    {
+        // TODO:每个用户限添加3个公众号
+
+        return true;
+    }
+    
     /**
      * Get the validation rules that apply to the request.
      *

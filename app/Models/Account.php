@@ -28,6 +28,7 @@ class Account extends Model
     protected $fillable = [
         'name',
         'token',
+        'owner_id',
         'original_id',
         'wechat_account',
         'app_id',

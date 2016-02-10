@@ -44,7 +44,7 @@ class AccountController extends Controller
     {
         $this->accountRepository->store($request);
 
-        return success('添加成功！');
+        return success('添加成功！', user_url('/'));
     }
 
     /**
