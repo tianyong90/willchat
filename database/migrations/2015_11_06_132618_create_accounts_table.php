@@ -15,7 +15,8 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('token', 20)->unique()->comment('公众号TOKEN');
-            $table->integer('owner_id')->comment('公众号主人ID');
+            $table->integer('user_id')->unsigned()->comment('公众号主人ID');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name', 25)->comment('公众号名称');
             $table->tinyInteger('type')->comment('类型');
             $table->char('app_id', 18)->comment('appid');

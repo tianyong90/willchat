@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Account;
+namespace App\Http\Requests\Menu;
 
 use App\Http\Requests\Request;
 use App\Models\Account;

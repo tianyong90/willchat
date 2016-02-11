@@ -32,10 +32,10 @@
                 <tr>
                   <td><input class="ids" type="checkbox" value="{{ $qrcode->id }}" name="ids[]"></td>
                   <td>{{ $qrcode->keyword }}</td>
-                  <td>{{ $qrcode->description }}</td>
+                  <td>{{ $qrcode->remark }}</td>
                   <td><img src="" class="preview-small"/></td>
-                  <td>{{ $qrcode->create_time }}</td>
-                  <td>{{ $qrcode->scancount }}</td>
+                  <td>{{ $qrcode->created_at }}</td>
+                  <td>{{ $qrcode->scaned_times }}</td>
                   <td>
                     <a class="btn blue btn-xs" href="{{ user_url('qrcode/download/'.$qrcode->id) }}"><i class="fa fa-download"></i>下载</a>
                     <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('qrcode/destroy/'.$qrcode->id) }}"><i class="fa fa-trash-o"></i>删除</button>

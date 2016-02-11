@@ -2,29 +2,57 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Repositories\QrcodeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
-
 use EasyWeChat\Foundation\Application;
 
 class QrcodeController extends Controller
 {
+    /**
+     * @var QrcodeRepository
+     */
+    private $qrcodeRepository;
+
+    /**
+     * QrcodeController constructor.
+     *
+     * @param QrcodeRepository $qrcodeRepository
+     */
+    public function __construct(QrcodeRepository $qrcodeRepository)
+    {
+        $this->qrcodeRepository = $qrcodeRepository;
+    }
+
     public function index()
     {
-        $qrcodeList = DB::table('qrcodes')->paginate(15);
+        $qrcodes = $this->qrcodeRepository->lists(1);
 
-        return user_view('qrcode.index', ['qrcodes' => $qrcodeList]);
+        return user_view('qrcode.index', compact('qrcodes'));
     }
 
     /**
-     * 创建菜单
+     * 显示创建表单.
+     *
+     * @return mixed
      */
     public function getCreate()
     {
-        $options = get_wechat_options();
+        return user_view('qrcode.create');
+    }
+
+    /**
+     * 创建二维码并保存.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postCreate(Request $request)
+    {
+//        $options = get_wechat_options();
 //
 //        $app = new Application($options);
 //
@@ -32,34 +60,20 @@ class QrcodeController extends Controller
 
 //        $menuList = $menu->current();
 
+        $this->qrcodeRepository->store($request->all());
 
-        return user_view('qrcode.create');
-    }
-
-    /**
-     * 保存创建菜单
-     *
-     * @param Request $request
-     */
-    public function postCreate(Request $request)
-    {
-        $data = $request->all();
-
-
-//        DB::table('qrcodes')->insert();
-
-        return error('删除失败');
+        return error('保存成功');
     }
 
     /**
      * 删除二维码
      *
-     * @param $ids
+     * @param $id
      */
-    public function destroy($ids = null)
+    public function destroy($id)
     {
+        $this->qrcodeRepository->destroy($id);
 
-//        DB::table('qrcodes')->delete($ids);
         return success('删除成功！');
     }
 
@@ -70,7 +84,6 @@ class QrcodeController extends Controller
      */
     public function download($id)
     {
-
         return response()->download(asset('images/user/logo.png'), 'pic.png', ['Content-Type' => 'image/png']);
     }
 

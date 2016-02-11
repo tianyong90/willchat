@@ -33,9 +33,14 @@ class Menu extends Model
         'name' => '菜单名称',
         'type' => '菜单类型',
         'key' => '菜单值',
-        'sort' => '值',
+        'sort' => '排序',
     ];
 
+    /**
+     * 子菜单关联
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function subButtons()
     {
         return $this->hasMany('App\Models\Menu', 'parent_id');

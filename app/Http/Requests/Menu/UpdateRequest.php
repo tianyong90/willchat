@@ -1,22 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Account;
+namespace App\Http\Requests\Menu;
 
 use App\Http\Requests\Request;
-use App\Models\Account;
 
-class CreateRequest extends Request
+class UpdateRequest extends Request
 {
-    public function authorize()
-    {
-        // 每个用户限添加3个公众号
-        if (Account::where('user_id', auth()->user()->id)->count() >= 3) {
-            return false;
-        }
-
-        return true;
-    }
-    
     /**
      * Get the validation rules that apply to the request.
      *

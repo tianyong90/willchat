@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Qrcode extends Model
 {
+    use SoftDeletes;
+
     protected $hidden = ['created_at', 'deleted_at', 'updated_at'];
 
     /**
@@ -15,10 +18,10 @@ class Qrcode extends Model
      */
     protected $fillable = [
         'account_id',
-        'name',
+        'keyword',
+        'remark',
         'type',
-        'key',
-        'sort',
+        'ticket',
     ];
 
     /**
@@ -28,10 +31,10 @@ class Qrcode extends Model
      */
     public static $aliases = [
         'account_id' => '所属公众号',
-        'parent_id' => '上级菜单',
-        'name' => '菜单名称',
-        'type' => '菜单类型',
-        'key' => '菜单值',
-        'sort' => '值',
+        'keyword' => '二维码参数',
+        'remark' => '备注',
+        'type' => '二维码类型',
+        'ticket' => '二维码 TICKET',
+        'expire' => '有效期',
     ];
 }

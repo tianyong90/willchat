@@ -50,16 +50,17 @@ Route::group(['middleware' => ['web']], function () {
     Route::group($user, function () {
         Route::get('/', 'DashboardController@index');
 
-        //认证路由
+        // 认证路由
         Route::get('login', 'AuthController@getLogin');
         Route::post('login', 'AuthController@postLogin');
         Route::get('logout', 'AuthController@getLogout');
 
-        Route::get('lock', 'AuthController@lock');
-
         //注册路由
         Route::get('register', 'AuthController@getRegister');
         Route::post('register', 'AuthController@postRegister');
+
+        // 锁屏
+        Route::get('lock', 'AuthController@lock');
 
         //公众号管理
         Route::get('account/create', 'AccountController@getCreate');
@@ -99,7 +100,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('qrcode/create', 'QrcodeController@getCreate');
             Route::post('qrcode/create', 'QrcodeController@postCreate');
             Route::get('qrcode/download/{id?}', 'QrcodeController@download');
-            Route::any('qrcode/destroy/{ids?}', 'QrcodeController@destroy');
+            Route::any('qrcode/destroy/{id?}', 'QrcodeController@destroy');
 
             //粉丝分组
             Route::get('fan_group', 'FanGroupController@index');

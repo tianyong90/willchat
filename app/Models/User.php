@@ -60,4 +60,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'last_login_at' => '最后登录时间',
         'last_login_ip' => '最后登录IP',
     ];
+
+    /**
+     * 关联拥有的公众号.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function account()
+    {
+        return $this->hasMany('App\Models\Account');
+    }
 }
