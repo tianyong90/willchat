@@ -33,7 +33,7 @@
                   <td><input class="ids" type="checkbox" value="{{ $qrcode->id }}" name="ids[]"></td>
                   <td>{{ $qrcode->keyword }}</td>
                   <td>{{ $qrcode->remark }}</td>
-                  <td><img src="" class="preview-small"/></td>
+                  <td><img src="{{ $qrcodeService->url($qrcode->ticket) }}" class="preview-small"/></td>
                   <td>{{ $qrcode->created_at }}</td>
                   <td>{{ $qrcode->scaned_times }}</td>
                   <td>
@@ -44,7 +44,7 @@
               @endforeach
             @else
               <tr>
-                <td colspan="10" class="row-nodata">您还没有生成过二维码</td>
+                <td colspan="10" class="row-nodata">暂无记录</td>
               </tr>
             @endif
           </tbody>

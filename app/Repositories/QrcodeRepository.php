@@ -34,11 +34,14 @@ class QrcodeRepository
     /**
      * 二维码列表.
      *
+     * @param int    $accountId
+     * @param string $type
+     *
      * @return array
      */
-    public function lists($accountId)
+    public function listByType($accountId, $type = 'forever')
     {
-        return $this->model->where('account_id', $accountId)->orderBy('id', 'asc')->paginate(15);
+        return $this->model->where('account_id', $accountId)->where('type', $type)->orderBy('id', 'asc')->paginate(15);
     }
 
     /**

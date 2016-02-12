@@ -17,6 +17,7 @@ class CreateRequest extends Request
         return [
             'keyword' => 'required',
             'remark' => 'max:20',
+            'expire' => 'between:1,108000',
         ];
     }
 }

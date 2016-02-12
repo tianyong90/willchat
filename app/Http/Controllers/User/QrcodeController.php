@@ -2,64 +2,109 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Repositories\QrcodeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use DB;
-
 use EasyWeChat\Foundation\Application;
 
 class QrcodeController extends Controller
 {
-    public function index()
-    {
-        $qrcodeList = DB::table('qrcodes')->paginate(15);
+    const TYPE_FOREVER = 'forever';
+    const TYPE_TEMPORARY = 'temporary';
 
-        return user_view('qrcode.index', ['qrcodes' => $qrcodeList]);
+    /**
+     * @var QrcodeRepository
+     */
+    private $qrcodeRepository;
+
+    /**
+     * QrcodeController constructor.
+     *
+     * @param QrcodeRepository $qrcodeRepository
+     */
+    public function __construct(QrcodeRepository $qrcodeRepository)
+    {
+        $this->qrcodeRepository = $qrcodeRepository;
     }
 
     /**
-     * 创建菜单
+     * 二维码列表.
+     *
+     * @param $type
+     *
+     * @return mixed
+     */
+    public function index($type)
+    {
+        $options = get_wechat_options(\Session::get('account_id'));
+
+        $app = new Application($options);
+
+        $qrcodeService = $app->qrcode;
+
+        $qrcodes = $this->qrcodeRepository->listByType(\Session::get('account_id'), $type);
+
+        return user_view('qrcode.index', compact('qrcodes', 'qrcodeService'));
+    }
+
+    /**
+     * 显示创建表单.
+     *
+     * @return mixed
      */
     public function getCreate()
     {
-        $options = get_wechat_options();
-//
-//        $app = new Application($options);
-//
-//        $menu = $app->qrcode;
-
-//        $menuList = $menu->current();
-
-
         return user_view('qrcode.create');
     }
 
     /**
-     * 保存创建菜单
+     * 创建二维码并保存.
      *
      * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function postCreate(Request $request)
     {
-        $data = $request->all();
+        $options = get_wechat_options(\Session::get('account_id'));
 
+        $app = new Application($options);
 
-//        DB::table('qrcodes')->insert();
+        $qrcodeService = $app->qrcode;
 
-        return error('删除失败');
+        if ($request->type = self::TYPE_FOREVER) {
+            try {
+                $result = $qrcodeService->forever($request->keyword);
+
+            } catch (\Exception $e) {
+                return error('创建失败');
+            }
+        } elseif ($request->type = self::TYPE_TEMPORARY) {
+            try {
+                $result = $qrcodeService->temporary($request->keyword, $request->expire);
+            } catch (\Exception $e) {
+                return error('创建失败');
+            }
+        }
+
+        $qrcodeData = array_merge($request->all(), ['ticket' => $result->ticket]);
+
+        $this->qrcodeRepository->store($qrcodeData);
+
+        return error('保存成功');
     }
 
     /**
      * 删除二维码
      *
-     * @param $ids
+     * @param $id
      */
-    public function destroy($ids = null)
+    public function destroy($id)
     {
+        $this->qrcodeRepository->destroy($id);
 
-//        DB::table('qrcodes')->delete($ids);
         return success('删除成功！');
     }
 
@@ -70,7 +115,6 @@ class QrcodeController extends Controller
      */
     public function download($id)
     {
-
         return response()->download(asset('images/user/logo.png'), 'pic.png', ['Content-Type' => 'image/png']);
     }
 
