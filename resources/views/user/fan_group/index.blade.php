@@ -6,7 +6,7 @@
         <i class="fa fa-users"></i> 粉丝分组
       </div>
       <div class="actions">
-        <a href="{{ user_url('fan_group/create') }}" class="btn default blue-stripe dialog-popup"><i class="fa fa-plus"></i>创建分组</a>
+        <a href="{{ user_url('fan-group/create') }}" class="btn default blue-stripe dialog-popup"><i class="fa fa-plus"></i>创建分组</a>
       </div>
     </div>
     <div class="portlet-body">
@@ -28,8 +28,8 @@
               <td>{{ $group['count'] }}</td>
               <td>
                 @if($key > 2)
-                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan_group/edit/'.$group['id'].'/'.$group['name']) }}"><i class="fa fa-edit"></i>编辑</a>
-                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('fan_group/destroy/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan-group/edit/'.$group['id'].'/'.$group['name']) }}"><i class="fa fa-edit"></i>编辑</a>
+                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('fan-group/destroy/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
                   </button>
                 @endif
               </td>

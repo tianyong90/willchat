@@ -135,22 +135,22 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                    <a href="{{ user_url('reply-text') }}" class="nav-link ">
                                         <span class="title">文本回复</span>
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                    <a href="{{ user_url('r-news') }}" class="nav-link ">
                                         <span class="title">图文回复</span>
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                    <a href="{{ user_url('reply-subscribe') }}" class="nav-link ">
                                         <span class="title">关注回复</span>
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('reply/') }}" class="nav-link ">
+                                    <a href="{{ user_url('reply-default') }}" class="nav-link ">
                                         <span class="title">默认回复</span>
                                     </a>
                                 </li>
@@ -169,7 +169,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('fan_group/') }}" class="nav-link ">
+                                    <a href="{{ user_url('fan-group/') }}" class="nav-link ">
                                         <span class="title">粉丝分组</span>
                                     </a>
                                 </li>

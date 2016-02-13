@@ -2,9 +2,9 @@
 @section('main')
   <div class="dialog-content form">
     @if(isset($id))
-    <form action="{{ user_url('fan_group/edit/'.$id) }}" method="post">
+    <form action="{{ user_url('fan-group/edit/'.$id) }}" method="post">
     @else
-    <form action="{{ user_url('fan_group/create') }}" method="post">
+    <form action="{{ user_url('fan-group/create') }}" method="post">
     @endif
       <div class="form-body">
         <div class="form-group">

@@ -11,6 +11,9 @@ use EasyWeChat\Foundation\Application;
 
 class QrcodeController extends Controller
 {
+    const TYPE_FOREVER = 'forever';
+    const TYPE_TEMPORARY = 'temporary';
+
     /**
      * @var QrcodeRepository
      */
@@ -26,11 +29,24 @@ class QrcodeController extends Controller
         $this->qrcodeRepository = $qrcodeRepository;
     }
 
-    public function index()
+    /**
+     * 二维码列表.
+     *
+     * @param $type
+     *
+     * @return mixed
+     */
+    public function index($type)
     {
-        $qrcodes = $this->qrcodeRepository->lists(1);
+        $options = get_wechat_options(\Session::get('account_id'));
 
-        return user_view('qrcode.index', compact('qrcodes'));
+        $app = new Application($options);
+
+        $qrcodeService = $app->qrcode;
+
+        $qrcodes = $this->qrcodeRepository->listByType(\Session::get('account_id'), $type);
+
+        return user_view('qrcode.index', compact('qrcodes', 'qrcodeService'));
     }
 
     /**
@@ -52,15 +68,30 @@ class QrcodeController extends Controller
      */
     public function postCreate(Request $request)
     {
-//        $options = get_wechat_options();
-//
-//        $app = new Application($options);
-//
-//        $menu = $app->qrcode;
+        $options = get_wechat_options(\Session::get('account_id'));
 
-//        $menuList = $menu->current();
+        $app = new Application($options);
 
-        $this->qrcodeRepository->store($request->all());
+        $qrcodeService = $app->qrcode;
+
+        if ($request->type = self::TYPE_FOREVER) {
+            try {
+                $result = $qrcodeService->forever($request->keyword);
+
+            } catch (\Exception $e) {
+                return error('创建失败');
+            }
+        } elseif ($request->type = self::TYPE_TEMPORARY) {
+            try {
+                $result = $qrcodeService->temporary($request->keyword, $request->expire);
+            } catch (\Exception $e) {
+                return error('创建失败');
+            }
+        }
+
+        $qrcodeData = array_merge($request->all(), ['ticket' => $result->ticket]);
+
+        $this->qrcodeRepository->store($qrcodeData);
 
         return error('保存成功');
     }

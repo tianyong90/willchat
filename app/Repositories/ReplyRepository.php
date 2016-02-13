@@ -14,7 +14,7 @@ class ReplyRepository
     /**
      * model.
      *
-     * @var App\Models\Reply
+     * @var Reply
      */
     private $model;
 
@@ -39,27 +39,27 @@ class ReplyRepository
     }
 
     /**
-     * 获取关注时的默认回复.
+     * 获取关注回复.
      *
      * @param int $accountId accountId
      *
      * @return array|mixed
      */
-    public function getFollowReply($accountId)
+    public function getSubscribeReply($accountId)
     {
-        return $this->model->where('type', Reply::TYPE_FOLLOW)->where('account_id', $accountId)->first();
+        return $this->model->where('type', Reply::TYPE_SUBSCRIBE)->where('account_id', $accountId)->first();
     }
 
     /**
-     * 取得关注时的默认回复.
+     * 取得默认回复.
      *
      * @param int $accountId accountId
      *
      * @return array|mixed
      */
-    public function getNoMatchReply($accountId)
+    public function getDefaultReply($accountId)
     {
-        return $this->model->where('type', Reply::TYPE_NO_MATCH)->where('account_id', $accountId)->first();
+        return $this->model->where('type', Reply::TYPE_DEFAULT)->where('account_id', $accountId)->first();
     }
 
     /**

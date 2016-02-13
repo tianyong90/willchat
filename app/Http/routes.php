@@ -103,12 +103,12 @@ Route::group(['middleware' => ['web']], function () {
             Route::any('qrcode/destroy/{id?}', 'QrcodeController@destroy');
 
             //粉丝分组
-            Route::get('fan_group', 'FanGroupController@index');
-            Route::get('fan_group/create', 'FanGroupController@getCreate');
-            Route::post('fan_group/create', 'FanGroupController@postCreate');
-            Route::get('fan_group/edit/{id}/{name}', 'FanGroupController@getEdit');
-            Route::post('fan_group/edit/{id}', 'FanGroupController@postEdit');
-            Route::get('fan_group/destroy/{id}', 'FanGroupController@destroy');
+            Route::get('fan-group', 'FanGroupController@index');
+            Route::get('fan-group/create', 'FanGroupController@getCreate');
+            Route::post('fan-group/create', 'FanGroupController@postCreate');
+            Route::get('fan-group/edit/{id}/{name}', 'FanGroupController@getEdit');
+            Route::post('fan-group/edit/{id}', 'FanGroupController@postEdit');
+            Route::get('fan-group/destroy/{id}', 'FanGroupController@destroy');
 
             //微信红包
             Route::get('luckymoney', 'LuckyMoneyController@index');
@@ -118,11 +118,29 @@ Route::group(['middleware' => ['web']], function () {
 
             //自定义菜单
             Route::get('menu', 'MenuController@index');
+            Route::get('menu/sync', 'MenuController@sync');
 
             //数据统计与分析
             Route::get('stats', 'DataStatsController@index');
 
+            //自动回复
+            Route::get('reply-subscribe', 'SubscribeReplyController@show');
+            Route::post('reply-subscribe', 'SubscribeReplyController@store');
 
+            Route::get('reply-default', 'DefaultReplyController@show');
+            Route::post('reply-default', 'DefaultReplyController@store');
+
+            Route::get('reply-text', 'TextReplyController@index');
+            Route::get('reply-text/create', 'TextReplyController@getCreate');
+            Route::post('reply-text/create', 'TextReplyController@postCreate');
+            Route::get('reply-text/update/{id}', 'TextReplyController@getUpdate');
+            Route::post('reply-text/update/{id}', 'NewsReplyController@postUpdate');
+
+            Route::get('reply-news', 'NewsReplyController@index');
+            Route::get('reply-news/create', 'NewsReplyController@getCreate');
+            Route::post('reply-news/create', 'NewsReplyController@postCreate');
+            Route::get('reply-news/update/{id}', 'NewsReplyController@getUpdate');
+            Route::post('reply-news/update/{id}', 'NewsReplyController@postUpdate');
 
         });
     });
