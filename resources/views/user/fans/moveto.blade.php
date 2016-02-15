@@ -6,12 +6,13 @@
 @section('main')
   <div class="dialog-content form">
     <form action="" method="post">
+      {!! csrf_field() !!}
       <div class="form-body">
         <div class="form-group">
           <label>选择目标分组</label>
           <select name="groupid" class="form-control">
             @foreach($groups as $key => $group)
-              <option value="{{ $group['id'] }}" >{{ $group['name'] }}</option>
+              <option value="{{ $group['id'] }}" @if ($groupid == $group['id']) selected @endif >{{ $group['name'] }}</option>
             @endforeach
           </select>
         </div>

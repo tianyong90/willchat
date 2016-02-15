@@ -5,7 +5,7 @@
   <div class="portlet light">
     <div class="portlet-title">
       <div class="caption">
-        <i class="fa fa-list"></i>微信自定义菜单
+        <i class="fa fa-cny"></i> 微信红包
       </div>
       <div class="actions">
         <a href="javascript:;" id="create-wxmenu" class="btn default green-stripe btn-xa"><i class="fa fa-save"></i>生成菜单</a>
@@ -15,18 +15,12 @@
       </div>
     </div>
     <div class="portlet-body">
-      <div class="note note-info">
+<!--       <div class="note note-info">
         <h4 class="block">使用提示：</h4>
-
         <p>
-          (使用前提是已经拥有了自定义菜单的用户才能够使用，)<br>
-          第一步:必须先填写【AppId】【 AppSecret】！<br>
-          第二步:添加菜单，<br>
-          第三步:点击生成菜单!<br>
-          注意：1级菜单最多只能开启3个，2级子菜单最多开启5个<br>
-          官方说明：修改后，需要重新关注，或者最迟隔天才会看到修改后的效果！<br>
+
         </p>
-      </div>
+      </div> -->
       <div class="table-scrollable">
         <table class="table table-striped table-hover">
           <thead>

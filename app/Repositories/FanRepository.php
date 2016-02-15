@@ -33,7 +33,7 @@ class FanRepository
     public function lists($accountId, $pageSize, $request)
     {
         if (!$request->sort_by) {
-            $request->sort_by = 'subscribed_at';
+            $request->sort_by = 'subscribe_time';
         }
 
         return $this->model
@@ -144,6 +144,18 @@ class FanRepository
         }
 
         return $return;
+    }
+
+    /**
+     * 通过粉丝ID 获取粉丝组group_id.
+     *
+     * @param int $ids 粉丝自增ID
+     */
+    public function getFanGroupByfanId($id)
+    {
+        $fan = $this->model->find($id);
+
+        return $fan->groupid;
     }
 
     /**

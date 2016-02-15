@@ -29,10 +29,10 @@
         <link href="{{ asset('static') }}/metronic/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="{{ asset('css') }}/user/custom.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" /> 
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
         @yield('style')
-        
+
         @yield('pre_js')
     </head>
     <!-- END HEAD -->
@@ -60,7 +60,7 @@
                         <ul class="nav navbar-nav pull-right">
                             <!-- END NOTIFICATION DROPDOWN -->
                             <li class="separator hide"> </li>
-                            
+
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user dropdown-dark">
@@ -140,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item start ">
-                                    <a href="{{ user_url('r-news') }}" class="nav-link ">
+                                    <a href="{{ user_url('reply-news') }}" class="nav-link ">
                                         <span class="title">图文回复</span>
                                     </a>
                                 </li>

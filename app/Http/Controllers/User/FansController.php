@@ -7,14 +7,37 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Repositories\FanRepository;
 
 use EasyWeChat\Foundation\Application;
 
 class FansController extends Controller
 {
-    public function index()
+    /**
+     * @var FanRepository
+     */
+    private $fanRepository;
+
+    /**
+     * FansController constructor.
+     *
+     * @param FanRepository $fanRepository
+     */
+    public function __construct(FanRepository $fanRepository)
     {
-        $fanList = Fan::paginate(15);
+        $this->fanRepository = $fanRepository;
+    }
+
+    /**
+     * 粉丝列表.
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function index(Request $request)
+    {
+        $fanList = $this->fanRepository->lists(\Session::get('accout_id'), 15, $request);
 
         return user_view('fans.index', compact('fanList'));
     }
@@ -41,13 +64,20 @@ class FansController extends Controller
         return success('同步成功');
     }
 
+    /**
+     * 显示移到至页面.
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
     public function getMoveTo($id)
     {
-        //获取旧备注信息
-        $groupid = Fan::find($id)->groupid;
+        // 粉丝原所在分组ID
+        $groupid = $this->fanRepository->getFanGroupByfanId($id);
 
         //当前公众号的粉丝分组数据
-        $options = get_wechat_options();
+        $options = get_wechat_options(\Session::get('account_id'));
 
         $app = new Application($options);
         $group = $app->user_group;
@@ -58,15 +88,23 @@ class FansController extends Controller
         return user_view('fans.moveto')->with(['groupid' => $groupid, 'groups'=>$groups]);
     }
 
+    /**
+     * 移动粉丝并保存移动后数据.
+     *
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function postMoveTo(Request $request, $id)
     {
-        $options = get_wechat_options();
+        $options = get_wechat_options(\Session::get('account_id'));
 
         $app = new Application($options);
         $groupService = $app->user_group;
 
         try {
-            $fan = Fan::find($id);
+            $fan = $this->fanRepository->getById($id);
 
             $newGroupId = $request->input('groupid');
 
@@ -83,31 +121,44 @@ class FansController extends Controller
         }
     }
 
-
+    /**
+     * 编辑备注表单.
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
     public function getEditRemark($id)
     {
         //获取旧备注信息
-        $remark = Fan::find($id)->remark;
+        $remark = $this->fanRepository->getById($id)->remark;
 
         return user_view('fans.editremark')->with(['remark' => $remark]);
     }
 
+    /**
+     * 更新备注并保存到本地数据库.
+     *
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function postEditRemark(Request $request, $id)
     {
-        $options = get_wechat_options();
+        $options = get_wechat_options(\Session::get('account_id'));
 
         $app = new Application($options);
         $user = $app->user;
 
         try {
-            $fan = Fan::find($id);
+            $fan = $this->fanRepository->getById($id);
 
             //更新备注
             $user->remark($fan->openid, $request->input('remark'));
 
             //更新本地库中对应备注数据
-            $fan->remark = $request->input('remark');
-            $fan->save();
+            $this->fanRepository->updateRemark($request);
 
             return success('修改成功！');
         } catch (\Exception $e) {

@@ -119,6 +119,12 @@ Route::group(['middleware' => ['web']], function () {
             //自定义菜单
             Route::get('menu', 'MenuController@index');
             Route::get('menu/sync', 'MenuController@sync');
+            Route::get('menu/destroy/{id}', 'MenuController@destroy');
+            Route::get('menu/clear', 'MenuController@clear');
+            Route::get('menu/create', 'MenuController@getCreate');
+            Route::post('menu/create', 'MenuController@postCreate');
+            Route::get('menu/update/{id}', 'MenuController@getUpdate');
+            Route::post('menu/update/{id}', 'MenuController@postUpdate');
 
             //数据统计与分析
             Route::get('stats', 'DataStatsController@index');
@@ -141,6 +147,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('reply-news/create', 'NewsReplyController@postCreate');
             Route::get('reply-news/update/{id}', 'NewsReplyController@getUpdate');
             Route::post('reply-news/update/{id}', 'NewsReplyController@postUpdate');
+
+
 
         });
     });

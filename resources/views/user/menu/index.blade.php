@@ -25,70 +25,45 @@
         <table class="table table-striped table-hover">
           <thead>
           <tr>
-            <th>菜单名称</th>
+            <th>名称</th>
             <th>类型</th>
             <th>关键词/链接</th>
-            <th>状态</th>
             <th>操作</th>
           </tr>
           </thead>
           <tbody>
-          <notempty name="menutree">
-            <volist name="menutree" id="class">
+          @if(count($menuTree) > 0)
+            @foreach ($menuTree as $menu)
               <tr>
-                <td>{$class.name}</td>
-                <td>{$class.type|get_wechat_menu_type}</td>
-                <td>
-                  <eq name="class.type" value="click">
-                    {$class.key}
-                    <else/>
-                    {$class.url|msubstr=0,85,"utf-8",true}
-                  </eq>
-                </td>
-                <td>
-                  <eq name="class.status" value="1">
-                    <span class="badge badge-primary">启用</span>
-                    <else/>
-                    <span class="badge badge-danger">禁用</span>
-                  </eq>
-                </td>
+                <td>{{ $menu->name }}</td>
+                <td>{{ $menu->type }}</td>
+                <td>{{ $menu->key }}</td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup"
-                     href="{{ user_url('') }}">编辑</a>
-                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('') }}">删除</button>
+                     href="{{ user_url('menu/edit/'.$menu->id) }}">编辑</a>
+                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('menu/destroy/'.$menu->id) }}">删除</button>
                 </td>
               </tr>
-              <volist name="class['submenu']" id="class1">
-                <tr>
-                  <td>└──{$class1.name}</td>
-                  <td>{$class1.type|get_wechat_menu_type}</td>
-                  <td>
-                    <eq name="class1.type" value="click">
-                      {$class1.key}
-                      <else/>
-                      {$class1.url|msubstr=0,85,"utf-8",true}
-                    </eq>
-                  </td>
-                  <td>
-                    <eq name="class1.status" value="1">
-                      <span class="badge badge-primary">启用</span>
-                      <else/>
-                      <span class="badge badge-danger">禁用</span>
-                    </eq>
-                  </td>
-                  <td>
-                    <a class="btn blue btn-xs dialog-popup"
-                       href="{{ user_url('') }}">编辑</a>
-                    <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('') }}">删除</button>
-                  </td>
-                </tr>
-              </volist>
-            </volist>
-            <else/>
+              @if (count($menu->subButtons) > 0)
+                @foreach ($menu->subButtons as $subButton)
+                  <tr>
+                    <td>┖━━ &nbsp;{{ $subButton->name }}</td>
+                    <td>{{ $subButton->type }}</td>
+                    <td>{{ $subButton->key }}</td>
+                    <td>
+                      <a class="btn blue btn-xs dialog-popup"
+                         href="{{ user_url('menu/edit/'.$subButton->id) }}">编辑</a>
+                      <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('menu/destroy/'.$subButton->id) }}">删除</button>
+                    </td>
+                  </tr>
+                @endforeach
+              @endif
+            @endforeach
+          @else
             <tr>
-              <td colspan="10" class="row-nodata">未设置菜单</td>
+              <td colspan="10" class="row-nodata">暂无数据</td>
             </tr>
-          </notempty>
+          @endif
           </tbody>
         </table>
       </div>
@@ -98,7 +73,7 @@
 @section('js')
   <script>
     $(document).ready(function () {
-      //生成菜单按钮动作
+      // 生成菜单按钮动作
       $('a#create-wxmenu').click(function (event) {
         event.preventDefault();
         var url = "{{ user_url('') }}";
@@ -114,11 +89,11 @@
         }, 'json');
       });
 
-      //清除全部菜单操作
+      // 清除全部菜单操作
       $('a#clear-all').click(function (event) {
         event.preventDefault();
         if (confirm("您确定要清空全部菜单？")) {
-          var url = "{{ user_url('') }}";
+          var url = "{{ user_url('menu/clear') }}";
           console.log(url);
           $.get(url, function (data) {
             if (data.status) {

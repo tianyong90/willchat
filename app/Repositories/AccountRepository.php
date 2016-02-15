@@ -83,9 +83,7 @@ class AccountRepository
         // 公众号所属账户ID
         $ownerId = auth()->user()->id;
 
-        $account->fill(array_merge($input->all(), ['user_id' => $ownerId]));
-
-        return $account->save();
+        return $account->fill(array_merge($input->all(), ['user_id' => $ownerId]))->save();
     }
 
     /**

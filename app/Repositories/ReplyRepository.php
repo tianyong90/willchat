@@ -72,7 +72,7 @@ class ReplyRepository
      */
     public function getList($accountId, $pageSize)
     {
-        return $this->model->where('type', Reply::TYPE_KEYWORDS)->where('account_id', $accountId)->get();
+        return $this->model->where('type', Reply::TYPE_KEYWORDS)->where('account_id', $accountId)->paginate($pageSize);
     }
 
     /**
