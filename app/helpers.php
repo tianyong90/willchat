@@ -68,32 +68,7 @@ function make_api_url($tag)
  */
 function get_wechat_options($accountId, $byToken = false)
 {
-    $accountData = \App\Models\Account::find($accountId);
-
-    $options = [
-        'debug' => true,
-        'app_id' => $accountData->app_id,
-        'secret' => $accountData->app_secret,
-        'token' => $accountData->token,
-        // log
-        'log' => [
-            'level' => \Monolog\Logger::DEBUG,
-            'file' => storage_path('logs\easywechat.log'),
-        ],
-        // oauth
-        'oauth' => [
-            'scopes' => ['snsapi_userinfo'],
-            'callback' => '/examples/oauth_callback.php',
-        ],
-        'payment' => [
-            'merchant_id' => $accountData->merchant_id,
-            'key' => $accountData->key,
-            'cert_path' => $accountData->cert_path,
-            'key_path' => $accountData->key_path,
-        ],
-    ];
-
-    return $options;
+    return app('willchat.account_service')->getWechatOptions($accountId, $byToken);
 }
 
 /**

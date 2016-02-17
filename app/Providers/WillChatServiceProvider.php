@@ -34,4 +34,5 @@ class WillChatServiceProvider extends ServiceProvider
             return new AccountService();
         });
     }
+
 }

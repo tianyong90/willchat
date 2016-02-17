@@ -50,11 +50,9 @@ class MenuController extends Controller
     {
         //TODO:update fans data
 
-        $options = get_wechat_options(\Session::get('account_id'));
+        $easywechat = app('easywechat');
 
-        $app = new Application($options);
-
-        $menu = $app->menu;
+        $menu = $easywechat->menu;
 
         $buttons = [
             [

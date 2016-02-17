@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Session;
+use App\Repositories\AccountRepository;
 
 /**
  * 公众号服务提供者.
@@ -10,12 +11,18 @@ use Session;
  */
 class Account
 {
-    /**
-     * constructer.
-     */
-    public function __construct()
-    {
-    }
+//    /**
+//     * @var AccountRepository
+//     */
+//    private $accountRepository;
+//
+//    /**
+//     * constructer.
+//     */
+//    public function __construct(AccountRepository $account)
+//    {
+//        $this->accountRepository = $account;
+//    }
 
     /**
      * 当前是否有选择公众号.
@@ -65,5 +72,46 @@ class Account
     public function buildAesKey()
     {
         return str_random(43);
+    }
+
+    /**
+     * 获取SDK相关配置数据
+     * 未传参数时默认获取当前选中的公众号对应的配置
+     *
+     * @param null $accountId
+     *
+     * @return array
+     */
+    public function getWechatOptions($accountId = null)
+    {
+        $accountId = $accountId ?: $this->chosedId();
+
+        $accountData = \App\Models\Account::find($accountId);
+//        $accountData = $this->accountRepository->getById($accountId);
+
+        $options = [
+            'debug' => true,
+            'app_id' => $accountData->app_id,
+            'secret' => $accountData->app_secret,
+            'token' => $accountData->token,
+            // log
+            'log' => [
+                'level' => \Monolog\Logger::DEBUG,
+                'file' => storage_path('logs\easywechat.log'),
+            ],
+            // oauth
+            'oauth' => [
+                'scopes' => ['snsapi_userinfo'],
+                'callback' => '/examples/oauth_callback.php',
+            ],
+            'payment' => [
+                'merchant_id' => $accountData->merchant_id,
+                'key' => $accountData->key,
+                'cert_path' => $accountData->cert_path,
+                'key_path' => $accountData->key_path,
+            ],
+        ];
+
+        return $options;
     }
 }

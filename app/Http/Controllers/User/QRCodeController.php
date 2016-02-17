@@ -38,13 +38,10 @@ class QrcodeController extends Controller
      */
     public function index($type)
     {
-        $options = get_wechat_options(\Session::get('account_id'));
+        $easywechat = app('easywechat');
+        $qrcodeService = $easywechat->qrcode;
 
-        $app = new Application($options);
-
-        $qrcodeService = $app->qrcode;
-
-        $qrcodes = $this->qrcodeRepository->listByType(\Session::get('account_id'), $type);
+        $qrcodes = $this->qrcodeRepository->listByType(get_chosed_account(), $type);
 
         return user_view('qrcode.index', compact('qrcodes', 'qrcodeService'));
     }
@@ -68,11 +65,8 @@ class QrcodeController extends Controller
      */
     public function postCreate(Request $request)
     {
-        $options = get_wechat_options(\Session::get('account_id'));
-
-        $app = new Application($options);
-
-        $qrcodeService = $app->qrcode;
+        $easywechat = app('easywechat');
+        $qrcodeService = $easywechat->qrcode;
 
         if ($request->type = self::TYPE_FOREVER) {
             try {
@@ -93,7 +87,7 @@ class QrcodeController extends Controller
 
         $this->qrcodeRepository->store($qrcodeData);
 
-        return error('保存成功');
+        return error('保存成功', user_url('qrcode/'.$request->input('type')));
     }
 
     /**
