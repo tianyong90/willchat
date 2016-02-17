@@ -99,7 +99,7 @@ class AccountController extends Controller
     public function getManage($id)
     {
         //记录当前操作的公众号ID到会话
-        $this->accountRepository->change($id);
+        chose_account($id);
 
         return redirect(user_url('menu'));
     }

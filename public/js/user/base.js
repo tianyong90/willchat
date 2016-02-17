@@ -230,7 +230,7 @@ var Base = function() {
                 }
             }
         }
-        //操作结果提示
+    //操作结果提示
     var success = function(msg) {
         top.layer.msg(msg, {
             icon: 1
@@ -244,6 +244,12 @@ var Base = function() {
     }
     var info = function(msg) {
         top.layer.msg(msg);
+    }
+    var confirm = function(msg, callback) {
+        top.layer.confirm(msg, {icon:3,title:'操作提示'}, function(index){
+            callback();
+            top.layer.close(index);
+        });
     }
     return {
         initNormalPage: function() {
@@ -261,6 +267,7 @@ var Base = function() {
         initConfirmation: initConfirmation,
         success: success,
         error: error,
-        info: info
+        info: info,
+        confirm: confirm
     }
 }();

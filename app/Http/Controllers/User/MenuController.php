@@ -56,37 +56,99 @@ class MenuController extends Controller
 
         $menu = $app->menu;
 
-        $menuList = $menu->current();
+        $buttons = [
+            [
+                "type" => "click",
+                "name" => "今日歌曲",
+                "key"  => "V1001_TODAY_MUSIC"
+            ],
+            [
+                "name"       => "菜单",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "搜索",
+                        "url"  => "http://www.soso.com/"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "视频",
+                        "url"  => "http://v.qq.com/"
+                    ],
+                    [
+                        "type" => "click",
+                        "name" => "赞一下我们",
+                        "key" => "V1001_GOOD"
+                    ],
+                ],
+            ],
+        ];
+
+        $matchRule = [
+            "group_id"             => "1",
+            "sex"                  => "1",
+            "country"              => "中国",
+            "province"             => "湖北",
+            "city"                 => "宜昌",
+//            "client_platform_type" => "2"
+        ];
+        $menu->add($buttons, $matchRule);
+
+        exit;
 
 
     }
 
-    public function destroy($id)
+    /**
+     * 删除指定菜单
+     *
+     * @param $menuId
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($menuId)
     {
-        $this->menuRepository->destroy($id);
-
         $options = get_wechat_options(\Session::get('account_id'));
 
         $app = new Application($options);
 
-        $menu = $app->menu;
+        $menuService = $app->menu;
 
-        return success('删除成功');
+        try {
+            $menuService->destroy($menuId);
+
+            //清除本地数据库中保存的相关菜单数据
+            $this->menuRepository->destroy($menuId);
+
+            return success('删除成功');
+        } catch (\Exception $e) {
+            return error('删除失败');
+        }
     }
 
+    /**
+     * 清除全部菜单
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function clear()
     {
-        $this->menuRepository->destroyMenu(\Session::get('account_id'));
-
         $options = get_wechat_options(\Session::get('account_id'));
 
         $app = new Application($options);
 
-        $menu = $app->menu;
+        $menuService = $app->menu;
 
-        return success('删除成功');
+        try {
+            $menuService->destroy();
+
+            //清除本地数据库中保存的相关菜单数据
+            $this->menuRepository->destroyMenu(\Session::get('account_id'));
+
+            return success('清除成功');
+        } catch (\Exception $e) {
+            return error('清除失败');
+        }
     }
-
-
 
 }

@@ -2,11 +2,27 @@
 
 namespace App\Http\Middleware;
 
-use Session;
 use Closure;
+use App\Repositories\AccountRepository;
 
 class Account
 {
+    /**
+     * @var AccountRepository
+     */
+    private $accountRepository;
+
+    /**
+     * Account constructor.
+     *
+     * @param AccountRepository $accountRepository
+     */
+    public function __construct(AccountRepository $accountRepository)
+    {
+        $this->accountRepository = $accountRepository;
+    }
+
+
     /**
      * Handle an incoming request.
      *
@@ -17,7 +33,7 @@ class Account
      */
     public function handle($request, Closure $next)
     {
-        if (!Session::get('account_id')) {
+        if ($this->checkAccount() == false) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
@@ -26,5 +42,30 @@ class Account
         }
 
         return $next($request);
+    }
+
+    /**
+     * 是否已经选择了公众号并且公众号属于当前登录用户
+     *
+     *
+     * @return bool
+     */
+    private function checkAccount()
+    {
+        // 当前选中的公众号ID
+        $accountId = get_chosed_account();
+
+        if(empty($accountId)) {
+            return false;
+        }
+
+        //选中的公众号所属用户ID
+        $accountUserId = $this->accountRepository->getAccountUserId($accountId);
+
+        if ($accountUserId !== auth()->user()->id) {
+            return false;
+        }
+
+        return true;
     }
 }

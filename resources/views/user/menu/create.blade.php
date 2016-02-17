@@ -1,8 +1,10 @@
-@extends('user.layouts.base')
+@extends('user.layouts.dialogframe')
+@section('style')
+@endsection
 @section('main')
   <!-- BEGIN PAGE CONTENT-->
   <div class="dialog-content form">
-    <form action="__SELF__" method="post">
+    <form action="" method="post" role="form">
       <div class="form-body">
         <div class="form-group">
           <label>菜单名</label>
@@ -30,7 +32,6 @@
               >{$type}</option>
             </foreach>
           </select>
-          <span class="help-block"></span>
         </div>
         <div class="form-group" id="key-section">
           <label>关键词</label>
@@ -39,40 +40,18 @@
         </div>
         <div class="form-group" id="url-section">
           <label>链接</label>
-          <notempty name="modulelink_on">
             <div class="input-group">
-              <input type="text" name="url" value="{$info.url}" class="form-control" placeholder="">
-                            <span class="input-group-btn">
-                                <a href="javascript:;" class="btn btn-primary btn-selectlink">选择功能链接</a>
-                            </span>
+              <input type="text" name="url" value="{$info.url}" class="form-control" placeholder=请填写以http://开头的有效网址"">
             </div>
-            <else/>
-            <input type="text" name="url" value="{$info.url}" class="form-control" placeholder="">
-          </notempty>
-          <span class="help-block">请填写以http://开头的有效网址</span>
         </div>
         <div class="form-group">
           <label>排序</label>
-          <input type="text" name="sort" value="{$info.sort}" class="form-control" placeholder="">
-          <span class="help-block">值越大越靠前</span>
-        </div>
-        <div class="form-group">
-          <label>是否显示</label>
-
-          <div class="radio-list">
-            <label class="radio-inline">
-              <input type="radio" name="status" value="1" checked> 显示 </label>
-            <label class="radio-inline">
-              <input type="radio" name="status" value="0"
-              <eq name="info.status" value="0">checked</eq>
-              > 不显示 </label>
-          </div>
+          <input type="text" name="sort" value="{$info.sort}" class="form-control input-small" placeholder="值越大越靠前">
         </div>
       </div>
       <div class="form-actions">
-        <input type="hidden" name="id" value="{$info.id}"/>
-        <button type="submit" class="btn btn-primary">保存</button>
-        <button type="button" class="btn btn-danger btn-closedialog">取消</button>
+        <button type="submit" class="btn btn-green">保存</button>
+        <button type="button" class="btn btn-default btn-closedialog">取消</button>
       </div>
     </form>
   </div>

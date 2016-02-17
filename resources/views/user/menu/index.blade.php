@@ -8,19 +8,12 @@
         <i class="fa fa-list"></i> 自定义菜单
       </div>
       <div class="actions">
-        <a href="{{ user_url('add') }}" class="btn default blue-stripe btn-xs dialog-popup"><i class="fa fa-plus"></i>添加菜单</a>
+        <a href="{{ user_url('menu/create') }}" class="btn default blue-stripe btn-xs dialog-popup dialog-medium"><i class="fa fa-plus"></i>添加菜单</a>
         <a href="javascript:;" id="create-wxmenu" class="btn default green-stripe btn-xa"><i class="fa fa-save"></i>重新生成</a>
         <a href="javascript:;" class="btn default red-stripe btn-xa" id="clear-all"><i class="fa fa-trash-o"></i>清除菜单</a>
       </div>
     </div>
     <div class="portlet-body">
-      <div class="note note-info">
-        <h4 class="block">使用提示：</h4>
-        <p>
-          注意：1级菜单最多只能开启3个，2级子菜单最多开启5个<br>
-          官方说明：修改后，需要重新关注，或者最迟隔天才会看到修改后的效果！<br>
-        </p>
-      </div>
       <div class="table-scrollable">
         <table class="table table-striped table-hover">
           <thead>
@@ -92,9 +85,8 @@
       // 清除全部菜单操作
       $('a#clear-all').click(function (event) {
         event.preventDefault();
-        if (confirm("您确定要清空全部菜单？")) {
+        Base.confirm('该操作将无法恢复，确定要清除全部菜单？', function(){
           var url = "{{ user_url('menu/clear') }}";
-          console.log(url);
           $.get(url, function (data) {
             if (data.status) {
               Base.success(data.info);
@@ -105,8 +97,7 @@
               Base.error(data.info);
             }
           }, 'json');
-        }
-        ;
+        });
       });
     });
   </script>

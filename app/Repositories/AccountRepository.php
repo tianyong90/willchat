@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
-use Session;
 
 /**
  * Account Repository.
@@ -87,12 +86,14 @@ class AccountRepository
     }
 
     /**
-     * 切换公众号.
+     * 查询公众号所用户ID
      *
-     * @param int $id id
+     * @param $accountId
+     *
+     * @return mixed
      */
-    public function change($id)
+    public function getAccountUserId($accountId)
     {
-        Session::put('account_id', $id);
+        return $this->getById($accountId)->user_id;
     }
 }

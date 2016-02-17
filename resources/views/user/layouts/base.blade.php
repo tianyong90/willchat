@@ -344,11 +344,22 @@
                     var triggerItem = $(this); //触发弹出层的元素
                     var data = triggerItem.data();
                     var url = $(this).attr('href');
+                    var area = ['500px', '350px'];
+                    //不同尺寸弹出窗
+                    if($(this).hasClass('dialog-large')){
+                        area = ['750px', '500px'];
+                    }else if($(this).hasClass('dialog-mediun')){
+                        area = ['500px', '350px'];
+                    }else if($(this).hasClass('dialog-small')){
+                        area = ['350px', '200px'];
+                    }
+
                     layer.open({
                         title: ' ',
                         type: 2,
                         shift: 2,
                         fixed: true,
+                        area: area,
                         shadeClose: false, //开启遮罩关闭
                         content: url
                     });

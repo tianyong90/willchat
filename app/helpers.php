@@ -34,13 +34,23 @@ function admin_view($name)
 }
 
 /**
+ * 选择当前公众号
+ *
+ * @param int $accountId
+ */
+function chose_account($accountId)
+{
+    app('willchat.account_service')->chose($accountId);
+}
+
+/**
  * 返回当前公众号.
  *
- * @return mixed
+ * @return int
  */
-function account()
+function get_chosed_account()
 {
-    return app('viease.account_service');
+    return app('willchat.account_service')->chosedId();
 }
 
 function make_api_url($tag)
@@ -56,7 +66,7 @@ function make_api_url($tag)
  *
  * @return array
  */
-function get_wechat_options($accountId = 1, $byToken = false)
+function get_wechat_options($accountId, $byToken = false)
 {
     $accountData = \App\Models\Account::find($accountId);
 
@@ -86,11 +96,27 @@ function get_wechat_options($accountId = 1, $byToken = false)
     return $options;
 }
 
+/**
+ * 返回操作成功提示及跳转地址
+ *
+ * @param        $info
+ * @param string $redirectUrl
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
 function success($info, $redirectUrl = '')
 {
     return response()->json(['status' => 1, 'info' => $info, 'url' => $redirectUrl]);
 }
 
+/**
+ * 返回操作失败提示及跳转地址
+ *
+ * @param        $info
+ * @param string $redirectUrl
+ *
+ * @return \Illuminate\Http\JsonResponse
+ */
 function error($info, $redirectUrl = '')
 {
     return response()->json(['status' => 0, 'info' => $info, 'url' => $redirectUrl]);
