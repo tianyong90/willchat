@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\PasswordUpdated' => [
             'App\Listeners\EmailNotificaiton',
         ],
+        'App\Events\MenuSaved' => [
+            'App\Listeners\UpdateMenu',
+        ],
     ];
 
     /**

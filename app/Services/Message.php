@@ -2,11 +2,16 @@
 
 namespace App\Services;
 
-use Overtrue\Wechat\Message as WechatMessage;
-use App\Repositories\MaterialRepository;
 use App\Services\Event as EventService;
+use App\Repositories\MaterialRepository;
 use App\Repositories\MessageRepository;
-use Overtrue\Wechat\Media;
+use EasyWeChat\Message\Link;
+use EasyWeChat\Message\Text;
+use EasyWeChat\Message\News;
+use EasyWeChat\Message\Video;
+use EasyWeChat\Message\Voice;
+use EasyWeChat\Message\Location;
+use EasyWeChat\Message\Image;
 
 /**
  * 消息服务提供类.
@@ -35,9 +40,10 @@ class Message
      * @param ReplySercice $replyService
      */
     public function __construct(EventService $eventService,
-                                 MaterialRepository $materialRepository,
-                                 MessageRepository $messageRepository
-        ) {
+                                MaterialRepository $materialRepository,
+                                MessageRepository $messageRepository
+    )
+    {
         $this->eventService = $eventService;
 
         $this->materialRepository = $materialRepository;
@@ -69,7 +75,7 @@ class Message
         $event = $this->eventService->getEventByKey($eventKey);
 
         if (!isset($event['value'])) {
-            return $this->emptyMessage();
+            return $this->makeEmpty();
         }
 
         return $this->mediaIdToMessage($event['value']);
@@ -87,100 +93,156 @@ class Message
         $media = $this->materialRepository->getMediaByMediaId($mediaId);
 
         if (!$media) {
-            return $this->emptyMessage();
+            return $this->makeEmpty();
         }
 
-        $callback = 'reply'.ucfirst($media->type);
+        $callback = 'reply' . ucfirst($media->type);
 
         return $this->$callback($media);
     }
 
     /**
-     * 图文转为消息.
+     * 生成文字消息.
+     *
+     * @param string $content 素材
+     *
+     * @return Text
+     */
+    public function makeText($content)
+    {
+        return new Text(['content' => $content]);
+    }
+
+    /**
+     * 生成图文消息.
      *
      * @param App\Models\Material $media 素材
      *
      * @return Response
      */
-    private function replyArticle($media)
+    public function makeNews($news)
     {
-        return  WechatMessage::make('news')->items(function () use ($media) {
+        $news1 = new News([
+            'title' => 'abc',
+            'description' => 'abc',
+            'image' => 'abc',
+            'url' => 'http://www.baidu.com',
+        ]);
 
-            $item = WechatMessage::make('news_item')
-                                    ->title($media->title)
-                                    ->url($media->content_url)
-                                    ->description($media->description)
-                                    ->picUrl($media->cover_url);
-            if (!isset($media->childrens)) {
-                return array($item);
-            } else {
-                $return = [];
-                foreach ($media->childrens as $child) {
-                    $return[] = WechatMessage::make('news_item')
-                                    ->title($child->title)
-                                    ->url($child->content_url)
-                                    ->description($media->description)
-                                    ->picUrl($child->cover_url);
-                }
+        return [$news1, $news1, $news1];
 
-                array_unshift($return, $item);
+//        return WechatMessage::make('news')->items(function () use ($media) {
+//
+//            $item = WechatMessage::make('news_item')
+//                ->title($media->title)
+//                ->url($media->content_url)
+//                ->description($media->description)
+//                ->picUrl($media->cover_url);
+//            if (!isset($media->childrens)) {
+//                return array($item);
+//            } else {
+//                $return = [];
+//                foreach ($media->childrens as $child) {
+//                    $return[] = WechatMessage::make('news_item')
+//                        ->title($child->title)
+//                        ->url($child->content_url)
+//                        ->description($media->description)
+//                        ->picUrl($child->cover_url);
+//                }
+//
+//                array_unshift($return, $item);
+//
+//                return $return;
+//            }
+//        });
+    }
 
-                return $return;
-            }
-        });
+    public function makeArticle()
+    {
+
     }
 
     /**
-     * 文字转为消息.
+     * 生成图片消息.
      *
-     * @param App\Models\Material $media 素材
+     * @param string $media 素材
      *
-     * @return Response
+     * @return Image
      */
-    private function replyText($media)
+    private function makeImage($mediaId)
     {
-        return WechatMessage::make('text')->content($media->content);
+        return new Image(['media_id' => $mediaId]);
     }
 
     /**
-     * 回复图片.
+     * 生成语音消息.
      *
-     * @param App\Models\Material $media 素材
+     * @param string $media 素材
      *
-     * @return Response
+     * @return Image
      */
-    private function replyImage($media)
+    private function makeVoice($mediaId)
     {
-        return WechatMessage::make('image')->media($media->original_id);
+        return new Voice(['media_id' => $mediaId]);
     }
 
     /**
-     * 回复声音.
+     * 生成视频消息.
      *
-     * @param App\Models\Material $voice 素材
+     * @param array $video 视频
      *
-     * @return Response
-     *
-     * @todo  不能使用老版本的sdk
+     * @return Video
      */
-    private function replyVoice($voice)
+    private function makeVideo(array $video)
     {
-        return WechatMessage::make('voice')->media($voice->original_id);
+        new Video([
+            'title' => $video['title'],
+            'media_id' => $video['mediaId'],
+            'description' => $video['description'],
+        ]);
     }
 
     /**
-     * 回复视频.
+     * 生成链接消息.
      *
-     * @param App\Models\Material $video 素材
+     * @param array $link 链接
      *
-     * @return Response
+     * @return Video
      */
-    private function replyVideo($video)
+    private function makeLink(array $link)
     {
-        return WechatMessage::make('video')
-                            ->media($video->original_id)
-                            ->title($video->title)
-                            ->description($video->description);
+        new Link([
+            'title' => $link['title'],
+            'url' => $link['url'],
+            'description' => $link['description'],
+        ]);
+    }
+
+    /**
+     * 生成位置消息.
+     *
+     * @param array $location 位置
+     *
+     * @return Location
+     */
+    private function makeLocation(array $location)
+    {
+        new Location([
+            'latitude' => $location['latitude'],
+            'longitude' => $location['longitude'],
+            'scale' => $location['scale'],
+            'label' => $location['label'],
+        ]);
+    }
+
+    /**
+     * 返回空消息.
+     *
+     * @return string
+     */
+    public function makeEmpty()
+    {
+        return '';
     }
 
     /**
@@ -193,16 +255,6 @@ class Message
     {
         $accountId = $account->id;
 
-        return $this->messageRepository->storeMessage($accountId, $message);
-    }
-
-    /**
-     * 返回一条空消息.
-     *
-     * @return Response
-     */
-    public function emptyMessage()
-    {
-        return '';
+        $this->messageRepository->storeMessage($accountId, $message);
     }
 }

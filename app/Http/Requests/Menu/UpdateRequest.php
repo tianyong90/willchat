@@ -15,11 +15,8 @@ class UpdateRequest extends Request
     {
         return [
             'name' => 'required',
-            'token' => 'required',
-            'app_id' => 'required',
-            'app_secret' => 'required',
-            'aes_key' => 'required',
             'type' => 'required',
+            'key' => 'between:1,15',
         ];
     }
 }

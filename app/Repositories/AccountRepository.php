@@ -51,7 +51,7 @@ class AccountRepository
      *
      * @param string $token tag
      *
-     * @return Model
+     * @return Account
      */
     public function getByToken($token)
     {

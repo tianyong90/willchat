@@ -14,7 +14,7 @@ class MenuRepository
     /**
      * Menu Model.
      *
-     * @var model
+     * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model;
 
@@ -39,9 +39,9 @@ class MenuRepository
      * @param EventRepository    $eventRepository    事件Repository
      * @param MaterialRepository $materialRepository 素材Repository
      */
-    public function __construct(Menu $menu, 
-        EventRepository $eventRepository, 
-        MaterialRepository $materialRepository)
+    public function __construct(Menu $menu,
+                                EventRepository $eventRepository,
+                                MaterialRepository $materialRepository)
     {
         $this->model = $menu;
 
@@ -53,6 +53,8 @@ class MenuRepository
     /**
      * 菜单列表.
      *
+     * @param int $accountId 所属公众号ID
+     *
      * @return array
      */
     public function lists($accountId)
@@ -62,6 +64,8 @@ class MenuRepository
 
     /**
      * 取得所有菜单 不带有层级.
+     *
+     * @param int $accountId 所属公众号ID
      *
      * @return array
      */
@@ -73,8 +77,8 @@ class MenuRepository
     /**
      * 一次存储所有菜单.
      *
-     * @param int   $$accountId id
-     * @param array $menus      菜单
+     * @param       int    $$accountId id
+     * @param array $menus 菜单
      */
     public function storeMulti($accountId, $menus)
     {
@@ -169,7 +173,7 @@ class MenuRepository
     }
 
     /**
-     * 删除旧菜单.
+     * 删除全部菜单.
      *
      * @param int $accountId 公众号id
      */
@@ -202,15 +206,14 @@ class MenuRepository
     /**
      * savePost.
      *
-     * @param App\Models\Menu $menu  菜单
+     * @param Menu $menu  菜单
      * @param array           $input input
      *
-     * @return App\Models\Menu
+     * @return Menu
      */
     public function savePost($menu, $input)
     {
-        $menu->fill($input);
-        $menu->save();
+        $menu->fill($input)->save();
 
         return $menu;
     }

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\MenuRepository;
-use EasyWeChat\Foundation\Application;
+use App\Http\Requests\Menu\CreateRequest;
+use App\Http\Requests\Menu\UpdateRequest;
 
 class MenuController extends Controller
 {
@@ -26,30 +27,13 @@ class MenuController extends Controller
         $this->menuRepository = $menuRepository;
     }
 
-
+    /**
+     * 菜单列表显示.
+     *
+     * @return mixed
+     */
     public function index()
     {
-        //获取菜单数据
-        $menuTree = $this->menuRepository->lists(\Session::get('account_id'));
-
-        return user_view('menu.index', compact('menuTree'));
-    }
-
-    /**
-     * 创建菜单
-     */
-    public function getCreate()
-    {
-        return user_view('menu.create');
-    }
-
-    /**
-     * 保存创建菜单
-     */
-    public function postCreate()
-    {
-        //TODO:update fans data
-
         $easywechat = app('easywechat');
 
         $menu = $easywechat->menu;
@@ -82,19 +66,108 @@ class MenuController extends Controller
             ],
         ];
 
-        $matchRule = [
-            "group_id"             => "1",
-            "sex"                  => "1",
-            "country"              => "中国",
-            "province"             => "湖北",
-            "city"                 => "宜昌",
-//            "client_platform_type" => "2"
-        ];
-        $menu->add($buttons, $matchRule);
+        $menu->add($buttons);
 
         exit;
 
 
+        //获取菜单数据
+        $menuTree = $this->menuRepository->lists(\Session::get('account_id'));
+
+        return user_view('menu.index', compact('menuTree'));
+    }
+
+    /**
+     * 显示创建表单.
+     *
+     * @return mixed
+     */
+    public function getCreate()
+    {
+        return user_view('menu.create');
+    }
+
+    /**
+     * 保存创建菜单
+     *
+     * @param CreateRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postCreate(CreateRequest $request)
+    {
+        //TODO:update fans data
+//        $this->menuRepository->
+
+        return success('保存成功！');
+    }
+
+    /**
+     * 显示更新表单.
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getUpdate($id)
+    {
+        return user_view('menu.create');
+    }
+
+    /**
+     * 保存更新菜单
+     *
+     * @param CreateRequest $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function postUpdate(UpdateRequest $request)
+    {
+        //TODO:update fans data
+
+//        $easywechat = app('easywechat');
+//
+//        $menu = $easywechat->menu;
+//
+//        $buttons = [
+//            [
+//                "type" => "click",
+//                "name" => "今日歌曲",
+//                "key"  => "V1001_TODAY_MUSIC"
+//            ],
+//            [
+//                "name"       => "菜单",
+//                "sub_button" => [
+//                    [
+//                        "type" => "view",
+//                        "name" => "搜索",
+//                        "url"  => "http://www.soso.com/"
+//                    ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "视频",
+//                        "url"  => "http://v.qq.com/"
+//                    ],
+//                    [
+//                        "type" => "click",
+//                        "name" => "赞一下我们",
+//                        "key" => "V1001_GOOD"
+//                    ],
+//                ],
+//            ],
+//        ];
+//
+//        $matchRule = [
+//            "group_id"             => "1",
+//            "sex"                  => "1",
+//            "country"              => "中国",
+//            "province"             => "湖北",
+//            "city"                 => "宜昌",
+////            "client_platform_type" => "2"
+//        ];
+//        $menu->add($buttons, $matchRule);
+
+        return success('保存成功！');
     }
 
     /**
@@ -106,11 +179,9 @@ class MenuController extends Controller
      */
     public function destroy($menuId)
     {
-        $options = get_wechat_options(\Session::get('account_id'));
+        $easywechat = app('easywechat');
 
-        $app = new Application($options);
-
-        $menuService = $app->menu;
+        $menuService = $easywechat->menu;
 
         try {
             $menuService->destroy($menuId);
@@ -131,17 +202,15 @@ class MenuController extends Controller
      */
     public function clear()
     {
-        $options = get_wechat_options(\Session::get('account_id'));
+        $easywechat = app('easywechat');
 
-        $app = new Application($options);
-
-        $menuService = $app->menu;
+        $menuService = $easywechat->menu;
 
         try {
             $menuService->destroy();
 
             //清除本地数据库中保存的相关菜单数据
-            $this->menuRepository->destroyMenu(\Session::get('account_id'));
+            $this->menuRepository->destroyMenu(get_chosed_account());
 
             return success('清除成功');
         } catch (\Exception $e) {
