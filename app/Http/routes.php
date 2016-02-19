@@ -117,7 +117,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('function', 'SystemFunctionController@index');
 
             //自定义菜单
-            Route::get('menu', 'MenuController@index');
+            Route::get('menu', 'MenuController@getIndex');
             Route::get('menu/sync', 'MenuController@sync');
             Route::get('menu/destroy/{id}', 'MenuController@destroy');
             Route::get('menu/clear', 'MenuController@clear');

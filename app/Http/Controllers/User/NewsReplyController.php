@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReplyRepository;
 
@@ -60,7 +58,6 @@ class NewsReplyController extends Controller
     {
         return success('删除成功');
     }
-
 
     public function destroy($ids)
     {

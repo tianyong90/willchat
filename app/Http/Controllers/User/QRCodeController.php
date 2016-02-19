@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
+use Storage;
 use App\Repositories\QrcodeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use EasyWeChat\Foundation\Application;
 
 class QrcodeController extends Controller
 {
@@ -71,7 +70,6 @@ class QrcodeController extends Controller
         if ($request->type = self::TYPE_FOREVER) {
             try {
                 $result = $qrcodeService->forever($request->keyword);
-
             } catch (\Exception $e) {
                 return error('创建失败');
             }
@@ -87,7 +85,7 @@ class QrcodeController extends Controller
 
         $this->qrcodeRepository->store($qrcodeData);
 
-        return error('保存成功', user_url('qrcode/'.$request->input('type')));
+        return error('保存成功', user_url('qrcode/' . $request->input('type')));
     }
 
     /**
@@ -109,7 +107,25 @@ class QrcodeController extends Controller
      */
     public function download($id)
     {
-        return response()->download(asset('images/user/logo.png'), 'pic.png', ['Content-Type' => 'image/png']);
-    }
+        // 二维码相关数据
+        $qrcodeData = $this->qrcodeRepository->getById($id);
 
+        $easywechat = app('easywechat');
+        $qrcodeService = $easywechat->qrcode;
+
+        $url = $qrcodeService->url($qrcodeData->ticket);
+        // 获取二维码内容
+        $content = file_get_contents($url);
+
+        // 临时文件名
+        $tempFilename = md5(time() . uniqid('qr_'));
+
+        // 二维码内容保存为临时图片
+        Storage::put("temp/{$tempFilename}.png", $content);
+
+        $file = storage_path("/app/temp/{$tempFilename}.png");
+
+        // 返回下载响应
+        return response()->download($file, $qrcodeData->remark . '.png', ['Content-Type' => 'image/png']);
+    }
 }

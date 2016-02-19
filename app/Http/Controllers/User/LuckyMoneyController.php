@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use EasyWeChat\Foundation\Application;
 
 class LuckyMoneyController extends Controller
@@ -38,9 +34,6 @@ class LuckyMoneyController extends Controller
         $res = $luckyMoney->prepare($data);
 //        $res = $luckyMoney->sendGroup($data);
 
-
         dump($res);
     }
-
-
 }

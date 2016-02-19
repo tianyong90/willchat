@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Repositories\AccountRepository;
 use Illuminate\Http\Request;
 use App\Services\Server as WechatService;
-use App\Http\Requests;
 
 /**
  * 微信响应控制器.

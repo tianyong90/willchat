@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 
 class DocumentController extends Controller
 {
     /**
-     * 文章列表
+     * 文章列表.
      *
      * @return mixed
      */
@@ -23,7 +20,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * 文章详情
+     * 文章详情.
      *
      * @param $id
      *
@@ -33,8 +30,8 @@ class DocumentController extends Controller
     {
         $article = Article::find($id);
 
-        $prevId = $id > 1 ? $id-1 : 1;
-        $nextId = $id > 1 ? $id-1 : 1;
+        $prevId = $id > 1 ? $id - 1 : 1;
+        $nextId = $id > 1 ? $id - 1 : 1;
 
         return user_view('docment.detail', compact('article', 'prevId', 'nextId'));
     }

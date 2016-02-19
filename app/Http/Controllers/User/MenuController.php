@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\MenuRepository;
 use App\Http\Requests\Menu\CreateRequest;
@@ -32,45 +29,8 @@ class MenuController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function getIndex()
     {
-        $easywechat = app('easywechat');
-
-        $menu = $easywechat->menu;
-
-        $buttons = [
-            [
-                "type" => "click",
-                "name" => "今日歌曲",
-                "key"  => "V1001_TODAY_MUSIC"
-            ],
-            [
-                "name"       => "菜单",
-                "sub_button" => [
-                    [
-                        "type" => "view",
-                        "name" => "搜索",
-                        "url"  => "http://www.soso.com/"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "视频",
-                        "url"  => "http://v.qq.com/"
-                    ],
-                    [
-                        "type" => "click",
-                        "name" => "赞一下我们",
-                        "key" => "V1001_GOOD"
-                    ],
-                ],
-            ],
-        ];
-
-        $menu->add($buttons);
-
-        exit;
-
-
         //获取菜单数据
         $menuTree = $this->menuRepository->lists(\Session::get('account_id'));
 
@@ -88,7 +48,7 @@ class MenuController extends Controller
     }
 
     /**
-     * 保存创建菜单
+     * 保存创建菜单.
      *
      * @param CreateRequest $request
      *
@@ -115,7 +75,7 @@ class MenuController extends Controller
     }
 
     /**
-     * 保存更新菜单
+     * 保存更新菜单.
      *
      * @param CreateRequest $request
      *
@@ -171,7 +131,7 @@ class MenuController extends Controller
     }
 
     /**
-     * 删除指定菜单
+     * 删除指定菜单.
      *
      * @param $menuId
      *
@@ -196,7 +156,7 @@ class MenuController extends Controller
     }
 
     /**
-     * 清除全部菜单
+     * 清除全部菜单.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -217,5 +177,4 @@ class MenuController extends Controller
             return error('清除失败');
         }
     }
-
 }

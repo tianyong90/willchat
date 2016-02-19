@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Support\Facades\Input;
 
 /**
- * Class FanGroupController
- *
- * @package App\Http\Controllers\User
+ * Class FanGroupController.
  */
 class FanGroupController extends Controller
 {
@@ -32,7 +28,6 @@ class FanGroupController extends Controller
 
         $this->groupService = $app->user_group;
     }
-
 
     /**
      * @return mixed
@@ -56,7 +51,7 @@ class FanGroupController extends Controller
     }
 
     /**
-     * 保存编辑
+     * 保存编辑.
      *
      * @param Request $request
      * @param int     $id
@@ -71,7 +66,7 @@ class FanGroupController extends Controller
 
             return success('修改成功！');
         } catch (\Exception $e) {
-            return error('修改失败！' . $e->getMessage());
+            return error('修改失败！'.$e->getMessage());
         }
     }
 
@@ -95,12 +90,12 @@ class FanGroupController extends Controller
 
             return success('创建成功！');
         } catch (\Exception $e) {
-            return error('创建失败！' . $e->getMessage());
+            return error('创建失败！'.$e->getMessage());
         }
     }
 
     /**
-     * 删除粉丝分组
+     * 删除粉丝分组.
      *
      * @param int $id
      */
@@ -111,7 +106,7 @@ class FanGroupController extends Controller
 
             return success('删除成功！');
         } catch (\Exception $e) {
-            return error('删除失败！' . $e->getMessage());
+            return error('删除失败！'.$e->getMessage());
         }
     }
 }

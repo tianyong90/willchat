@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Repositories\AccountRepository;
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\CreateRequest;
 use App\Http\Requests\Account\UpdateRequest;
@@ -36,7 +34,7 @@ class AccountController extends Controller
     /**
      * 保存添加公众号数据.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -50,7 +48,7 @@ class AccountController extends Controller
     /**
      * 显示编辑公众号表单.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -64,8 +62,8 @@ class AccountController extends Controller
     /**
      * 保存编辑后的公众号数据.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -77,9 +75,9 @@ class AccountController extends Controller
     }
 
     /**
-     * 查看公众号对应接口信息
+     * 查看公众号对应接口信息.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -105,9 +103,9 @@ class AccountController extends Controller
     }
 
     /**
-     * 删除公众号
+     * 删除公众号.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */

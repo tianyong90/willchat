@@ -6,7 +6,6 @@
         <i class="fa fa-info"></i> 默认回复
       </div>
       <div class="actions">
-<!--         <a href="{{ user_url('/') }}" class="btn default blue-stripe dialog-popup" target-form="ids"><i class="fa fa-hand-paper-o"></i>批量移动用户</a> -->
       </div>
     </div>
     <div class="portlet-body form">
@@ -15,7 +14,7 @@
           <div class="form-group">
             <label class="col-md-2 control-label">回复内容</label>
             <div class="col-md-6">
-              <textarea class="form-control" name="content" rows="5" placeholder="输入回复内容"></textarea>
+              <textarea class="form-control" name="content" rows="5" placeholder="输入回复内容">{{ $replyData->content or '' }}</textarea>
             </div>
           </div>
           <!-- <div class="form-group">
@@ -47,7 +46,6 @@
 @section('js')
   <script>
     $(function () {
-     
     })
   </script>
 @endsection

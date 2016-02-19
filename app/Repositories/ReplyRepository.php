@@ -21,7 +21,7 @@ class ReplyRepository
     /**
      * eventRepository.
      *
-     * @var App\Repositories\EventRepository
+     * @var \App\Repositories\EventRepository
      */
     private $eventRepository;
 
@@ -104,8 +104,8 @@ class ReplyRepository
         $input = $request->all();
 
         $model = $this->model->where('account_id', $accountId)
-                             ->where('type', $type)
-                             ->first();
+            ->where('type', $type)
+            ->first();
 
         if (!$model) {
             $eventId = $this->saveReplyToEvent($replyType, $replyContent, $accountId);
@@ -121,26 +121,27 @@ class ReplyRepository
     }
 
     /**
-     * 存储回复.
+     * 存储回复
      *
-     * @param request $request   request
-     * @param int     $accountId accountId
+     * @param Request  $request
+     * @param int    $accountId
+     * @param string $type
      *
-     * @return Reply 模型
+     * @return Reply
      */
-    public function store($request, $accountId)
+    public function store(array $request, $accountId, $type = Reply::TYPE_KEYWORDS)
     {
         $reply = new $this->model();
 
         $input = $request->all();
 
-        $replies = $input['replies'];
-
-        $input['content'] = $this->saveRepliesToEvent($replies, $accountId);
-
+//        $replies = $input['replies'];
+//
+//        $input['content'] = $this->saveRepliesToEvent($replies, $accountId);
+//
         $input['account_id'] = $accountId;
 
-        $input['type'] = Reply::TYPE_KEYWORDS;
+        $input['type'] = $type;
 
         return $this->savePost($reply, $input);
     }

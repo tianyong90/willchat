@@ -4,11 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Fan;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\FanRepository;
-
 use EasyWeChat\Foundation\Application;
 
 class FansController extends Controller
@@ -43,7 +40,7 @@ class FansController extends Controller
     }
 
     /**
-     * 从微信官方服务器摘取粉丝数据并保存到本地数据库
+     * 从微信官方服务器摘取粉丝数据并保存到本地数据库.
      */
     public function updateFansData()
     {
@@ -85,7 +82,7 @@ class FansController extends Controller
         //获取分组数据
         $groups = $group->lists()->groups;
 
-        return user_view('fans.moveto')->with(['groupid' => $groupid, 'groups'=>$groups]);
+        return user_view('fans.moveto')->with(['groupid' => $groupid, 'groups' => $groups]);
     }
 
     /**
@@ -117,7 +114,7 @@ class FansController extends Controller
 
             return success('移动成功！');
         } catch (\Exception $e) {
-            return error('移动失败！' . $e->getMessage());
+            return error('移动失败！'.$e->getMessage());
         }
     }
 
@@ -162,8 +159,7 @@ class FansController extends Controller
 
             return success('修改成功！');
         } catch (\Exception $e) {
-            return error('修改失败！' . $e->getMessage());
+            return error('修改失败！'.$e->getMessage());
         }
     }
-
 }

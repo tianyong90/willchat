@@ -4,7 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
@@ -20,7 +19,7 @@ class AvatarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +34,7 @@ class AvatarController extends Controller
 //            $extension = $file->getClientOriginalExtension();
             //            $mimeTye = $file->getMimeType();
 //            $newName = 'uploads/avatar/' . md5(date('ymdhis') . $clientName) . ".jpg";
-            $newName = 'uploads/avatar/' . auth()->user()->name . ".jpg";
+            $newName = 'uploads/avatar/'.auth()->user()->name.'.jpg';
 
             $imagine = new Imagine();
             $point = new Point($request->input('x'), $request->input('y'));

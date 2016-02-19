@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
-
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -63,18 +62,17 @@ class AuthController extends Controller
 
     /**
      * Create a new authentication controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
-//        $this->middleware('guest', ['except' => ['user/logout', 'user/lock']]);
+        //        $this->middleware('guest', ['except' => ['user/logout', 'user/lock']]);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -89,7 +87,8 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
@@ -102,7 +101,7 @@ class AuthController extends Controller
     }
 
     /**
-     * 登录成功后操作
+     * 登录成功后操作.
      *
      * @param Request $request
      * @param User    $user
@@ -124,7 +123,7 @@ class AuthController extends Controller
      */
     public function lock()
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             $lockedName = Auth::user()->name;
             $lockedAvatar = Auth::user()->avatar;
 
@@ -139,7 +138,7 @@ class AuthController extends Controller
             $lockedAvatar = \Session::get('locked_avatar');
         }
 
-        if(!$lockedName) {
+        if (!$lockedName) {
             return redirect('user/login');
         }
 
