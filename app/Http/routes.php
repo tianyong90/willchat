@@ -118,7 +118,8 @@ Route::group(['middleware' => ['web']], function () {
 
             //自定义菜单
             Route::get('menu', 'MenuController@getIndex');
-            Route::get('menu/sync', 'MenuController@sync');
+            Route::get('menu/sync-from-wechat', 'MenuController@getSyncFromWechat');
+            Route::get('menu/sync-to-wechat', 'MenuController@getSyncToWechat');
             Route::get('menu/destroy/{id}', 'MenuController@destroy');
             Route::get('menu/clear', 'MenuController@clear');
             Route::get('menu/create', 'MenuController@getCreate');
@@ -127,7 +128,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('menu/update/{id}', 'MenuController@postUpdate');
 
             //数据统计与分析
-            Route::get('stats', 'DataStatsController@index');
+            Route::get('stats', 'DataStatsController@getIndex');
 
             //自动回复
             Route::get('reply-subscribe', 'SubscribeReplyController@show');

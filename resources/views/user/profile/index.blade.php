@@ -10,7 +10,7 @@
           </div>
           <ul class="nav nav-tabs">
             <li class="active">
-              <a href="{{ user_url('profile/index') }}">个人信息设置</a>
+              <a href="{{ user_url('profile/userinfo') }}">个人信息设置</a>
             </li>
             <li>
               <a href="{{ user_url('avatar') }}">头像设置</a>

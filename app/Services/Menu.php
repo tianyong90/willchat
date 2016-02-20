@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use Overtrue\Wechat\MenuItem;
+use EasyWeChat\Foundation\Application;
+use App\Models\Account;
+use App\Repositories\MenuRepository;
 
 /**
  * 菜单服务提供类.
@@ -12,31 +14,51 @@ use Overtrue\Wechat\MenuItem;
 class Menu
 {
     /**
-     * 取得远程公众号的菜单.
-     *
-     * @param App\Models\AccountModel $account
-     *
-     * @return array 菜单信息
+     * @var MenuRepository
      */
-    private function getFromRemote(AccountModel $account)
+    private $menuRepository;
+
+    /**
+     * Menu constructor.
+     *
+     * @param MenuRepository $menuRepository
+     */
+    public function __construct(MenuRepository $menuRepository)
     {
-        return with(new WechatMenu($account->app_id, $account->app_secret))->current();
+        $this->menuRepository = $menuRepository;
     }
+
 
     /**
      * 同步远程菜单到本地数据库.
      *
-     * @param App\Models\AccountModel $account 公众号
+     * @param Account $account 公众号
      *
      * @return Response
      */
-    public function syncToLocal(AccountModel $account)
+    public function syncToLocal(Account $account)
     {
         $remoteMenus = $this->getFromRemote($account);
 
         $menus = $this->makeLocalize($remoteMenus);
 
         return $this->saveToLocal($account->id, $menus);
+    }
+
+    /**
+     * 取得远程公众号的菜单.
+     *
+     * @param Account $account
+     *
+     * @return array 菜单信息
+     */
+    private function getFromRemote(Account $account)
+    {
+        $options = get_wechat_options($account->id);
+
+        $easywechat = new Application($options);
+
+        return with($easywechat->menu->current());
     }
 
     /**
@@ -106,18 +128,18 @@ class Menu
      */
     private function saveToLocal($accountId, $menus)
     {
-        return $this->menuRepository->storeMulti($accountId, $menus);
+        $this->menuRepository->storeAll($accountId, $menus);
     }
 
     /**
      * 解析文字类型的菜单 [转换为事件].
      *
-     * @param App\Models\AccountModel $account
+     * @param Account $account
      * @param array                   $menu
      *
      * @return array
      */
-    private function resolveTextMenu(AccountModel $account, $menu)
+    private function resolveTextMenu(Account $account, $menu)
     {
         $menu['type'] = 'click';
 

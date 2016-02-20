@@ -9,7 +9,8 @@
       </div>
       <div class="actions">
         <a href="{{ user_url('menu/create') }}" class="btn default blue-stripe btn-xs dialog-popup dialog-medium"><i class="fa fa-plus"></i>添加菜单</a>
-        <a href="javascript:;" id="create-wxmenu" class="btn default green-stripe btn-xa"><i class="fa fa-save"></i>重新生成</a>
+        <a href="javascript:;" id="sync-from-wechat" class="btn default green-stripe btn-xa"><i class="fa fa-cloud-download"></i>从微信同步</a>
+        <a href="javascript:;" id="sync-to-wechat" class="btn default green-stripe btn-xa"><i class="fa fa-cloud-upload"></i>同步到微信</a>
         <a href="javascript:;" class="btn default red-stripe btn-xa" id="clear-all"><i class="fa fa-trash-o"></i>清除菜单</a>
       </div>
     </div>
@@ -80,6 +81,42 @@
             Base.error(data.info);
           }
         }, 'json');
+      });
+
+      // 从微信同步
+      $('a#sync-from-wechat').click(function (event) {
+        event.preventDefault();
+        Base.confirm('从微信同步菜单将会覆盖本地保存的菜单数据，确定要进行同步？', function(){
+          var url = "{{ user_url('menu/sync-from-wechat') }}";
+          $.get(url, function (data) {
+            if (data.status) {
+              Base.success(data.info);
+              setTimeout(function () {
+                top.location.reload()
+              }, 2000);
+            } else {
+              Base.error(data.info);
+            }
+          }, 'json');
+        });
+      });
+
+      // 同步到微信（即根据本地数据重新生成菜单）
+      $('a#sync-to-wechat').click(function (event) {
+        event.preventDefault();
+        Base.confirm('本操作将重新生成微信自定义菜单，确定要进行操作？', function(){
+          var url = "{{ user_url('menu/sync-to-wechat') }}";
+          $.get(url, function (data) {
+            if (data.status) {
+              Base.success(data.info);
+              setTimeout(function () {
+                top.location.reload()
+              }, 2000);
+            } else {
+              Base.error(data.info);
+            }
+          }, 'json');
+        });
       });
 
       // 清除全部菜单操作

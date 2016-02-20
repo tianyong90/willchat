@@ -80,7 +80,7 @@ class MenuRepository
      * @param       int    $$accountId id
      * @param array $menus 菜单
      */
-    public function storeMulti($accountId, $menus)
+    public function storeAll($accountId, $menus)
     {
         foreach ($menus as $key => $menu) {
             $menu['sort'] = $key;

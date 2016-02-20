@@ -131,6 +131,26 @@ class MenuController extends Controller
     }
 
     /**
+     * 将微信现有菜单同步到本地.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getSyncFromWechat()
+    {
+        return success('同步成功');
+    }
+
+    /**
+     * 本地菜单数据同步到微信.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getSyncToWechat()
+    {
+        return success('同步成功');
+    }
+
+    /**
      * 删除指定菜单.
      *
      * @param $menuId
