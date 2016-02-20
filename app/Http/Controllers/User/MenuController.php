@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\MenuRepository;
 use App\Http\Requests\Menu\CreateRequest;
 use App\Http\Requests\Menu\UpdateRequest;
+use App\Services\Menu as MenuService;
+use App\Services\Account as AccountService;
 
 class MenuController extends Controller
 {
@@ -15,13 +17,29 @@ class MenuController extends Controller
     private $menuRepository;
 
     /**
+     * @var MenuService
+     */
+    private $menuService;
+
+    /**
+     * @var AccountService
+     */
+    private $accountService;
+
+    /**
      * MenuController constructor.
      *
      * @param MenuRepository $menuRepository
+     * @param MenuService    $menuService
+     * @param AccountService $accountService
      */
-    public function __construct(MenuRepository $menuRepository)
+    public function __construct(MenuRepository $menuRepository, MenuService $menuService, AccountService $accountService)
     {
         $this->menuRepository = $menuRepository;
+
+        $this->menuService = $menuService;
+
+        $this->accountService = $accountService;
     }
 
     /**
@@ -137,6 +155,11 @@ class MenuController extends Controller
      */
     public function getSyncFromWechat()
     {
+        // 当前选中的公众号
+        $currentAccount = $this->accountService->chosedAccount();
+
+        $this->menuService->syncToLocal($currentAccount);
+
         return success('同步成功');
     }
 
@@ -147,7 +170,16 @@ class MenuController extends Controller
      */
     public function getSyncToWechat()
     {
-        return success('同步成功');
+        // 当前选中的公众号
+        $currentAccount = $this->accountService->chosedAccount();
+
+        try {
+            $reault = $this->menuService->saveToRemote($currentAccount);
+
+            return success('同步成功');
+        } catch (\Exception $e) {
+            return error($e->getMessage());
+        }
     }
 
     /**
@@ -159,20 +191,9 @@ class MenuController extends Controller
      */
     public function destroy($menuId)
     {
-        $easywechat = app('easywechat');
+        $this->menuRepository->destroy($menuId);
 
-        $menuService = $easywechat->menu;
-
-        try {
-            $menuService->destroy($menuId);
-
-            //清除本地数据库中保存的相关菜单数据
-            $this->menuRepository->destroy($menuId);
-
-            return success('删除成功');
-        } catch (\Exception $e) {
-            return error('删除失败');
-        }
+        return success('删除成功');
     }
 
     /**

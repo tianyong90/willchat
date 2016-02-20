@@ -203,8 +203,8 @@ class Material
     /**
      * 同步远程素材到本地.
      *
-     * @param Account $account 当前公众号
-     * @param string  $type    素材类型
+     * @param AccountModel $account 当前公众号
+     * @param string       $type    素材类型
      *
      * @return Response
      */
@@ -225,9 +225,9 @@ class Material
     /**
      * 远程素材存储本地.
      *
-     * @param Account $account 公众号
-     * @param array   $lists   素材列表
-     * @param string  $type
+     * @param AccountModel $account 公众号
+     * @param array        $lists   素材列表
+     * @param string       $type
      *
      * @return Response
      */
@@ -243,8 +243,8 @@ class Material
     /**
      * 存储远程图片素材.
      *
-     * @param Account $account 公众号
-     * @param array   $image   素材信息
+     * @param AccountModel $account 公众号
+     * @param array        $image   素材信息
      *
      * @return Response
      */
@@ -327,8 +327,8 @@ class Material
     /**
      * 将图文消息中的素材转换为本地.
      *
-     * @param Account $account   公众号
-     * @param array   $newsItems newItem
+     * @param AccountModel $account   公众号
+     * @param array        $newsItems newItem
      *
      * @return array
      */
@@ -360,9 +360,9 @@ class Material
     /**
      * 下载素材到本地.
      *
-     * @param Account $account 公众号
-     * @param string  $type    素材类型
-     * @param string  $mediaId 素材
+     * @param AccountModel $account 公众号
+     * @param string       $type    素材类型
+     * @param string       $mediaId 素材
      *
      * @return mixed
      */
@@ -404,9 +404,9 @@ class Material
     /**
      * 获取远程图片列表.
      *
-     * @param Account $account 公众号
-     * @param int     $offset  起始位置
-     * @param int     $count   获取数量
+     * @param AccountModel $account 公众号
+     * @param int          $offset  起始位置
+     * @param int          $count   获取数量
      *
      * @return array 列表
      */
@@ -423,8 +423,8 @@ class Material
     /**
      * 取得远程素材的数量.
      *
-     * @param Account $account 公众号
-     * @param string  $type    素材类型
+     * @param AccountModel $account 公众号
+     * @param string       $type    素材类型
      *
      * @return int
      */

@@ -28,11 +28,23 @@ class WillChatServiceProvider extends ServiceProvider
 
     }
 
+    /**
+     * 注册公众号服务提供者
+     */
     protected function registerAccountService()
     {
-        $this->app->singleton('willchat.account_service', function() {
-            return new AccountService();
+        $account = new \App\Models\Account();
+
+        $accountRepository = new \App\Repositories\AccountRepository($account);
+
+        $this->app->singleton('willchat.account_service', function () use ($accountRepository) {
+            return new AccountService($accountRepository);
         });
     }
+
+//    private function registerAccountService()
+//    {
+//
+//    }
 
 }

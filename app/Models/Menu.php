@@ -19,6 +19,7 @@ class Menu extends Model
         'name',
         'type',
         'key',
+        'url',
         'sort',
     ];
 
@@ -33,6 +34,7 @@ class Menu extends Model
         'name' => '菜单名称',
         'type' => '菜单类型',
         'key' => '菜单值',
+        'url' => '链接',
         'sort' => '排序',
     ];
 
@@ -46,6 +48,11 @@ class Menu extends Model
         return $this->hasMany('App\Models\Menu', 'parent_id');
     }
 
+    /**
+     * @param $type
+     *
+     * @return mixed
+     */
     public function getTypeAttribute($type)
     {
         $typeMap = [

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Services\Account as AccountService;
+use App\Services\AccountModel as AccountService;
 use App\Models\Event;
 
 /**

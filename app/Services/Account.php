@@ -7,31 +7,40 @@ use App\Repositories\AccountRepository;
 
 /**
  * 公众号服务提供者.
- *
  */
 class Account
 {
-//    /**
-//     * @var AccountRepository
-//     */
-//    private $accountRepository;
-//
-//    /**
-//     * constructer.
-//     */
-//    public function __construct(AccountRepository $account)
-//    {
-//        $this->accountRepository = $account;
-//    }
+    /**
+     * @var AccountRepository
+     */
+    private $accountRepository;
 
     /**
-     * 当前是否有选择公众号.
+     * constructer.
+     */
+    public function __construct(AccountRepository $account)
+    {
+        $this->accountRepository = $account;
+    }
+
+    /**
+     * 当前选择的公众号ID.
      *
      * @return bool|int
      */
     public function chosedId()
     {
         return Session::get('account_id');
+    }
+
+    /**
+     * 当前选中的公众号
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function chosedAccount()
+    {
+        return $this->accountRepository->getById($this->chosedId());
     }
 
     /**
@@ -86,8 +95,7 @@ class Account
     {
         $accountId = $accountId ?: $this->chosedId();
 
-        $accountData = \App\Models\Account::find($accountId);
-//        $accountData = $this->accountRepository->getById($accountId);
+        $accountData = $this->accountRepository->getById($accountId);
 
         $options = [
             'debug' => true,

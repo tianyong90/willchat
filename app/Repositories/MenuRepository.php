@@ -89,7 +89,7 @@ class MenuRepository
             $parentId = $this->store($menu)->id;
 
             if (!empty($menu['sub_button'])) {
-                foreach ($menu['sub_button'] as $subKey => $subMenu) {
+                foreach ($menu['sub_button']['list'] as $subKey => $subMenu) {
                     $subMenu['parent_id'] = $parentId;
 
                     $subMenu['sort'] = $subKey;
@@ -192,7 +192,6 @@ class MenuRepository
         $this->model->where('account_id', $accountId)->delete();
     }
 
-
     /**
      * 保存菜单.
      *
@@ -216,5 +215,19 @@ class MenuRepository
         $menu->fill($input)->save();
 
         return $menu;
+    }
+
+    /**
+     * 删除菜单
+     *
+     * @param $id
+     */
+    public function destroy($id)
+    {
+        // 先删除子菜单
+        $this->model->find($id)->subButtons()->delete();
+
+        // 删除自身
+        $this->model->find($id)->delete();
     }
 }

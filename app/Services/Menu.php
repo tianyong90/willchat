@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use EasyWeChat\Foundation\Application;
-use App\Models\Account;
+use App\Models\Account as AccountModel;
 use App\Repositories\MenuRepository;
 
 /**
@@ -28,19 +28,21 @@ class Menu
         $this->menuRepository = $menuRepository;
     }
 
-
     /**
      * 同步远程菜单到本地数据库.
      *
-     * @param Account $account 公众号
+     * @param AccountModel $account 公众号
      *
      * @return Response
      */
-    public function syncToLocal(Account $account)
+    public function syncToLocal(AccountModel $account)
     {
         $remoteMenus = $this->getFromRemote($account);
 
         $menus = $this->makeLocalize($remoteMenus);
+
+        // 先清除本地原有相关菜单数据
+        $this->menuRepository->destroyMenu($account->id);
 
         return $this->saveToLocal($account->id, $menus);
     }
@@ -48,11 +50,11 @@ class Menu
     /**
      * 取得远程公众号的菜单.
      *
-     * @param Account $account
+     * @param AccountModel $account
      *
      * @return array 菜单信息
      */
-    private function getFromRemote(Account $account)
+    private function getFromRemote(AccountModel $account)
     {
         $options = get_wechat_options($account->id);
 
@@ -77,6 +79,18 @@ class Menu
         }
 
         return $this->filterEmptyMenu(array_map([$this, 'analyseRemoteMenu'], $menus));
+    }
+
+    /**
+     * 保存解析后台的菜单到本地.
+     *
+     * @param array $menus 菜单
+     *
+     * @return array
+     */
+    private function saveToLocal($accountId, $menus)
+    {
+        $this->menuRepository->storeAll($accountId, $menus);
     }
 
     /**
@@ -110,36 +124,24 @@ class Menu
      */
     private function analyseRemoteMenu($menu)
     {
-        if (isset($menu['sub_button']['list'])) {
-            $menu['sub_button'] = array_map([$this, 'analyseRemoteMenu'], $menu['sub_button']['list']);
-        } else {
-            $menu = call_user_func([$this, camel_case('resolve_'.$menu['type'].'_menu')], $menu);
-        }
+//        if (isset($menu['sub_button']['list'])) {
+//            $menu['sub_button'] = array_map([$this, 'analyseRemoteMenu'], $menu['sub_button']['list']);
+//        } else {
+//            $menu = call_user_func([$this, camel_case('resolve_'.$menu['type'].'_menu')], $menu);
+//        }
 
         return $menu;
     }
 
     /**
-     * 保存解析后台的菜单到本地.
-     *
-     * @param array $menus 菜单
-     *
-     * @return array
-     */
-    private function saveToLocal($accountId, $menus)
-    {
-        $this->menuRepository->storeAll($accountId, $menus);
-    }
-
-    /**
      * 解析文字类型的菜单 [转换为事件].
      *
-     * @param Account $account
-     * @param array                   $menu
+     * @param AccountModel $account
+     * @param array        $menu
      *
      * @return array
      */
-    private function resolveTextMenu(Account $account, $menu)
+    private function resolveTextMenu(AccountModel $account, $menu)
     {
         $menu['type'] = 'click';
 
@@ -369,19 +371,22 @@ class Menu
      * 提交菜单到微信
      *
      * @param AccountModel $account
-     * @param array        $menus   菜单
      */
-    public function saveToRemote($account, $menus)
+    public function saveToRemote($account)
     {
-        $wechatMenu = new WechatMenu($account->app_id, $account->app_secret);
+        $menus = $this->menuRepository->lists($account->id)->toArray();
+
+        $options = get_wechat_options($account->id);
+
+        $easywechat = new Application($options);
 
         $menus = $this->formatToWechat($menus);
 
-        return $wechatMenu->set($menus);
+        return $easywechat->menu->add($menus);
     }
 
     /**
-     * 格式化为微信菜单.
+     * 格式化为微信菜单
      *
      * @param array $menus 菜单
      */
@@ -390,19 +395,47 @@ class Menu
         $saveMenus = [];
 
         foreach ($menus as $menu) {
-            if (isset($menu['sub_button'])) {
-                $menuItem = new MenuItem($menu['name']);
-                $subButtons = [];
-                foreach ($menu['sub_button'] as $subMenu) {
-                    $subButtons[] = new MenuItem($subMenu['name'], $subMenu['type'], $subMenu['key']);
+            if (!empty($menu['sub_buttons'])) {
+                $temp['name'] = $menu['name'];
+
+                foreach ($menu['sub_buttons'] as $subButton) {
+                    $temp['sub_button'][] = $this->makeMenuItem($subButton);
                 }
-                $menuItem->buttons($subButtons);
-                $saveMenus[] = $menuItem;
+
+                $saveMenus[] = $temp;
             } else {
-                $saveMenus[] = new MenuItem($menu['name'], $menu['type'], $menu['key']);
+                $saveMenus[] = $this->makeMenuItem($menu);
             }
         }
 
         return $saveMenus;
     }
+
+    /**
+     * 根据本地保存的数据生成单个菜单项
+     *
+     * @param array $menuData
+     *
+     * @return mixed
+     */
+    private function makeMenuItem(array $menuData)
+    {
+        switch ($menuData['type']) {
+            case '点击':
+                $menuItem['type'] = 'click';
+                $menuItem['key'] = $menuData['key'];
+                break;
+            case '页面跳转':
+                $menuItem['type'] = 'view';
+                $menuItem['url'] = $menuData['url'];
+                break;
+            default:
+                break;
+        }
+
+        $menuItem['name'] = $menuData['name'];
+
+        return $menuItem;
+    }
+
 }

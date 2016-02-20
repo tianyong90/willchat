@@ -31,10 +31,15 @@
               <tr>
                 <td>{{ $menu->name }}</td>
                 <td>{{ $menu->type }}</td>
-                <td>{{ $menu->key }}</td>
                 <td>
-                  <a class="btn blue btn-xs dialog-popup"
-                     href="{{ user_url('menu/edit/'.$menu->id) }}">编辑</a>
+                  @if ($menu->type == '点击')
+                    {{ $menu->key }}
+                  @else
+                    {{ $menu->url }}
+                  @endif
+                </td>
+                <td>
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('menu/edit/'.$menu->id) }}">编辑</a>
                   <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('menu/destroy/'.$menu->id) }}">删除</button>
                 </td>
               </tr>
@@ -43,10 +48,15 @@
                   <tr>
                     <td>┖━━ &nbsp;{{ $subButton->name }}</td>
                     <td>{{ $subButton->type }}</td>
-                    <td>{{ $subButton->key }}</td>
                     <td>
-                      <a class="btn blue btn-xs dialog-popup"
-                         href="{{ user_url('menu/edit/'.$subButton->id) }}">编辑</a>
+                      @if ($subButton->type == '点击')
+                        {{ $subButton->key }}
+                      @else
+                        {{ $subButton->url }}
+                      @endif
+                    </td>
+                    <td>
+                      <a class="btn blue btn-xs dialog-popup" href="{{ user_url('menu/edit/'.$subButton->id) }}">编辑</a>
                       <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('menu/destroy/'.$subButton->id) }}">删除</button>
                     </td>
                   </tr>
@@ -55,7 +65,7 @@
             @endforeach
           @else
             <tr>
-              <td colspan="10" class="row-nodata">暂无数据</td>
+              <td colspan="10" class="row-nodata">请从微信同步或手动添加新菜单</td>
             </tr>
           @endif
           </tbody>
@@ -122,7 +132,7 @@
       // 清除全部菜单操作
       $('a#clear-all').click(function (event) {
         event.preventDefault();
-        Base.confirm('该操作将无法恢复，确定要清除全部菜单？', function(){
+        Base.confirm('该操作会清除本系统和微信上的自定义菜单数据并不可恢复，确定继续？', function(){
           var url = "{{ user_url('menu/clear') }}";
           $.get(url, function (data) {
             if (data.status) {
