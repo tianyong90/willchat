@@ -9,6 +9,9 @@ use App\Http\Requests\Account\UpdateRequest;
 
 class AccountController extends Controller
 {
+    /**
+     * @var AccountRepository
+     */
     private $accountRepository;
 
     /**
@@ -40,7 +43,7 @@ class AccountController extends Controller
      */
     public function postCreate(CreateRequest $request)
     {
-        $this->accountRepository->store($request);
+        $this->accountRepository->create($request->all());
 
         return success('添加成功！', user_url('/'));
     }
@@ -54,7 +57,7 @@ class AccountController extends Controller
      */
     public function getEdit($id)
     {
-        $accountInfo = $this->accountRepository->getById($id);
+        $accountInfo = $this->accountRepository->find($id);
 
         return user_view('account.add', compact('accountInfo'));
     }
@@ -69,9 +72,9 @@ class AccountController extends Controller
      */
     public function postEdit(UpdateRequest $request, $id)
     {
-        $this->accountRepository->update($id, $request);
+        $this->accountRepository->update($request->all(), $id);
 
-        return success('修改成功！');
+        return success('修改成功！', user_url('/'));
     }
 
     /**
@@ -84,7 +87,7 @@ class AccountController extends Controller
     public function showInterface($id)
     {
         //公众号对应的 token
-        $token = $this->accountRepository->getById($id)->token;
+        $token = $this->accountRepository->find($id)->token;
 
         return user_view('account.interface', compact('token'));
     }
@@ -111,7 +114,7 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        $this->accountRepository->destroy($id);
+        $this->accountRepository->delete($id);
 
         return success('删除成功！');
     }

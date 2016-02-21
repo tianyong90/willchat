@@ -50,7 +50,9 @@ class MenuController extends Controller
     public function getIndex()
     {
         //获取菜单数据
-        $menuTree = $this->menuRepository->lists(\Session::get('account_id'));
+        $menuTree = $this->menuRepository->menuTree();
+
+        dd($menuTree->toArray());
 
         return user_view('menu.index', compact('menuTree'));
     }

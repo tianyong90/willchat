@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Articles extends Model
 {
     protected $dates = ['published_at'];
 

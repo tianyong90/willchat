@@ -3,10 +3,25 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Repositories\PostRepository;
 
 class DocumentController extends Controller
 {
+    /**
+     * @var PostRepository
+     */
+    private $postRepository;
+
+    /**
+     * DocumentController constructor.
+     *
+     * @param PostRepository $postRepository
+     */
+    public function __construct(PostRepository $postRepository)
+    {
+        $this->postRepository = $postRepository;
+    }
+
     /**
      * 文章列表.
      *
@@ -14,7 +29,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(10);
+        $articles = $this->postRepository->paginate();
 
         return user_view('docment.index', compact('articles'));
     }
@@ -28,7 +43,7 @@ class DocumentController extends Controller
      */
     public function detail($id)
     {
-        $article = Article::find($id);
+        $article = $this->postRepository->find($id);
 
         $prevId = $id > 1 ? $id - 1 : 1;
         $nextId = $id > 1 ? $id - 1 : 1;

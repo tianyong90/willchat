@@ -158,7 +158,11 @@ return [
         App\Providers\WillChatServiceProvider::class,
         App\Providers\EasyWechatServiceProvider::class,
 
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,// Laravel IDE helper
+        // Laravel IDE helper
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
+        // andersao/l5-repository
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
     ],
 

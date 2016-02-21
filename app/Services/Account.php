@@ -40,7 +40,7 @@ class Account
      */
     public function chosedAccount()
     {
-        return $this->accountRepository->getById($this->chosedId());
+        return $this->accountRepository->find($this->chosedId());
     }
 
     /**
@@ -95,7 +95,7 @@ class Account
     {
         $accountId = $accountId ?: $this->chosedId();
 
-        $accountData = $this->accountRepository->getById($accountId);
+        $accountData = $this->accountRepository->find($accountId);
 
         $options = [
             'debug' => true,

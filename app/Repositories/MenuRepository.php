@@ -2,53 +2,46 @@
 
 namespace App\Repositories;
 
-use App\Models\Menu;
+use Prettus\Repository\Eloquent\BaseRepository;
+use App\Repositories\Criteria\AccountCriteria;
 
 /**
  * Menu Repository.
  */
-class MenuRepository
+class MenuRepository extends BaseRepository
 {
-    use BaseRepository;
-
-    /**
-     * Menu Model.
-     *
-     * @var \Illuminate\Database\Eloquent\Model
-     */
-    protected $model;
-
-    /**
-     * eventRepository
-     *
-     * @var EventRepository
-     */
-    protected $eventRepository;
-
-    /**
-     * materialRepository
-     *
-     * @var MaterialRepository
-     */
-    protected $materialRepository;
-
-    /**
-     * construct
-     *
-     * @param Menu               $menu               模型
-     * @param EventRepository    $eventRepository    事件Repository
-     * @param MaterialRepository $materialRepository 素材Repository
-     */
-    public function __construct(Menu $menu,
-                                EventRepository $eventRepository,
-                                MaterialRepository $materialRepository)
+    public function boot()
     {
-        $this->model = $menu;
-
-        $this->eventRepository = $eventRepository;
-
-        $this->materialRepository = $materialRepository;
+        $this->pushCriteria(new AccountCriteria());
     }
+
+    /**
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return "App\\Models\\Menu";
+    }
+
+//    /**
+//     * construct
+//     *
+//     * @param Menu               $menu               模型
+//     * @param EventRepository    $eventRepository    事件Repository
+//     * @param MaterialRepository $materialRepository 素材Repository
+//     */
+//    public function __construct(Menu $menu,
+//                                EventRepository $eventRepository,
+//                                MaterialRepository $materialRepository)
+//    {
+//        $this->model = $menu;
+//
+//        $this->eventRepository = $eventRepository;
+//
+//        $this->materialRepository = $materialRepository;
+//    }
 
     /**
      * 菜单列表.
@@ -57,9 +50,10 @@ class MenuRepository
      *
      * @return array
      */
-    public function lists($accountId)
+    public function menuTree()
     {
-        return $this->model->with('subButtons')->where('account_id', $accountId)->where('parent_id', 0)->orderBy('id', 'asc')->get();
+        return $this->with(['subButtons'])->all();
+//        return $this->with('subButtons')->where('account_id', $accountId)->where('parent_id', 0)->orderBy('id', 'asc')->get();
     }
 
     /**
@@ -69,9 +63,9 @@ class MenuRepository
      *
      * @return array
      */
-    public function all($accountId)
+    public function menuList($accountId)
     {
-        return $this->model->where('account_id', $accountId)->get()->toArray();
+        return $this->all();
     }
 
     /**
@@ -192,53 +186,20 @@ class MenuRepository
         $this->model->where('account_id', $accountId)->delete();
     }
 
-    /**
-     * 保存菜单.
-     *
-     * @param array $input input
-     */
-    public function store($input)
-    {
-        return $this->savePost(new $this->model(), $input);
-    }
-
-    /**
-     * @param $input
-     * @param $id
-     */
-    public function update($input, $id)
-    {
-        $menu = $this->getById($id);
-
-        return $this->savePost($menu, $input);
-    }
-
-    /**
-     * savePost.
-     *
-     * @param Menu $menu  菜单
-     * @param array           $input input
-     *
-     * @return Menu
-     */
-    public function savePost($menu, $input)
-    {
-        $menu->fill($input)->save();
-
-        return $menu;
-    }
 
     /**
      * 删除菜单
      *
      * @param $id
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        // 先删除子菜单
-        $this->model->find($id)->subButtons()->delete();
+//        // 先删除子菜单
+//        $this->model->find($id)->subButtons()->delete();
+//
+//        // 删除自身
+//        $this->model->find($id)->delete();
 
-        // 删除自身
-        $this->model->find($id)->delete();
+        parent::delete($id);
     }
 }

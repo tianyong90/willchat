@@ -26,7 +26,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $accounts = $this->accountRepository->lists(10);
+        // 当前用户的全部公众号
+        $accounts = $this->accountRepository->all();
 
         return user_view('dashboard.index', compact('accounts'));
     }

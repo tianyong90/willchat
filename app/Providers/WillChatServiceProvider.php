@@ -33,9 +33,7 @@ class WillChatServiceProvider extends ServiceProvider
      */
     protected function registerAccountService()
     {
-        $account = new \App\Models\Account();
-
-        $accountRepository = new \App\Repositories\AccountRepository($account);
+        $accountRepository = new \App\Repositories\AccountRepository(app());
 
         $this->app->singleton('willchat.account_service', function () use ($accountRepository) {
             return new AccountService($accountRepository);
