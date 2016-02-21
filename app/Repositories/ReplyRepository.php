@@ -129,7 +129,7 @@ class ReplyRepository
      *
      * @return Reply
      */
-    public function store(array $request, $accountId, $type = Reply::TYPE_KEYWORDS)
+    public function store(Request $request, $accountId, $type = Reply::TYPE_KEYWORDS)
     {
         $reply = new $this->model();
 

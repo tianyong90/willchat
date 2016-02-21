@@ -5,10 +5,12 @@
   <!-- BEGIN PAGE CONTENT-->
   <div class="dialog-content form">
     <form action="" method="post" role="form">
+
+      {{ csrf_field() }}
       <div class="form-body">
         <div class="form-group">
           <label>菜单名</label>
-          <input type="text" name="name" value="{$info.name}" class="form-control" placeholder="">
+          <input type="text" name="name" value="{{ $menuData->name or '' }}" class="form-control" placeholder="">
           <span class="help-block"></span>
         </div>
         <div class="form-group">
@@ -16,9 +18,9 @@
           <select name="pid" id="pid" class="form-control">
             <option value="0">--顶级菜单--</option>
             <volist name="topmenulist" id="menu">
-              <option value="{$menu.id}"
+              <option value="{{ $menuData->name or '' }}"
               <eq name="info.pid" value="$menu['id']">selected</eq>
-              >{$menu.name}</option>
+              >{{ $menuData->name or '' }}</option>
             </volist>
           </select>
           <span class="help-block"></span>
@@ -27,26 +29,24 @@
           <label>菜单类型</label>
           <select name="type" id="type" class="form-control">
             <foreach name="menutype" item="type" key="k">
-              <option value="{$k}"
+              <option value="{{ $menuData->name or '' }}"
               <eq name="info.type" value="$k">selected</eq>
-              >{$type}</option>
+              >{{ $menuData->name or '' }}</option>
             </foreach>
           </select>
         </div>
         <div class="form-group" id="key-section">
           <label>关键词</label>
-          <input type="text" name="key" value="{$info.key}" class="form-control" placeholder="">
+          <input type="text" name="key" value="{{ $menuData->key or '' }}" class="form-control" placeholder="">
           <span class="help-block"></span>
         </div>
         <div class="form-group" id="url-section">
           <label>链接</label>
-            <div class="input-group">
-              <input type="text" name="url" value="{$info.url}" class="form-control" placeholder=请填写以http://开头的有效网址"">
-            </div>
+          <input type="text" name="url" value="{{ $menuData->url or '' }}" class="form-control" placeholder=请填写以http://开头的有效网址"">
         </div>
         <div class="form-group">
           <label>排序</label>
-          <input type="text" name="sort" value="{$info.sort}" class="form-control input-small" placeholder="值越大越靠前">
+          <input type="text" name="sort" value="{{ $menuData->sort or '' }}" class="form-control input-small" placeholder="值越大越靠前">
         </div>
       </div>
       <div class="form-actions">

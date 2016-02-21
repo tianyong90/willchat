@@ -75,7 +75,7 @@ class MenuController extends Controller
     public function postCreate(CreateRequest $request)
     {
         //TODO:update fans data
-//        $this->menuRepository->
+//        $this->menuRepository->update()
 
         return success('保存成功！');
     }
@@ -89,61 +89,22 @@ class MenuController extends Controller
      */
     public function getUpdate($id)
     {
-        return user_view('menu.create');
+        $menuData = $this->menuRepository->getById($id);
+
+        return user_view('menu.create', compact('menuData'));
     }
 
     /**
      * 保存更新菜单.
      *
      * @param CreateRequest $request
+     * @param int           $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postUpdate(UpdateRequest $request)
+    public function postUpdate(UpdateRequest $request, $id)
     {
-        //TODO:update fans data
-
-//        $easywechat = app('easywechat');
-//
-//        $menu = $easywechat->menu;
-//
-//        $buttons = [
-//            [
-//                "type" => "click",
-//                "name" => "今日歌曲",
-//                "key"  => "V1001_TODAY_MUSIC"
-//            ],
-//            [
-//                "name"       => "菜单",
-//                "sub_button" => [
-//                    [
-//                        "type" => "view",
-//                        "name" => "搜索",
-//                        "url"  => "http://www.soso.com/"
-//                    ],
-//                    [
-//                        "type" => "view",
-//                        "name" => "视频",
-//                        "url"  => "http://v.qq.com/"
-//                    ],
-//                    [
-//                        "type" => "click",
-//                        "name" => "赞一下我们",
-//                        "key" => "V1001_GOOD"
-//                    ],
-//                ],
-//            ],
-//        ];
-//
-//        $matchRule = [
-//            "group_id"             => "1",
-//            "sex"                  => "1",
-//            "country"              => "中国",
-//            "province"             => "湖北",
-//            "city"                 => "宜昌",
-////            "client_platform_type" => "2"
-//        ];
-//        $menu->add($buttons, $matchRule);
+        $this->menuRepository->update($request, $id);
 
         return success('保存成功！');
     }

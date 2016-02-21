@@ -203,6 +203,17 @@ class MenuRepository
     }
 
     /**
+     * @param $input
+     * @param $id
+     */
+    public function update($input, $id)
+    {
+        $menu = $this->getById($id);
+
+        return $this->savePost($menu, $input);
+    }
+
+    /**
      * savePost.
      *
      * @param Menu $menu  菜单

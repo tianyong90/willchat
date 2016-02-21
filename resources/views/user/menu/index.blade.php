@@ -39,7 +39,7 @@
                   @endif
                 </td>
                 <td>
-                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('menu/edit/'.$menu->id) }}">编辑</a>
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('menu/update/'.$menu->id) }}">编辑</a>
                   <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('menu/destroy/'.$menu->id) }}">删除</button>
                 </td>
               </tr>
@@ -56,7 +56,7 @@
                       @endif
                     </td>
                     <td>
-                      <a class="btn blue btn-xs dialog-popup" href="{{ user_url('menu/edit/'.$subButton->id) }}">编辑</a>
+                      <a class="btn blue btn-xs dialog-popup" href="{{ user_url('menu/update/'.$subButton->id) }}">编辑</a>
                       <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('menu/destroy/'.$subButton->id) }}">删除</button>
                     </td>
                   </tr>

@@ -37,7 +37,8 @@ class DefaultReplyController extends Controller
      */
     public function store(Request $request)
     {
-        $this->replyRepository->store($request, get_chosed_account(),  Reply::TYPE_DEFAULT);
+        $input = $request->all();
+        $this->replyRepository->store($input, get_chosed_account(),  Reply::TYPE_DEFAULT);
 
         return success('保存成功');
     }
