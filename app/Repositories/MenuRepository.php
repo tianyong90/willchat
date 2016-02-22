@@ -52,8 +52,9 @@ class MenuRepository extends BaseRepository
      */
     public function menuTree()
     {
-        return $this->with(['subButtons'])->all();
-//        return $this->with('subButtons')->where('account_id', $accountId)->where('parent_id', 0)->orderBy('id', 'asc')->get();
+        return $this->with(['subButtons'])->scopeQuery(function ($query) {
+            return $query->orderBy('id', 'asc');
+        })->findWhere(['parent_id' => 0]);
     }
 
     /**

@@ -34,7 +34,7 @@ class FansController extends Controller
      */
     public function index(Request $request)
     {
-        $fanList = $this->fanRepository->lists(\Session::get('accout_id'), 15, $request);
+        $fanList = $this->fanRepository->paginate();
 
         return user_view('fans.index', compact('fanList'));
     }

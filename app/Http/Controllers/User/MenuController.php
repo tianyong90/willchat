@@ -52,8 +52,6 @@ class MenuController extends Controller
         //获取菜单数据
         $menuTree = $this->menuRepository->menuTree();
 
-        dd($menuTree->toArray());
-
         return user_view('menu.index', compact('menuTree'));
     }
 

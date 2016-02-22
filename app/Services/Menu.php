@@ -5,6 +5,7 @@ namespace App\Services;
 use EasyWeChat\Foundation\Application;
 use App\Models\Account as AccountModel;
 use App\Repositories\MenuRepository;
+use App\Repositories\AccountRepository;
 
 /**
  * 菜单服务提供类.
@@ -19,13 +20,19 @@ class Menu
     private $menuRepository;
 
     /**
+     * @var AccountRepository
+     */
+    private $accountRepository;
+
+    /**
      * Menu constructor.
      *
      * @param MenuRepository $menuRepository
      */
-    public function __construct(MenuRepository $menuRepository)
+    public function __construct(MenuRepository $menuRepository, AccountRepository $accountRepository)
     {
         $this->menuRepository = $menuRepository;
+        $this->accountRepository = $accountRepository;
     }
 
     /**

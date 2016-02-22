@@ -2,27 +2,49 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use App\Repositories\Criteria\AccountCriteria;
+use App\Models\Fan;
 
 /**
- * Fan Repository.
+ * Fans Repository.
  */
-class FanRepository extends BaseRepository
+class FanRepository
 {
-    public function boot()
+    use BaseRepository;
+
+    /**
+     * Fan.
+     *
+     * @var
+     */
+    protected $model;
+
+    public function __construct(Fan $fan)
     {
-        $this->pushCriteria(new AccountCriteria());
+        $this->model = $fan;
     }
 
     /**
-     * Specify Model class name
+     * 获取粉丝列表.
      *
-     * @return string
+     * @param int $pageSize 分页大小
+     *
+     * @return \Illuminate\Pagination\Paginator
      */
-    public function model()
+    public function lists($accountId, $pageSize, $request)
     {
-        return "App\\Models\\Fan";
+        if (!$request->sort_by) {
+            $request->sort_by = 'subscribe_time';
+        }
+
+        return $this->model
+                ->where('account_id', $accountId)
+                ->where(function ($query) use ($request) {
+                    if ($request->group_id) {
+                        $query->where('group_id', $request->group_id);
+                    }
+                })
+                ->orderBy($request->sort_by, 'desc')
+                ->paginate($pageSize);
     }
 
     /**
@@ -39,9 +61,9 @@ class FanRepository extends BaseRepository
          * 通过openid查询
          */
         $fan = $this->model
-            ->where('account_id', $accountId)
-            ->where('openid', $openId)
-            ->first();
+                ->where('account_id', $accountId)
+                ->where('openid', $openId)
+                ->first();
         if ($fan) {
             return $fan->id;
         } else {
@@ -64,9 +86,9 @@ class FanRepository extends BaseRepository
     public function updateLiveness($request)
     {
         $model = $this->model
-            ->where('account_id', $request['account_id'])
-            ->where('openid', $request['openid'])
-            ->first();
+                ->where('account_id', $request['account_id'])
+                ->where('openid', $request['openid'])
+                ->first();
         if ($model) {
             $liveness = $model->liveness + 1;
         }
@@ -147,7 +169,18 @@ class FanRepository extends BaseRepository
 
         //根据粉丝ID查询
         return $this->model->where('account_id', $accountId)
-            ->where('group_id', $fromGroupId)
-            ->update(['group_id' => $toGroupId]);
+                    ->where('group_id', $fromGroupId)
+                    ->update(['group_id' => $toGroupId]);
+    }
+
+    /**
+     * save.
+     *
+     * @param object $fan
+     * @param array  $input Request
+     */
+    private function _savePost($fan, $input)
+    {
+        return $fan->fill($input)->save();
     }
 }

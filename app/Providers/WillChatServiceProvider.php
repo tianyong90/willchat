@@ -25,7 +25,6 @@ class WillChatServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAccountService();
-
     }
 
     /**
@@ -39,10 +38,5 @@ class WillChatServiceProvider extends ServiceProvider
             return new AccountService($accountRepository);
         });
     }
-
-//    private function registerAccountService()
-//    {
-//
-//    }
 
 }

@@ -38,9 +38,10 @@ class QrcodeController extends Controller
     public function index($type)
     {
         $easywechat = app('easywechat');
+
         $qrcodeService = $easywechat->qrcode;
 
-        $qrcodes = $this->qrcodeRepository->listByType(get_chosed_account(), $type);
+        $qrcodes = $this->qrcodeRepository->listByType($type);
 
         return user_view('qrcode.index', compact('qrcodes', 'qrcodeService'));
     }
@@ -83,7 +84,7 @@ class QrcodeController extends Controller
 
         $qrcodeData = array_merge($request->all(), ['ticket' => $result->ticket]);
 
-        $this->qrcodeRepository->store($qrcodeData);
+        $this->qrcodeRepository->create($qrcodeData);
 
         return error('保存成功', user_url('qrcode/' . $request->input('type')));
     }
@@ -95,7 +96,7 @@ class QrcodeController extends Controller
      */
     public function destroy($id)
     {
-        $this->qrcodeRepository->destroy($id);
+        $this->qrcodeRepository->delete($id);
 
         return success('删除成功！');
     }
@@ -108,7 +109,7 @@ class QrcodeController extends Controller
     public function download($id)
     {
         // 二维码相关数据
-        $qrcodeData = $this->qrcodeRepository->getById($id);
+        $qrcodeData = $this->qrcodeRepository->find($id);
 
         $easywechat = app('easywechat');
         $qrcodeService = $easywechat->qrcode;

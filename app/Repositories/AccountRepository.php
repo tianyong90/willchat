@@ -10,19 +10,11 @@ use App\Repositories\Criteria\UserCriteria;
  */
 class AccountRepository extends BaseRepository
 {
+    use BaseRepositoryTrait;
+
     public function boot()
     {
         $this->pushCriteria(new UserCriteria());
-    }
-    
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
-    public function model()
-    {
-        return "App\\Models\\Account";
     }
 
     /**
