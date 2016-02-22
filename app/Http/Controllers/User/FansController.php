@@ -44,11 +44,9 @@ class FansController extends Controller
      */
     public function updateFansData()
     {
-        $options = get_wechat_options();
+        $easywechat = app('easywechat');
 
-        $app = new Application($options);
-
-        $user = $app->user;
+        $user = $easywechat->user;
         $fansList = $user->lists();
 
         // 粉丝 openid 列表
@@ -95,10 +93,9 @@ class FansController extends Controller
      */
     public function postMoveTo(Request $request, $id)
     {
-        $options = get_wechat_options(\Session::get('account_id'));
+        $easywechat = app('easywechat');
 
-        $app = new Application($options);
-        $groupService = $app->user_group;
+        $groupService = $easywechat->user_group;
 
         try {
             $fan = $this->fanRepository->getById($id);
@@ -128,7 +125,7 @@ class FansController extends Controller
     public function getEditRemark($id)
     {
         //获取旧备注信息
-        $remark = $this->fanRepository->getById($id)->remark;
+        $remark = $this->fanRepository->find($id)->remark;
 
         return user_view('fans.editremark')->with(['remark' => $remark]);
     }
@@ -143,13 +140,12 @@ class FansController extends Controller
      */
     public function postEditRemark(Request $request, $id)
     {
-        $options = get_wechat_options(\Session::get('account_id'));
+        $easywechat = app('easywechat');
 
-        $app = new Application($options);
-        $user = $app->user;
+        $user = $easywechat->user;
 
         try {
-            $fan = $this->fanRepository->getById($id);
+            $fan = $this->fanRepository->find($id);
 
             //更新备注
             $user->remark($fan->openid, $request->input('remark'));

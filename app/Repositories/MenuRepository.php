@@ -10,19 +10,11 @@ use App\Repositories\Criteria\AccountCriteria;
  */
 class MenuRepository extends BaseRepository
 {
+    use BaseRepositoryTrait;
+
     public function boot()
     {
         $this->pushCriteria(new AccountCriteria());
-    }
-
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
-    public function model()
-    {
-        return "App\\Models\\Menu";
     }
 
 //    /**

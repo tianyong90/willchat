@@ -2,14 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Models\Reply;
+use App\Repositories\Criteria\AccountCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Reply Repository.
  */
-class ReplyRepository
+class ReplyRepository extends BaseRepository
 {
-    use BaseRepository;
+    use BaseRepositoryTrait;
+
+    public function boot()
+    {
+        $this->pushCriteria(new AccountCriteria());
+    }
 
     /**
      * model.

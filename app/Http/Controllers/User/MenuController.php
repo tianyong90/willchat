@@ -89,7 +89,7 @@ class MenuController extends Controller
      */
     public function getUpdate($id)
     {
-        $menuData = $this->menuRepository->getById($id);
+        $menuData = $this->menuRepository->find($id);
 
         return user_view('menu.create', compact('menuData'));
     }
@@ -104,7 +104,7 @@ class MenuController extends Controller
      */
     public function postUpdate(UpdateRequest $request, $id)
     {
-        $this->menuRepository->update($request, $id);
+        $this->menuRepository->update($request->all(), $id);
 
         return success('保存成功！');
     }
@@ -152,7 +152,7 @@ class MenuController extends Controller
      */
     public function destroy($menuId)
     {
-        $this->menuRepository->destroy($menuId);
+        $this->menuRepository->delete($menuId);
 
         return success('删除成功');
     }

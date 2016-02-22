@@ -156,7 +156,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\WillChatServiceProvider::class,
-        App\Providers\EasyWechatServiceProvider::class,
 
         // Laravel IDE helper
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
