@@ -25,10 +25,10 @@
   <link href="{{ asset('static') }}/metronic/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
   <link href="{{ asset('static') }}/metronic/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
   <!-- END THEME GLOBAL STYLES -->
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" /> 
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
   @yield('style')
-  
+
   @yield('pre_js')
 </head>
 <body>
@@ -65,7 +65,7 @@
         .ajaxStop(function() {
             layer.close(document.loaderIndex);
         });
-    
+
     // var currentDialog = top.dialog.getCurrent();
     // var title = "{$meta_title}" || " ";
     // currentDialog.title(title);
@@ -74,7 +74,7 @@
     //   currentDialog.close().remove();
     // });
 
-    
+
   });
 </script>
 @yield('script')

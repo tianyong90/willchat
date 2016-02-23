@@ -89,7 +89,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::group(['middleware' => 'account'], function() {
             //粉丝管理
             Route::get('fans', 'FansController@index');
-            Route::get('fans/sync', 'FansController@updateFansData');
+            Route::get('fans/sync', 'FansController@syncFans');
             Route::get('fans/editremark/{id}', 'FansController@getEditRemark');
             Route::post('fans/editremark/{id}', 'FansController@postEditRemark');
             Route::get('fans/moveto/{id}', 'FansController@getMoveTo');
@@ -104,6 +104,7 @@ Route::group(['middleware' => ['web']], function () {
 
             //粉丝分组
             Route::get('fan-group', 'FanGroupController@index');
+            Route::get('fan-group/sync', 'FanGroupController@getSync');
             Route::get('fan-group/create', 'FanGroupController@getCreate');
             Route::post('fan-group/create', 'FanGroupController@postCreate');
             Route::get('fan-group/edit/{id}/{name}', 'FanGroupController@getEdit');

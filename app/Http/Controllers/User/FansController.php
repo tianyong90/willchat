@@ -6,6 +6,7 @@ use App\Models\Fan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\FanRepository;
+use App\Services\Fan as FanService;
 use EasyWeChat\Foundation\Application;
 
 class FansController extends Controller
@@ -15,14 +16,18 @@ class FansController extends Controller
      */
     private $fanRepository;
 
+    private $fanService;
+
     /**
      * FansController constructor.
      *
      * @param FanRepository $fanRepository
      */
-    public function __construct(FanRepository $fanRepository)
+    public function __construct(FanRepository $fanRepository, FanService $fanService)
     {
         $this->fanRepository = $fanRepository;
+
+        $this->fanService = $fanService;
     }
 
     /**
@@ -42,19 +47,9 @@ class FansController extends Controller
     /**
      * 从微信官方服务器摘取粉丝数据并保存到本地数据库.
      */
-    public function updateFansData()
+    public function syncFans()
     {
-        $easywechat = app('easywechat');
-
-        $user = $easywechat->user;
-        $fansList = $user->lists();
-
-        // 粉丝 openid 列表
-        $openIds = $fansList->get('data.openid');
-
-        $info = $user->batchGet($openIds)->get('user_info_list');
-
-        Fan::insert($info);
+        $this->fanService->syncToLocal();
 
         return success('同步成功');
     }

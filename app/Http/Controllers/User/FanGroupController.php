@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Repositories\FanGroupRepository;
+use App\Services\FanGroup as FanGroupService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use EasyWeChat\Foundation\Application;
@@ -13,20 +15,23 @@ use Illuminate\Support\Facades\Input;
 class FanGroupController extends Controller
 {
     /**
-     * @var mixed
+     * @var FanGroupService
      */
-    private $groupService;
+    private $fanGroupService;
+
+    /**
+     * @var FanGroupRepository
+     */
+    private $fanGroupRepository;
 
     /**
      * Constructor.
      */
-    public function __construct()
+    public function __construct(FanGroupService $fanGroupService, FanGroupRepository $fanGroupRepository)
     {
-        $options = get_wechat_options();
+        $this->fanGroupService = $fanGroupService;
 
-        $app = new Application($options);
-
-        $this->groupService = $app->user_group;
+        $this->fanGroupRepository = $fanGroupRepository;
     }
 
     /**
@@ -35,9 +40,21 @@ class FanGroupController extends Controller
     public function index()
     {
         //获取分组数据
-        $groupList = $this->groupService->lists();
+        $groups = $this->fanGroupRepository->paginate();
 
-        return user_view('fan_group.index', ['groups' => $groupList['groups']]);
+        return user_view('fan_group.index', compact('groups'));
+    }
+
+    /**
+     * 同步分组数据到本地
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getSync()
+    {
+        $this->fanGroupService->syncToLocal();
+
+        return success('同步成功');
     }
 
     /**
@@ -62,11 +79,11 @@ class FanGroupController extends Controller
     {
         try {
             //更新备注
-            $this->groupService->update($id, $request->input('name'));
+            $this->fanGroupService->update($id, $request->input('name'));
 
             return success('修改成功！');
         } catch (\Exception $e) {
-            return error('修改失败！'.$e->getMessage());
+            return error('修改失败！' . $e->getMessage());
         }
     }
 
@@ -86,11 +103,11 @@ class FanGroupController extends Controller
     public function postCreate(Request $request)
     {
         try {
-            $this->groupService->create($request->input('name'));
+            $this->fanGroupService->create($request->input('name'));
 
             return success('创建成功！');
         } catch (\Exception $e) {
-            return error('创建失败！'.$e->getMessage());
+            return error('创建失败！' . $e->getMessage());
         }
     }
 
@@ -102,11 +119,11 @@ class FanGroupController extends Controller
     public function destroy($id)
     {
         try {
-            $this->groupService->delete($id);
+            $this->fanGroupService->delete($id);
 
             return success('删除成功！');
         } catch (\Exception $e) {
-            return error('删除失败！'.$e->getMessage());
+            return error('删除失败！' . $e->getMessage());
         }
     }
 }

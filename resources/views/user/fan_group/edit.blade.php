@@ -6,6 +6,8 @@
     @else
     <form action="{{ user_url('fan-group/create') }}" method="post">
     @endif
+
+      {{ csrf_field() }}
       <div class="form-body">
         <div class="form-group">
           <label>分组名称</label>

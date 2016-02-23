@@ -14,7 +14,8 @@ class CreateRepliesTable extends Migration
     {
         Schema::create('replies', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id');
+            $table->integer('account_id')->unsigned()->comment('所属公众号ID');
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->enum('type', [
                 'subscribe',
                 'default',

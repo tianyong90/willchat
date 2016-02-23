@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FanGroup extends Model
 {
-    use SoftDeletes;
+//    use SoftDeletes;
 
     /**
      * 字段白名单.
@@ -17,8 +17,8 @@ class FanGroup extends Model
     protected $fillable = [
         'group_id',
         'account_id',
-        'title',
-        'fan_count',
+        'name',
+        'count',
         'is_default',
     ];
 
@@ -30,8 +30,8 @@ class FanGroup extends Model
     public static $aliases = [
         'group_id' => '粉丝组ID',
         'account_id' => '公众号ID',
-        'title' => '组名称',
-        'fan_count' => '粉丝数',
+        'name' => '组名称',
+        'count' => '粉丝数',
         'is_default' => '是否为系统默认组',
     ];
 }

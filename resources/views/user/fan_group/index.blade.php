@@ -6,6 +6,7 @@
         <i class="fa fa-users"></i> 粉丝分组
       </div>
       <div class="actions">
+        <a href="javascript:;" class="btn default blue-stripe" id="sync"><i class="fa fa-cloud-download"></i>从微信同步分组数据</a>
         <a href="{{ user_url('fan-group/create') }}" class="btn default blue-stripe dialog-popup"><i class="fa fa-plus"></i>创建分组</a>
       </div>
     </div>
@@ -21,15 +22,15 @@
           </tr>
           </thead>
           <tbody>
-          @foreach($groups as $key=>$group)
+          @foreach($groups as $group)
             <tr>
-              <td>{{ $group['id'] }}</td>
+              <td>{{ $group['group_id'] }}</td>
               <td>{{ $group['name'] }}</td>
               <td>{{ $group['count'] }}</td>
               <td>
-                @if($key > 2)
-                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan-group/edit/'.$group['id'].'/'.$group['name']) }}"><i class="fa fa-edit"></i>编辑</a>
-                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('fan-group/destroy/'.$group['id']) }}"><i class="fa fa-trash-o"></i>删除
+                @if(in_array($group['group_id'], [0,1,2]) == false)
+                  <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fan-group/edit/'.$group['group_id'].'/'.$group['name']) }}"><i class="fa fa-edit"></i>编辑</a>
+                  <button class="btn red btn-xs btn-delete-confirm" data-link="{{ user_url('fan-group/destroy/'.$group['group_id']) }}"><i class="fa fa-trash-o"></i>删除
                   </button>
                 @endif
               </td>
@@ -44,6 +45,18 @@
 @section('js')
   <script>
     $(document).ready(function () {
+      $('a#sync').click(function(event) {
+        event.preventDefault();
+        var url = "{{ user_url('fan-group/sync') }}";
+        $.get(url, function(data) {
+          if(data.status) {
+            Base.success(data.info);
+            setTimeout(function(){window.location.reload()}, 2000);
+          } else {
+            Base.error(data.info);
+          }
+        });
+      });
     });
   </script>
 @stop

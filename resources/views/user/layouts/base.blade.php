@@ -361,7 +361,10 @@
                         fixed: true,
                         area: area,
                         shadeClose: false, //开启遮罩关闭
-                        content: url
+                        content: url,
+                        duccess: function(){
+                            console.log(123);
+                        }
                     });
                     return false;
                 });

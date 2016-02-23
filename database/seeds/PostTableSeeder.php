@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent;
 
-class ArticleTableSeeder extends Seeder
+class PostTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class ArticleTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Models\Article::truncate();
-        factory(App\Models\Article::class, 20)->create();
+        App\Models\Post::truncate();
+        factory(App\Models\Post::class, 20)->create();
     }
 }

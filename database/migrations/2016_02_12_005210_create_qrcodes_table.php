@@ -14,7 +14,8 @@ class CreateQrcodesTable extends Migration
     {
         Schema::create('qrcodes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id')->comment('所属公众号');
+            $table->integer('account_id')->unsigned()->comment('所属公众号');
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->string('keyword', 125)->nullable()->comment('二维码关键词');
             $table->string('remark', 50)->comment('备注');
             $table->string('ticket', 100)->comment('二维码 TICKET');

@@ -20,7 +20,8 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id')->comment('所属公众号');
+            $table->integer('account_id')->unsigned()->comment('所属公众号');
+            $table->foreign('account_id')->references('id')->on('accounts');
             $table->integer('parent_id')->nullable()->default(0)->comment('菜单父id');
             $table->string('name', 30)->comment('菜单名称');
             $table->enum('type', [

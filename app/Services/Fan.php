@@ -2,8 +2,52 @@
 
 namespace App\Services;
 
+use App\Repositories\FanRepository;
+use App\Models\Fan as FanModel;
+
 class Fan
 {
+    /**
+     * @var FanRepository
+     */
+    private $fanRepository;
+
+    /**
+     * Fan constructor.
+     *
+     * @param FanRepository $fanRepository
+     */
+    public function __construct(FanRepository $fanRepository)
+    {
+        $this->fanRepository = $fanRepository;
+    }
+
+    /**
+     * 同步粉丝数据到本地数据库
+     */
+    public function syncToLocal()
+    {
+        $easywechat = app('easywechat');
+
+        $user = $easywechat->user;
+        $fansList = $user->lists();
+
+        // 粉丝 openid 列表
+        $openIds = $fansList->get('data.openid');
+
+        $fanList = $user->batchGet($openIds)->get('user_info_list');
+
+        $fans = array_map(function ($item) {
+            $item['account_id'] = 1;
+            $item['created_at'] = \Carbon\Carbon::create();
+            $item['updated_at'] = \Carbon\Carbon::create();
+            $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);
+            return $item;
+        }, $fanList);
+
+        FanModel::insert($fans);
+    }
+
     /**
      * 从微信数据格式化.
      *
