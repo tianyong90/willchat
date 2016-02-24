@@ -47,6 +47,7 @@
 <script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('static') }}/layer/layer.js"></script>
 <script src="{{ asset('js') }}/user/base.js"></script>
 <script>
   jQuery(document).ready(function () {
@@ -63,22 +64,21 @@
             document.loaderIndex = layer.load();
         })
         .ajaxStop(function() {
-            layer.close(document.loaderIndex);
+            top.layer.close(document.loaderIndex);
         });
 
-    // var currentDialog = top.dialog.getCurrent();
-    // var title = "{$meta_title}" || " ";
-    // currentDialog.title(title);
+    // 当前layer弹出层索引
+    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    parent.layer.title('abc', index);
 
-    // $('button.btn-closedialog').click(function (event) {
-    //   currentDialog.close().remove();
-    // });
-
-
+    // 弹出层表单底部取消按钮动作
+    $('button.btn-closedialog').click(function (event) {
+      parent.layer.close(index); //再执行关闭
+    });
   });
 </script>
 @yield('script')
-    <!-- END JAVASCRIPTS -->
+<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

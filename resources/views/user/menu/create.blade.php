@@ -28,11 +28,13 @@
         <div class="form-group">
           <label>菜单类型</label>
           <select name="type" id="type" class="form-control">
-            <foreach name="menutype" item="type" key="k">
-              <option value="{{ $menuData->name or '' }}"
-              <eq name="info.type" value="$k">selected</eq>
-              >{{ $menuData->name or '' }}</option>
-            </foreach>
+            @foreach (getMenuTypes() as $key => $menuType)
+              @if (isset($menuData) && $menuType == $menuData->type)
+                <option value="{{ $key }}" selected>{{ $menuType }}</option>
+              @else
+                <option value="{{ $key }}">{{ $menuType }}</option>
+              @endif
+            @endforeach
           </select>
         </div>
         <div class="form-group" id="key-section">
@@ -50,8 +52,8 @@
         </div>
       </div>
       <div class="form-actions">
-        <button type="submit" class="btn btn-green">保存</button>
-        <button type="button" class="btn btn-default btn-closedialog">取消</button>
+        <button type="submit" class="btn green">保存</button>
+        <button type="button" class="btn red btn-closedialog">取消</button>
       </div>
     </form>
   </div>
@@ -69,7 +71,6 @@
             $('div#key-section').hide();
             $('div#url-section').show();
           }
-          ;
         };
         //初始时根据类型显示或隐藏相应输入项
         changeFields($('select#type').val());

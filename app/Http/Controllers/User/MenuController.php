@@ -74,8 +74,7 @@ class MenuController extends Controller
      */
     public function postCreate(CreateRequest $request)
     {
-        //TODO:update fans data
-//        $this->menuRepository->update()
+        $this->menuRepository->create($request->all());
 
         return success('保存成功！');
     }
@@ -134,13 +133,9 @@ class MenuController extends Controller
         // 当前选中的公众号
         $currentAccount = $this->accountService->chosedAccount();
 
-        try {
-            $reault = $this->menuService->saveToRemote($currentAccount);
+        $this->menuService->saveToRemote($currentAccount);
 
-            return success('同步成功');
-        } catch (\Exception $e) {
-            return error($e->getMessage());
-        }
+        return success('同步成功');
     }
 
     /**
@@ -164,15 +159,11 @@ class MenuController extends Controller
      */
     public function clear()
     {
-        $easywechat = app('easywechat');
-
-        $menuService = $easywechat->menu;
-
         try {
-            $menuService->destroy();
+            // 当前选中的公众号
+            $currentAccount = $this->accountService->chosedAccount();
 
-            //清除本地数据库中保存的相关菜单数据
-            $this->menuRepository->destroyMenu(get_chosed_account());
+            $this->menuService->deleteAll($currentAccount);
 
             return success('清除成功');
         } catch (\Exception $e) {

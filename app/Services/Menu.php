@@ -40,7 +40,7 @@ class Menu
      *
      * @param AccountModel $account 公众号
      *
-     * @return Response
+     * @return mixed
      */
     public function syncToLocal(AccountModel $account)
     {
@@ -381,7 +381,7 @@ class Menu
      */
     public function saveToRemote($account)
     {
-        $menus = $this->menuRepository->lists($account->id)->toArray();
+        $menus = $this->menuRepository->menuTree()->toArray();
 
         $options = get_wechat_options($account->id);
 
@@ -445,4 +445,17 @@ class Menu
         return $menuItem;
     }
 
+    /**
+     * 删除全部菜单，包括本地数据
+     *
+     * @param AccountModel $account
+     */
+    public function deleteAll(AccountModel $account)
+    {
+        $easywechat = app('easywechat');
+
+        $easywechat->menu->destroy();
+
+        $this->menuRepository->destroyMenu($account->id);
+    }
 }

@@ -73,7 +73,7 @@ class MenuRepository extends BaseRepository
             $menu['sort'] = $key;
             $menu['account_id'] = $accountId;
 
-            $parentId = $this->store($menu)->id;
+            $parentId = $this->create($menu)->id;
 
             if (!empty($menu['sub_button'])) {
                 foreach ($menu['sub_button']['list'] as $subKey => $subMenu) {
@@ -83,7 +83,7 @@ class MenuRepository extends BaseRepository
 
                     $subMenu['account_id'] = $accountId;
 
-                    $this->store($subMenu);
+                    $this->create($subMenu);
                 }
             }
         }
@@ -160,39 +160,27 @@ class MenuRepository extends BaseRepository
     }
 
     /**
-     * 删除全部菜单.
-     *
-     * @param int $accountId 公众号id
-     */
-    public function destroyMenu($accountId)
-    {
-        $menus = $this->all($accountId);
-
-        array_map(function ($menu) {
-
-            if ($menu['type'] == 'click') {
-                $this->eventRepository->distoryByEventKey($menu['key']);
-            }
-
-        }, $menus);
-
-        $this->model->where('account_id', $accountId)->delete();
-    }
-
-
-    /**
      * 删除菜单
      *
      * @param $id
      */
     public function delete($id)
     {
-//        // 先删除子菜单
-//        $this->model->find($id)->subButtons()->delete();
-//
-//        // 删除自身
-//        $this->model->find($id)->delete();
+        // 先删除子菜单
+        $this->model->find($id)->subButtons()->delete();
 
+        // 删除自身
         parent::delete($id);
+    }
+
+
+    /**
+     * 删除全部菜单.
+     *
+     * @param int $accountId 公众号id
+     */
+    public function destroyMenu($accountId)
+    {
+        return $this->model->where('account_id', '=', $accountId)->delete();
     }
 }

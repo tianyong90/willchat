@@ -9,10 +9,8 @@ class DataStatsController extends Controller
 {
     public function getIndex()
     {
-//        $options = get_wechat_options();
-//
-//        $app = new Application($options);
-//        $stats = $app->stats;
+//        $easywechat = app('easywechat');
+//        $stats = $easywechat->stats;
 //
 //        $data = $stats->userSummary('2015-12-01', '2015-12-06');
 //
