@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    protected $hidden = ['created_at', 'deleted_at' , 'updated_at'];
+    protected $hidden = ['created_at', 'deleted_at', 'updated_at'];
 
     /**
      * 字段白名单.
@@ -19,8 +19,9 @@ class Menu extends Model
         'name',
         'type',
         'key',
+        'url',
         'sort',
-                          ];
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -33,11 +34,29 @@ class Menu extends Model
         'name' => '菜单名称',
         'type' => '菜单类型',
         'key' => '菜单值',
-        'sort' => '值',
-                             ];
+        'url' => '链接',
+        'sort' => '排序',
+    ];
 
+    /**
+     * 子菜单关联
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function subButtons()
     {
         return $this->hasMany('App\Models\Menu', 'parent_id');
+    }
+
+    /**
+     * @param $type
+     *
+     * @return mixed
+     */
+    public function getTypeAttribute($type)
+    {
+        $typeMap = getMenuTypes();
+
+        return $typeMap[$type];
     }
 }

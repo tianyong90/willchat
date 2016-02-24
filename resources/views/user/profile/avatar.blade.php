@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.layouts.baseindex')
 @section('style')
   <link rel="stylesheet" href="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.css">
   <link href="{{ asset('static') }}/cropper-master/dist/cropper.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
           </div>
           <ul class="nav nav-tabs">
             <li>
-              <a href="{{ user_url('profile/index') }}">个人信息设置</a>
+              <a href="{{ user_url('profile/userinfo') }}">个人信息设置</a>
             </li>
             <li class="active">
               <a href="{{ user_url('avatar') }}">头像设置</a>
@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-sm-5">
                   <div class="avatar-wrapper">
-                    <img id="avatar" src="" alt="">
+                    <img id="avatar" src="{{ asset(auth()->user()->avatar) }}" alt="">
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -108,8 +108,10 @@
       $('button#save-avatar').click(function (event) {
         var cropData = $avatar.cropper('getData', true);
 
+        // 设置csrf_token，否则 CSRF 验证会失败
         cropData._token = '{{ csrf_token() }}';
-        //上传
+
+        // 上传
         $avatarFileInput.uploader({
           url: "{{ user_url('avatar') }}",
           dataType: 'json',
@@ -147,21 +149,21 @@
         $avatarFileInput.uploader('upload');
       });
 
-      //图片转动滑块
+      // 旋转图片
+      function rotateImg() {
+        var rotatedDegree = $("#rotate-slider").slider('value');
+        $avatar.cropper('setData', {rotate: rotatedDegree});
+      }
+
+      // 图片转动滑块
       $("#rotate-slider").slider({
         min: 0,
         max: 360,
-        step: 10,
+        step: 1,
         value: 0,
-        change: function (event, ui) {
-          var data = $avatar.cropper('getData');
-          //之前已经旋转的角度
-          var oldDegree = data.rotate;
-          var rotateDegree = ui.value - oldDegree;
-          $avatar.cropper('rotate', rotateDegree);
-        }
+        change: rotateImg,
+        slide: rotateImg
       });
-
     })
   </script>
 @stop

@@ -11,12 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //微信路由
-Route::any('wechat/{token}', 'Server\ServeController@index');
+Route::any('wechat/{token}', 'ServerController@serve');
 
 /*
 |--------------------------------------------------------------------------
@@ -31,33 +27,16 @@ Route::any('wechat/{token}', 'Server\ServeController@index');
 
 Route::group(['middleware' => ['web']], function () {
 
-//    Route::get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
-//    Route::post('login', 'AuthController@postLogin');
-//
-//    Route::get('mail', function () {
-//        $email = '412039588@qq.com';
-//        $name = 'tianyong';
-//        $uid = 123;
-//        $code = 'abc';
-//
-//        $data = ['email' => $email, 'name' => $name, 'uid' => $uid, 'activationcode' => $code];
-//        Mail::send('welcome', $data, function ($message) use ($data) {
-//            $message->to($data['email'], $data['name'])->subject("abadafsl哈哈");
-//        });
-//    });
-
     /*
     * Home
     */
-//    $home = [
-//        'namespace' => 'Home',
-//    ];
-//
-//    Route::group($home, function () {
-//        Route::get('/', function () {
-//            return view('home.index');
-//        });
-//    });
+    $home = [
+        'namespace' => 'Home',
+    ];
+
+    Route::group($home, function () {
+        Route::get('/', 'IndexController@index');
+    });
 
     /*
     * User
@@ -65,50 +44,115 @@ Route::group(['middleware' => ['web']], function () {
     $user = [
         'prefix' => 'user',
         'namespace' => 'User',
-//        'middleware' => 'auth', 
+        'middleware' => 'auth.user',
     ];
 
     Route::group($user, function () {
-        Route::get('/', 'IndexController@index');
-//        Route::controller('account', 'AccountController');
-//        Route::controller('auth', 'AuthController');
+        Route::get('/', 'DashboardController@index');
 
-        //粉丝管理
-        Route::get('fans', 'FansController@index');
+        // 认证路由
+        Route::get('login', 'AuthController@getLogin');
+        Route::post('login', 'AuthController@postLogin');
+        Route::get('logout', 'AuthController@getLogout');
 
-        //二维码
-        Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index');
+        //注册路由
+        Route::get('register', 'AuthController@getRegister');
+        Route::post('register', 'AuthController@postRegister');
 
-        //粉丝分组
-        Route::get('fans-group', 'FansGroupController@index');
-        Route::get('fans-group/edit/{id}', 'FansGroupController@getEdit');
-        Route::post('fans-group/edit/{id}', 'FansGroupController@postEdit');
+        // 锁屏
+        Route::get('lock', 'AuthController@lock');
 
-        //微信红包
-        Route::get('luckymoney', 'LuckyMoneyController@index');
-
-        //功能列表
-        Route::get('function', 'SystemFunctionController@index');
-
-        //帮助文档
-        Route::get('document/{type}', 'DocumentController@index');
-
-        //自定义菜单
-        Route::get('menu', 'MenuController@index');
-
-        //数据统计与分析
-        Route::get('stats', 'DataStatsController@index');
+        //公众号管理
+        Route::get('account/create', 'AccountController@getCreate');
+        Route::post('account/create', 'AccountController@postCreate');
+        Route::get('account/edit/{id}', 'AccountController@getEdit');
+        Route::post('account/edit/{id}', 'AccountController@postEdit');
+        Route::get('account/destroy/{id}', 'AccountController@destroy');
+        Route::get('account/interface/{id}', 'AccountController@showInterface');
+        Route::get('account/manage/{id}', 'AccountController@getManage');
 
         //头像设置
         Route::get('avatar', 'AvatarController@index');
         Route::post('avatar', 'AvatarController@store');
 
-        Route::get('lock', 'LockController@index');
-        Route::get('logout', 'LockController@index');
+        //个人信息
+        Route::get('profile/userinfo', 'ProfileController@getUserinfo');
+        Route::post('profile/userinfo', 'ProfileController@postUserinfo');
+        Route::get('profile/password', 'ProfileController@getPassword');
+        Route::post('profile/password', 'ProfileController@postPassword');
 
-        Route::get('profile/index', 'ProfileController@index');
+        //帮助文档
+        Route::get('document/index/{type}/{keyword?}', 'DocumentController@index');
+        Route::get('document/detail/{id}', 'DocumentController@detail');
 
-        Route::get('profile/password', 'ProfileController@password');
+        // 某一公众号相关的路由
+        Route::group(['middleware' => 'account'], function() {
+            //粉丝管理
+            Route::get('fans', 'FansController@index');
+            Route::get('fans/sync', 'FansController@syncFans');
+            Route::get('fans/editremark/{id}', 'FansController@getEditRemark');
+            Route::post('fans/editremark/{id}', 'FansController@postEditRemark');
+            Route::get('fans/moveto/{id}', 'FansController@getMoveTo');
+            Route::post('fans/moveto/{id}', 'FansController@postMoveTo');
+
+            //二维码
+            Route::get('qrcode/{type}/{keyword?}', 'QrcodeController@index')->where('type', 'forever|temporary|card');
+            Route::get('qrcode/create', 'QrcodeController@getCreate');
+            Route::post('qrcode/create', 'QrcodeController@postCreate');
+            Route::get('qrcode/download/{id?}', 'QrcodeController@download');
+            Route::any('qrcode/destroy/{id?}', 'QrcodeController@destroy');
+
+            //粉丝分组
+            Route::get('fan-group', 'FanGroupController@index');
+            Route::get('fan-group/sync', 'FanGroupController@getSync');
+            Route::get('fan-group/create', 'FanGroupController@getCreate');
+            Route::post('fan-group/create', 'FanGroupController@postCreate');
+            Route::get('fan-group/edit/{id}/{name}', 'FanGroupController@getEdit');
+            Route::post('fan-group/edit/{id}', 'FanGroupController@postEdit');
+            Route::get('fan-group/destroy/{id}', 'FanGroupController@destroy');
+
+            //微信红包
+            Route::get('luckymoney', 'LuckyMoneyController@index');
+
+            //功能列表
+            Route::get('function', 'SystemFunctionController@index');
+
+            //自定义菜单
+            Route::get('menu', 'MenuController@getIndex');
+            Route::get('menu/sync-from-wechat', 'MenuController@getSyncFromWechat');
+            Route::get('menu/sync-to-wechat', 'MenuController@getSyncToWechat');
+            Route::get('menu/destroy/{id}', 'MenuController@destroy');
+            Route::get('menu/clear', 'MenuController@clear');
+            Route::get('menu/create', 'MenuController@getCreate');
+            Route::post('menu/create', 'MenuController@postCreate');
+            Route::get('menu/update/{id}', 'MenuController@getUpdate');
+            Route::post('menu/update/{id}', 'MenuController@postUpdate');
+
+            //数据统计与分析
+            Route::get('stats', 'DataStatsController@getIndex');
+
+            //自动回复
+            Route::get('reply-subscribe', 'SubscribeReplyController@show');
+            Route::post('reply-subscribe', 'SubscribeReplyController@store');
+
+            Route::get('reply-default', 'DefaultReplyController@show');
+            Route::post('reply-default', 'DefaultReplyController@store');
+
+            Route::get('reply-text', 'TextReplyController@index');
+            Route::get('reply-text/create', 'TextReplyController@getCreate');
+            Route::post('reply-text/create', 'TextReplyController@postCreate');
+            Route::get('reply-text/update/{id}', 'TextReplyController@getUpdate');
+            Route::post('reply-text/update/{id}', 'NewsReplyController@postUpdate');
+
+            Route::get('reply-news', 'NewsReplyController@index');
+            Route::get('reply-news/create', 'NewsReplyController@getCreate');
+            Route::post('reply-news/create', 'NewsReplyController@postCreate');
+            Route::get('reply-news/update/{id}', 'NewsReplyController@getUpdate');
+            Route::post('reply-news/update/{id}', 'NewsReplyController@postUpdate');
+
+
+
+        });
     });
 
     /*
@@ -116,12 +160,11 @@ Route::group(['middleware' => ['web']], function () {
     */
     $mobile = [
         'prefix' => 'mobile',
-        'namespace' => 'Mobile',
-//        'middleware' => 'auth',
+        'namespace' => 'Mobile'
     ];
 
     Route::group($mobile, function () {
-        Route::get('/', 'VipController@index');
+        Route::get('shop', 'ShopController@index');
 
 
     });

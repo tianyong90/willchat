@@ -2,159 +2,44 @@
 
 namespace App\Repositories;
 
-/*
- * 微信粉丝组Repository
- *
- * 功能1： 微信线上和本地粉丝组列表
- * 功能2： 微信粉丝组管理：创建、修改、删除
- * 功能3： 微信粉丝分组设置
- *
- * @author yhsong <13810377933@163.com>
- */
-use App\Models\FanGroup;
+use Prettus\Repository\Eloquent\BaseRepository;
+use App\Repositories\Criteria\AccountCriteria;
 
 /**
- * Fans Repository.
+ * FanGroup Repository.
  */
-class FanGroupRepository
+class FanGroupRepository extends BaseRepository
 {
-    use BaseRepository;
+    use BaseRepositoryTrait;
 
-    /**
-     * FanGroup Model.
-     *
-     * @var Object
-     */
-    protected $model;
-
-    /**
-     * 实例化 FanGroup Model.
-     *
-     * @author yhsong <13810377933@163.com>
-     */
-    public function __construct()
+    public function boot()
     {
-        $this->model = new FanGroup();
+        $this->pushCriteria(new AccountCriteria());
     }
 
     /**
-     * 获取本地粉丝组列表.
+     * 使用粉丝组group_id 查找分组.
      *
-     * @author yhsong <13810377933@163.com>
+     * @param $groupId
      *
-     * @param Int    $accountId AccountID
-     * @param Int    $pageSize  偏移量
-     * @param String $request
-     *
-     * @return Array
+     * @return mixed
      */
-    public function lists($accountId, $pageSize, $request)
+    public function getGroupByGroupid($groupId)
     {
-        if (!$request->sort_by) {
-            $request->sort_by = 'group_id';
-        }
-
-        return $this->model
-                ->where('account_id', $accountId)
-                ->orderBy($request->sort_by, 'asc')
-                ->paginate($pageSize);
+        return $this->model->where('group_id', '=', $groupId)->where('account_id', '=', get_chosed_account())->first();
     }
 
     /**
-     * store.
+     * @param int     $groupId
+     * @param  string $groupName
      *
-     * @param Int   $accountId AccountID
-     * @param array $input
+     * @return mixed
      */
-    public function store($accountId, $input)
+    public function updateGroup($groupId, $groupName)
     {
+        $id = $this->getGroupByGroupid($groupId)->id;
 
-        /*
-         * 准备插入的数据
-         */
-        $_saveInfo['group_id'] = -1;
-        $_saveInfo['account_id'] = $accountId;
-        $_saveInfo['title'] = $input->title;
-        $_saveInfo['fan_count'] = 0;
-        $_saveInfo['is_default'] = 0;
-
-        /*
-         * 保存
-         */
-        $this->_savePost($this->model, $_saveInfo);
-
-        /*
-         * 返回生成的ID
-         */
-        return $this->model->id;
-    }
-
-    /**
-     * update.
-     *
-     * @param array $input Request
-     */
-    public function update($accountId, $input)
-    {
-        $model = $this->getGroupByid($accountId, $input['id']);
-
-        return $this->_savePost($model, $input);
-    }
-
-    /**
-     * Delete.
-     *
-     * @param int   $id    粉丝组自增ID
-     * @param array $input Request
-     */
-    public function delete($accountId, $id)
-    {
-
-        /*
-         * 1 查找粉丝组数据
-         */
-        $model = $this->getGroupByid($accountId, $id);
-
-        /*
-         * 2 验证这个组能不能删除
-         */
-        if ($model && !$model->is_default) {
-            /*
-             * 2.1) 本地粉丝所属组更新为"默认组"
-             */
-            $fanRepository = new FanRepository();
-            $fanRepository->moveFanGroupByGroupid($model->account_id, $model->group_id, 0);
-            /*
-             * 2.2) 软删除这个组
-             */
-            return $model->delete();
-        }
-    }
-
-    /**
-     * 使用 粉丝组自增ID 查找分组.
-     *
-     * @param Int $id        粉丝组自增ID
-     * @param Int $accountId Account ID
-     *
-     * @return Object
-     */
-    public function getGroupByid($accountId, $id)
-    {
-        return $this->model->where('account_id', $accountId)->where('id', $id)->first();
-    }
-
-    /**
-     * 使用 粉丝组group_id 查找分组.
-     *
-     * @param Int $accountId Account ID
-     * @param Int $groupId   粉丝组自增ID
-     *
-     * @return Object
-     */
-    public function getGroupByGroupid($accountId, $groupId)
-    {
-        return $this->model->where('account_id', $accountId)->where('group_id', $groupId)->first();
+        return $this->update(['name' => $groupName], $id);
     }
 
     /**
@@ -185,13 +70,14 @@ class FanGroupRepository
     }
 
     /**
-     * save.
+     * 删除指定公众号的本地分组数据
      *
-     * @param object $fanGroup
-     * @param array  $input    Request
+     * @param null $accountId
      */
-    private function _savePost($fanGroup, $input)
+    public function deleteAll($accountId = null)
     {
-        return $fanGroup->fill($input)->save();
+        $accountId = $accountId ?: get_chosed_account();
+
+        $this->model->where('account_id', '=', $accountId)->delete();
     }
 }

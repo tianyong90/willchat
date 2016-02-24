@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.layouts.base')
 @section('style')
 @stop
 @section('main')

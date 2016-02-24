@@ -1,4 +1,4 @@
-<extend name="Public/dcontentbase"/>
+@extends('user.layouts.base')
 @section('style')
   <style>
     #cardqrcode {
@@ -12,7 +12,7 @@
     }
   </style>
 @stop
-<block name="content">
+@section('main')
   <!-- BEGIN PAGE CONTENT-->
   <div class="dialog-content form">
     <img src="{$qrurl}" id="cardqrcode" alt=""/>

@@ -1,4 +1,4 @@
-@extends('user.public.base')
+@extends('user.layouts.baseindex')
 @section('main')
   <div class="row">
     <div class="col-md-12">
@@ -10,7 +10,7 @@
           </div>
           <ul class="nav nav-tabs">
             <li class="active">
-              <a href="{{ user_url('profile/index') }}">个人信息设置</a>
+              <a href="{{ user_url('profile/userinfo') }}">个人信息设置</a>
             </li>
             <li>
               <a href="{{ user_url('avatar') }}">头像设置</a>
@@ -20,49 +20,67 @@
             </li>
           </ul>
         </div>
-        <div class="portlet-body row">
-          <form action="__SELF__" method="post" class="col-md-6">
-            <div class="form-group">
-              <label class="control-label">用户名</label>
-              <input type="text" name="" value="{$userinfo.username}" placeholder="" class="form-control" readonly/>
-            </div>
-            <div class="form-group">
-              <label class="control-label">昵称</label>
-              <input type="text" name="nickname" value="{$userinfo.nickname}" placeholder="" class="form-control"/>
-            </div>
-            <div class="form-group">
-              <label class="control-label">Email</label>
-              <input type="text" name="" value="{$userinfo.email}" placeholder="" class="form-control" readonly/>
-            </div>
-            <div class="form-group">
-              <label class="control-label">联系电话</label>
-              <input type="text" name="mobile" value="{$userinfo.mobile}" placeholder="" class="form-control" readonly/>
-            </div>
-            <div class="form-group">
-              <label class="control-label">QQ号码</label>
-              <input type="text" name="qq" value="{$userinfo.qq}" placeholder="" class="form-control"/>
-            </div>
-            <div class="form-group">
-              <label class="control-label">生日</label>
-              <input type="text" name="birthday" value="{$userinfo.birthday}" placeholder="" class="form-control"/>
-            </div>
-            <!--     <div class="form-group">
-                    <label class="control-label">余额</label>
-                    <input type="text" name="" value="{$userinfo.balance}" placeholder="" class="form-control" readonly/>
+        <div class="portlet-body form">
+          <form action="" method="post" class="form-horizontal" role="form">
+            {!! csrf_field() !!}
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 control-label">用户名</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="{{ $user->name }}" placeholder="" class="form-control" readonly/>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">VIP到期时间</label>
-                    <input type="text" name="" value="{$userinfo.viptime|time_format}" placeholder="" class="form-control" readonly/>
-                </div> -->
-            <div class="form-group">
-              <label class="control-label">最后登录IP</label>
-              <input type="text" name="" value="{$userinfo.last_login_ip|long2ip}" placeholder="" class="form-control"
-                     readonly/>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="{{ $user->email }}" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">昵称</label>
+                <div class="col-md-6">
+                  <input type="text" name="nickname" value="{{ $user->nickname }}" placeholder="" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">手机号</label>
+                <div class="col-md-6">
+                  <input type="text" name="mobile" value="{{ $user->mobile }}" placeholder="" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">QQ号码</label>
+                <div class="col-md-6">
+                  <input type="text" name="qq" value="{{ $user->qq }}" placeholder="" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">注册时间</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="{{ $user->created_at }}" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">最后登录时间</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="{{ $user->last_login_at }}" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">最后登录IP</label>
+                <div class="col-md-6">
+                  <input type="text" name="" value="{{ $user->last_login_ip }}" placeholder="" class="form-control" readonly/>
+                </div>
+              </div>
             </div>
-            <div class="margiv-top-10">
-              <button type="submit" class="btn green-haze">保存修改</button>
-              <a href="javascript:history.go(-1);" class="btn default">
-                取消 </a>
+            <div class="form-actions">
+              <div class="row">
+                <div class="col-md-offset-2 col-md-6">
+                  <button type="submit" class="btn green">保存</button>
+                  <a href="javascript:history.go(-1);" class="btn default">
+                    取消 </a>
+                </div>
+              </div>
             </div>
           </form>
         </div>

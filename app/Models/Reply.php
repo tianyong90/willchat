@@ -12,12 +12,12 @@ class Reply extends Model
     /**
      * 类型关注回复.
      */
-    const TYPE_FOLLOW = 'follow';
+    const TYPE_SUBSCRIBE = 'subscribe';
 
     /**
      * 类型无匹配时回复.
      */
-    const TYPE_NO_MATCH = 'no-match';
+    const TYPE_DEFAULT = 'default';
 
     /**
      * 类型关键词回复.
@@ -51,7 +51,7 @@ class Reply extends Model
         'trigger_type',
         'group_ids',
         'content',
-                          ];
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -66,5 +66,5 @@ class Reply extends Model
         'trigger_type' => '触发类型',
         'group_ids' => '适用组id',
         'content' => '回复内容',
-                             ];
+    ];
 }

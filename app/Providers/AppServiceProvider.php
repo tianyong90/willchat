@@ -16,9 +16,6 @@ class AppServiceProvider extends ServiceProvider
         //设置地区
         \Carbon\Carbon::setLocale('zh');
 
-        view()->composer(['user.public.baseindex', 'user.public.header'], function($view){
-            $view->with('user', ['name'=>'tian', 'avatar'=>'abc.jpg']);
-        });
     }
 
     /**

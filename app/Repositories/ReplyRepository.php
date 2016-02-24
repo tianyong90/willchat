@@ -2,26 +2,32 @@
 
 namespace App\Repositories;
 
-use App\Models\Reply;
+use App\Repositories\Criteria\AccountCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Reply Repository.
  */
-class ReplyRepository
+class ReplyRepository extends BaseRepository
 {
-    use BaseRepository;
+    use BaseRepositoryTrait;
+
+    public function boot()
+    {
+        $this->pushCriteria(new AccountCriteria());
+    }
 
     /**
      * model.
      *
-     * @var App\Models\Reply
+     * @var Reply
      */
     private $model;
 
     /**
      * eventRepository.
      *
-     * @var App\Repositories\EventRepository
+     * @var \App\Repositories\EventRepository
      */
     private $eventRepository;
 
@@ -39,27 +45,27 @@ class ReplyRepository
     }
 
     /**
-     * 获取关注时的默认回复.
+     * 获取关注回复.
      *
      * @param int $accountId accountId
      *
      * @return array|mixed
      */
-    public function getFollowReply($accountId)
+    public function getSubscribeReply($accountId)
     {
-        return $this->model->where('type', Reply::TYPE_FOLLOW)->where('account_id', $accountId)->first();
+        return $this->model->where('type', Reply::TYPE_SUBSCRIBE)->where('account_id', $accountId)->first();
     }
 
     /**
-     * 取得关注时的默认回复.
+     * 取得默认回复.
      *
      * @param int $accountId accountId
      *
      * @return array|mixed
      */
-    public function getNoMatchReply($accountId)
+    public function getDefaultReply($accountId)
     {
-        return $this->model->where('type', Reply::TYPE_NO_MATCH)->where('account_id', $accountId)->first();
+        return $this->model->where('type', Reply::TYPE_DEFAULT)->where('account_id', $accountId)->first();
     }
 
     /**
@@ -72,7 +78,7 @@ class ReplyRepository
      */
     public function getList($accountId, $pageSize)
     {
-        return $this->model->where('type', Reply::TYPE_KEYWORDS)->where('account_id', $accountId)->get();
+        return $this->model->where('type', Reply::TYPE_KEYWORDS)->where('account_id', $accountId)->paginate($pageSize);
     }
 
     /**
@@ -104,8 +110,8 @@ class ReplyRepository
         $input = $request->all();
 
         $model = $this->model->where('account_id', $accountId)
-                             ->where('type', $type)
-                             ->first();
+            ->where('type', $type)
+            ->first();
 
         if (!$model) {
             $eventId = $this->saveReplyToEvent($replyType, $replyContent, $accountId);
@@ -121,26 +127,27 @@ class ReplyRepository
     }
 
     /**
-     * 存储回复.
+     * 存储回复
      *
-     * @param request $request   request
-     * @param int     $accountId accountId
+     * @param Request  $request
+     * @param int    $accountId
+     * @param string $type
      *
-     * @return Reply 模型
+     * @return Reply
      */
-    public function store($request, $accountId)
+    public function store(Request $request, $accountId, $type = Reply::TYPE_KEYWORDS)
     {
         $reply = new $this->model();
 
         $input = $request->all();
 
-        $replies = $input['replies'];
-
-        $input['content'] = $this->saveRepliesToEvent($replies, $accountId);
-
+//        $replies = $input['replies'];
+//
+//        $input['content'] = $this->saveRepliesToEvent($replies, $accountId);
+//
         $input['account_id'] = $accountId;
 
-        $input['type'] = Reply::TYPE_KEYWORDS;
+        $input['type'] = $type;
 
         return $this->savePost($reply, $input);
     }

@@ -27,12 +27,19 @@ class Account extends Model
      */
     protected $fillable = [
         'name',
+        'token',
+        'user_id',
         'original_id',
         'wechat_account',
         'app_id',
         'app_secret',
-        'account_type',
-                          ];
+        'aes_key',
+        'merchant_id',
+        'key',
+        'cert_path',
+        'key_path',
+        'type',
+    ];
 
     /**
      * 用于表单验证时的字段名称提示.
@@ -45,6 +52,11 @@ class Account extends Model
         'wechat_account' => '微信账号',
         'app_id' => '应用ID',
         'app_secret' => '应用secret',
-        'account_type' => '账户类型',
-                             ];
+        'aes_key' => '应用secret',
+        'merchant_id' => '商户号',
+        'key' => '商户密钥',
+        'cert_path' => '商户证书路径',
+        'key_path' => '密钥证书路径',
+        'type' => '账户类型',
+    ];
 }
