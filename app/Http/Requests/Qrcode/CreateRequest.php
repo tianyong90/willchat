@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Account;
+namespace App\Http\Requests\Qrcode;
 
 use App\Http\Requests\Request;
 

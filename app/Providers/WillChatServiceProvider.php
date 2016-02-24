@@ -8,13 +8,6 @@ use Illuminate\Support\ServiceProvider;
 class WillChatServiceProvider extends ServiceProvider
 {
     /**
-     * 延迟加载.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
-    /**
      * Bootstrap the application services.
      *
      * @return void
