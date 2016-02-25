@@ -59,6 +59,24 @@ function make_api_url($tag)
 }
 
 /**
+ * 获取用户头像图片路径，未设置则返回默认头像路径
+ *
+ * @param $userId
+ *
+ * @return bool|string
+ */
+function get_user_avatar($userId)
+{
+    $avatar = \App\Models\User::find($userId)->avatar;
+
+    if ($avatar && $avatarPath = file_exists(asset($avatar))) {
+        return $avatarPath;
+    } else {
+        return asset('images/user/defaultavatar.png');
+    }
+}
+
+/**
  * 获取微信公众号配置参数
  *
  * @param int  $accountId

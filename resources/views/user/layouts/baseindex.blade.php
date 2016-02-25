@@ -38,7 +38,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
         @yield('style')
-        
+
         @yield('pre_js')
     </head>
     <!-- END HEAD -->
@@ -66,15 +66,14 @@
                         <ul class="nav navbar-nav pull-right">
                             <!-- END NOTIFICATION DROPDOWN -->
                             <li class="separator hide"> </li>
-                            
+
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user dropdown-dark">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <span class="username username-hide-on-mobile"> {{ auth()->user()->name }} </span>
                                     <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                                    <!-- <img alt="" class="img-circle" src="{{ asset('images') }}/user/defaultavatar.png" /> </a> -->
-                                    <img alt="" class="img-circle" src="{{ asset('') . auth()->user()->avatar }}" /> </a>
+                                    <img alt="" class="img-circle" src="{{ get_user_avatar(auth()->user()->id) }}" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
                                         <a href="{{ user_url('profile/userinfo') }}">
@@ -119,7 +118,7 @@
                                 <div class="portlet light profile-sidebar-portlet bordered">
                                     <!-- SIDEBAR USERPIC -->
                                     <div class="profile-userpic">
-                                        <img src="{{ asset('') . auth()->user()->avatar }}" class="img-responsive" alt=""> </div>
+                                        <img src="{{ get_user_avatar(auth()->user()->id) }}" class="img-responsive" alt=""> </div>
                                     <!-- END SIDEBAR USERPIC -->
                                     <!-- SIDEBAR USER TITLE -->
                                     <div class="profile-usertitle">
@@ -180,7 +179,7 @@
         <!-- END FOOTER -->
         <!--[if lt IE 9]>
         <script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script> 
+        <script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script>
         <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
         <script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>

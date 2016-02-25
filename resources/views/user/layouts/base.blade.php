@@ -67,8 +67,7 @@
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <span class="username username-hide-on-mobile"> {{ auth()->user()->name }} </span>
                                     <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                                    <!-- <img alt="" class="img-circle" src="{{ asset('images') }}/user/defaultavatar.png" /> </a> -->
-                                    <img alt="" class="img-circle" src="{{ asset('') . auth()->user()->avatar }}" /> </a>
+                                    <img alt="" class="img-circle" src="{{ get_user_avatar(auth()->user()->id) }}" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
                                         <a href="{{ user_url('profile/userinfo') }}">
