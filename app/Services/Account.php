@@ -105,7 +105,7 @@ class Account
             // log
             'log' => [
                 'level' => \Monolog\Logger::DEBUG,
-                'file' => storage_path('logs\easywechat.log'),
+                'file' => storage_path('logs/easywechat.log'),
             ],
             // oauth
             'oauth' => [
