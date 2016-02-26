@@ -1,4 +1,3 @@
-/storage/app/temp
 /vendor
 /node_modules
 Homestead.yaml
@@ -8,8 +7,6 @@ Homestead.json
 /.idea
 _ide_helper.php
 composer.lock
-
-/public/uploads
 
 # workspace files are user-specific
 *.sublime-workspace
