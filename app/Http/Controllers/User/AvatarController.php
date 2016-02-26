@@ -7,10 +7,27 @@ use Illuminate\Http\Request;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
-use App\Models\User;
+use App\Repositories\UserRepository;
+use Auth;
 
 class AvatarController extends Controller
 {
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
+
+    /**
+     * AvatarController constructor.
+     *
+     * @param UserRepository $userRepository
+     */
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+
     public function index()
     {
         return user_view('profile.avatar');
@@ -28,31 +45,25 @@ class AvatarController extends Controller
         $avatarFile = $request->file('avatar_file');
 
         if ($avatarFile->isValid()) {
-            $clientName = $avatarFile->getClientOriginalName();
-//            $tmpName = $file->getFileName();
             $realPath = $avatarFile->getRealPath();
-//            $extension = $file->getClientOriginalExtension();
-            //            $mimeTye = $file->getMimeType();
-//            $newName = 'uploads/avatar/' . md5(date('ymdhis') . $clientName) . ".jpg";
-            $newName = 'uploads/avatar/'.auth()->user()->name.'.jpg';
+            $newName = 'uploads/avatar/' . Auth::user()->name . '.jpg';
 
             $imagine = new Imagine();
             $point = new Point($request->input('x'), $request->input('y'));
             $cropSize = new Box($request->input('width'), $request->input('width'));
-
             $saveSize = new Box(200, 200); //最终保存尺寸
             $rotateDegree = $request->input('rotate');
 
             try {
-                $imagine->open($realPath)->rotate($rotateDegree)->crop($point, $cropSize)->resize($saveSize)->save($newName);
+                $imagine->open($realPath)->rotate($rotateDegree)->crop($point, $cropSize)->resize($saveSize)->save(public_path($newName));
 
                 // 更新用户头像数据
-                $user = User::find(auth()->user()->id);
-                $user->avatar = $newName;
-                $user->save();
+                $this->userRepository->setAvatar($newName, Auth::user()->id);
 
                 return success('头像设置成功');
             } catch (\Exception $e) {
+                \Log::info($e->getMessage());
+
                 return error('头像设置出错');
             }
         } else {

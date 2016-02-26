@@ -67,10 +67,11 @@ function make_api_url($tag)
  */
 function get_user_avatar($userId)
 {
-    $avatar = \App\Models\User::find($userId)->avatar;
+    $userRepository = new \App\Repositories\UserRepository(app());
+    $avatar = $userRepository->getAvatar($userId);
 
-    if ($avatar && $avatarPath = file_exists(asset($avatar))) {
-        return $avatarPath;
+    if ($avatar && file_exists(public_path($avatar))) {
+        return asset($avatar);
     } else {
         return asset('images/user/defaultavatar.png');
     }

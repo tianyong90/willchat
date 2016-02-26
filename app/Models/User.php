@@ -31,6 +31,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         'nickname',
         'mobile',
         'qq',
+        'avatar',
         'last_login_at',
         'last_login_ip',
     ];
