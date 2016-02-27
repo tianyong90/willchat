@@ -23,8 +23,7 @@
             <th>备注</th>
             <th>性别</th>
             <th>分组</th>
-            <th>省(直辖市)</th>
-            <th>城市</th>
+            <th>位置</th>
             <th>关注时间</th>
             <th>操作</th>
           </tr>
@@ -39,8 +38,7 @@
                 <td>{{ $fan->remark }}</td>
                 <td>{{ $fan->sex }}</td>
                 <td>{{ $fan->groupid }}</td>
-                <td>{{ $fan->province }}</td>
-                <td>{{ $fan->city }}</td>
+                <td>{{ $fan->location }}</td>
                 <td>{{ $fan->subscribe_time }}</td>
                 <td>
                   <a class="btn blue btn-xs dialog-popup" href="{{ user_url('fans/editremark/'.$fan->id) }}"><i class="fa fa-edit"></i>修改备注</a>

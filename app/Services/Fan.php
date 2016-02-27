@@ -30,22 +30,61 @@ class Fan
         $easywechat = app('easywechat');
 
         $user = $easywechat->user;
-        $fansList = $user->lists();
 
-        // 粉丝 openid 列表
-        $openIds = $fansList->get('data.openid');
+        $nextOpenid = '';
 
-        $fanList = $user->batchGet($openIds)->get('user_info_list');
+        // 删除本地旧数据
+        FanModel::where('account_id', '=', get_chosed_account())->delete();
 
-        $fans = array_map(function ($item) {
-            $item['account_id'] = get_chosed_account();
-            $item['created_at'] = \Carbon\Carbon::create();
-            $item['updated_at'] = \Carbon\Carbon::create();
-            $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);
-            return $item;
-        }, $fanList);
+        // 备忘：batchGet 批量获取粉丝信息时一次最多获取100个粉丝
+        do {
+            $fansList = $user->lists($nextOpenid, 100);
 
-        FanModel::insert($fans);
+            if (empty($fansList['next_openid'])) {
+                break;
+            } else {
+                $nextOpenid = $fansList['next_openid'];
+            }
+
+            if ($fansList['count'] > 0 && $fansList['count']<=100) {
+                // 粉丝 openid 列表
+                $openIds = $fansList->get('data.openid');
+
+                $fanList = $user->batchGet($openIds)->get('user_info_list');
+
+                $fans = array_map(function ($item) {
+                    $item['account_id'] = get_chosed_account();
+                    $item['created_at'] = \Carbon\Carbon::create();
+                    $item['updated_at'] = \Carbon\Carbon::create();
+                    $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);
+                    return $item;
+                }, $fanList);
+
+                FanModel::insert($fans);
+            } elseif($fansList['count']>100){
+                // 粉丝 openid 列表
+                $openIds = $fansList->get('data.openid');
+
+                $openidsChunk = array_chunk($openIds, 100);
+
+                foreach($openidsChunk as $value) {
+
+                    $fanList = $user->batchGet($value)->get('user_info_list');
+
+                    $fans = array_map(function ($item) {
+                        $item['account_id'] = get_chosed_account();
+                        $item['created_at'] = \Carbon\Carbon::create();
+                        $item['updated_at'] = \Carbon\Carbon::create();
+                        $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);
+                        return $item;
+                    }, $fanList);
+
+                    FanModel::insert($fans);
+                }
+            }
+        } while ($fansList['count'] > 0 && $fansList['next_openid']);
+
+        return success('同步成功');
     }
 
     /**

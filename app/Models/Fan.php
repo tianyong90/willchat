@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Fan extends Model
 {
-    // use SoftDeletes;
-
     /**
      * 字段白名单.
      *
@@ -57,10 +54,30 @@ class Fan extends Model
         'last_online_at' => '最后上线时间',
     ];
 
+    /**
+     * 附加字段
+     *
+     * @var array
+     */
     protected $appends = ['location'];
 
+    /**
+     * 返回性别
+     *
+     * @return string
+     */
+    public function getSexAttribute($sex)
+    {
+        return $sex == 1 ? '男' : '女';
+    }
+
+    /**
+     * 返回位置信息
+     *
+     * @return string
+     */
     public function getLocationAttribute()
     {
-        return $this->province . ' ' . $this->city;
+        return $this->country . ' ' . $this->province . ' ' . $this->city;
     }
 }

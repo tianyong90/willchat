@@ -81,13 +81,12 @@ function get_user_avatar($userId)
  * 获取微信公众号配置参数
  *
  * @param int  $accountId
- * @param bool $byToken
  *
  * @return array
  */
-function get_wechat_options($accountId, $byToken = false)
+function get_wechat_options($accountId)
 {
-    return app('willchat.account_service')->getWechatOptions($accountId, $byToken);
+    return app('willchat.account_service')->getWechatOptions($accountId);
 }
 
 /**
