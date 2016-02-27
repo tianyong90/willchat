@@ -27,14 +27,18 @@ class AvatarController extends Controller
         $this->userRepository = $userRepository;
     }
 
-
+    /**
+     * 头像设置页面
+     *
+     * @return mixed
+     */
     public function index()
     {
         return user_view('profile.avatar');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 上传、处理头像并保存
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -62,7 +66,7 @@ class AvatarController extends Controller
 
                 return success('头像设置成功');
             } catch (\Exception $e) {
-                \Log::info($e->getMessage());
+                \Log::error($e->getMessage());
 
                 return error('头像设置出错');
             }

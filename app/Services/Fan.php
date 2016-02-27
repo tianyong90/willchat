@@ -38,7 +38,7 @@ class Fan
         $fanList = $user->batchGet($openIds)->get('user_info_list');
 
         $fans = array_map(function ($item) {
-            $item['account_id'] = 1;
+            $item['account_id'] = get_chosed_account();
             $item['created_at'] = \Carbon\Carbon::create();
             $item['updated_at'] = \Carbon\Carbon::create();
             $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);

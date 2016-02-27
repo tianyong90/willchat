@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Fan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\FanRepository;
@@ -16,6 +15,9 @@ class FansController extends Controller
      */
     private $fanRepository;
 
+    /**
+     * @var FanService
+     */
     private $fanService;
 
     /**
@@ -82,7 +84,7 @@ class FansController extends Controller
      * 移动粉丝并保存移动后数据.
      *
      * @param Request $request
-     * @param         $id
+     * @param int     $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -106,7 +108,7 @@ class FansController extends Controller
 
             return success('移动成功！');
         } catch (\Exception $e) {
-            return error('移动失败！'.$e->getMessage());
+            return error('移动失败！' . $e->getMessage());
         }
     }
 
@@ -150,7 +152,7 @@ class FansController extends Controller
 
             return success('修改成功！');
         } catch (\Exception $e) {
-            return error('修改失败！'.$e->getMessage());
+            return error('修改失败！' . $e->getMessage());
         }
     }
 }
