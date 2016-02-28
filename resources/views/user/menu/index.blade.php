@@ -35,7 +35,7 @@
                   @if ($menu->type == '点击')
                     {{ $menu->key }}
                   @else
-                    {{ $menu->url }}
+                    {{ str_limit($menu->url, 60) }}
                   @endif
                 </td>
                 <td>
@@ -52,7 +52,7 @@
                       @if ($subButton->type == '点击')
                         {{ $subButton->key }}
                       @else
-                        {{ $subButton->url }}
+                        {{ str_limit($subButton->url, 60) }}
                       @endif
                     </td>
                     <td>
