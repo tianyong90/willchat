@@ -7,7 +7,7 @@ use App\Models\Account;
 
 class CreateRequest extends Request
 {
-//    public function authorize()
+    //    public function authorize()
 //    {
 //        // 每个用户限添加3个公众号
 //        if (Account::where('user_id', auth()->user()->id)->count() >= 3) {
@@ -16,7 +16,7 @@ class CreateRequest extends Request
 //
 //        return true;
 //    }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *

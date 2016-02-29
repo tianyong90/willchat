@@ -131,7 +131,7 @@ class Menu
      */
     private function analyseRemoteMenu($menu)
     {
-//        if (isset($menu['sub_button']['list'])) {
+        //        if (isset($menu['sub_button']['list'])) {
 //            $menu['sub_button'] = array_map([$this, 'analyseRemoteMenu'], $menu['sub_button']['list']);
 //        } else {
 //            $menu = call_user_func([$this, camel_case('resolve_'.$menu['type'].'_menu')], $menu);

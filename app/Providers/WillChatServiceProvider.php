@@ -14,7 +14,7 @@ class WillChatServiceProvider extends ServiceProvider
      */
     public function boot(AccountService $account)
     {
-        $this->app->singleton('easywechat', function() use ($account) {
+        $this->app->singleton('easywechat', function () use ($account) {
 
             $options = $account->getWechatOptions();
 

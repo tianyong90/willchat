@@ -55,7 +55,7 @@ class Account
         // 当前选中的公众号ID
         $accountId = get_chosed_account();
 
-        if(empty($accountId)) {
+        if (empty($accountId)) {
             return false;
         }
 

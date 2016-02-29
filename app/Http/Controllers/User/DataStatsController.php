@@ -9,7 +9,7 @@ class DataStatsController extends Controller
 {
     public function getIndex()
     {
-//        $easywechat = app('easywechat');
+        //        $easywechat = app('easywechat');
 //        $stats = $easywechat->stats;
 //
 //        $data = $stats->userSummary('2015-12-01', '2015-12-06');

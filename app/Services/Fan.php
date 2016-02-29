@@ -61,14 +61,13 @@ class Fan
                 }, $fanList);
 
                 FanModel::insert($fans);
-            } elseif($fansList['count']>100){
+            } elseif ($fansList['count']>100) {
                 // 粉丝 openid 列表
                 $openIds = $fansList->get('data.openid');
 
                 $openidsChunk = array_chunk($openIds, 100);
 
-                foreach($openidsChunk as $value) {
-
+                foreach ($openidsChunk as $value) {
                     $fanList = $user->batchGet($value)->get('user_info_list');
 
                     $fans = array_map(function ($item) {

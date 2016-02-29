@@ -11,7 +11,7 @@ use App\Repositories\Criteria\AccountCriteria;
  */
 trait BaseRepositoryTrait
 {
-//    public function boot()
+    //    public function boot()
 //    {
 //        if (in_array('user_id', $this->getFieldsSearchable())) {
 //            $this->pushCriteria(new UserCriteria());

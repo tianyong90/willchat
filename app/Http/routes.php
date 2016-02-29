@@ -86,7 +86,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('document/detail/{id}', 'DocumentController@detail');
 
         // 某一公众号相关的路由
-        Route::group(['middleware' => 'account'], function() {
+        Route::group(['middleware' => 'account'], function () {
             //粉丝管理
             Route::get('fans', 'FansController@index');
             Route::get('fans/sync', 'FansController@syncFans');

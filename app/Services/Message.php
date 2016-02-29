@@ -42,8 +42,7 @@ class Message
     public function __construct(EventService $eventService,
                                 MaterialRepository $materialRepository,
                                 MessageRepository $messageRepository
-    )
-    {
+    ) {
         $this->eventService = $eventService;
 
         $this->materialRepository = $materialRepository;
@@ -159,7 +158,6 @@ class Message
 
     public function makeArticle()
     {
-
     }
 
     /**

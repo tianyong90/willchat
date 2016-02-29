@@ -27,5 +27,4 @@ class Post extends Model implements Transformable
             $this->attributes['slug'] = str_slug($value);
         }
     }
-
 }

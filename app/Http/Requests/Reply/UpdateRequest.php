@@ -13,7 +13,7 @@ class UpdateRequest extends Request
      */
     public function rules()
     {
-//        return [
+        //        return [
 //            'name' => 'required',
 //            'token' => 'required',
 //            'app_id' => 'required',

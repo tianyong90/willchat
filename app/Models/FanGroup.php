@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FanGroup extends Model
 {
-//    use SoftDeletes;
+    //    use SoftDeletes;
 
     /**
      * 字段白名单.

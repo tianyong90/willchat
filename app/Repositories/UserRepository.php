@@ -18,7 +18,7 @@ class UserRepository extends BaseRepository implements CacheableInterface
 
     public function boot()
     {
-//        $this->pushCriteria(new UserCriteria());
+        //        $this->pushCriteria(new UserCriteria());
     }
 
     /**

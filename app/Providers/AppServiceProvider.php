@@ -15,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //设置地区
         \Carbon\Carbon::setLocale('zh');
-
     }
 
     /**
