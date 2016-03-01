@@ -132,4 +132,24 @@ class Fan
         //更新本地库中对应备注数据
         $this->fanRepository->update(['remark' => $remark], $id);
     }
+
+    /**
+     * 移动粉丝到分组
+     *
+     * @param $id
+     * @param $groupId
+     */
+    public function moveTo($id, $groupId)
+    {
+        $easywechat = app('easywechat');
+        $user = $easywechat->user_group;
+
+        $openId = $this->fanRepository->find($id)->openid;
+
+        //更新备注
+        $user->moveUser($openId, $groupId);
+
+        //更新本地库中对应备注数据
+        $this->fanRepository->update(['groupid' => $groupId], $id);
+    }
 }

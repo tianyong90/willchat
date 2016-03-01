@@ -13,7 +13,7 @@ class Fan extends Model
      */
     protected $fillable = [
         'account_id',
-        'group_id',
+        'groupid',
         'openid',
         'nickname',
         'signature',
@@ -37,7 +37,7 @@ class Fan extends Model
      */
     public static $aliases = [
         'account_id' => '公众号ID',
-        'group_id' => '粉丝组ID',
+        'groupid' => '粉丝组ID',
         'openid' => 'OPENID',
         'nickname' => '昵称',
         'signature' => '签名',

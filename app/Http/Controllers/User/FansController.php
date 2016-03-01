@@ -90,21 +90,8 @@ class FansController extends Controller
      */
     public function postMoveTo(Request $request, $id)
     {
-        $easywechat = app('easywechat');
-
-        $groupService = $easywechat->user_group;
-
         try {
-            $fan = $this->fanRepository->getById($id);
-
-            $newGroupId = $request->input('groupid');
-
-            //更新备注
-            $groupService->moveUser($fan->openid, $newGroupId);
-
-            //更新本地库中对应备注数据
-            $fan->groupid = $newGroupId;
-            $fan->save();
+            $this->fanService->moveTo($id, $request->input('groupid'));
 
             return success('移动成功！');
         } catch (\Exception $e) {
