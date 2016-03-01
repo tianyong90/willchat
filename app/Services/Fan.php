@@ -46,7 +46,7 @@ class Fan
                 $nextOpenid = $fansList['next_openid'];
             }
 
-            if ($fansList['count'] > 0 && $fansList['count']<=100) {
+            if ($fansList['count'] > 0 && $fansList['count'] <= 100) {
                 // 粉丝 openid 列表
                 $openIds = $fansList->get('data.openid');
 
@@ -61,7 +61,7 @@ class Fan
                 }, $fanList);
 
                 FanModel::insert($fans);
-            } elseif ($fansList['count']>100) {
+            } elseif ($fansList['count'] > 100) {
                 // 粉丝 openid 列表
                 $openIds = $fansList->get('data.openid');
 
@@ -111,5 +111,25 @@ class Fan
             'updated_at' => date('Y-m-d H:i:s'),
             'deleted_at' => null,
         ];
+    }
+
+    /**
+     * 修改备注
+     *
+     * @param int    $id
+     * @param string $remark
+     */
+    public function edirRemark($id, $remark)
+    {
+        $easywechat = app('easywechat');
+        $user = $easywechat->user;
+
+        $openId = $this->fanRepository->find($id)->openid;
+
+        //更新备注
+        $user->remark($openId, $remark);
+
+        //更新本地库中对应备注数据
+        $this->fanRepository->update(['remark' => $remark], $id);
     }
 }

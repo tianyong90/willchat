@@ -137,18 +137,8 @@ class FansController extends Controller
      */
     public function postEditRemark(Request $request, $id)
     {
-        $easywechat = app('easywechat');
-
-        $user = $easywechat->user;
-
         try {
-            $fan = $this->fanRepository->find($id);
-
-            //更新备注
-            $user->remark($fan->openid, $request->input('remark'));
-
-            //更新本地库中对应备注数据
-            $this->fanRepository->updateRemark($request);
+            $this->fanService->edirRemark($id, $request->input('remark'));
 
             return success('修改成功！');
         } catch (\Exception $e) {
