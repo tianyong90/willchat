@@ -1,0 +1,16 @@
+preset: symfony
+
+linting: true
+
+enabled:
+  - strict
+  - strict_param
+  - ordered_use
+
+finder:
+  exclude:
+    - "tests"
+  name:
+    - "*.php"
+  path:
+    - "app"
