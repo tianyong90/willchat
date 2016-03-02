@@ -24,26 +24,26 @@ WillChat 是一套简单的微信管理系统。
 
 2. 配置 Apache 或 Nginx 虚拟主机
 
-3. 复制根目录下 .env.example 文件为 .env
+3. 安装依赖包
 
-4. 生成APP_KEY
+    ```shell
+    composer install -vvv
+    ```
+    
+4. 复制根目录下 .env.example 文件为 .env
+
+5. 生成APP_KEY
 
     ```shell
     php artisan key:generate
     ```
     
-5. 创建数据库并在.env 文件中配置数据库、邮件等相关参数
+6. 创建数据库并在.env 文件中配置数据库、邮件等相关参数
 
-6. 生成数据表
+7. 生成数据表
 
     ```shell
     php artisan migrate
-    ```
-
-7. 安装依赖包
-
-    ```shell
-    composer install -vvv
     ```
 
 ### 演示地址

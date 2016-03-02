@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Criteria\AccountCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
+use App\Models\Reply;
 
 /**
  * Reply Repository.
@@ -53,7 +54,7 @@ class ReplyRepository extends BaseRepository
      */
     public function getSubscribeReply($accountId)
     {
-        return $this->model->where('type', Reply::TYPE_SUBSCRIBE)->where('account_id', $accountId)->first();
+        return $this->findByField('type', Reply::TYPE_SUBSCRIBE);
     }
 
     /**
@@ -65,7 +66,7 @@ class ReplyRepository extends BaseRepository
      */
     public function getDefaultReply($accountId)
     {
-        return $this->model->where('type', Reply::TYPE_DEFAULT)->where('account_id', $accountId)->first();
+        return $this->findByField('type', Reply::TYPE_DEFAULT);
     }
 
     /**
@@ -251,22 +252,5 @@ class ReplyRepository extends BaseRepository
             return $eventRepository->distoryByEventId($eventId);
 
         }, $eventIds);
-    }
-
-    /**
-     * 保存.
-     *
-     * @param App\Models\Reply $reply reply
-     * @param array            $input input
-     *
-     * @return Reply 返回模型
-     */
-    public function savePost($reply, $input)
-    {
-        $reply->fill($input);
-
-        $reply->save();
-
-        return $reply;
     }
 }

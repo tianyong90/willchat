@@ -14,9 +14,14 @@ class DefaultReplyController extends Controller
      */
     private $replyRepository;
 
-    public function __construct(ReplyRepository $reply)
+    /**
+     * DefaultReplyController constructor.
+     *
+     * @param ReplyRepository $replyRepository
+     */
+    public function __construct(ReplyRepository $replyRepository)
     {
-        $this->replyRepository = $reply;
+        $this->replyRepository = $replyRepository;
     }
 
     /**
