@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\Reply;
 use App\Repositories\Criteria\AccountCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
-use App\Models\Reply;
 
 /**
  * Reply Repository.
