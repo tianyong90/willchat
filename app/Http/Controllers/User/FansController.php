@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\FanRepository;
 use App\Services\Fan as FanService;
 use EasyWeChat\Foundation\Application;
+use Illuminate\Http\Request;
 
 class FansController extends Controller
 {
@@ -95,7 +95,7 @@ class FansController extends Controller
 
             return success('移动成功！');
         } catch (\Exception $e) {
-            return error('移动失败！' . $e->getMessage());
+            return error('移动失败！'.$e->getMessage());
         }
     }
 
@@ -129,7 +129,7 @@ class FansController extends Controller
 
             return success('修改成功！');
         } catch (\Exception $e) {
-            return error('修改失败！' . $e->getMessage());
+            return error('修改失败！'.$e->getMessage());
         }
     }
 }

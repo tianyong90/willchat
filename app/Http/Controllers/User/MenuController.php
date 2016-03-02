@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\MenuRepository;
 use App\Http\Requests\Menu\CreateRequest;
 use App\Http\Requests\Menu\UpdateRequest;
-use App\Services\Menu as MenuService;
+use App\Repositories\MenuRepository;
 use App\Services\Account as AccountService;
+use App\Services\Menu as MenuService;
 
 class MenuController extends Controller
 {

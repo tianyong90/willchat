@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Repositories\FanRepository;
 use App\Repositories\FanReportRepository;
+use App\Repositories\FanRepository;
 
 /**
  * 粉丝与公众号交互的数据报表服务
@@ -40,9 +40,9 @@ class FanReport
     /**
      * 粉丝活跃度+1, 同时在fan_reports表中增加记录.
      *
-     * @param Int    $accountId AccountID
-     * @param String $openId    OpenID
-     * @param String $type      操作类型
+     * @param int    $accountId AccountID
+     * @param string $openId    OpenID
+     * @param string $type      操作类型
      *
      * @return bool
      */

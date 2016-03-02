@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Services\Event as EventService;
 use App\Repositories\ReplyRepository;
+use App\Services\Event as EventService;
 use Cache;
 
 /**

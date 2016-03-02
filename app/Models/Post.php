@@ -15,7 +15,7 @@ class Post extends Model implements Transformable
     protected $dates = ['published_at'];
 
     /**
-     * 根据title自动生成slug
+     * 根据title自动生成slug.
      *
      * @param $value
      */
@@ -23,7 +23,7 @@ class Post extends Model implements Transformable
     {
         $this->attributes['title'] = $value;
 
-        if (! $this->exists) {
+        if (!$this->exists) {
             $this->attributes['slug'] = str_slug($value);
         }
     }

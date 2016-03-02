@@ -36,33 +36,33 @@ class Fan extends Model
      * @var array
      */
     public static $aliases = [
-        'account_id' => '公众号ID',
-        'groupid' => '粉丝组ID',
-        'openid' => 'OPENID',
-        'nickname' => '昵称',
-        'signature' => '签名',
-        'remark' => '备注',
-        'sex' => '性别',
-        'language' => '语言',
-        'city' => '城市',
-        'province' => '省份',
-        'country' => '国家',
-        'avatar' => '头像',
-        'unionid' => 'unionid',
-        'liveness' => '活跃度',
-        'subscribed_at' => '关注时间',
+        'account_id'     => '公众号ID',
+        'groupid'        => '粉丝组ID',
+        'openid'         => 'OPENID',
+        'nickname'       => '昵称',
+        'signature'      => '签名',
+        'remark'         => '备注',
+        'sex'            => '性别',
+        'language'       => '语言',
+        'city'           => '城市',
+        'province'       => '省份',
+        'country'        => '国家',
+        'avatar'         => '头像',
+        'unionid'        => 'unionid',
+        'liveness'       => '活跃度',
+        'subscribed_at'  => '关注时间',
         'last_online_at' => '最后上线时间',
     ];
 
     /**
-     * 附加字段
+     * 附加字段.
      *
      * @var array
      */
     protected $appends = ['location'];
 
     /**
-     * 返回性别
+     * 返回性别.
      *
      * @return string
      */
@@ -72,12 +72,12 @@ class Fan extends Model
     }
 
     /**
-     * 返回位置信息
+     * 返回位置信息.
      *
      * @return string
      */
     public function getLocationAttribute()
     {
-        return $this->country . ' ' . $this->province . ' ' . $this->city;
+        return $this->country.' '.$this->province.' '.$this->city;
     }
 }

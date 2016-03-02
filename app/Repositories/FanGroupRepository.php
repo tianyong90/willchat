@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
 use App\Repositories\Criteria\AccountCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * FanGroup Repository.
@@ -30,8 +30,8 @@ class FanGroupRepository extends BaseRepository
     }
 
     /**
-     * @param int     $groupId
-     * @param  string $groupName
+     * @param int    $groupId
+     * @param string $groupName
      *
      * @return mixed
      */
@@ -45,8 +45,8 @@ class FanGroupRepository extends BaseRepository
     /**
      * update.
      *
-     * @param Int   $accountId Account ID
-     * @param Int   $addId     加粉丝的组自增ID
+     * @param int   $accountId Account ID
+     * @param int   $addId     加粉丝的组自增ID
      * @param array $groupIds  粉丝组group_id
      * @param array $count     数量
      */
@@ -70,7 +70,7 @@ class FanGroupRepository extends BaseRepository
     }
 
     /**
-     * 删除指定公众号的本地分组数据
+     * 删除指定公众号的本地分组数据.
      *
      * @param null $accountId
      */

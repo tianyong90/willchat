@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Events\PasswordUpdated;
-use Illuminate\Http\Request;
-use App\Http\Requests\User\UserinfoRequest;
-use App\Http\Requests\User\PasswordRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\PasswordRequest;
+use App\Http\Requests\User\UserinfoRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -59,7 +59,7 @@ class ProfileController extends Controller
     public function postPassword(PasswordRequest $request)
     {
         // 验证原密码
-        if (Auth::attempt(array('name' => Auth::user()->name, 'password' => $request->old), true)) {
+        if (Auth::attempt(['name' => Auth::user()->name, 'password' => $request->old], true)) {
             // 修改密码
             $user = Auth::user();
             $user->password = bcrypt($request->password);

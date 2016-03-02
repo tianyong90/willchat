@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
 use App\Repositories\Criteria\AccountCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Menu Repository.
@@ -64,8 +64,8 @@ class MenuRepository extends BaseRepository
     /**
      * 一次存储所有菜单.
      *
-     * @param       int    $$accountId id
-     * @param array $menus 菜单
+     * @param int   $$accountId id
+     * @param array $menus      菜单
      */
     public function storeAll($accountId, $menus)
     {
@@ -160,7 +160,7 @@ class MenuRepository extends BaseRepository
     }
 
     /**
-     * 删除菜单
+     * 删除菜单.
      *
      * @param $id
      */
@@ -172,7 +172,6 @@ class MenuRepository extends BaseRepository
         // 删除自身
         parent::delete($id);
     }
-
 
     /**
      * 删除全部菜单.

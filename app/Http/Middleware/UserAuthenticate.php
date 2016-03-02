@@ -20,9 +20,10 @@ class UserAuthenticate
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     * @param string|null              $guard
+     *
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
@@ -45,7 +46,8 @@ class UserAuthenticate
     /**
      * Determine if the request has a URI that should pass through CSRF verification.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     protected function shouldPassThrough($request)

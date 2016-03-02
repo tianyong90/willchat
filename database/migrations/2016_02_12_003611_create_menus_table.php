@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateMenusTable extends Migration
 {
     /**
-     * 备注防止忘记 :
+     * 备注防止忘记 :.
      *
      * 设计中所有的 media_id 将被替换为事件
      */

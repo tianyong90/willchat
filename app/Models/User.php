@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -52,12 +52,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     public static $aliases = [
-        'name' => '用户名',
-        'password' => '登录密码',
-        'nickname' => '昵称',
-        'email' => '邮箱',
-        'mobile' => '手机号',
-        'qq' => 'qq号',
+        'name'          => '用户名',
+        'password'      => '登录密码',
+        'nickname'      => '昵称',
+        'email'         => '邮箱',
+        'mobile'        => '手机号',
+        'qq'            => 'qq号',
         'last_login_at' => '最后登录时间',
         'last_login_ip' => '最后登录IP',
     ];

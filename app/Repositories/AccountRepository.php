@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
 use App\Repositories\Criteria\UserCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Account Repository.
@@ -30,7 +30,7 @@ class AccountRepository extends BaseRepository
     }
 
     /**
-     * 查询公众号所用户ID
+     * 查询公众号所用户ID.
      *
      * @param $id
      *

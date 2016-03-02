@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
 use App\Repositories\Criteria\AccountCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Fan Repository.
@@ -42,7 +42,7 @@ class FanRepository extends BaseRepository
              */
             $insert = [
                 'account_id' => $accountId,
-                'openid' => $openId,
+                'openid'     => $openId,
             ];
             $this->_savePost($this->model, $insert);
 
@@ -79,8 +79,8 @@ class FanRepository extends BaseRepository
     /**
      * 通过粉丝ID 更改粉丝所属组(支持批量).
      *
-     * @param Array $ids       粉丝自增ID
-     * @param Int   $toGroupId 粉丝组group_id
+     * @param array $ids       粉丝自增ID
+     * @param int   $toGroupId 粉丝组group_id
      */
     public function moveFanGroupByFansid($ids, $toGroupId)
     {
@@ -95,7 +95,7 @@ class FanRepository extends BaseRepository
     /**
      * 通过粉丝ID 获取粉丝组group_id和粉丝人数[支持批量].
      *
-     * @param Array $ids 粉丝自增ID
+     * @param array $ids 粉丝自增ID
      */
     public function getFanGroupByfanIds($ids)
     {
@@ -131,8 +131,8 @@ class FanRepository extends BaseRepository
     /**
      * 通过粉丝组ID 更改粉丝所属组(支持批量).
      *
-     * @param Array $ids       粉丝自增ID
-     * @param Int   $toGroupId 粉丝组group_id
+     * @param array $ids       粉丝自增ID
+     * @param int   $toGroupId 粉丝组group_id
      */
     public function moveFanGroupByGroupid($accountId, $fromGroupId, $toGroupId)
     {

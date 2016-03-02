@@ -2,10 +2,9 @@
 
 namespace App\Listeners;
 
-use Mail;
 use App\Events\PasswordUpdated;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
 
 class EmailNotificaiton implements ShouldQueue
 {
@@ -22,7 +21,8 @@ class EmailNotificaiton implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  PasswordUpdated  $event
+     * @param PasswordUpdated $event
+     *
      * @return void
      */
     public function handle(PasswordUpdated $event)

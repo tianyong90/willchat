@@ -1,6 +1,6 @@
 <?php
 /**
- * UserCriteria.php
+ * UserCriteria.php.
  *
  * Part of willchat.
  *
@@ -9,20 +9,21 @@
  *
  * @author    tianyong90 <412039588@qq.com>
  * @copyright 2016 tianyong90 <412039588@qq.com>
+ *
  * @link      https://github.com/tianyong90
  */
-
 namespace App\Repositories\Criteria;
 
-use Session;
-use Prettus\Repository\Contracts\RepositoryInterface;
 use Prettus\Repository\Contracts\CriteriaInterface;
+use Prettus\Repository\Contracts\RepositoryInterface;
+use Session;
 
 class AccountCriteria implements CriteriaInterface
 {
     public function apply($model, RepositoryInterface $repository)
     {
         $model = $model->where('account_id', '=', Session::get('account_id'));
+
         return $model;
     }
 }

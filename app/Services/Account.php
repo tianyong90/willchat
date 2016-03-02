@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Session;
 use App\Repositories\AccountRepository;
+use Session;
 
 /**
  * 公众号服务提供者.
@@ -34,7 +34,7 @@ class Account
     }
 
     /**
-     * 当前选中的公众号
+     * 当前选中的公众号.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -85,7 +85,7 @@ class Account
 
     /**
      * 获取SDK相关配置数据
-     * 未传参数时默认获取当前选中的公众号对应的配置
+     * 未传参数时默认获取当前选中的公众号对应的配置.
      *
      * @param null $accountId
      *
@@ -98,25 +98,25 @@ class Account
         $accountData = $this->accountRepository->find($accountId);
 
         $options = [
-            'debug' => true,
+            'debug'  => true,
             'app_id' => $accountData->app_id,
             'secret' => $accountData->app_secret,
-            'token' => $accountData->token,
+            'token'  => $accountData->token,
             // log
             'log' => [
                 'level' => \Monolog\Logger::DEBUG,
-                'file' => storage_path('logs/easywechat.log'),
+                'file'  => storage_path('logs/easywechat.log'),
             ],
             // oauth
             'oauth' => [
-                'scopes' => ['snsapi_userinfo'],
+                'scopes'   => ['snsapi_userinfo'],
                 'callback' => '/examples/oauth_callback.php',
             ],
             'payment' => [
                 'merchant_id' => $accountData->merchant_id,
-                'key' => $accountData->key,
-                'cert_path' => $accountData->cert_path,
-                'key_path' => $accountData->key_path,
+                'key'         => $accountData->key,
+                'cert_path'   => $accountData->cert_path,
+                'key_path'    => $accountData->key_path,
             ],
         ];
 

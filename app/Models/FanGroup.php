@@ -28,10 +28,10 @@ class FanGroup extends Model
      * @var array
      */
     public static $aliases = [
-        'group_id' => '粉丝组ID',
+        'group_id'   => '粉丝组ID',
         'account_id' => '公众号ID',
-        'name' => '组名称',
-        'count' => '粉丝数',
+        'name'       => '组名称',
+        'count'      => '粉丝数',
         'is_default' => '是否为系统默认组',
     ];
 }

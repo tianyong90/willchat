@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use App\Repositories\AccountRepository;
+use Closure;
 
 class Account
 {
@@ -22,12 +22,11 @@ class Account
         $this->accountRepository = $accountRepository;
     }
 
-
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
      *
      * @return mixed
      */
@@ -45,7 +44,7 @@ class Account
     }
 
     /**
-     * 是否已经选择了公众号并且公众号属于当前登录用户
+     * 是否已经选择了公众号并且公众号属于当前登录用户.
      *
      *
      * @return bool

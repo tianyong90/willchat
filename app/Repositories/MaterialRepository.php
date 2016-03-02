@@ -58,7 +58,7 @@ class MaterialRepository
      *
      * @param int $id 素材ID
      *
-     * @return App\Models\Material|NULL
+     * @return App\Models\Material|null
      */
     public function getMediaById($id)
     {
@@ -70,7 +70,7 @@ class MaterialRepository
      *
      * @param string $mediaId 素材标识
      *
-     * @return App\Models\Material|NULL
+     * @return App\Models\Material|null
      */
     public function getMaterialByMediaId($mediaId)
     {

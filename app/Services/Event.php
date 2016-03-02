@@ -79,9 +79,9 @@ class Event
     }
 
     /**
-     * 创建一个mediaId类型的回复事件
+     * 创建一个mediaId类型的回复事件.
      *
-     * @param  string $materialId 原始图片素材Id
+     * @param string $materialId 原始图片素材Id
      *
      * @return string 事件key
      */

@@ -2,10 +2,10 @@
 
 namespace app\Http\Controllers\User;
 
-use App\Models\Reply;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Reply;
 use App\Repositories\ReplyRepository;
+use Illuminate\Http\Request;
 
 class DefaultReplyController extends Controller
 {
@@ -38,7 +38,7 @@ class DefaultReplyController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $this->replyRepository->store($input, get_chosed_account(),  Reply::TYPE_DEFAULT);
+        $this->replyRepository->store($input, get_chosed_account(), Reply::TYPE_DEFAULT);
 
         return success('保存成功');
     }

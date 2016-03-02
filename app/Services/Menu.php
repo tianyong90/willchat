@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use EasyWeChat\Foundation\Application;
 use App\Models\Account as AccountModel;
-use App\Repositories\MenuRepository;
 use App\Repositories\AccountRepository;
+use App\Repositories\MenuRepository;
+use EasyWeChat\Foundation\Application;
 
 /**
  * 菜单服务提供类.
@@ -127,7 +127,7 @@ class Menu
      *
      * @param array $menu 菜单
      *
-     * @return array|NULL
+     * @return array|null
      */
     private function analyseRemoteMenu($menu)
     {
@@ -357,7 +357,7 @@ class Menu
      */
     private function resolveViewLimitedMenu($menu)
     {
-        return false; //暂时关闭这个功能 
+        return false; //暂时关闭这个功能
 
         $menu['type'] = 'view';
 
@@ -393,7 +393,7 @@ class Menu
     }
 
     /**
-     * 格式化为微信菜单
+     * 格式化为微信菜单.
      *
      * @param array $menus 菜单
      */
@@ -419,7 +419,7 @@ class Menu
     }
 
     /**
-     * 根据本地保存的数据生成单个菜单项
+     * 根据本地保存的数据生成单个菜单项.
      *
      * @param array $menuData
      *
@@ -446,7 +446,7 @@ class Menu
     }
 
     /**
-     * 删除全部菜单，包括本地数据
+     * 删除全部菜单，包括本地数据.
      *
      * @param AccountModel $account
      */

@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Services\AccountModel as AccountService;
 use App\Models\Event;
+use App\Services\AccountModel as AccountService;
 
 /**
  * Event Repository.
@@ -54,7 +54,7 @@ class EventRepository
 
     /**
      * 存储一个文字回复类型事件.
-     * 
+     *
      * @param int    $accountId 公众号id
      * @param string $text      回复内容
      *
