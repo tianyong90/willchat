@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 //use Prettus\Repository\Eloquent\BaseRepository as PrettusBaseRepository;
-use App\Repositories\Criteria\UserCriteria;
 use App\Repositories\Criteria\AccountCriteria;
+use App\Repositories\Criteria\UserCriteria;
 
 /**
  * Base Repository.
@@ -23,7 +23,7 @@ trait BaseRepositoryTrait
 //    }
 
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */
@@ -31,7 +31,7 @@ trait BaseRepositoryTrait
     {
         $class = explode('\\', get_class($this));
 
-        if (!empty($class[2]) && class_exists($model = 'App\Models\\' . str_replace('Repository', '', $class[2]))) {
+        if (!empty($class[2]) && class_exists($model = 'App\Models\\'.str_replace('Repository', '', $class[2]))) {
             return $model;
         }
     }

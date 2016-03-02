@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateRepliesTable extends Migration
 {
@@ -19,7 +19,7 @@ class CreateRepliesTable extends Migration
             $table->enum('type', [
                 'subscribe',
                 'default',
-                'keywords'
+                'keywords',
             ])->comment('回复类型 subscribe 关注回复 default 默认回复 keywords 关键词回复');
             $table->string('name', 30)->nullable()->comment('规则名称'); //标题
             $table->string('keywords', 500)->nullable()->comment('触发文字');

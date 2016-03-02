@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Services\Account as AccountService;
 use App\Repositories\FanGroupRepository;
+use App\Services\Account as AccountService;
 
 class FanGroup
 {
@@ -47,7 +47,7 @@ class FanGroup
     }
 
     /**
-     * 删除公众号对应的本地粉丝分组数据
+     * 删除公众号对应的本地粉丝分组数据.
      */
     public function clearLocal()
     {
@@ -55,7 +55,7 @@ class FanGroup
     }
 
     /**
-     * 获取粉丝分组列表
+     * 获取粉丝分组列表.
      *
      * @return mixed
      */
@@ -69,7 +69,7 @@ class FanGroup
     }
 
     /**
-     * 创建用户组
+     * 创建用户组.
      *
      * @param string $groupName
      *
@@ -85,7 +85,7 @@ class FanGroup
     }
 
     /**
-     * 删除用户组
+     * 删除用户组.
      *
      * @param int $groupId
      *
@@ -101,7 +101,7 @@ class FanGroup
     }
 
     /**
-     * 修改用户组
+     * 修改用户组.
      *
      * @param int    $groupId
      * @param string $groupId
@@ -139,9 +139,9 @@ class FanGroup
     public function formatFromWeChat($ganGroup)
     {
         return [
-            'name' => $ganGroup['name'],
+            'name'     => $ganGroup['name'],
             'group_id' => $ganGroup['id'],
-            'count' => $ganGroup['count'],
+            'count'    => $ganGroup['count'],
         ];
     }
 }

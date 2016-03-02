@@ -12,7 +12,7 @@ class Articles extends Model
     {
         $this->attributes['title'] = $value;
 
-        if (! $this->exists) {
+        if (!$this->exists) {
             $this->attributes['slug'] = str_slug($value);
         }
     }

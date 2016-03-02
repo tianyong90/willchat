@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\MenuSaved;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UpdateMenu
 {
@@ -21,7 +19,8 @@ class UpdateMenu
     /**
      * Handle the event.
      *
-     * @param  MenuSaved  $event
+     * @param MenuSaved $event
+     *
      * @return void
      */
     public function handle(MenuSaved $event)

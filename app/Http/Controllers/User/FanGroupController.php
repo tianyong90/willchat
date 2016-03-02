@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\FanGroupRepository;
 use App\Services\FanGroup as FanGroupService;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use EasyWeChat\Foundation\Application;
 use Illuminate\Support\Facades\Input;
 
 /**
@@ -46,7 +45,7 @@ class FanGroupController extends Controller
     }
 
     /**
-     * 同步分组数据到本地
+     * 同步分组数据到本地.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -83,7 +82,7 @@ class FanGroupController extends Controller
 
             return success('修改成功！');
         } catch (\Exception $e) {
-            return error('修改失败！' . $e->getMessage());
+            return error('修改失败！'.$e->getMessage());
         }
     }
 
@@ -107,7 +106,7 @@ class FanGroupController extends Controller
 
             return success('创建成功！');
         } catch (\Exception $e) {
-            return error('创建失败！' . $e->getMessage());
+            return error('创建失败！'.$e->getMessage());
         }
     }
 
@@ -123,7 +122,7 @@ class FanGroupController extends Controller
 
             return success('删除成功！');
         } catch (\Exception $e) {
-            return error('删除失败！' . $e->getMessage());
+            return error('删除失败！'.$e->getMessage());
         }
     }
 }

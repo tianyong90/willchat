@@ -42,8 +42,8 @@ Route::group(['middleware' => ['web']], function () {
     * User
     */
     $user = [
-        'prefix' => 'user',
-        'namespace' => 'User',
+        'prefix'     => 'user',
+        'namespace'  => 'User',
         'middleware' => 'auth.user',
     ];
 
@@ -150,8 +150,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('reply-news/update/{id}', 'NewsReplyController@getUpdate');
             Route::post('reply-news/update/{id}', 'NewsReplyController@postUpdate');
 
-
-
         });
     });
 
@@ -159,13 +157,12 @@ Route::group(['middleware' => ['web']], function () {
     * Mobile
     */
     $mobile = [
-        'prefix' => 'mobile',
-        'namespace' => 'Mobile'
+        'prefix'    => 'mobile',
+        'namespace' => 'Mobile',
     ];
 
     Route::group($mobile, function () {
         Route::get('shop', 'ShopController@index');
-
 
     });
 

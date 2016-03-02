@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Repositories\FanRepository;
 use App\Models\Fan as FanModel;
+use App\Repositories\FanRepository;
 
 class Fan
 {
@@ -23,7 +23,7 @@ class Fan
     }
 
     /**
-     * 同步粉丝数据到本地数据库
+     * 同步粉丝数据到本地数据库.
      */
     public function syncToLocal()
     {
@@ -57,6 +57,7 @@ class Fan
                     $item['created_at'] = \Carbon\Carbon::create();
                     $item['updated_at'] = \Carbon\Carbon::create();
                     $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);
+
                     return $item;
                 }, $fanList);
 
@@ -75,6 +76,7 @@ class Fan
                         $item['created_at'] = \Carbon\Carbon::create();
                         $item['updated_at'] = \Carbon\Carbon::create();
                         $item['subscribe_time'] = \Carbon\Carbon::createFromTimestamp($item['subscribe_time']);
+
                         return $item;
                     }, $fanList);
 
@@ -96,25 +98,25 @@ class Fan
     public function formatFromWeChat($fan)
     {
         return [
-            'openid' => $fan['openid'],
-            'nickname' => $fan['nickname'],               //昵称
-            'sex' => $fan['sex'] ? '男' : '女',                         //性别
-            'city' => $fan['city'],                       //城市
-            'country' => $fan['country'],                 //国家
-            'province' => $fan['province'],               //省
-            'language' => $fan['language'],               //语言
-            'avatar' => $fan['headimgurl'],               //头像
+            'openid'        => $fan['openid'],
+            'nickname'      => $fan['nickname'],               //昵称
+            'sex'           => $fan['sex'] ? '男' : '女',                         //性别
+            'city'          => $fan['city'],                       //城市
+            'country'       => $fan['country'],                 //国家
+            'province'      => $fan['province'],               //省
+            'language'      => $fan['language'],               //语言
+            'avatar'        => $fan['headimgurl'],               //头像
             'subscribed_at' => date('Y-m-d H:i:s', $fan['subscribe_time']), //关注时间
-            'unionid' => array_get($fan, 'unionid'),                 //unionid
-            'remark' => $fan['remark'],                   //备注
-            'group_id' => $fan['groupid'] ? $fan['groupid'] : 0, //组ID
-            'updated_at' => date('Y-m-d H:i:s'),
-            'deleted_at' => null,
+            'unionid'       => array_get($fan, 'unionid'),                 //unionid
+            'remark'        => $fan['remark'],                   //备注
+            'group_id'      => $fan['groupid'] ? $fan['groupid'] : 0, //组ID
+            'updated_at'    => date('Y-m-d H:i:s'),
+            'deleted_at'    => null,
         ];
     }
 
     /**
-     * 修改备注
+     * 修改备注.
      *
      * @param int    $id
      * @param string $remark
@@ -134,7 +136,7 @@ class Fan
     }
 
     /**
-     * 移动粉丝到分组
+     * 移动粉丝到分组.
      *
      * @param $id
      * @param $groupId

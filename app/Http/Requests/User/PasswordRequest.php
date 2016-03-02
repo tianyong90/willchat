@@ -3,7 +3,6 @@
 namespace App\Http\Requests\User;
 
 use App\Http\Requests\Request;
-use App\Models\User;
 
 class PasswordRequest extends Request
 {
@@ -15,20 +14,20 @@ class PasswordRequest extends Request
     public function rules()
     {
         return [
-            'old' => 'required',
+            'old'      => 'required',
             'password' => 'required|between:6,25|confirmed',
         ];
     }
 
     /**
-     * 返回官僚别名
+     * 返回官僚别名.
      *
      * @return array
      */
     public function attributes()
     {
         return [
-            'old' => '原密码',
+            'old'      => '原密码',
             'password' => '新密码',
         ];
     }

@@ -2,16 +2,16 @@
 
 namespace App\Services;
 
-use App\Services\Event as EventService;
 use App\Repositories\MaterialRepository;
 use App\Repositories\MessageRepository;
+use App\Services\Event as EventService;
+use EasyWeChat\Message\Image;
 use EasyWeChat\Message\Link;
-use EasyWeChat\Message\Text;
+use EasyWeChat\Message\Location;
 use EasyWeChat\Message\News;
+use EasyWeChat\Message\Text;
 use EasyWeChat\Message\Video;
 use EasyWeChat\Message\Voice;
-use EasyWeChat\Message\Location;
-use EasyWeChat\Message\Image;
 
 /**
  * 消息服务提供类.
@@ -95,7 +95,7 @@ class Message
             return $this->makeEmpty();
         }
 
-        $callback = 'reply' . ucfirst($media->type);
+        $callback = 'reply'.ucfirst($media->type);
 
         return $this->$callback($media);
     }
@@ -122,10 +122,10 @@ class Message
     public function makeNews($news)
     {
         $news1 = new News([
-            'title' => 'abc',
+            'title'       => 'abc',
             'description' => 'abc',
-            'image' => 'abc',
-            'url' => 'http://www.baidu.com',
+            'image'       => 'abc',
+            'url'         => 'http://www.baidu.com',
         ]);
 
         return [$news1, $news1, $news1];
@@ -194,8 +194,8 @@ class Message
     private function makeVideo(array $video)
     {
         new Video([
-            'title' => $video['title'],
-            'media_id' => $video['mediaId'],
+            'title'       => $video['title'],
+            'media_id'    => $video['mediaId'],
             'description' => $video['description'],
         ]);
     }
@@ -210,8 +210,8 @@ class Message
     private function makeLink(array $link)
     {
         new Link([
-            'title' => $link['title'],
-            'url' => $link['url'],
+            'title'       => $link['title'],
+            'url'         => $link['url'],
             'description' => $link['description'],
         ]);
     }
@@ -226,10 +226,10 @@ class Message
     private function makeLocation(array $location)
     {
         new Location([
-            'latitude' => $location['latitude'],
+            'latitude'  => $location['latitude'],
             'longitude' => $location['longitude'],
-            'scale' => $location['scale'],
-            'label' => $location['label'],
+            'scale'     => $location['scale'],
+            'label'     => $location['label'],
         ]);
     }
 

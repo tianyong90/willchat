@@ -115,7 +115,7 @@ class ReplyRepository extends BaseRepository
 
         if (!$model) {
             $eventId = $this->saveReplyToEvent($replyType, $replyContent, $accountId);
-            $input['content'] = array($eventId);
+            $input['content'] = [$eventId];
             $input['account_id'] = $accountId;
             $model = new $this->model();
         } else {
@@ -127,11 +127,11 @@ class ReplyRepository extends BaseRepository
     }
 
     /**
-     * 存储回复
+     * 存储回复.
      *
-     * @param Request  $request
-     * @param int    $accountId
-     * @param string $type
+     * @param Request $request
+     * @param int     $accountId
+     * @param string  $type
      *
      * @return Reply
      */

@@ -15,8 +15,8 @@ class UserinfoRequest extends Request
     {
         return [
             'nickname' => 'between:1,20',
-            'mobile' => 'regex:/^1[3,5,7,8]\d{9}$/',
-            'qq' => 'digits_between:5,10',
+            'mobile'   => 'regex:/^1[3,5,7,8]\d{9}$/',
+            'qq'       => 'digits_between:5,10',
         ];
     }
 }

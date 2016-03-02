@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Menu;
 
 use App\Http\Requests\Request;
-use App\Models\Account;
 
 class CreateRequest extends Request
 {
@@ -17,7 +16,7 @@ class CreateRequest extends Request
         return [
             'name' => 'required',
             'type' => 'required',
-            'key' => 'between:1,15',
+            'key'  => 'between:1,15',
         ];
     }
 }

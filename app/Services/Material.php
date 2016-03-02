@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Overtrue\Wechat\Media as MediaService;
 use App\Repositories\MaterialRepository;
+use Overtrue\Wechat\Media as MediaService;
 
 /**
  * 素材服务.
@@ -385,10 +385,10 @@ class Material
             $videoInfo = $mediaService->forever()->download($mediaId);
             //取消下载Mp4文件
             return [
-                'title' => $videoInfo['title'],
+                'title'       => $videoInfo['title'],
                 'description' => $videoInfo['description'],
-                'local_url' => '',
-                'media_id' => $mediaId,
+                'local_url'   => '',
+                'media_id'    => $mediaId,
             ];
         } else {
             $dirFilename = $mediaService->forever()->download($mediaId, $dir.$name);
@@ -444,7 +444,7 @@ class Material
      * @param int    $accountId 公众号id
      * @param string $mediaId   素材id
      *
-     * @return NULL|string
+     * @return null|string
      */
     private function getLocalMediaId($accountId, $mediaId)
     {

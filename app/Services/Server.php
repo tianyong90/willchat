@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Account as AccountModel;
-use App\Services\Message as MessageService;
 use App\Repositories\ReplyRepository;
+use App\Services\Message as MessageService;
 use Cache;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Response;
@@ -164,7 +164,6 @@ class Server
 //        return $eventId ? $this->messageService->eventToMessage($eventId) : $this->messageService->emptyMessage();
     }
 
-
     /**
      * 处理消息.
      *
@@ -181,7 +180,7 @@ class Server
         $this->messageService->storeMessage($account, $message);
         //属于文字类型消息
         if ($message['MsgType'] == 'text') {
-            $replies = Cache::get('replies_' . $account->id);
+            $replies = Cache::get('replies_'.$account->id);
 
             foreach ($replies as $key => $reply) {
                 //查找字符串

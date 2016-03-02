@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
+use Auth;
 use Illuminate\Http\Request;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
-use App\Repositories\UserRepository;
-use Auth;
 
 class AvatarController extends Controller
 {
@@ -28,7 +28,7 @@ class AvatarController extends Controller
     }
 
     /**
-     * 头像设置页面
+     * 头像设置页面.
      *
      * @return mixed
      */
@@ -38,7 +38,7 @@ class AvatarController extends Controller
     }
 
     /**
-     * 上传、处理头像并保存
+     * 上传、处理头像并保存.
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -50,7 +50,7 @@ class AvatarController extends Controller
 
         if ($avatarFile->isValid()) {
             $realPath = $avatarFile->getRealPath();
-            $newName = 'uploads/avatar/' . Auth::user()->name . '.jpg';
+            $newName = 'uploads/avatar/'.Auth::user()->name.'.jpg';
 
             $imagine = new Imagine();
             $point = new Point($request->input('x'), $request->input('y'));

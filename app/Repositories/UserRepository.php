@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Contracts\CacheableInterface;
-use Prettus\Repository\Traits\CacheableRepository;
 use App\Repositories\Criteria\UserCriteria;
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Traits\CacheableRepository;
 
 /**
  * User Repository.
@@ -22,7 +22,7 @@ class UserRepository extends BaseRepository implements CacheableInterface
     }
 
     /**
-     * 查询用户头像
+     * 查询用户头像.
      *
      * @param $id
      *
@@ -34,10 +34,10 @@ class UserRepository extends BaseRepository implements CacheableInterface
     }
 
     /**
-     * 设置用户头像
+     * 设置用户头像.
      *
      * @param string $avatarPath
-     * @param int $id
+     * @param int    $id
      *
      * @return mixed
      */

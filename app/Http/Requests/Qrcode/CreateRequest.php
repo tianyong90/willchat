@@ -6,7 +6,6 @@ use App\Http\Requests\Request;
 
 class CreateRequest extends Request
 {
-    
     /**
      * Get the validation rules that apply to the request.
      *
@@ -16,8 +15,8 @@ class CreateRequest extends Request
     {
         return [
             'keyword' => 'required',
-            'remark' => 'max:20',
-            'expire' => 'between:1,108000',
+            'remark'  => 'max:20',
+            'expire'  => 'between:1,108000',
         ];
     }
 }

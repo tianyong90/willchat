@@ -33,7 +33,7 @@ class WillChatServiceProvider extends ServiceProvider
     }
 
     /**
-     * 注册公众号服务提供者
+     * 注册公众号服务提供者.
      */
     protected function registerAccountService()
     {

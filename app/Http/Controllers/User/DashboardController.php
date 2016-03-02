@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Repositories\AccountRepository;
 use App\Http\Controllers\Controller;
+use App\Repositories\AccountRepository;
 
 class DashboardController extends Controller
 {
