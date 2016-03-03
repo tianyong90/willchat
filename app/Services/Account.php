@@ -95,7 +95,7 @@ class Account
     {
         $accountId = $accountId ?: $this->chosedId();
 
-        $accountData = $this->accountRepository->find($accountId);
+        $accountData = $this->accountRepository->skipCriteria()->find($accountId);
 
         $options = [
             'debug'  => true,

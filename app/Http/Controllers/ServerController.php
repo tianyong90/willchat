@@ -7,7 +7,7 @@ use App\Services\Server as WechatService;
 use Illuminate\Http\Request;
 
 /**
- * 微信响应控制器.
+ * 微信消息/事件控制器.
  */
 class ServerController extends Controller
 {
@@ -36,9 +36,10 @@ class ServerController extends Controller
      */
     public function serve(Request $request, AccountRepository $accountRepository)
     {
+        // 根据token查询公众号信息
         $account = $accountRepository->getByToken($request->route('token'));
 
-        if (!$account) {
+        if (empty($account)) {
             return;
         }
 

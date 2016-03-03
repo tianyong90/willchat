@@ -3,21 +3,15 @@
 namespace App\Repositories;
 
 use App\Models\Event;
-use App\Services\AccountModel as AccountService;
+use App\Services\Account as AccountService;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Event Repository.
  */
-class EventRepository
+class EventRepository extends BaseRepository
 {
-    use BaseRepository;
-
-    /**
-     * Event Model.
-     *
-     * @var Event
-     */
-    protected $model;
+    use BaseRepositoryTrait;
 
     /**
      * construct.

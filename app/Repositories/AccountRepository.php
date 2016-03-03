@@ -26,7 +26,7 @@ class AccountRepository extends BaseRepository
      */
     public function getByToken($token)
     {
-        return $this->findByField('token', $token);
+        return $this->model->where('token', '=', $token)->first();
     }
 
     /**
