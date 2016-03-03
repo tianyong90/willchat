@@ -8,8 +8,6 @@ class MaterialRepository extends BaseRepository
 {
     use BaseRepositoryTrait;
 
-
-
 //    public function __construct(Material $material)
 //    {
 //        $this->model = $material;
