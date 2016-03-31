@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple jQuery file uploading plugin.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, jQuery plugin, file upload, front-end, frontend, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Advanced Example - Uploader</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <style>
+    .dropzone {
+      padding: 80px 15px;
+    }
+
+    .docs-table > thead > tr > th,
+    .docs-table > thead > tr > td,
+    .docs-table > tbody > tr > th,
+    .docs-table > tbody > tr > td {
+      text-align: center;
+    }
+
+    .docs-table > tbody > tr > td {
+      vertical-align: middle;
+      word-break: break-all;
+    }
+
+    .docs-table img {
+      max-width: 160px;
+      max-height: 90px;
+    }
+
+    .docs-table .progress {
+      min-width: 100px;
+      margin-bottom: 0;
+    }
+
+    .docs-preview {
+      min-height: 160px;
+    }
+  </style>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <!-- header -->
+  <header class="navbar navbar-static-top docs-header" id="top">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">Uploader</a>
+      </div>
+      <nav class="collapse navbar-collapse" id="navbar-collapse-1" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="./">Home</a></li>
+          <li><a href="http://github.com/fengyuanchen/uploader/blob/master/README.md">Docs</a></li>
+          <li><a href="http://github.com/fengyuanchen/uploader">Github</a></li>
+          <li><a href="http://chenfengyuan.com">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron docs-jumbotron">
+    <div class="container">
+      <h1>Uploader <small class="version">v0.1.0</small></h1>
+      <p class="lead">A simple jQuery file uploading plugin.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <h2 class="page-header">Advanced Example</h2>
+    <h3 class="page-header">Drop Zone</h3>
+    <div class="dropzone">Drop file here or <input id="file" type="file" name="file" multiple></div>
+    <h3 class="page-header">Preview</h3>
+    <div class="table-responsive docs-preview">
+      <table class="table table-striped docs-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Preview</th>
+            <th>Progress</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="docs-footer">
+    <div class="container">
+      <span class="hearts"></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="js/uploader.js"></script>
+  <script>
+    $(function () {
+
+      'use strict';
+
+      var URL = window.URL || window.webkitURL,
+          $body = $('body'),
+          $table = $('.table'),
+          $tbody = $table.find('tbody'),
+          isGithubPages = /github/.test(window.location.host);
+
+      function getImg(file) {
+        var img = 'N/A',
+            url;
+
+        if (URL && file) {
+          if (/^image\/\w+$/.test(file.type)) {
+            url = URL.createObjectURL(file);
+            img = '<img class="img-round" src="' + url + '" alt="' + file.name + '">';
+            $(img).one('load', function () {
+              URL.revokeObjectURL(url);
+              $(this).remove();
+            }).appendTo('body');
+          }
+        }
+
+        return img;
+      }
+
+      function getRow(file, index) {
+        var progressbar = isGithubPages ? 'N/A' : (
+              '<div class="progress">' +
+                '<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">' +
+                  '<span class="sr-only">0% Complete</span>' +
+                '</div>' +
+              '</div>'
+            );
+
+        return (
+          '<tr data-index="' + index + '">' +
+            '<td>' + index + '</td>' +
+            '<td>' + file.name + '</td>' +
+            '<td>' + file.type + '</td>' +
+            '<td>' + Math.round(file.size / 1024) + 'KB</td>' +
+            '<td>' + getImg(file) + '</td>' +
+            '<td>' + progressbar + '</td>' +
+            '<td><span class="label label-default">Uploading</span></td>' +
+          '</tr>'
+        );
+      }
+
+      $('#file').uploader({
+        url: 'json/request.json',
+        dataType: 'json',
+
+        // Note: The GET is for test as POST request is not allowed on Github Pages.
+        method: isGithubPages ? 'GET' : 'POST',
+        dropzone: '.dropzone',
+        upload: function (e) {
+          var files = e.files;
+
+          console.log(e.type);
+
+          $tbody.empty(); // Clear old rows
+
+          if (files && files.length) {
+            $.each(files, function (i, file) {
+              $tbody.append(getRow(file, i));
+            });
+          }
+        },
+        start: function (e) {
+          console.log(e.type, e.index);
+        },
+        progress: function (e) {
+          var percent,
+              percentage;
+
+          console.log(e.type, e.index);
+
+          if (e.lengthComputable) {
+            percent = Math.round(e.loaded / e.total * 100);
+            percentage = String(percent) + '%';
+
+            $tbody
+              .find('tr[data-index="' + e.index + '"] .progress-bar')
+              .attr('aria-valuenow', percent)
+              .css('width', percentage)
+              .find('span')
+              .text(percentage + ' Complete');
+          }
+        },
+        done: function (e, data) {
+          console.log(e.type, e.index);
+
+          if ($.isPlainObject(data) && data.success) {
+            console.log(data.result);
+
+            $tbody
+              .find('tr[data-index="' + e.index + '"] .label')
+              .addClass('label-success')
+              .text('Success');
+          }
+        },
+        fail: function (e, textStatus) {
+          console.log(e.type, e.index);
+          console.log(textStatus);
+
+          $tbody
+            .find('tr[data-index="' + e.index + '"] .label')
+            .addClass('label-error')
+            .text('Error');
+        },
+        end: function (e) {
+          console.log(e.type, e.index);
+        },
+        uploaded: function (e) {
+          console.log(e.type);
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>

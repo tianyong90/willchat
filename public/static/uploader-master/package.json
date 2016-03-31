@@ -1,0 +1,43 @@
+{
+  "name": "@fengyuanchen/uploader",
+  "description": "A simple jQuery file uploading plugin.",
+  "version": "0.1.0",
+  "main": "dist/uploader.js",
+  "keywords": [
+    "file",
+    "upload",
+    "jquery",
+    "plugin",
+    "html",
+    "css",
+    "javascript",
+    "front-end",
+    "web",
+    "development"
+  ],
+  "author": {
+    "name": "Fengyuan Chen",
+    "url": "https://github.com/fengyuanchen"
+  },
+  "homepage": "https://github.com/fengyuanchen/uploader",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fengyuanchen/uploader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fengyuanchen/uploader/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jquery": ">= 1.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jscs": "^1.5.1",
+    "gulp-jshint": "^1.11.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.3",
+    "gulp-uglify": "^1.1.0"
+  }
+}
