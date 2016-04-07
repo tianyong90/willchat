@@ -94,7 +94,7 @@ class MenuController extends Controller
 
         $topMenuList = $this->menuService->getTopMenu();
 
-        return user_view('menu.create', compact('menuData','topMenuList'));
+        return user_view('menu.create', compact('menuData', 'topMenuList'));
     }
 
     /**
@@ -134,6 +134,10 @@ class MenuController extends Controller
      */
     public function getSyncToWechat()
     {
+        if (!count($this->menuRepository->all())) {
+            return error('本地还没有效菜单数据');
+        }
+
         // 当前选中的公众号
         $currentAccount = $this->accountService->chosedAccount();
 
