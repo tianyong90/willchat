@@ -114,6 +114,13 @@
       // 同步到微信（即根据本地数据重新生成菜单）
       $('a#sync-to-wechat').click(function (event) {
         event.preventDefault();
+
+        @if(count($menuTree) == 0) {
+          Base.error('本地没有有效的菜单数据');
+          return false;
+        }
+        @endif
+
         Base.confirm('本操作将重新生成微信自定义菜单，确定要进行操作？', function(){
           var url = "{{ user_url('menu/sync-to-wechat') }}";
           $.get(url, function (data) {
