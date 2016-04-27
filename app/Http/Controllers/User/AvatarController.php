@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Auth;
 use Illuminate\Http\Request;
-use Imagine\Gd\Imagine;
-use Imagine\Image\Box;
-use Imagine\Image\Point;
+use Image;
 
 class AvatarController extends Controller
 {
@@ -49,17 +47,17 @@ class AvatarController extends Controller
         $avatarFile = $request->file('avatar_file');
 
         if ($avatarFile->isValid()) {
-            $realPath = $avatarFile->getRealPath();
-            $newName = 'uploads/avatar/'.Auth::user()->name.'.jpg';
+            $newName = 'uploads/avatar/' . Auth::user()->name . '.jpg';
 
-            $imagine = new Imagine();
-            $point = new Point($request->input('x'), $request->input('y'));
-            $cropSize = new Box($request->input('width'), $request->input('width'));
-            $saveSize = new Box(200, 200); //最终保存尺寸
+            $cropWidth = $request->input('width');
+            $cropHeight = $request->input('height');
+            $cropX = $request->input('x');
+            $cropY = $request->input('y');
+
             $rotateDegree = $request->input('rotate');
 
             try {
-                $imagine->open($realPath)->rotate($rotateDegree)->crop($point, $cropSize)->resize($saveSize)->save(public_path($newName));
+                Image::make($avatarFile)->rotate(-$rotateDegree)->crop($cropWidth, $cropHeight, $cropX, $cropY)->resize(200, 200)->save(public_path($newName));
 
                 // 更新用户头像数据
                 $this->userRepository->setAvatar($newName, Auth::user()->id);
