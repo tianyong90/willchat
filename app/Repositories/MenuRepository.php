@@ -17,24 +17,6 @@ class MenuRepository extends BaseRepository
         $this->pushCriteria(new AccountCriteria());
     }
 
-//    /**
-//     * construct
-//     *
-//     * @param Menu               $menu               模型
-//     * @param EventRepository    $eventRepository    事件Repository
-//     * @param MaterialRepository $materialRepository 素材Repository
-//     */
-//    public function __construct(Menu $menu,
-//                                EventRepository $eventRepository,
-//                                MaterialRepository $materialRepository)
-//    {
-//        $this->model = $menu;
-//
-//        $this->eventRepository = $eventRepository;
-//
-//        $this->materialRepository = $materialRepository;
-//    }
-
     /**
      * 菜单列表.
      *
