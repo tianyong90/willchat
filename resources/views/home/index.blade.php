@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>WillChat</title>
 
         <link href="http://fonts.useso.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -30,7 +30,7 @@
                 font-size: 96px;
             }
             a {
-                text-decoration: none;  
+                text-decoration: none;
                 color: #000;
             }
         </style>
