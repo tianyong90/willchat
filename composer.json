@@ -11,7 +11,8 @@
         "imagine/imagine": "^0.6",
         "prettus/l5-repository": "^2.1",
         "overtrue/wechat": "^3.0",
-        "zizaco/entrust": "^1.7"
+        "zizaco/entrust": "^1.7",
+        "predis/predis": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
