@@ -12,7 +12,8 @@
         "overtrue/wechat": "^3.0",
         "zizaco/entrust": "^1.7",
         "intervention/image": "^2.3",
-        "intervention/imagecache": "^2.3"
+        "intervention/imagecache": "^2.3",
+        "predis/predis": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
