@@ -16,7 +16,7 @@ WillChat 是一套简单的微信管理系统。
 
 - MySQL 或 MariaDB，并设置默认存储引擎为 InnoDB。
 
-- GD 或 Imagich 扩展
+- GD 或 Imagick 扩展。
 
 ### 安装
 
