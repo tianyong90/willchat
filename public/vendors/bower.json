@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "vue": "^1.0.24"
+    "vue": "^1.0.24",
+    "layer": "*"
   }
 }
