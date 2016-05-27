@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Reply;
 use App\Repositories\ReplyRepository;
 use Illuminate\Http\Request;
-use App\Models\Reply;
 
 class SubscribeReplyController extends Controller
 {

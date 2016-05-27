@@ -122,10 +122,10 @@ class Message
     public function makeNews($news)
     {
         $news1 = new News([
-            'title' => 'abc',
+            'title'       => 'abc',
             'description' => 'abc',
-            'image' => 'abc',
-            'url' => 'http://www.baidu.com',
+            'image'       => 'abc',
+            'url'         => 'http://www.baidu.com',
         ]);
 
         return [$news1, $news1, $news1];
@@ -194,8 +194,8 @@ class Message
     private function makeVideo(array $video)
     {
         new Video([
-            'title' => $video['title'],
-            'media_id' => $video['mediaId'],
+            'title'       => $video['title'],
+            'media_id'    => $video['mediaId'],
             'description' => $video['description'],
         ]);
     }
@@ -210,8 +210,8 @@ class Message
     private function makeLink(array $link)
     {
         new Link([
-            'title' => $link['title'],
-            'url' => $link['url'],
+            'title'       => $link['title'],
+            'url'         => $link['url'],
             'description' => $link['description'],
         ]);
     }
@@ -226,10 +226,10 @@ class Message
     private function makeLocation(array $location)
     {
         new Location([
-            'latitude' => $location['latitude'],
+            'latitude'  => $location['latitude'],
             'longitude' => $location['longitude'],
-            'scale' => $location['scale'],
-            'label' => $location['label'],
+            'scale'     => $location['scale'],
+            'label'     => $location['label'],
         ]);
     }
 

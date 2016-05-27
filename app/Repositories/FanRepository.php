@@ -42,7 +42,7 @@ class FanRepository extends BaseRepository
              */
             $insert = [
                 'account_id' => $accountId,
-                'openid' => $openId,
+                'openid'     => $openId,
             ];
             $this->_savePost($this->model, $insert);
 

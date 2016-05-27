@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use GuzzleHttp\Client;
 use Cache;
+use GuzzleHttp\Client;
 
 /**
  * 开放平台授权.
@@ -26,7 +26,7 @@ class OpenAuth
 
             $option = [
                 'json' => [
-                    'component_appid' => $appId,
+                    'component_appid'    => $appId,
                     'authorization_code' => Cache::get('auth_code'),
                 ],
             ];
@@ -79,8 +79,8 @@ class OpenAuth
 
             $option = [
                 'json' => [
-                    'component_appid' => $appId,
-                    'component_appsecret' => $appSecret,
+                    'component_appid'         => $appId,
+                    'component_appsecret'     => $appSecret,
                     'component_verify_ticket' => $this->getVerifyTicket(),
                 ],
             ];
@@ -121,8 +121,8 @@ class OpenAuth
 
         $option = [
             'json' => [
-                'component_appid' => env('COMPONENT_APPID'),
-                'authorizer_appid' => $authorizerAppId,
+                'component_appid'          => env('COMPONENT_APPID'),
+                'authorizer_appid'         => $authorizerAppId,
                 'authorizer_refresh_token' => $refershToken,
             ],
         ];

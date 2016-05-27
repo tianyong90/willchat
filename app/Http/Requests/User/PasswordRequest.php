@@ -14,7 +14,7 @@ class PasswordRequest extends Request
     public function rules()
     {
         return [
-            'old' => 'required',
+            'old'      => 'required',
             'password' => 'required|between:6,25|confirmed',
         ];
     }
@@ -27,7 +27,7 @@ class PasswordRequest extends Request
     public function attributes()
     {
         return [
-            'old' => '原密码',
+            'old'      => '原密码',
             'password' => '新密码',
         ];
     }
