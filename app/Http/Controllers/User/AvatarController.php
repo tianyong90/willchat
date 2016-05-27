@@ -47,7 +47,7 @@ class AvatarController extends Controller
         $avatarFile = $request->file('avatar_file');
 
         if ($avatarFile->isValid()) {
-            $newName = 'uploads/avatar/' . Auth::user()->name . '.jpg';
+            $newName = 'uploads/avatar/'.Auth::user()->name.'.jpg';
 
             $cropWidth = $request->input('width');
             $cropHeight = $request->input('height');

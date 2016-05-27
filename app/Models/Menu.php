@@ -30,12 +30,12 @@ class Menu extends Model
      */
     public static $aliases = [
         'account_id' => '所属公众号',
-        'parent_id' => '上级菜单',
-        'name' => '菜单名称',
-        'type' => '菜单类型',
-        'key' => '菜单值',
-        'url' => '链接',
-        'sort' => '排序',
+        'parent_id'  => '上级菜单',
+        'name'       => '菜单名称',
+        'type'       => '菜单类型',
+        'key'        => '菜单值',
+        'url'        => '链接',
+        'sort'       => '排序',
     ];
 
     /**

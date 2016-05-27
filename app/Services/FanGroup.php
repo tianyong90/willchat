@@ -139,9 +139,9 @@ class FanGroup
     public function formatFromWeChat($ganGroup)
     {
         return [
-            'name' => $ganGroup['name'],
+            'name'     => $ganGroup['name'],
             'group_id' => $ganGroup['id'],
-            'count' => $ganGroup['count'],
+            'count'    => $ganGroup['count'],
         ];
     }
 }

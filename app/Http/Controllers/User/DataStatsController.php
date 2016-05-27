@@ -10,5 +10,4 @@ class DataStatsController extends Controller
     {
         return user_view('data_stats.index');
     }
-
 }

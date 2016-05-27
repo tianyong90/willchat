@@ -33,8 +33,8 @@ Route::group($home, function () {
 * User
 */
 $user = [
-    'prefix' => 'user',
-    'namespace' => 'User',
+    'prefix'     => 'user',
+    'namespace'  => 'User',
     'middleware' => 'auth.user',
 ];
 
@@ -149,7 +149,7 @@ Route::group($user, function () {
 * Mobile
 */
 $mobile = [
-    'prefix' => 'mobile',
+    'prefix'    => 'mobile',
     'namespace' => 'Mobile',
 ];
 
@@ -164,4 +164,3 @@ Route::get('open-oauth-callback', 'OpenAuthController@openOauthCallback');
 
 // 开放平台接口调用测试
 Route::get('open-test', 'OpenTestController@getIndex');
-

@@ -385,10 +385,10 @@ class Material
             $videoInfo = $mediaService->forever()->download($mediaId);
             //取消下载Mp4文件
             return [
-                'title' => $videoInfo['title'],
+                'title'       => $videoInfo['title'],
                 'description' => $videoInfo['description'],
-                'local_url' => '',
-                'media_id' => $mediaId,
+                'local_url'   => '',
+                'media_id'    => $mediaId,
             ];
         } else {
             $dirFilename = $mediaService->forever()->download($mediaId, $dir.$name);

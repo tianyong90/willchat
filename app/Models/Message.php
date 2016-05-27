@@ -26,11 +26,11 @@ class Message extends Model
      * @var array
      */
     public static $aliases = [
-        'account_id' => '公众号ID',
-        'fans_id' => '粉丝id',
+        'account_id'  => '公众号ID',
+        'fans_id'     => '粉丝id',
         'resource_id' => '消息资源id',
-        'reply_id' => '回复id',
-        'content' => '内容',
-        'msg_id' => '消息id',
+        'reply_id'    => '回复id',
+        'content'     => '内容',
+        'msg_id'      => '消息id',
     ];
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
-use EasyWeChat\Core\AccessToken;
 use EasyWeChat\Js\Js;
 use EasyWeChat\Payment\Merchant;
 use EasyWeChat\Payment\Order;
@@ -74,32 +73,30 @@ class ShopController extends Controller
 
         // 商户参数
         $merchant = new Merchant([
-            'app_id' => env('WECHAT_APPID'),
-            'merchant_id' => env('WECHAT_MERCHANT_ID'),
-            'key' => env('WECHAT_MERCHANT_KEY'),
+            'app_id'        => env('WECHAT_APPID'),
+            'merchant_id'   => env('WECHAT_MERCHANT_ID'),
+            'key'           => env('WECHAT_MERCHANT_KEY'),
             'ssl_cert_path' => env('CERT_PATH'),
-            'ssl_key_path' => env('KEY_PATH'),
+            'ssl_key_path'  => env('KEY_PATH'),
         ]);
 
         // 订单数据
         $order = new Order([
-            'body' => 'iPad mini 16G 白色',
-            'detail' => 'iPad mini 16G 白色',
+            'body'         => 'iPad mini 16G 白色',
+            'detail'       => 'iPad mini 16G 白色',
             'out_trade_no' => '1217752501201407033233368018',
-            'total_fee' => 1,
-            'trade_type' => 'JSAPI',
-            'openid' => 'oYqIis0q3n7uRembQy1VgK7_tyrE',
-            'notify_url' => 'http://bontian.oicp.net/order-notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
+            'total_fee'    => 1,
+            'trade_type'   => 'JSAPI',
+            'openid'       => 'oYqIis0q3n7uRembQy1VgK7_tyrE',
+            'notify_url'   => 'http://bontian.oicp.net/order-notify', // 支付结果通知网址，如果不设置则会使用配置里的默认地址
             // ...
         ]);
         $payment = new Payment($merchant);
-
 
         // 统一下单
         $result = $payment->prepare($order);
 
         $prepayId = $result->prepay_id;
-
 
         $paymentJsConfig = $payment->configForPayment($prepayId, false);
 

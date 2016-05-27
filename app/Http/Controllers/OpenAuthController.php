@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use GuzzleHttp\Client;
-use EasyWeChat\Foundation\Application;
 use Cache;
+use EasyWeChat\Foundation\Application;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
 class OpenAuthController extends Controller
 {
@@ -41,7 +41,7 @@ class OpenAuthController extends Controller
 
             $option = [
                 'json' => [
-                    'component_appid' => $appId,
+                    'component_appid'    => $appId,
                     'authorization_code' => Cache::get('auth_code'),
                 ],
             ];
@@ -111,8 +111,8 @@ class OpenAuthController extends Controller
 
             $option = [
                 'json' => [
-                    'component_appid' => $appId,
-                    'component_appsecret' => $appSecret,
+                    'component_appid'         => $appId,
+                    'component_appsecret'     => $appSecret,
                     'component_verify_ticket' => $this->getVerifyTicket(),
                 ],
 
@@ -148,19 +148,19 @@ class OpenAuthController extends Controller
     public function verify(Request $request)
     {
         $options = [
-            'debug' => true,
-            'app_id' => env('COMPONENT_APPID'),
-            'secret' => env('COMPONENT_APPSECRET'),
-            'token' => env('COMPONENT_TOKEN'),
+            'debug'   => true,
+            'app_id'  => env('COMPONENT_APPID'),
+            'secret'  => env('COMPONENT_APPSECRET'),
+            'token'   => env('COMPONENT_TOKEN'),
             'aes_key' => env('COMPONENT_AES_KEY'),
             // log
             'log' => [
                 'level' => \Monolog\Logger::DEBUG,
-                'file' => storage_path('logs/easywechat.log'),
+                'file'  => storage_path('logs/easywechat.log'),
             ],
             // oauth
             'oauth' => [
-                'scopes' => ['snsapi_userinfo'],
+                'scopes'   => ['snsapi_userinfo'],
                 'callback' => '/examples/oauth_callback.php',
             ],
         ];

@@ -98,22 +98,22 @@ class Fan
     public function formatFromWeChat($fan)
     {
         return [
-            'openid' => $fan['openid'],
-            'nickname' => $fan['nickname'],               //昵称
-            'sex' => $fan['sex'],                         //性别
-            'city' => $fan['city'],                       //城市
-            'country' => $fan['country'],                 //国家
-            'province' => $fan['province'],               //省
-            'language' => $fan['language'],               //语言
-            'headimgurl' => $fan['headimgurl'],               //头像
+            'openid'         => $fan['openid'],
+            'nickname'       => $fan['nickname'],               //昵称
+            'sex'            => $fan['sex'],                         //性别
+            'city'           => $fan['city'],                       //城市
+            'country'        => $fan['country'],                 //国家
+            'province'       => $fan['province'],               //省
+            'language'       => $fan['language'],               //语言
+            'headimgurl'     => $fan['headimgurl'],               //头像
             'subscribe_time' => date('Y-m-d H:i:s', $fan['subscribe_time']), //关注时间
-            'unionid' => array_get($fan, 'unionid'),      //unionid
-            'remark' => $fan['remark'],                   //备注
-            'groupid' => $fan['groupid'] ? $fan['groupid'] : 0, //组ID
-            'updated_at' => date('Y-m-d H:i:s'),
-            'deleted_at' => null,
-            'subscribe' => $fan['subscribe'],
-            'account_id' => $fan['account_id'],
+            'unionid'        => array_get($fan, 'unionid'),      //unionid
+            'remark'         => $fan['remark'],                   //备注
+            'groupid'        => $fan['groupid'] ? $fan['groupid'] : 0, //组ID
+            'updated_at'     => date('Y-m-d H:i:s'),
+            'deleted_at'     => null,
+            'subscribe'      => $fan['subscribe'],
+            'account_id'     => $fan['account_id'],
         ];
     }
 

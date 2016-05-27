@@ -59,12 +59,12 @@ class Reply extends Model
      * @var array
      */
     public static $aliases = [
-        'account_id' => '所属公众号',
-        'name' => '规则名称',
-        'type' => '回复类型',
+        'account_id'       => '所属公众号',
+        'name'             => '规则名称',
+        'type'             => '回复类型',
         'trigger_keywords' => '触发关键词',
-        'trigger_type' => '触发类型',
-        'group_ids' => '适用组id',
-        'content' => '回复内容',
+        'trigger_type'     => '触发类型',
+        'group_ids'        => '适用组id',
+        'content'          => '回复内容',
     ];
 }

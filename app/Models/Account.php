@@ -47,17 +47,17 @@ class Account extends Model
      * @var array
      */
     public static $aliases = [
-        'name' => '公众号名称',
-        'original_id' => '原始ID',
+        'name'           => '公众号名称',
+        'original_id'    => '原始ID',
         'wechat_account' => '微信账号',
-        'app_id' => '应用ID',
-        'app_secret' => '应用secret',
-        'aes_key' => '应用secret',
-        'merchant_id' => '商户号',
-        'key' => '商户密钥',
-        'cert_path' => '商户证书路径',
-        'key_path' => '密钥证书路径',
-        'type' => '账户类型',
+        'app_id'         => '应用ID',
+        'app_secret'     => '应用secret',
+        'aes_key'        => '应用secret',
+        'merchant_id'    => '商户号',
+        'key'            => '商户密钥',
+        'cert_path'      => '商户证书路径',
+        'key_path'       => '密钥证书路径',
+        'type'           => '账户类型',
     ];
 
     /**

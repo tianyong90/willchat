@@ -16,7 +16,7 @@ class UpdateRequest extends Request
         return [
             'name' => 'required',
             'type' => 'required',
-            'key' => 'between:1,15',
+            'key'  => 'between:1,15',
         ];
     }
 }

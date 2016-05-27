@@ -68,11 +68,11 @@ class Material extends Model
      */
     public static $aliases = [
         'account_id' => '所属公众号',
-        'type' => '类型',
-        'url' => '素材地址',
-        'app_id' => '应用ID',
-        'title' => '标题',
-        'digest' => '描述',
+        'type'       => '类型',
+        'url'        => '素材地址',
+        'app_id'     => '应用ID',
+        'title'      => '标题',
+        'digest'     => '描述',
     ];
 
     public function childrens()

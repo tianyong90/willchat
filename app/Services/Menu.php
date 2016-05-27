@@ -123,14 +123,14 @@ class Menu
     }
 
     /**
-     * 获取可设置为
+     * 获取可设置为.
      *
      * @return mixed
      */
     public function getTopMenu()
     {
-        return $this->menuRepository->scopeQuery(function($query){
-            return $query->where('parent_id','=', 0);
+        return $this->menuRepository->scopeQuery(function ($query) {
+            return $query->where('parent_id', '=', 0);
         })->all();
     }
 

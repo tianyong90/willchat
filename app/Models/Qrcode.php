@@ -31,10 +31,10 @@ class Qrcode extends Model
      */
     public static $aliases = [
         'account_id' => '所属公众号',
-        'keyword' => '二维码参数',
-        'remark' => '备注',
-        'type' => '二维码类型',
-        'ticket' => '二维码 TICKET',
-        'expire' => '有效期',
+        'keyword'    => '二维码参数',
+        'remark'     => '备注',
+        'type'       => '二维码类型',
+        'ticket'     => '二维码 TICKET',
+        'expire'     => '有效期',
     ];
 }
