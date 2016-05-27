@@ -7,7 +7,6 @@ Homestead.json
 
 /.idea
 _ide_helper.php
-composer.lock
 
 # workspace files are user-specific
 *.sublime-workspace
