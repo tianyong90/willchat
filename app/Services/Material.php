@@ -335,11 +335,9 @@ class Material
     private function localizeNewsCoverMaterialId($account, $newsItems)
     {
         $newsItems = array_map(function ($item) {
-
             $item['cover_url'] = $this->mediaIdToSourceUrl($item['thumb_media_id']);
 
             return $item;
-
         }, $newsItems);
 
         return $newsItems;
