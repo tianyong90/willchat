@@ -46,7 +46,6 @@ class Reply
         $eventService = $this->eventService;
 
         $reply['content'] = array_map(function ($eventId) use ($eventService) {
-
             return $eventService->eventToMaterial($eventId);
         }, $reply['content']);
 
