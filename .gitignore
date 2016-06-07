@@ -11,3 +11,5 @@ _ide_helper.php
 # workspace files are user-specific
 *.sublime-workspace
 /*.sublime-project
+
+sftp-config.json
