@@ -48,7 +48,7 @@ WillChat 是一套简单的微信管理系统。
 
 ### 演示地址
 
-**[http://www.willchat.site](http://www.willchat.site)**
+**[http://www.willchat.wang](http://www.willchat.wang)**
 
 **该网站目前仅用于功能演示，请勿用于实际公众号运营活动。**
 
@@ -62,7 +62,7 @@ WillChat 是一套简单的微信管理系统。
 
 欢迎有识、有志之士参与本项目，发挥您的聪明才智，贡献优雅的代码。
 
-**编写代码请务必遵守 PSR 规范。**
+**编写代码请务必遵守  PSR 规范。**
 
 同时也欢迎在 GitHub 上提出 Issue， 我将尽量及时作出处理或答复。
 
