@@ -89,7 +89,6 @@ class MenuRepository extends BaseRepository
             }
 
             return $menu;
-
         }, $menus);
 
         return $menus;
@@ -132,7 +131,6 @@ class MenuRepository extends BaseRepository
     public function withMaterials($menus)
     {
         return array_map(function ($menu) {
-
             $mediaId = $this->eventRepository->getEventByKey($menu['key'])->value;
 
             $menu['material'] = $this->materialRepository->getMaterialByMediaId($mediaId);
