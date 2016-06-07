@@ -141,7 +141,6 @@ Route::group($user, function () {
         Route::post('reply-news/create', 'NewsReplyController@postCreate');
         Route::get('reply-news/update/{id}', 'NewsReplyController@getUpdate');
         Route::post('reply-news/update/{id}', 'NewsReplyController@postUpdate');
-
     });
 });
 
@@ -155,7 +154,6 @@ $mobile = [
 
 Route::group($mobile, function () {
     Route::get('shop', 'ShopController@getIndex');
-
 });
 
 // 开放平台授权测试
