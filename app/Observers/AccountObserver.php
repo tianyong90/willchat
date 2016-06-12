@@ -3,10 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Account;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Carbon\Carbon;
-use Cache;
+
 /**
  * Account observer.
  */
@@ -20,7 +17,7 @@ class AccountObserver
     public function creating(Account $account)
     {
         // 自动生成 token
-        $account->token = time() . str_random(6);
+        $account->token = time().str_random(6);
     }
 
     /**
@@ -30,7 +27,7 @@ class AccountObserver
      */
     public function saving(Account $account)
     {
-//        \Log::info($account);
+        //        \Log::info($account);
     }
 
     /**
@@ -40,6 +37,6 @@ class AccountObserver
      */
     public function saved(Account $account)
     {
-//        \Log::info('post saved');
+        //        \Log::info('post saved');
     }
 }

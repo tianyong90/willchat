@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * 注册模型观察者
+     * 注册模型观察者.
      */
     private function registerObserver()
     {
