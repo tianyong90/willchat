@@ -19,6 +19,12 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-md-2 control-label">token</label>
+                <div class="col-md-6">
+                  <input type="text" name="token" value="{{ $accountInfo->token or old('token') }}" placeholder="如：tokenwillchat" class="form-control" readonly />
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-md-2 control-label">AppId</label>
                 <div class="col-md-6">
                   <input type="text" name="app_id" value="{{ $accountInfo->app_id or old('app_id') }}" placeholder="请填写Appid" class="form-control" />

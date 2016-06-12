@@ -59,7 +59,7 @@ class AccountController extends Controller
     {
         $accountInfo = $this->accountRepository->find($id);
 
-        return user_view('account.add', compact('accountInfo'));
+        return user_view('account.edit', compact('accountInfo'));
     }
 
     /**
