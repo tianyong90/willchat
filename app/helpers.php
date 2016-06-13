@@ -137,3 +137,74 @@ function getMenuTypes()
 
     return $typeMap;
 }
+
+function input()
+{
+    return call_user_func_array('Request::get', func_get_args());
+}
+
+/**
+ * CSS 资源路径
+ * 
+ * @param $path
+ *
+ * @return string
+ */
+function css($path)
+{
+    return static_file("css/$path");
+}
+
+/**
+ * JS 资源路径
+ * 
+ * @param $path
+ *
+ * @return string
+ */
+function js($path)
+{
+    return static_file("js/$path");
+}
+
+/**
+ * images 路径
+ * 
+ * @param $path
+ *
+ * @return string
+ */
+function img($path)
+{
+    return static_file("img/$path");
+}
+
+/**
+ * vendors 路径
+ * 
+ * @param $path
+ *
+ * @return string
+ */
+function vendor($path)
+{
+    return static_file("vendors/$path");
+}
+
+function image($path, $sizeName = '')
+{
+    if ($sizeName) {
+        $parts = explode('.', $path);
+
+        $path = $parts[0].'-'.$sizeName.'.'.$parts[1];
+    }
+
+    return static_file($path);
+}
+
+function static_file($path)
+{
+    $path = str_replace('//', '/', $path);
+
+    return asset("$path");
+}
