@@ -16,6 +16,8 @@ class AccountObserver
      */
     public function creating(Account $account)
     {
+        \Log::info($account);
+
         // 自动生成 token
         $account->token = time().str_random(6);
     }
@@ -27,7 +29,7 @@ class AccountObserver
      */
     public function saving(Account $account)
     {
-        //        \Log::info($account);
+        \Log::info($account);
     }
 
     /**
@@ -37,6 +39,6 @@ class AccountObserver
      */
     public function saved(Account $account)
     {
-        //        \Log::info('post saved');
+        \Log::info('post saved');
     }
 }
