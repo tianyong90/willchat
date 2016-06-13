@@ -144,8 +144,8 @@ function input()
 }
 
 /**
- * CSS 资源路径
- * 
+ * CSS 资源路径.
+ *
  * @param $path
  *
  * @return string
@@ -156,8 +156,8 @@ function css($path)
 }
 
 /**
- * JS 资源路径
- * 
+ * JS 资源路径.
+ *
  * @param $path
  *
  * @return string
@@ -168,8 +168,8 @@ function js($path)
 }
 
 /**
- * images 路径
- * 
+ * images 路径.
+ *
  * @param $path
  *
  * @return string
@@ -180,8 +180,8 @@ function img($path)
 }
 
 /**
- * vendors 路径
- * 
+ * vendors 路径.
+ *
  * @param $path
  *
  * @return string
