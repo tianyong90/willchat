@@ -55,7 +55,7 @@ class Fan extends Model
         'liveness'       => '活跃度',
         'subscribe_time' => '关注时间',
         'last_online_at' => '最后上线时间',
-        'tagid_list' => '标签ID',
+        'tagid_list'     => '标签ID',
     ];
 
     /**

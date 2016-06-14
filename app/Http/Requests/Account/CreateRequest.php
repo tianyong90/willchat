@@ -43,10 +43,10 @@ class CreateRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'app_id' => 'required',
+            'name'       => 'required',
+            'app_id'     => 'required',
             'app_secret' => 'required',
-            'type' => 'required',
+            'type'       => 'required',
         ];
     }
 }
