@@ -30,6 +30,7 @@ class Fan extends Model
         'subscribe_time',
         'last_online_at',
         'subscribe',
+        'tagid_list',
     ];
 
     /**
@@ -54,6 +55,7 @@ class Fan extends Model
         'liveness'       => '活跃度',
         'subscribe_time' => '关注时间',
         'last_online_at' => '最后上线时间',
+        'tagid_list' => '标签ID',
     ];
 
     /**
@@ -62,6 +64,10 @@ class Fan extends Model
      * @var array
      */
     protected $appends = ['location'];
+
+    protected $casts = [
+        'tagid_list' => 'array',
+    ];
 
     /**
      * 返回性别.

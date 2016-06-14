@@ -16,8 +16,6 @@ class AccountObserver
      */
     public function creating(Account $account)
     {
-        \Log::info($account);
-
         // 自动生成 token
         $account->token = time().str_random(6);
     }

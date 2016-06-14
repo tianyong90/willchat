@@ -33,8 +33,8 @@ Route::group($home, function () {
 * User
 */
 $user = [
-    'prefix'     => 'user',
-    'namespace'  => 'User',
+    'prefix' => 'user',
+    'namespace' => 'User',
     'middleware' => 'auth.user',
 ];
 
@@ -56,11 +56,11 @@ Route::group($user, function () {
     // 账号操作
     Route::get('account/create', 'AccountController@getCreate');
     Route::post('account/create', 'AccountController@postCreate');
-    Route::get('account/edit/{id}', 'AccountController@getEdit');
-    Route::post('account/edit/{id}', 'AccountController@postEdit');
-    Route::get('account/destroy/{id}', 'AccountController@destroy');
-    Route::get('account/interface/{id}', 'AccountController@showInterface');
-    Route::get('account/manage/{id}', 'AccountController@getManage');
+    Route::get('account/edit/{accountId}', 'AccountController@getEdit');
+    Route::post('account/edit/{accountId}', 'AccountController@postEdit');
+    Route::get('account/destroy/{accountId}', 'AccountController@destroy');
+    Route::get('account/interface/{accountId}', 'AccountController@showInterface');
+    Route::get('account/manage/{accountId}', 'AccountController@getManage');
 
     // 头像设置
     Route::get('avatar', 'AvatarController@index');
@@ -148,7 +148,7 @@ Route::group($user, function () {
 * Mobile
 */
 $mobile = [
-    'prefix'    => 'mobile',
+    'prefix' => 'mobile',
     'namespace' => 'Mobile',
 ];
 

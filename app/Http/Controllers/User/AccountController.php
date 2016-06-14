@@ -51,13 +51,13 @@ class AccountController extends Controller
     /**
      * 显示编辑公众号表单.
      *
-     * @param int $id
+     * @param int $accountId
      *
      * @return \Illuminate\Http\Response
      */
-    public function getEdit($id)
+    public function getEdit($accountId)
     {
-        $accountInfo = $this->accountRepository->find($id);
+        $accountInfo = $this->accountRepository->find($accountId);
 
         return user_view('account.edit', compact('accountInfo'));
     }
@@ -66,13 +66,13 @@ class AccountController extends Controller
      * 保存编辑后的公众号数据.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param int                      $accountId
      *
      * @return \Illuminate\Http\Response
      */
-    public function postEdit(UpdateRequest $request, $id)
+    public function postEdit(UpdateRequest $request, $accountId)
     {
-        $this->accountRepository->update($request->all(), $id);
+        $this->accountRepository->update($request->all(), $accountId);
 
         return success('修改成功！', user_url('/'));
     }
@@ -80,27 +80,27 @@ class AccountController extends Controller
     /**
      * 查看公众号对应接口信息.
      *
-     * @param int $id
+     * @param int $accountId
      *
      * @return \Illuminate\Http\Response
      */
-    public function showInterface($id)
+    public function showInterface($accountId)
     {
         //公众号对应的 token
-        $token = $this->accountRepository->find($id)->token;
+        $token = $this->accountRepository->find($accountId)->token;
 
         return user_view('account.interface', compact('token'));
     }
 
     /**
-     * @param $id
+     * @param $accountId
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function getManage($id)
+    public function getManage($accountId)
     {
         //记录当前操作的公众号ID到会话
-        chose_account($id);
+        chose_account($accountId);
 
         return redirect(user_url('menu'));
     }
@@ -108,13 +108,13 @@ class AccountController extends Controller
     /**
      * 删除公众号.
      *
-     * @param int $id
+     * @param int $accountId
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($accountId)
     {
-        $this->accountRepository->delete($id);
+        $this->accountRepository->delete($accountId);
 
         return success('删除成功！');
     }

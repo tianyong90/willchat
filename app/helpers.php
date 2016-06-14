@@ -208,3 +208,12 @@ function static_file($path)
 
     return asset("$path");
 }
+
+/**
+ * 记录调试日志
+ * @param  mixed $content
+ */
+function debuglog($content)
+{
+    \Log::debug($content);
+}
