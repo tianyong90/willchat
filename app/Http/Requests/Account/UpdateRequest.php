@@ -14,11 +14,11 @@ class UpdateRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'app_id' => 'required',
+            'name'       => 'required',
+            'app_id'     => 'required',
             'app_secret' => 'required',
-            'aes_key' => 'required',
-            'type' => 'required',
+            'aes_key'    => 'required',
+            'type'       => 'required',
         ];
     }
 }

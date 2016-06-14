@@ -33,8 +33,8 @@ Route::group($home, function () {
 * User
 */
 $user = [
-    'prefix' => 'user',
-    'namespace' => 'User',
+    'prefix'     => 'user',
+    'namespace'  => 'User',
     'middleware' => 'auth.user',
 ];
 
@@ -148,7 +148,7 @@ Route::group($user, function () {
 * Mobile
 */
 $mobile = [
-    'prefix' => 'mobile',
+    'prefix'    => 'mobile',
     'namespace' => 'Mobile',
 ];
 

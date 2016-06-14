@@ -210,8 +210,9 @@ function static_file($path)
 }
 
 /**
- * 记录调试日志
- * @param  mixed $content
+ * 记录调试日志.
+ *
+ * @param mixed $content
  */
 function debuglog($content)
 {
