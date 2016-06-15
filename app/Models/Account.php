@@ -74,4 +74,25 @@ class Account extends Model
 
         return parent::setAttribute($key, $value);
     }
+
+    /**
+     * @param $type
+     *
+     * @return string
+     */
+    public function getTypeAttribute($type)
+    {
+        switch ($type) {
+            case 1:
+                return '订阅号';
+            case 2:
+                return '认证订阅号';
+            case 3:
+                return '服务号';
+            case 4:
+                return '认证服务号';
+            default:
+                return '未知类型';
+        }
+    }
 }

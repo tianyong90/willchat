@@ -17,7 +17,7 @@ class AccountObserver
     public function creating(Account $account)
     {
         // 自动生成 token
-        $account->token = time().str_random(6);
+        $account->token = time().strtolower(str_random(6));
     }
 
     /**
