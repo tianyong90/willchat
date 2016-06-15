@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Account;
+use App\Models\User;
 use App\Observers\AccountObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
     private function registerObserver()
     {
         Account::observe(AccountObserver::class);
+        User::observe(UserObserver::class);
     }
 }
