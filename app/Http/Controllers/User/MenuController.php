@@ -135,7 +135,7 @@ class MenuController extends Controller
     public function getSyncToWechat()
     {
         if (!count($this->menuRepository->all())) {
-            return error('本地还没有效菜单数据');
+            return error('本地无菜单数据');
         }
 
         // 当前选中的公众号

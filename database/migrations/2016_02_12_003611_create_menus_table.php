@@ -21,7 +21,6 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('account_id')->unsigned()->comment('所属公众号');
-            $table->foreign('account_id')->references('id')->on('accounts');
             $table->integer('parent_id')->nullable()->default(0)->comment('菜单父id');
             $table->string('name', 30)->comment('菜单名称');
             $table->enum('type', [
@@ -41,6 +40,9 @@ class CreateMenusTable extends Migration
             $table->string('media_id', 50)->nullable()->comment('图片或图文消息media_id');
             $table->tinyInteger('sort')->nullable()->default(0)->comment('排序');
             $table->timestamps();
+
+            // 外键
+            $table->foreign('account_id')->references('id')->on('accounts');
         });
     }
 

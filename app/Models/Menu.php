@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * 自定义菜单模型.
+ */
 class Menu extends Model
 {
     protected $hidden = ['created_at', 'deleted_at', 'updated_at'];
@@ -57,6 +60,6 @@ class Menu extends Model
     {
         $typeMap = getMenuTypes();
 
-        return $typeMap[$type];
+        return array_key_exists($type, $typeMap) ? $typeMap[$type] : '未知类型';
     }
 }
