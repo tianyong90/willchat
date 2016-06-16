@@ -107,9 +107,10 @@ class Server
         $easywechat = new Application($options);
 
         $userInfo = $easywechat->user->get($message->FromUserName);
+
         $userInfo['account_id'] = $account->id;
 
-        $fanService = app('App\Services\Fan');
+        $fanService = app(Fan::class);
         $fanService->create($userInfo->toArray());
 
         // 查询设置的默认回复数据
@@ -129,7 +130,7 @@ class Server
     private function handleUnSubscribe(AccountModel $account, $message)
     {
         // 用户取消关注时将其从本地粉丝数据库中删除
-        $fanService = app('App\Services\Fan');
+        $fanService = app(Fan::class);
 
         $fanService->deleteByOpenId($message->FromUserName, $account->id);
     }
