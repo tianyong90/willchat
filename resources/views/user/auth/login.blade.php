@@ -17,7 +17,7 @@
         <!-- BEGIN LOGIN FORM -->
         <form class="login-form" action="{{ user_url('login') }}" method="post">
             <div class="form-title">
-                <span class="form-title">欢迎登录.</span>
+                <span class="form-title">本站仅用于功能演示，请勿用于商业公众号运营。</span>
             </div>
             <div class="alert alert-danger display-hide">
                 <button class="close" data-close="alert"></button>
