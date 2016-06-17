@@ -22,8 +22,10 @@ class UserCriteria implements CriteriaInterface
 {
     public function apply($model, RepositoryInterface $repository)
     {
-        $model = $model->where('user_id', '=', Auth::user()->id);
-
+        if ($authedUser = Auth::user()) {
+            $model = $model->where('user_id', '=', $authedUser->id);
+        }
+        
         return $model;
     }
 }

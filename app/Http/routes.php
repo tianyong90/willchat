@@ -22,11 +22,11 @@ Route::any('order-notify', 'OrderNotifyController@notify');
 * Home
 */
 $home = [
-    'namespace' => 'Home',
+    'namespace' => 'User',
 ];
 
 Route::group($home, function () {
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'AuthController@getLogin');
 });
 
 /*

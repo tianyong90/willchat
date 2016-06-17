@@ -165,7 +165,7 @@
                 Layout.init(); // init current layout
                 Login.init();
                 // Demo.init();
-                
+
                 $('form.login-form').find("input[name='username']").focus();
             });
         </script>
