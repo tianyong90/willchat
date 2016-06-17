@@ -25,7 +25,7 @@ class UserCriteria implements CriteriaInterface
         if ($authedUser = Auth::user()) {
             $model = $model->where('user_id', '=', $authedUser->id);
         }
-        
+
         return $model;
     }
 }
