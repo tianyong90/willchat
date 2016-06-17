@@ -46,7 +46,6 @@ class Account
     /**
      * 是否已经选择了公众号并且公众号属于当前登录用户.
      *
-     *
      * @return bool
      */
     private function checkAccount()
@@ -61,7 +60,7 @@ class Account
         //选中的公众号所属用户ID
         $accountUserId = $this->accountRepository->getAccountUserId($accountId);
 
-        if ($accountUserId !== auth()->user()->id) {
+        if ($accountUserId != auth()->user()->id) {
             return false;
         }
 
