@@ -1,6 +1,7 @@
 @extends('app')
 {{--设置标题--}}
 @section('title') WillChat @stop
+@section('description') WillChat 开源项目演示 @stop
 
 @section('content')
     <body class=" login">
@@ -99,7 +100,7 @@
         </form>
         <!-- END REGISTRATION FORM -->
     </div>
-    <div class="copyright"> 2016 &copy; WillChat. Preducted by <a href="https://github.com/tianyong90">tianyong90</a> </div>
+    <div class="copyright"> &copy; 2016 深圳荐货联盟网络科技有限公司 <a target="_blank" href="http://www.miitbeian.gov.cn/">粤ICP备16002610-2号</a> </div>
     <!-- END LOGIN -->
     <!--[if lt IE 9]>
     <script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
