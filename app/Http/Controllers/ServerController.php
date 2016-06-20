@@ -37,7 +37,7 @@ class ServerController extends Controller
     public function serve(Request $request, AccountRepository $accountRepository)
     {
         // 根据token查询公众号信息
-        $account = $accountRepository->skipCriteria()->getByToken($request->route('token'));
+        $account = $accountRepository->getByToken($request->route('token'));
 
         if (empty($account)) {
             return;
