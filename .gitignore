@@ -13,3 +13,4 @@ _ide_helper.php
 /*.sublime-project
 
 sftp-config.json
+/composer.lock
