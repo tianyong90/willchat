@@ -88,7 +88,9 @@ class Server
         });
 
         // 回复处理结果
-        $easyWechat->server->serve()->send();
+        $response = $easyWechat->server->serve();
+
+        return $response;
     }
 
     /**
@@ -173,21 +175,22 @@ class Server
     {
         return $this->handleDefault($account, $message);
 
-        //存储消息
-        $this->messageService->storeMessage($account, $message);
-        //属于文字类型消息
-        if ($message['MsgType'] == 'text') {
-            $replies = Cache::get('replies_'.$account->id);
-
-            foreach ($replies as $key => $reply) {
-                //查找字符串
-                if (str_contains($message['Content'], $key)) {
-                    return $this->messageService->eventsToMessage($reply['content']);
-                }
-            }
-
-            return $this->handleNoMatch($account, $message);
-        }
+//        //存储消息
+//        $this->messageService->storeMessage($account, $message);
+//
+//        //属于文字类型消息
+//        if ($message['MsgType'] == 'text') {
+//            $replies = Cache::get('replies_'.$account->id);
+//
+//            foreach ($replies as $key => $reply) {
+//                //查找字符串
+//                if (str_contains($message['Content'], $key)) {
+//                    return $this->messageService->eventsToMessage($reply['content']);
+//                }
+//            }
+//
+//            return $this->handleNoMatch($account, $message);
+//        }
     }
 
     /**
