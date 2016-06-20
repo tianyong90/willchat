@@ -46,10 +46,10 @@
                 <label class="col-md-2 control-label">公众号类型</label>
                 <div class="col-md-6">
                   <select name="type" class="form-control">
-                    <option value="1">订阅号</option>
-                    <option value="2">认证订阅号</option>
-                    <option value="3">服务号</option>
-                    <option value="4">认证服务号</option>
+                    <option value="1" @if($accountInfo->type == '订阅号') selected @endif>订阅号</option>
+                    <option value="2" @if($accountInfo->type == '认证订阅号') selected @endif>认证订阅号</option>
+                    <option value="3" @if($accountInfo->type == '服务号') selected @endif>服务号</option>
+                    <option value="4" @if($accountInfo->type == '认证服务号') selected @endif>认证服务号</option>
                   </select>
                 </div>
               </div>
