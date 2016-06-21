@@ -9,11 +9,11 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap styles -->
-  <link rel="stylesheet" href="{{ asset('static') }}/metronic/global/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ vendor('metronic/global/plugins/bootstrap/css/bootstrap.min.css') }}">
   <!-- Generic page styles -->
 
-  <link href="{{ asset('static') }}/cropper-master/dist/cropper.min.css" rel="stylesheet">
-  <link href="{{ asset('static') }}/cropper-master/examples/crop-avatar/css/main.css" rel="stylesheet">
+  <link href="{{ vendor('cropper-master/dist/cropper.min.css') }}" rel="stylesheet">
+  <link href="{{ vendor('cropper-master/examples/crop-avatar/css/main.css') }}" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -70,10 +70,10 @@
     </div>
   </div>
 </form>
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery.min.js') }}"></script>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="{{ asset('static') }}/cropper-master/dist/cropper.min.js"></script>
+<script src="{{ vendor('metronic/global/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ vendor('cropper-master/dist/cropper.min.js') }}"></script>
 
 <script type="text/javascript" charset="utf-8">
   (function (factory) {

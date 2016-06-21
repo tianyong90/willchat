@@ -43,11 +43,11 @@
   </div>
 </div>
 <!--[if lt IE 9]>
-<script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script>
+<script src="{{ vendor('metronic/global/plugins/respond.min.js') }}"></script>
+<script src="{{ vendor('metronic/global/plugins/excanvas.min.js') }}"></script>
 <![endif]-->
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery-migrate.min.js') }}" type="text/javascript"></script>
 <script>
   jQuery(document).ready(function () {
     var currentDialog = top.dialog.getCurrent();

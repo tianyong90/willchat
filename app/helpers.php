@@ -188,7 +188,7 @@ function img($path)
  */
 function vendor($path)
 {
-    return static_file("vendors/$path");
+    return static_file("vendor/$path");
 }
 
 function image($path, $sizeName = '')

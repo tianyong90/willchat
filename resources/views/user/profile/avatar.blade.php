@@ -1,7 +1,7 @@
 @extends('user.layouts.baseindex')
 @section('style')
-  <link rel="stylesheet" href="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.css">
-  <link href="{{ asset('static') }}/cropper-master/dist/cropper.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ vendor('metronic/global/plugins/jquery-ui/jquery-ui.min.css') }}">
+  <link href="{{ vendor('cropper-master/dist/cropper.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/user') }}/avatar.css" rel="stylesheet">
 @stop
 @section('main')
@@ -64,9 +64,9 @@
   </div>
 @stop
 @section('js')
-  <script src="{{ asset('static') }}/metronic/global/plugins/jquery-ui/jquery-ui.min.js"></script>
-  <script src="{{ asset('static') }}/cropper-master/dist/cropper.min.js"></script>
-  <script src="{{ asset('static') }}/uploader-master/dist/uploader.min.js"></script>
+  <script src="{{ vendor('metronic/global/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+  <script src="{{ vendor('cropper-master/dist/cropper.min.js') }}"></script>
+  <script src="{{ vendor('uploader-master/dist/uploader.min.js') }}"></script>
   <script type="text/javascript" charset="utf-8">
     $(function () {
       var $avatar = $('img#avatar');

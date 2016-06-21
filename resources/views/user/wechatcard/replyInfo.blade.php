@@ -48,9 +48,9 @@
   </div>
 @stop
 @section('js')
-  <script src="{{ asset('static') }}/jquery-validation-1.14.0/dist/jquery.validate.min.js"
+  <script src="{{ vendor('jquery-validation-1.14.0/dist/jquery.validate.min.js') }}"
           type="text/javascript"></script>
-  <script src="{{ asset('static') }}/jquery-validation-1.14.0/dist/localization/messages_zh.min.js"
+  <script src="{{ vendor('jquery-validation-1.14.0/dist/localization/messages_zh.min.js') }}"
           type="text/javascript"></script>
   <script>
     $(function () {

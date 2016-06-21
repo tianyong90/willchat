@@ -16,13 +16,13 @@
   <meta content="" name="description"/>
   <meta content="" name="author"/>
   <!-- BEGIN GLOBAL MANDATORY STYLES -->
-  <link href="{{ asset('static') }}/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-  <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+  <link href="{{ vendor('font-awesome-4.4.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+  <link href="{{ vendor('metronic/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
         type="text/css"/>
   <!-- END GLOBAL MANDATORY STYLES -->
   <!-- BEGIN THEME STYLES -->
-  <!-- <link href="{{ asset('static') }}/metronic/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/> -->
-  <!-- <link href="{{ asset('static') }}/metronic/global/css/plugins.css" rel="stylesheet" type="text/css"/> -->
+  <!-- <link href="{{ vendor('metronic/global/css/components.css') }}" id="style_components" rel="stylesheet" type="text/css"/> -->
+  <!-- <link href="{{ vendor('metronic/global/css/plugins.css') }}" rel="stylesheet" type="text/css"/> -->
   <!-- END THEME STYLES -->
   <link rel="stylesheet" href="{{ asset('css') }}/user/dialog.css"/>
   <style>
@@ -44,16 +44,16 @@
   </div>
 </div>
 <!--[if lt IE 9]>
-<script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script>
+<script src="{{ vendor('metronic/global/plugins/respond.min.js') }}"></script>
+<script src="{{ vendor('metronic/global/plugins/excanvas.min.js') }}"></script>
 <![endif]-->
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js"
+<script src="{{ vendor('metronic/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery-migrate.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/bootstrap/js/bootstrap.min.js') }}"
         type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="{{ asset('static') }}/metronic/global/scripts/metronic.js" type="text/javascript"></script>
-<!-- <script src="{{ asset('static') }}/metronic/admin/layout/scripts/layout.js" type="text/javascript"></script> -->
+<script src="{{ vendor('metronic/global/scripts/metronic.js') }}" type="text/javascript"></script>
+<!-- <script src="{{ vendor('metronic/admin/layout/scripts/layout.js') }}" type="text/javascript"></script> -->
 <script>
   jQuery(document).ready(function () {
     var currentDialog = top.dialog.getCurrent();

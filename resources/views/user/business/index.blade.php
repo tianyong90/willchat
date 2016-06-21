@@ -88,12 +88,12 @@
   </div>
 @stop
 @section('js')
-  <script type="text/javascript" charset="utf-8" src="{{ asset('static') }}/ueditor/ueditor-front.config.js"></script>
-  <script type="text/javascript" charset="utf-8" src="{{ asset('static') }}/ueditor/ueditor.all.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="{{ asset('static') }}/ueditor/lang/zh-cn/zh-cn.js"></script>
-  <script src="{{ asset('static') }}/jquery-validation-1.14.0/dist/jquery.validate.min.js"
+  <script type="text/javascript" charset="utf-8" src="{{ vendor('ueditor/ueditor-front.config.js') }}"></script>
+  <script type="text/javascript" charset="utf-8" src="{{ vendor('ueditor/ueditor.all.min.js') }}"></script>
+  <script type="text/javascript" charset="utf-8" src="{{ vendor('ueditor/lang/zh-cn/zh-cn.js') }}"></script>
+  <script src="{{ vendor('jquery-validation-1.14.0/dist/jquery.validate.min.js') }}"
           type="text/javascript"></script>
-  <script src="{{ asset('static') }}/jquery-validation-1.14.0/dist/localization/messages_zh.min.js"
+  <script src="{{ vendor('jquery-validation-1.14.0/dist/localization/messages_zh.min.js') }}"
           type="text/javascript"></script>
   <script>
     var editors = $('textarea.editor');

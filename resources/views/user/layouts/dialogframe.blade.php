@@ -17,13 +17,13 @@
   <meta content="" name="WillChat"/>
   <meta content="" name="tianyong90"/>
   <!-- BEGIN GLOBAL MANDATORY STYLES -->
-  <link href="{{ asset('static') }}/metronic/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="{{ asset('static') }}/metronic/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+  <link href="{{ vendor('metronic/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ vendor('metronic/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ vendor('metronic/global/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css" />
   <!-- END GLOBAL MANDATORY STYLES -->
   <!-- BEGIN THEME GLOBAL STYLES -->
-  <link href="{{ asset('static') }}/metronic/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-  <link href="{{ asset('static') }}/metronic/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+  <link href="{{ vendor('metronic/global/css/components-md.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
+  <link href="{{ vendor('metronic/global/css/plugins-md.min.css') }}" rel="stylesheet" type="text/css" />
   <!-- END THEME GLOBAL STYLES -->
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
@@ -34,20 +34,20 @@
 <body>
 @yield('main')
 <!--[if lt IE 9]>
-<script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script>
+<script src="{{ vendor('metronic/global/plugins/respond.min.js') }}"></script>
+<script src="{{ vendor('metronic/global/plugins/excanvas.min.js') }}"></script>
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+<script src="{{ vendor('metronic/global/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
-<script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="{{ asset('static') }}/layer/layer.js"></script>
+<script src="{{ vendor('metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ vendor('layer/layer.js') }}"></script>
 <script src="{{ asset('js') }}/user/base.js"></script>
 <script>
   jQuery(document).ready(function () {

@@ -103,29 +103,29 @@
     <div class="copyright"> &copy; 2016 深圳荐货联盟网络科技有限公司 <a target="_blank" href="http://www.miitbeian.gov.cn/">粤ICP备16002610-2号</a> </div>
     <!-- END LOGIN -->
     <!--[if lt IE 9]>
-    <script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script>
+    <script src="{{ vendor('metronic/global/plugins/respond.min.js') }}"></script>
+    <script src="{{ vendor('metronic/global/plugins/excanvas.min.js') }}"></script>
     <![endif]-->
     <!-- BEGIN CORE PLUGINS -->
-    <script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="{{ asset('static') }}/metronic/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
-    <script src="{{ asset('static') }}/metronic/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
-    <script src="{{ asset('static') }}/metronic/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/global/scripts/app.min.js') }}" type="text/javascript"></script>
     <!-- END THEME GLOBAL SCRIPTS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="{{ asset('static') }}/metronic/pages/scripts/login.min.js" type="text/javascript"></script>
+    <script src="{{ vendor('metronic/pages/scripts/login.min.js') }}" type="text/javascript"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
     </body>
 @stop

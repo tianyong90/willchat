@@ -14,26 +14,25 @@
         <meta content="" name="WillChat" />
         <meta content="" name="tianyong90" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <!-- <link href="http://fonts.useso.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" /> -->
-        <link href="{{ asset('static') }}/metronic/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('static') }}/metronic/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('static') }}/metronic/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/global/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/global/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/global/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/global/plugins/uniform/css/uniform.default.css') }}" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="{{ asset('static') }}/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="{{ asset('static') }}/metronic/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="{{ asset('static') }}/metronic/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/global/css/components-md.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{{ vendor('metronic/global/css/plugins-md.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
-        <link href="{{ asset('static') }}/metronic/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/pages/css/profile.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="{{ asset('static') }}/metronic/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('static') }}/metronic/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="{{ asset('css') }}/user/custom.css" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/layouts/layout4/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ vendor('metronic/layouts/layout4/css/themes/light.min.css') }}" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{ css('user/custom.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 
@@ -117,37 +116,37 @@
         @include('user.layouts.pagefooter')
         <!-- END FOOTER -->
         <!--[if lt IE 9]>
-        <script src="{{ asset('static') }}/metronic/global/plugins/respond.min.js"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/excanvas.min.js"></script>
+        <script src="{{ vendor('metronic/global/plugins/respond.min.js') }}"></script>
+        <script src="{{ vendor('metronic/global/plugins/excanvas.min.js') }}"></script>
         <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
-        <script src="{{ asset('static') }}/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/jquery.blockui.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/uniform/jquery.uniform.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/global/plugins/jquery.sparkline.min.js" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/plugins/jquery.sparkline.min.js') }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="{{ asset('static') }}/metronic/global/scripts/app.min.js" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/global/scripts/app.min.js') }}" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="{{ asset('static') }}/metronic/pages/scripts/profile.min.js" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="{{ asset('static') }}/metronic/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
-        <script src="{{ asset('static') }}/metronic/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/layouts/layout4/scripts/layout.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('metronic/layouts/layout4/scripts/demo.min.js') }}" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
 
-        <script src="{{ asset('static') }}/metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="{{ asset('static') }}/layer/layer.js"></script>
-        <script src="{{ asset('js') }}/user/base.js"></script>
+        <script src="{{ vendor('metronic/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') }}" type="text/javascript"></script>
+        <script src="{{ vendor('layer/layer.js') }}"></script>
+        <script src="{{ js('user/base.js') }}"></script>
 
         <script>
             jQuery(document).ready(function () {
