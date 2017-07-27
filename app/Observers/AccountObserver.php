@@ -2,10 +2,10 @@
 
 namespace App\Observers;
 
-use App\Models\Account;
+use App\Account;
 
 /**
- * Account observer.
+ * Class AccountObserver.
  */
 class AccountObserver
 {
@@ -16,8 +16,18 @@ class AccountObserver
      */
     public function creating(Account $account)
     {
-        // 自动生成 token
-        $account->token = time().strtolower(str_random(6));
+        if (!$account->token) {
+            // 自动生成 token
+            $account->token = time().strtolower(str_random(6));
+        }
+    }
+
+    /**
+     * @param Account $account
+     */
+    public function created(Account $account)
+    {
+        // TODO: 添加公众号后同步菜单、粉丝数据
     }
 
     /**
@@ -27,7 +37,7 @@ class AccountObserver
      */
     public function saving(Account $account)
     {
-        \Log::info($account);
+        //
     }
 
     /**
@@ -37,6 +47,6 @@ class AccountObserver
      */
     public function saved(Account $account)
     {
-        \Log::info('post saved');
+        //
     }
 }

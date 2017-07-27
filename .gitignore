@@ -1,11 +1,13 @@
-/npm-debug.log
-/vendor
 /node_modules
-Homestead.yaml
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+/.idea
 Homestead.json
+Homestead.yaml
 .env
 
-/.idea
 _ide_helper.php
 
 # workspace files are user-specific
@@ -13,4 +15,4 @@ _ide_helper.php
 /*.sublime-project
 
 sftp-config.json
-/composer.lock
+/npm-debug.log

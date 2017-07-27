@@ -14,7 +14,7 @@ class FanRepository extends BaseRepository
 
     public function boot()
     {
-        $this->pushCriteria(new AccountCriteria());
+        // $this->pushCriteria(new AccountCriteria());
     }
 
     /**
@@ -149,10 +149,10 @@ class FanRepository extends BaseRepository
      * @param $openId
      * @param $accountId
      *
-     * @return mixed
+     * @return int
      */
     public function deleteByOpenId($openId, $accountId)
     {
-        return $this->model->where('openid', '=', $openId)->where('account_id', '=', $accountId)->delete();
+        return $this->deleteWhere(['openid' => $openId, 'account_id' => $accountId]);
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Account as AccountModel;
-use App\Repositories\AccountRepository;
-use App\Repositories\MenuRepository;
+use App\Account;
+use App\Account as AccountModel;
+use App\Menu;
 use EasyWeChat\Foundation\Application;
 
 /**
@@ -15,24 +15,24 @@ use EasyWeChat\Foundation\Application;
 class Menu
 {
     /**
-     * @var MenuRepository
+     * @var Menu
      */
-    private $menuRepository;
+    private $menu;
 
     /**
-     * @var AccountRepository
+     * @var Account
      */
-    private $accountRepository;
+    private $account;
 
     /**
      * Menu constructor.
      *
-     * @param MenuRepository $menuRepository
+     * @param Menu $menu
      */
-    public function __construct(MenuRepository $menuRepository, AccountRepository $accountRepository)
+    public function __construct(Menu $menu, Account $account)
     {
-        $this->menuRepository = $menuRepository;
-        $this->accountRepository = $accountRepository;
+        $this->menu = $menu;
+        $this->account = $account;
     }
 
     /**
@@ -49,7 +49,7 @@ class Menu
         $menus = $this->makeLocalize($remoteMenus);
 
         // 先清除本地原有相关菜单数据
-        $this->menuRepository->destroyMenu($account->id);
+        $this->menu->destroyMenu($account->id);
 
         return $this->saveToLocal($account->id, $menus);
     }
@@ -97,7 +97,7 @@ class Menu
      */
     private function saveToLocal($accountId, $menus)
     {
-        $this->menuRepository->storeAll($accountId, $menus);
+        $this->menu->storeAll($accountId, $menus);
     }
 
     /**
@@ -129,7 +129,7 @@ class Menu
      */
     public function getTopMenu()
     {
-        return $this->menuRepository->scopeQuery(function ($query) {
+        return $this->menu->scopeQuery(function ($query) {
             return $query->where('parent_id', '=', 0);
         })->all();
     }
@@ -393,7 +393,7 @@ class Menu
      */
     public function saveToRemote($account)
     {
-        $menus = $this->menuRepository->menuTree()->toArray();
+        $menus = $this->menu->menuTree()->toArray();
 
         $options = get_wechat_options($account->id);
 
@@ -468,6 +468,6 @@ class Menu
 
         $easywechat->menu->destroy();
 
-        $this->menuRepository->destroyMenu($account->id);
+        $this->menu->destroyMenu($account->id);
     }
 }

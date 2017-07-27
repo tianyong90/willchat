@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\AccountRepository;
-use App\Services\Server as WechatService;
+use App\Services\Wechat as WechatService;
 use Illuminate\Http\Request;
 
 /**
@@ -12,37 +12,39 @@ use Illuminate\Http\Request;
 class ServerController extends Controller
 {
     /**
-     * @var WechatService
+     * @var AccountRepository
      */
-    private $wechatService;
+    private $accountRepository;
 
     /**
      * ServerController constructor.
      *
-     * @param WechatService $service
+     * @param AccountRepository $accountRepository
      */
-    public function __construct(WechatService $service)
+    public function __construct(AccountRepository $accountRepository)
     {
-        $this->wechatService = $service;
+        $this->accountRepository = $accountRepository;
     }
 
     /**
-     * 响应微信请求.
+     * 响应微信请求
      *
-     * @param Request           $request
-     * @param AccountRepository $accountRepository
+     * @param Request $request
+     * @param string  $token
      *
-     * @return mixed|void
+     * @return mixed
      */
-    public function serve(Request $request, AccountRepository $accountRepository)
+    public function serve(Request $request, $token)
     {
         // 根据token查询公众号信息
-        $account = $accountRepository->getByToken($request->route('token'));
+        $account = $this->accountRepository->findByToken($token);
 
         if (empty($account)) {
             return;
         }
 
-        return $this->wechatService->response($account);
+        $wechatService = new WechatService($account);
+
+        return $wechatService->response();
     }
 }

@@ -52,7 +52,7 @@ return [
          | Enable or disable cache
          |
          */
-        'enabled'   => true,
+        'enabled' => env('REPOSITORY_CACHE_ENABLED', true),
 
         /*
          |--------------------------------------------------------------------------
@@ -62,16 +62,16 @@ return [
          | Time of expiration cache
          |
          */
-        'minutes'   => 30,
+        'minutes' => 30,
 
-         /*
-          |--------------------------------------------------------------------------
-          | Cache Repository
-          |--------------------------------------------------------------------------
-          |
-          | Instance of Illuminate\Contracts\Cache\Repository
-          |
-          */
+        /*
+         |--------------------------------------------------------------------------
+         | Cache Repository
+         |--------------------------------------------------------------------------
+         |
+         | Instance of Illuminate\Contracts\Cache\Repository
+         |
+         */
         'repository' => 'cache',
 
         /*
@@ -82,7 +82,7 @@ return [
           |
           |
           */
-        'clean'     => [
+        'clean' => [
 
             /*
               |--------------------------------------------------------------------------
@@ -109,16 +109,16 @@ return [
             ],
         ],
 
-        'params'    => [
-              /*
-              |--------------------------------------------------------------------------
-              | Skip Cache Params
-              |--------------------------------------------------------------------------
-              |
-              |
-              | Ex: http://prettus.local/?search=lorem&skipCache=true
-              |
-              */
+        'params' => [
+            /*
+            |--------------------------------------------------------------------------
+            | Skip Cache Params
+            |--------------------------------------------------------------------------
+            |
+            |
+            | Ex: http://prettus.local/?search=lorem&skipCache=true
+            |
+            */
             'skipCache' => 'skipCache',
         ],
 
@@ -168,7 +168,8 @@ return [
         |
         */
         'acceptedConditions' => [
-            '=', 'like',
+            '=',
+            'like',
         ],
         /*
         |--------------------------------------------------------------------------
@@ -203,12 +204,12 @@ return [
         |
         */
         'params' => [
-            'search'        => 'search',
-            'searchFields'  => 'searchFields',
-            'filter'        => 'filter',
-            'orderBy'       => 'orderBy',
-            'sortedBy'      => 'sortedBy',
-            'with'          => 'with',
+            'search'       => 'search',
+            'searchFields' => 'searchFields',
+            'filter'       => 'filter',
+            'orderBy'      => 'orderBy',
+            'sortedBy'     => 'sortedBy',
+            'with'         => 'with',
         ],
     ],
     /*
@@ -221,11 +222,16 @@ return [
         'basePath'      => app_path(),
         'rootNamespace' => 'App\\',
         'paths'         => [
-            'models'       => 'Models',
-            'repositories' => 'Repositories\\Eloquent',
-            'interfaces'   => 'Repositories',
-            'transformers' => 'Transformers',
-            'presenters'   => 'Presenters',
+            'models'            => 'Entities',
+            'repositories'      => 'Repositories',
+            'interfaces'        => 'Repositories',
+            'transformers'      => 'Transformers',
+            'presenters'        => 'Presenters',
+            'validators'        => 'Validators',
+            'controllers'       => 'Http/Controllers',
+            'provider'          => 'RepositoryServiceProvider',
+            'criteria'          => 'Criteria',
+            'stubsOverridePath' => app_path(),
         ],
     ],
 ];

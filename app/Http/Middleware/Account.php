@@ -2,24 +2,24 @@
 
 namespace App\Http\Middleware;
 
-use App\Repositories\AccountRepository;
+use App\Account;
 use Closure;
 
 class Account
 {
     /**
-     * @var AccountRepository
+     * @var Account
      */
-    private $accountRepository;
+    private $account;
 
     /**
      * Account constructor.
      *
-     * @param AccountRepository $accountRepository
+     * @param Account $account
      */
-    public function __construct(AccountRepository $accountRepository)
+    public function __construct(Account $account)
     {
-        $this->accountRepository = $accountRepository;
+        $this->account = $account;
     }
 
     /**
@@ -58,7 +58,7 @@ class Account
         }
 
         //选中的公众号所属用户ID
-        $accountUserId = $this->accountRepository->getAccountUserId($accountId);
+        $accountUserId = $this->account->getAccountUserId($accountId);
 
         if ($accountUserId != auth()->user()->id) {
             return false;

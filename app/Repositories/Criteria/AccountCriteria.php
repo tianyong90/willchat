@@ -12,6 +12,7 @@
  *
  * @link      https://github.com/tianyong90
  */
+
 namespace App\Repositories\Criteria;
 
 use Prettus\Repository\Contracts\CriteriaInterface;

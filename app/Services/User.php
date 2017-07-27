@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\UserRepository;
+use App\User;
 
 /**
  * 用户服务提供者.
@@ -10,16 +10,16 @@ use App\Repositories\UserRepository;
 class User
 {
     /**
-     * @var UserRepository
+     * @var User
      */
-    private $userRepository;
+    private $user;
 
     /**
      * constructer.
      */
-    public function __construct(UserRepository $account)
+    public function __construct(User $account)
     {
-        $this->userRepository = $account;
+        $this->user = $account;
     }
 
     /**
@@ -29,6 +29,6 @@ class User
      */
     public function getAvatar($id)
     {
-        return $this->userRepository->getAvatar($id);
+        return $this->user->getAvatar($id);
     }
 }

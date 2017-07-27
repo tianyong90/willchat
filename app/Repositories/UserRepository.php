@@ -12,7 +12,6 @@ use Prettus\Repository\Traits\CacheableRepository;
 class UserRepository extends BaseRepository implements CacheableInterface
 {
     use BaseRepositoryTrait;
-
     use CacheableRepository;
 
     /**

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Reply;
 
+use App\Account;
 use App\Http\Requests\Request;
-use App\Models\Account;
 
 class CreateRequest extends Request
 {

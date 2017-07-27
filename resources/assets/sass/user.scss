@@ -1,0 +1,66 @@
+$topmenuHeight: 60px;  // 主菜单高度
+$sidebarWidth: 220px;  // 侧栏菜单宽度
+
+body {
+  background-color: #efefef;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+#topmenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+#sidebar {
+  display: block;
+  position: fixed;
+  top: $topmenuHeight;
+  bottom: 0;
+  background-color: #324057;
+  width: 220px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main {
+  display: block;
+  overflow: hidden;
+  margin-top: $topmenuHeight;
+}
+
+.main-with-padding {
+  padding: 20px;
+}
+
+.right-main {
+  display: block;
+  position: fixed;
+  padding: 20px;
+  left: $sidebarWidth;
+  right: 0;
+  top: $topmenuHeight;
+  bottom: 0;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.paginator {
+  display: block;
+  margin: 1rem 0;
+  float: right;
+}
+
+.my-loading-mask {
+  background-color: rgba(0, 0, 0, 0.1);
+}

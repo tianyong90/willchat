@@ -6,7 +6,7 @@ use App\Repositories\Criteria\UserCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
- * Account Repository.
+ * Class AccountRepository.
  */
 class AccountRepository extends BaseRepository
 {
@@ -14,7 +14,7 @@ class AccountRepository extends BaseRepository
 
     public function boot()
     {
-        $this->pushCriteria(new UserCriteria());
+        //        $this->pushCriteria(new UserCriteria());
     }
 
     /**
@@ -24,7 +24,7 @@ class AccountRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function getByToken($token)
+    public function findByToken($token)
     {
         return $this->skipCriteria()->findByField('token', $token)->first();
     }

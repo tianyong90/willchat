@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\MaterialRepository;
+use App\Material;
 use Overtrue\Wechat\Media as MediaService;
 
 /**
@@ -23,11 +23,11 @@ class Material
     const MATERIAL_MAX_COUNT = 20;
 
     /**
-     * materialRepository.
+     * material.
      *
-     * @var App\Repositories\MaterialRepository
+     * @var App\Material
      */
-    private $materialRepository;
+    private $material;
 
     /**
      * media.
@@ -36,9 +36,9 @@ class Material
      */
     private $mediaService;
 
-    public function __construct(MaterialRepository $materialRepository)
+    public function __construct(Material $material)
     {
-        $this->materialRepository = $materialRepository;
+        $this->material = $material;
     }
 
     /**
@@ -55,7 +55,7 @@ class Material
         $createdFrom,
         $canEdited)
     {
-        return $this->materialRepository->storeArticle(
+        return $this->material->storeArticle(
             $accountId,
             $articles,
             $originalMediaId,
@@ -74,7 +74,7 @@ class Material
      */
     public function saveText($accountId, $text)
     {
-        return $this->materialRepository->storeText($accountId, $text);
+        return $this->material->storeText($accountId, $text);
     }
 
     /**
@@ -101,7 +101,7 @@ class Material
      */
     public function isExists($materialId)
     {
-        return $this->materialRepository->isExists($this->account->id, $materialId);
+        return $this->material->isExists($this->account->id, $materialId);
     }
 
     /**
@@ -258,7 +258,7 @@ class Material
 
         $image['local_url'] = config('app.url').$this->downloadMaterial($account, 'image', $mediaId);
 
-        return $this->materialRepository->storeWechatImage($account->id, $image);
+        return $this->material->storeWechatImage($account->id, $image);
     }
 
     /**
@@ -278,7 +278,7 @@ class Material
 
         $voice['local_url'] = config('app.url').$this->downloadMaterial($account, 'voice', $mediaId);
 
-        return $this->materialRepository->storeWechatVoice($account->id, $voice);
+        return $this->material->storeWechatVoice($account->id, $voice);
     }
 
     /**
@@ -298,7 +298,7 @@ class Material
 
         $videoInfo = $this->downloadMaterial($account, 'video', $mediaId);
 
-        return $this->materialRepository->storeWechatVideo($account->id, $videoInfo);
+        return $this->material->storeWechatVideo($account->id, $videoInfo);
     }
 
     /**
@@ -317,7 +317,7 @@ class Material
         }
         $news['content']['news_item'] = $this->localizeNewsCoverMaterialId($account, $news['content']['news_item']);
 
-        return $this->materialRepository->storeArticle(
+        return $this->material->storeArticle(
             $account->id,
             $news['content']['news_item'],
             $news['media_id']
@@ -352,7 +352,7 @@ class Material
      */
     private function mediaIdToSourceUrl($mediaId)
     {
-        return $this->materialRepository->mediaIdToSourceUrl($mediaId);
+        return $this->material->mediaIdToSourceUrl($mediaId);
     }
 
     /**
@@ -446,6 +446,6 @@ class Material
      */
     private function getLocalMediaId($accountId, $mediaId)
     {
-        return $this->materialRepository->getLocalMediaId($accountId, $mediaId);
+        return $this->material->getLocalMediaId($accountId, $mediaId);
     }
 }

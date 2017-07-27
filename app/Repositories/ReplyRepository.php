@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Reply;
+use App\Reply;
 use App\Repositories\Criteria\AccountCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
@@ -15,7 +15,7 @@ class ReplyRepository extends BaseRepository
 
     public function boot()
     {
-        $this->pushCriteria(new AccountCriteria());
+        //        $this->pushCriteria(new AccountCriteria());
     }
 
     /**
@@ -44,15 +44,12 @@ class ReplyRepository extends BaseRepository
      *
      * @return array|mixed
      */
-    public function getSubscribeReply($accountId = null)
+    public function getSubscribeReply($accountId)
     {
         $where = [
-            'type' => Reply::TYPE_SUBSCRIBE,
+            'account_id' => $accountId,
+            'type'       => Reply::TYPE_SUBSCRIBE,
         ];
-
-        if ($accountId) {
-            $where['account_id'] = $accountId;
-        }
 
         return $this->findWhere($where)->first();
     }
@@ -64,21 +61,29 @@ class ReplyRepository extends BaseRepository
      *
      * @return array|mixed
      */
-    public function getDefaultReply($accountId = null)
+    public function getDefaultReply($accountId)
     {
         $where = [
-            'type' => Reply::TYPE_DEFAULT,
+            'account_id' => $accountId,
+            'type'       => Reply::TYPE_DEFAULT,
         ];
-
-        if ($accountId) {
-            $where['account_id'] = $accountId;
-        }
 
         return $this->findWhere($where)->first();
     }
 
-    public function saveReply($data, $accountId)
+    /**
+     * @param $accountId
+     * @param $type
+     */
+    public function getLists($accountId, $type)
     {
-        return $this->create($data);
+        $where = [
+            'account_id' => $accountId,
+            'type'       => Reply::TYPE_SUBSCRIBE,
+        ];
+
+        $this->scopeQuery(function ($query) use ($where) {
+            return $query->where($where);
+        })->paginate();
     }
 }

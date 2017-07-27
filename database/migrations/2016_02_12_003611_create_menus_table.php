@@ -42,7 +42,7 @@ class CreateMenusTable extends Migration
             $table->timestamps();
 
             // 外键
-            $table->foreign('account_id')->references('id')->on('accounts');
+            $table->foreign('account_id')->references('id')->on('accounts')->unUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -53,6 +53,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::drop('menus');
+        Schema::dropIfExists('menus');
     }
 }

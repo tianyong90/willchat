@@ -33,7 +33,7 @@ abstract class Request extends FormRequest
     {
         $class = explode('\\', get_class($this));
 
-        if (!empty($class[3]) && class_exists($model = 'App\Models\\'.$class[3])) {
+        if (!empty($class[3]) && class_exists($model = 'App\\'.$class[3])) {
             return $model::$aliases;
         }
     }

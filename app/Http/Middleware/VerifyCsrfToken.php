@@ -12,8 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'wechat/*',
-        'openoauth-verify',
-        'order-notify',
+        //
     ];
 }

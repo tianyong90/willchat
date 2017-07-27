@@ -1,4 +1,4 @@
-preset: symfony
+preset: laravel
 
 linting: true
 
@@ -7,6 +7,10 @@ enabled:
   - strict_param
   - ordered_use
 
+disabled:
+  - align_double_arrow
+  - unalign_double_arrow
+
 finder:
   exclude:
     - "tests"
@@ -14,3 +18,4 @@ finder:
     - "*.php"
   path:
     - "app"
+    - "config"

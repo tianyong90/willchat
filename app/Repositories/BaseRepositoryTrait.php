@@ -16,7 +16,7 @@ trait BaseRepositoryTrait
     {
         $class = explode('\\', get_class($this));
 
-        if (!empty($class[2]) && class_exists($model = 'App\Models\\'.str_replace('Repository', '', $class[2]))) {
+        if (!empty($class[2]) && class_exists($model = 'App\\'.str_replace('Repository', '', $class[2]))) {
             return $model;
         }
     }

@@ -2,10 +2,10 @@
 
 namespace App\Observers;
 
-use App\Models\User;
+use App\User;
 
 /**
- * User observer.
+ * Class UserObserver.
  */
 class UserObserver
 {
@@ -15,6 +15,16 @@ class UserObserver
      * @param User $user
      */
     public function creating(User $user)
+    {
+        //
+    }
+
+    /**
+     * User created.
+     *
+     * @param User $user
+     */
+    public function created(User $user)
     {
         //
     }
@@ -30,7 +40,7 @@ class UserObserver
     }
 
     /**
-     * User Saved.
+     * User saved.
      *
      * @param User $user
      */

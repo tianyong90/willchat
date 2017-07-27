@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\Account as AccountService;
+use App\Repositories\AccountRepository;
 use App\Services\User as UserService;
 use Illuminate\Support\ServiceProvider;
 
@@ -11,17 +11,25 @@ class WillChatServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot(AccountService $account)
+    public function boot()
     {
-        $this->app->singleton('easywechat', function () use ($account) {
-            $options = $account->getWechatOptions();
+        $this->app->singleton('easywechat', function () {
+            $accountId = \Request::header('AccountId');
 
-            return new \EasyWeChat\Foundation\Application($options);
-        });
+            $accountRepository = app(AccountRepository::class);
 
-        // 开放平台授权相关服务
-        $this->app->singleton('openauth', function () {
-            return new \App\Services\OpenAuth();
+            $account = $accountRepository->find($accountId);
+
+            return new \EasyWeChat\Foundation\Application([
+                'debug'  => env('APP_DEBUG', false),
+                'app_id' => $account->app_id,
+                'secret' => $account->app_secret,
+                'token'  => $account->token,
+                'log'    => [
+                    'level' => \Monolog\Logger::DEBUG,
+                    'file'  => storage_path('logs/easywechat.log'),
+                ],
+            ]);
         });
     }
 
@@ -30,21 +38,7 @@ class WillChatServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerAccountService();
-
-//        $this->registerUserService();
-    }
-
-    /**
-     * 注册公众号服务提供者.
-     */
-    protected function registerAccountService()
-    {
-        $this->app->singleton('willchat.account_service', function () {
-            $accountRepository = app('App\Repositories\AccountRepository');
-
-            return new AccountService($accountRepository);
-        });
+        //        $this->registerUserService();
     }
 
     /**
@@ -53,9 +47,9 @@ class WillChatServiceProvider extends ServiceProvider
     protected function registerUserService()
     {
         $this->app->singleton('willchat.user_service', function () {
-            $userRepository = app('App\Repositories\UserRepository');
+            $user = app('App\User');
 
-            return new UserService($userRepository);
+            return new UserService($user);
         });
     }
 

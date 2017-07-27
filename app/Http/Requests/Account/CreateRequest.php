@@ -2,27 +2,26 @@
 
 namespace App\Http\Requests\Account;
 
+use App\Account;
 use App\Http\Requests\Request;
-use App\Models\Account;
-use App\Repositories\AccountRepository;
 
 class CreateRequest extends Request
 {
     /**
-     * @var AccountRepository
+     * @var Account
      */
-    private $accountRepository;
+    private $account;
 
     /**
      * CreateRequest constructor.
      *
-     * @param AccountRepository $accountRepository
+     * @param Account $account
      */
-    public function __construct(AccountRepository $accountRepository)
+    public function __construct(Account $account)
     {
         parent::__construct();
 
-        $this->accountRepository = $accountRepository;
+        $this->account = $account;
     }
 
 //    public function authorize()

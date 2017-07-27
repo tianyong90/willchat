@@ -14,7 +14,7 @@ class FanGroupRepository extends BaseRepository
 
     public function boot()
     {
-        $this->pushCriteria(new AccountCriteria());
+        //        $this->pushCriteria(new AccountCriteria());
     }
 
     /**

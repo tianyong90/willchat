@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Fan as FanModel;
+use App\Fan as FanModel;
 use App\Repositories\FanRepository;
 
 class Fan
@@ -10,16 +10,16 @@ class Fan
     /**
      * @var FanRepository
      */
-    private $fanRepository;
+    private $fanfanRepository;
 
     /**
      * Fan constructor.
      *
-     * @param FanRepository $fanRepository
+     * @param Fan $fanRepository
      */
     public function __construct(FanRepository $fanRepository)
     {
-        $this->fanRepository = $fanRepository;
+        $this->fanfanRepository = $fanRepository;
     }
 
     /**
@@ -128,13 +128,13 @@ class Fan
         $easywechat = app('easywechat');
         $user = $easywechat->user;
 
-        $openId = $this->fanRepository->find($id)->openid;
+        $openId = $this->fanfanRepository->find($id)->openid;
 
         //更新备注
         $user->remark($openId, $remark);
 
         //更新本地库中对应备注数据
-        $this->fanRepository->update(['remark' => $remark], $id);
+        $this->fanfanRepository->update(['remark' => $remark], $id);
     }
 
     /**
@@ -148,13 +148,13 @@ class Fan
         $easywechat = app('easywechat');
         $user = $easywechat->user_group;
 
-        $openId = $this->fanRepository->find($id)->openid;
+        $openId = $this->fanfanRepository->find($id)->openid;
 
         //更新备注
         $user->moveUser($openId, $groupId);
 
         //更新本地库中对应备注数据
-        $this->fanRepository->update(['groupid' => $groupId], $id);
+        $this->fanfanRepository->update(['groupid' => $groupId], $id);
     }
 
     /**
@@ -166,19 +166,7 @@ class Fan
      */
     public function create(array $fan)
     {
-        return $this->fanRepository->create($this->formatFromWeChat($fan));
-    }
-
-    /**
-     * 根据ID删除.
-     *
-     * @param int $id
-     *
-     * @return int
-     */
-    public function deleteById($id)
-    {
-        return $this->fanRepository->delete($id);
+        return $this->fanfanRepository->create($this->formatFromWeChat($fan));
     }
 
     /**
@@ -191,6 +179,6 @@ class Fan
      */
     public function deleteByOpenId($openId, $accountId)
     {
-        return $this->fanRepository->deleteByOpenId($openId, $accountId);
+        return $this->fanfanRepository->deleteByOpenId($openId, $accountId);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\AccountRepository;
-use App\Services\Server as WechatService;
+use App\Account;
+use App\Services\Wechat as WechatService;
 use Illuminate\Http\Request;
 
 /**
@@ -29,12 +29,12 @@ class OrderNotifyController extends Controller
     /**
      * 响应微信请求.
      *
-     * @param Request           $request
-     * @param AccountRepository $accountRepository
+     * @param Request $request
+     * @param Account $account
      *
      * @return mixed|void
      */
-    public function nofity(Request $request, AccountRepository $accountRepository)
+    public function nofity(Request $request, Account $account)
     {
         echo 'SUCCESS';
     }

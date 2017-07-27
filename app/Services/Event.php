@@ -2,7 +2,7 @@
 
 namespace app\Services;
 
-use App\Repositories\EventRepository;
+use App\Event;
 use App\Services\Material as MaterialService;
 
 /**
@@ -13,11 +13,11 @@ use App\Services\Material as MaterialService;
 class Event
 {
     /**
-     * EventRepository.
+     * Event.
      *
-     * @var App\Repositories\EventRepository
+     * @var App\Event
      */
-    private $eventRepository;
+    private $event;
 
     /**
      * 素材服务
@@ -29,13 +29,13 @@ class Event
     /**
      * construct description.
      *
-     * @param App\Repositories\EventRepository $eventRepository
+     * @param App\Event $event
      */
     public function __construct(
-        EventRepository $eventRepository,
+        Event $event,
         MaterialService $materialService
     ) {
-        $this->eventRepository = $eventRepository;
+        $this->event = $event;
 
         $this->materialService = $materialService;
     }
@@ -61,7 +61,7 @@ class Event
      */
     public function makeText($text)
     {
-        return $this->eventRepository->storeText($text);
+        return $this->event->storeText($text);
     }
 
     /**
@@ -75,7 +75,7 @@ class Event
     {
         $mediaId = $this->materialService->saveRemoteArticle($articles);
 
-        return $this->eventRepository->storeNews($mediaId);
+        return $this->event->storeNews($mediaId);
     }
 
     /**
@@ -89,7 +89,7 @@ class Event
     {
         $mediaId = $this->materialService->localizeInterimMaterialId($materialId);
 
-        return $this->eventRepository->storeMaterial($mediaId);
+        return $this->event->storeMaterial($mediaId);
     }
 
     /**

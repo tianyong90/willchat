@@ -11,7 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserTableSeeder::class);
-        $this->call(PostTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
+        $this->call(LaratrustSeeder::class);
+        $this->call(AccountTableSeeder::class);
+
+        factory(App\Post::class, 20)->create();
+        factory(App\Reply::class, 20)->create();
     }
 }
