@@ -96,7 +96,7 @@ class ReplyController extends BaseController
     }
 
     /**
-     * 删除
+     * 删除.
      *
      * @param Request $request
      *
