@@ -33,9 +33,9 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Reply::class, function (Faker\Generator $faker) {
     return [
-        'account_id' => 1,
-        'trigger_type' => 'keywords',
+        'account_id'       => 1,
+        'trigger_type'     => 'keywords',
         'trigger_keywords' => $faker->word,
-        'content' => $faker->sentence,
+        'content'          => $faker->sentence,
     ];
 });
