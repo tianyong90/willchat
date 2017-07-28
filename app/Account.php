@@ -95,7 +95,7 @@ class Account extends Model
     }
 
     /**
-     * 粉丝
+     * 粉丝.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -105,7 +105,7 @@ class Account extends Model
     }
 
     /**
-     * 所属用户
+     * 所属用户.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
