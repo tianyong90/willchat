@@ -6,13 +6,13 @@ webpackJsonp([12],{
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(265)
+  __webpack_require__(269)
 }
 var Component = __webpack_require__(42)(
   /* script */
-  __webpack_require__(267),
+  __webpack_require__(271),
   /* template */
-  __webpack_require__(268),
+  __webpack_require__(272),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -45,13 +45,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 265:
+/***/ 269:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(266);
+var content = __webpack_require__(270);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72,7 +72,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 266:
+/***/ 270:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -87,7 +87,7 @@ exports.push([module.i, "\n.main .material-img[data-v-6842daca] {\n  display: in
 
 /***/ }),
 
-/***/ 267:
+/***/ 271:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -215,7 +215,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 268:
+/***/ 272:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

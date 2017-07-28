@@ -1,28 +1,28 @@
 webpackJsonp([5],{
 
-/***/ 210:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(249)
+  __webpack_require__(293)
 }
 var Component = __webpack_require__(42)(
   /* script */
-  __webpack_require__(251),
+  __webpack_require__(295),
   /* template */
-  __webpack_require__(252),
+  __webpack_require__(296),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-00cf82cc",
+  "data-v-af32bd26",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\UPUPW_NG7.0\\vhosts\\willchat\\resources\\assets\\js\\user\\components\\reply\\text-lists.vue"
+Component.options.__file = "D:\\UPUPW_NG7.0\\vhosts\\willchat\\resources\\assets\\js\\user\\components\\user\\avatar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] text-lists.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] avatar.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -31,9 +31,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-00cf82cc", Component.options)
+    hotAPI.createRecord("data-v-af32bd26", Component.options)
   } else {
-    hotAPI.reload("data-v-00cf82cc", Component.options)
+    hotAPI.reload("data-v-af32bd26", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -45,23 +45,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 249:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(250);
+var content = __webpack_require__(294);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(41)("6e9791da", content, false);
+var update = __webpack_require__(41)("12729a89", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-00cf82cc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./text-lists.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-00cf82cc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./text-lists.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-af32bd26\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./avatar.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-af32bd26\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./avatar.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72,7 +72,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 250:
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -80,14 +80,14 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n.avatar-uploader[data-v-af32bd26] {\n  border: 1px dashed #d9d9d9;\n  border-radius: 6px;\n  cursor: pointer;\n  position: relative;\n  overflow: hidden;\n  background-color: #fff;\n  text-align: center;\n}\n.avatar-uploader .el-upload[data-v-af32bd26] {\n    background-color: grey;\n}\n.avatar-uploader .el-upload[data-v-af32bd26]:hover {\n      border-color: #20a0ff;\n}\n.avatar-uploader-icon[data-v-af32bd26] {\n  font-size: 28px;\n  color: #8c939d;\n  width: 178px;\n  height: 178px;\n  line-height: 178px;\n  text-align: center;\n}\n.avatar[data-v-af32bd26] {\n  width: 230px;\n  height: 230px;\n  display: block;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 251:
+/***/ 295:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97,419 +97,107 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _defineProperty2 = __webpack_require__(297);
+var _extends2 = __webpack_require__(43);
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _extends3 = _interopRequireDefault(_extends2);
 
-var _methods;
+var _config = __webpack_require__(16);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _vuex = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   data: function data() {
     return {
-      replies: [],
-      searchForm: {
-        keyword: ''
-      },
-      dialogFormVisible: false,
-      replyFormData: {
-        trigger_keywords: '',
-        content: '',
-        id: null
-      }
+      imageUrl: '',
+      headers: {}
     };
   },
   mounted: function mounted() {
-    this.loadData();
+    this.headers = {
+      Authorization: 'bearer ' + window.localStorage.getItem(_config2.default.jwtTokenKey)
+    };
   },
 
 
-  methods: (_methods = {
-    loadData: function loadData() {
-      var _this = this;
+  methods: (0, _extends3.default)({}, (0, _vuex.mapActions)(['storeUserToLocal']), {
+    handleAvatarScucess: function handleAvatarScucess(res, file) {
+      localStorage.setItem(_config2.default.jwtTokenKey, res.token);
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      if (res.user) {
+        this.storeUserToLocal(res.user);
+      }
 
-      this.axios.get('reply/lists?type=text', {
-        params: {
-          keyword: this.searchForm.keyword,
-          sex: this.searchForm.sex,
-          page: page
-        }
-      }).then(function (response) {
-        _this.replies = response.data.replies;
-      });
+      this.headers = {
+        Authorization: 'bearer ' + res.token
+      };
+
+      this.imageUrl = URL.createObjectURL(file.raw);
     },
-    search: function search() {
-      this.loadData(1);
-    },
-    handleCurrentChange: function handleCurrentChange(page) {
-      this.loadData(page);
-    },
-    storeReply: function storeReply() {
-      var _this2 = this;
+    beforeAvatarUpload: function beforeAvatarUpload(file) {
+      var isJPG = file.type === 'image/jpeg';
+      var isLt2M = file.size / 1024 / 1024 < 2;
 
-      var postData = this.replyFormData;
-      postData.trigger_type = 'keywords';
-
-      this.axios.post('reply/store', postData).then(function (response) {
-        _this2.dialogFormVisible = false;
-        _this2.replyFormData.trigger_keywords = '';
-        _this2.replyFormData.content = '';
-        _this2.replyFormData.id = null;
-
-        _this2.$message({
-          message: '保存成功',
-          type: 'success'
-        });
-
-        setTimeout(function () {
-          _this2.loadData(_this2.replies.current_page);
-        }, 1000);
-      }).catch(function (error) {
-        _this2.$message({
-          message: error.response.data,
-          type: 'error'
-        });
-      });
-    },
-    showEditDialog: function showEditDialog() {
-      this.replyFormData.trigger_keywords = '';
-      this.replyFormData.content = '';
-      this.replyFormData.id = null;
-
-      this.dialogFormVisible = true;
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
     }
-  }, (0, _defineProperty3.default)(_methods, 'showEditDialog', function showEditDialog(reply) {
-    this.replyFormData.trigger_keywords = reply.trigger_keywords;
-    this.replyFormData.content = reply.content;
-    this.replyFormData.id = reply.id;
-
-    this.dialogFormVisible = true;
-  }), (0, _defineProperty3.default)(_methods, 'deleteReply', function deleteReply(id) {
-    var _this3 = this;
-
-    this.$confirm('删除后将不可恢复, 是否继续?', '操作确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'info'
-    }).then(function () {
-      _this3.axios.post('reply/delete', { id: id }).then(function (response) {
-        _this3.$message({
-          message: '删除成功',
-          type: 'success'
-        });
-
-        setTimeout(function () {
-          _this3.loadData(_this3.replies.current_page);
-        }, 1000);
-      }).catch(function (error) {
-        _this3.$message({
-          message: error.response.data,
-          type: 'error'
-        });
-      });
-    }).catch(function () {
-      console.log('canceled');
-    });
-  }), _methods)
+  })
 };
 
 /***/ }),
 
-/***/ 252:
+/***/ 296:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "right-main"
-  }, [_c('div', {
-    staticClass: "table-tools"
-  }, [_c('el-form', {
-    staticClass: "demo-form-inline",
+    staticClass: "main main-with-padding"
+  }, [_c('el-row', {
     attrs: {
-      "inline": true,
-      "model": _vm.searchForm
+      "gutter": 20,
+      "type": "flex",
+      "justify": "center"
     }
-  }, [_c('el-form-item', [_c('el-input', {
+  }, [_c('el-col', {
     attrs: {
-      "placeholder": "按昵称搜索"
-    },
-    nativeOn: {
-      "keyup": function($event) {
-        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
-        _vm.loadData($event)
-      }
-    },
-    model: {
-      value: (_vm.searchForm.keyword),
-      callback: function($$v) {
-        _vm.searchForm.keyword = $$v
-      },
-      expression: "searchForm.keyword"
+      "span": 8
     }
-  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-select', {
+  }, [_c('el-upload', {
+    staticClass: "avatar-uploader",
     attrs: {
-      "placeholder": "性别筛选"
-    },
-    on: {
-      "change": _vm.loadData
-    },
-    model: {
-      value: (_vm.searchForm.sex),
-      callback: function($$v) {
-        _vm.searchForm.sex = $$v
-      },
-      expression: "searchForm.sex"
+      "multiple": false,
+      "action": "/api/user/avatar-upload",
+      "headers": _vm.headers,
+      "name": "avatar",
+      "show-file-list": false,
+      "auto-upload": true,
+      "on-success": _vm.handleAvatarScucess,
+      "before-upload": _vm.beforeAvatarUpload
     }
-  }, [_c('el-option', {
+  }, [(_vm.imageUrl) ? _c('img', {
+    staticClass: "avatar",
     attrs: {
-      "label": "全部",
-      "value": "all"
+      "src": _vm.imageUrl
     }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "男",
-      "value": "0"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "女",
-      "value": "1"
-    }
-  }), _vm._v(" "), _c('el-option', {
-    attrs: {
-      "label": "其它",
-      "value": "2"
-    }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
-    attrs: {
-      "type": "primary",
-      "icon": "search"
-    },
-    on: {
-      "click": _vm.search
-    }
-  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "success",
-      "icon": "plus"
-    },
-    on: {
-      "click": _vm.showEditDialog
-    }
-  }, [_vm._v("新增回复规则")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
-    staticStyle: {
-      "width": "100%"
-    },
-    attrs: {
-      "data": _vm.replies.data,
-      "border": ""
-    }
-  }, [_c('el-table-column', {
-    attrs: {
-      "prop": "trigger_keywords",
-      "label": "触发关键词"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "content",
-      "label": "回复内容"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "created_at",
-      "label": "添加时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "updated_at",
-      "label": "修改时间"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "prop": "remark",
-      "label": "命中次数"
-    }
-  }), _vm._v(" "), _c('el-table-column', {
-    attrs: {
-      "label": "操作"
-    },
-    inlineTemplate: {
-      render: function() {
-        var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-          return _c('div', [_c('el-button', {
-            attrs: {
-              "size": "small",
-              "type": "primary"
-            },
-            nativeOn: {
-              "click": function($event) {
-                _vm.showEditDialog(_vm.row)
-              }
-            }
-          }, [_vm._v("修改")]), _vm._v(" "), _c('el-button', {
-            attrs: {
-              "size": "small",
-              "type": "danger"
-            },
-            nativeOn: {
-              "click": function($event) {
-                _vm.deleteReply(_vm.row.id)
-              }
-            }
-          }, [_vm._v("删除")])], 1)
-        
-      },
-      staticRenderFns: []
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "paginator"
-  }, [_c('el-pagination', {
-    attrs: {
-      "current-page": _vm.replies.current_page,
-      "page-size": _vm.replies.per_page,
-      "layout": "total, prev, pager, next, jumper",
-      "total": _vm.replies.tatal
-    },
-    on: {
-      "current-change": _vm.handleCurrentChange
-    }
-  })], 1), _vm._v(" "), _c('el-dialog', {
-    attrs: {
-      "title": "添加文本回复",
-      "modal": false
-    },
-    model: {
-      value: (_vm.dialogFormVisible),
-      callback: function($$v) {
-        _vm.dialogFormVisible = $$v
-      },
-      expression: "dialogFormVisible"
-    }
-  }, [_c('el-form', {
-    attrs: {
-      "model": _vm.replyFormData
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "触发关键词",
-      "label-width": "120"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "auto-complete": "off",
-      "placeholder": "填写触发关键字"
-    },
-    model: {
-      value: (_vm.replyFormData.trigger_keywords),
-      callback: function($$v) {
-        _vm.replyFormData.trigger_keywords = $$v
-      },
-      expression: "replyFormData.trigger_keywords"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "回复内容",
-      "label-width": "120"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "type": "textarea",
-      "rows": 5,
-      "placeholder": "填写回复内容"
-    },
-    model: {
-      value: (_vm.replyFormData.content),
-      callback: function($$v) {
-        _vm.replyFormData.content = $$v
-      },
-      expression: "replyFormData.content"
-    }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "dialog-footer",
-    slot: "footer"
-  }, [_c('el-button', {
-    on: {
-      "click": function($event) {
-        _vm.dialogFormVisible = false
-      }
-    }
-  }, [_vm._v("取 消")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "primary"
-    },
-    on: {
-      "click": _vm.storeReply
-    }
-  }, [_vm._v("确 定")])], 1)], 1)], 1)
+  }) : _c('i', {
+    staticClass: "el-icon-plus avatar-uploader-icon"
+  })])], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-00cf82cc", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-af32bd26", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 297:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _defineProperty = __webpack_require__(298);
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (obj, key, value) {
-  if (key in obj) {
-    (0, _defineProperty2.default)(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
-
-/***/ }),
-
-/***/ 298:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(299), __esModule: true };
-
-/***/ }),
-
-/***/ 299:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(300);
-var $Object = __webpack_require__(6).Object;
-module.exports = function defineProperty(it, key, desc){
-  return $Object.defineProperty(it, key, desc);
-};
-
-/***/ }),
-
-/***/ 300:
-/***/ (function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__(23);
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(13), 'Object', {defineProperty: __webpack_require__(18).f});
 
 /***/ })
 

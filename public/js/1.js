@@ -1,28 +1,28 @@
 webpackJsonp([1],{
 
-/***/ 207:
+/***/ 210:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(235)
+  __webpack_require__(249)
 }
 var Component = __webpack_require__(42)(
   /* script */
-  __webpack_require__(239),
+  __webpack_require__(251),
   /* template */
-  __webpack_require__(240),
+  __webpack_require__(256),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-126bb182",
+  "data-v-00cf82cc",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "D:\\UPUPW_NG7.0\\vhosts\\willchat\\resources\\assets\\js\\user\\components\\menu\\index.vue"
+Component.options.__file = "D:\\UPUPW_NG7.0\\vhosts\\willchat\\resources\\assets\\js\\user\\components\\reply\\text-lists.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] text-lists.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -31,9 +31,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-126bb182", Component.options)
+    hotAPI.createRecord("data-v-00cf82cc", Component.options)
   } else {
-    hotAPI.reload("data-v-126bb182", Component.options)
+    hotAPI.reload("data-v-00cf82cc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -45,23 +45,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 235:
+/***/ 249:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(236);
+var content = __webpack_require__(250);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(41)("5d2caee8", content, false);
+var update = __webpack_require__(41)("6e9791da", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-126bb182\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-126bb182\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-00cf82cc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./text-lists.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-00cf82cc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./text-lists.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -72,7 +72,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 236:
+/***/ 250:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -80,28 +80,14 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "\n.right-main[data-v-126bb182] {\n  background-color: #fff;\n}\n.menu-preview[data-v-126bb182] {\n  display: block;\n  overflow: hidden;\n  position: relative;\n  width: 320px;\n  height: 500px;\n  background-color: #fff;\n  margin: 0 auto;\n  border: 1px solid #ddd;\n}\n.menu-preview .header[data-v-126bb182] {\n    display: flex;\n    position: absolute;\n    width: 100%;\n    height: 65px;\n    background-image: url(" + __webpack_require__(237) + ");\n    -webkit-background-size: 100%;\n    background-size: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    align-items: flex-end;\n}\n.menu-preview .header .account-name[data-v-126bb182] {\n      color: #fff;\n      margin-bottom: 10px;\n}\n.menu-preview .footer[data-v-126bb182] {\n    display: block;\n    position: absolute;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    height: 50px;\n    background-image: url(" + __webpack_require__(238) + ");\n    -webkit-background-size: 100%;\n    background-size: 100%;\n    background-repeat: no-repeat;\n}\n.menu-preview .footer .menu-preview[data-v-126bb182] {\n      display: flex;\n      flex-direction: row;\n      width: 275px;\n      height: 50px;\n      float: right;\n      overflow: visible;\n}\n.menu-preview .footer .menu-preview .active[data-v-126bb182] {\n        border: 2px solid #2196F3 !important;\n}\n.menu-preview .footer .menu-preview .menu-item[data-v-126bb182] {\n        display: block;\n        position: relative;\n        flex: 1;\n        cursor: pointer;\n        text-align: center;\n        line-height: 45px;\n        height: 45px;\n        border: 1px solid #efefef;\n}\n.menu-preview .footer .menu-preview .menu-item .sub-buttons[data-v-126bb182] {\n          display: block;\n          overflow: hidden;\n          background-color: #fff;\n          position: absolute;\n          bottom: 50px;\n          margin: 0;\n          padding: 0;\n          width: 100%;\n}\n.menu-preview .footer .menu-preview .menu-item .sub-buttons .sub-button[data-v-126bb182] {\n            height: 45px;\n            border: 1px solid #dfdfdf;\n}\n.menu-preview .footer .menu-preview .menu-item .sub-buttons .sub-button[data-v-126bb182]:hover {\n              background-color: #efefef;\n}\n.edit-panel[data-v-126bb182] {\n  display: block;\n  overflow: hidden;\n  background-color: #e7e7e7;\n  width: 100%;\n  padding: 1rem;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  border: 1px solid #eee;\n}\n.edit-panel .header[data-v-126bb182] {\n    padding-bottom: 1rem;\n    border-bottom: 1px solid #d5d5d5;\n}\n.edit-panel .header .btn-delete-menu[data-v-126bb182] {\n      float: right;\n}\n.edit-panel .body[data-v-126bb182] {\n    padding: 1rem;\n}\n.buttons[data-v-126bb182] {\n  margin-top: 30px;\n}\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 237:
-/***/ (function(module, exports) {
-
-module.exports = "/js/images/bg_mobile_head.png?25efd07106b64435dc432de872def02a";
-
-/***/ }),
-
-/***/ 238:
-/***/ (function(module, exports) {
-
-module.exports = "/js/images/bg_mobile_foot.png?f149cc6ec5c22432551be15a00540ed5";
-
-/***/ }),
-
-/***/ 239:
+/***/ 251:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -110,353 +96,418 @@ module.exports = "/js/images/bg_mobile_foot.png?f149cc6ec5c22432551be15a00540ed5
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _defineProperty2 = __webpack_require__(252);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _methods;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
   data: function data() {
     return {
-      menus: [],
-      menuEdit: {
-        id: null,
-        name: '',
-        type: 'click',
-        key: '',
-        url: ''
+      replies: [],
+      searchForm: {
+        keyword: ''
+      },
+      dialogFormVisible: false,
+      replyFormData: {
+        trigger_keywords: '',
+        content: '',
+        id: null
       }
     };
   },
   mounted: function mounted() {
-    this.getMenus();
+    this.loadData();
   },
 
 
-  methods: {
-    getMenus: function getMenus() {
+  methods: (_methods = {
+    loadData: function loadData() {
       var _this = this;
 
-      this.axios.get('menu/lists').then(function (response) {
-        _this.menus = response.data.menus;
-      }).catch(function (error) {
-        console.log(error);
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      this.axios.get('reply/lists?type=text', {
+        params: {
+          keyword: this.searchForm.keyword,
+          sex: this.searchForm.sex,
+          page: page
+        }
+      }).then(function (response) {
+        _this.replies = response.data.replies;
       });
     },
-    storeAndPublish: function storeAndPublish() {
-      this.axios.post('menu/store', this.menu).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
+    search: function search() {
+      this.loadData(1);
     },
-    deleteMenu: function deleteMenu() {
+    handleCurrentChange: function handleCurrentChange(page) {
+      this.loadData(page);
+    },
+    storeReply: function storeReply() {
       var _this2 = this;
 
-      this.$confirm('确定要删除此菜单?', '操作确认', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'info'
-      }).then(function () {
-        if (_this2.menuEdit.id) {
-          _this2.axios.post('menu/delete', { id: _this2.menuEdit.id }).then(function () {
-            _this2.$message({
-              message: '删除成功',
-              type: 'success'
-            });
-          }).catch(function (error) {
-            _this2.$message({
-              message: error.response.data,
-              type: 'error'
-            });
-          });
-        } else {}
+      var postData = this.replyFormData;
+      postData.trigger_type = 'keywords';
+
+      this.axios.post('reply/store', postData).then(function (response) {
+        _this2.dialogFormVisible = false;
+        _this2.replyFormData.trigger_keywords = '';
+        _this2.replyFormData.content = '';
+        _this2.replyFormData.id = null;
+
+        _this2.$message({
+          message: '保存成功',
+          type: 'success'
+        });
+
+        setTimeout(function () {
+          _this2.loadData(_this2.replies.current_page);
+        }, 1000);
+      }).catch(function (error) {
+        _this2.$message({
+          message: error.response.data,
+          type: 'error'
+        });
       });
     },
-    syncMenu: function syncMenu() {
-      var _this3 = this;
+    showEditDialog: function showEditDialog() {
+      this.replyFormData.trigger_keywords = '';
+      this.replyFormData.content = '';
+      this.replyFormData.id = null;
 
-      this.axios.post('menu/sync').then(function (response) {
-        _this3.menus = response.data.menus;
-      });
-    },
-    checkActive: function checkActive(menuItem) {
-      if (this.menuEdit.id === menuItem.id) return true;
-
-      return false;
-    },
-    menuItemClick: function menuItemClick(menuItem) {
-      this.menuEdit.id = menuItem.id;
-      this.menuEdit.name = menuItem.name;
-      this.menuEdit.type = menuItem.type;
-      this.menuEdit.key = menuItem.key;
-      this.menuEdit.url = menuItem.url;
+      this.dialogFormVisible = true;
     }
-  }
+  }, (0, _defineProperty3.default)(_methods, 'showEditDialog', function showEditDialog(reply) {
+    this.replyFormData.trigger_keywords = reply.trigger_keywords;
+    this.replyFormData.content = reply.content;
+    this.replyFormData.id = reply.id;
+
+    this.dialogFormVisible = true;
+  }), (0, _defineProperty3.default)(_methods, 'deleteReply', function deleteReply(id) {
+    var _this3 = this;
+
+    this.$confirm('删除后将不可恢复, 是否继续?', '操作确认', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'info'
+    }).then(function () {
+      _this3.axios.post('reply/delete', { id: id }).then(function (response) {
+        _this3.$message({
+          message: '删除成功',
+          type: 'success'
+        });
+
+        setTimeout(function () {
+          _this3.loadData(_this3.replies.current_page);
+        }, 1000);
+      }).catch(function (error) {
+        _this3.$message({
+          message: error.response.data,
+          type: 'error'
+        });
+      });
+    }).catch(function () {
+      console.log('canceled');
+    });
+  }), _methods)
 };
 
 /***/ }),
 
-/***/ 240:
+/***/ 252:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _defineProperty = __webpack_require__(253);
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (obj, key, value) {
+  if (key in obj) {
+    (0, _defineProperty2.default)(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+/***/ }),
+
+/***/ 253:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(254), __esModule: true };
+
+/***/ }),
+
+/***/ 254:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(255);
+var $Object = __webpack_require__(6).Object;
+module.exports = function defineProperty(it, key, desc){
+  return $Object.defineProperty(it, key, desc);
+};
+
+/***/ }),
+
+/***/ 255:
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__(23);
+// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+$export($export.S + $export.F * !__webpack_require__(13), 'Object', {defineProperty: __webpack_require__(17).f});
+
+/***/ }),
+
+/***/ 256:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "right-main"
-  }, [_c('el-button', {
+  }, [_c('div', {
+    staticClass: "table-tools"
+  }, [_c('el-form', {
+    staticClass: "demo-form-inline",
     attrs: {
-      "type": "primary"
+      "inline": true,
+      "model": _vm.searchForm
+    }
+  }, [_c('el-form-item', [_c('el-input', {
+    attrs: {
+      "placeholder": "按昵称搜索"
     },
     nativeOn: {
-      "click": function($event) {
-        _vm.syncMenu($event)
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.loadData($event)
       }
-    }
-  }, [_vm._v("同步")]), _vm._v(" "), _c('el-row', {
-    attrs: {
-      "gutter": 30
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 8
-    }
-  }, [_c('div', {
-    staticClass: "menu-preview"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('div', {
-    staticClass: "account-name"
-  }, [_vm._v("公众号名")])]), _vm._v(" "), _c('div', {
-    staticClass: "footer"
-  }, [_c('div', {
-    staticClass: "menu-preview"
-  }, [_vm._l((_vm.menus), function(menu, index) {
-    return _c('div', {
-      staticClass: "menu-item",
-      class: {
-        active: _vm.checkActive(menu)
+    },
+    model: {
+      value: (_vm.searchForm.keyword),
+      callback: function($$v) {
+        _vm.searchForm.keyword = $$v
       },
-      on: {
-        "click": function($event) {
-          $event.stopPropagation();
-          $event.preventDefault();
-          _vm.menuItemClick(menu)
-        }
-      }
-    }, [_c('span', {
-      staticClass: "menu-title",
-      domProps: {
-        "textContent": _vm._s(menu.name)
-      }
-    }), _vm._v(" "), (menu.sub_buttons.length) ? _c('ul', {
-      staticClass: "sub-buttons"
-    }, [_vm._l((menu.sub_buttons), function(sub_button) {
-      return _c('li', {
-        staticClass: "sub-button",
-        class: {
-          active: _vm.checkActive(sub_button)
-        },
-        domProps: {
-          "textContent": _vm._s(sub_button.name)
-        },
-        on: {
-          "click": function($event) {
-            $event.stopPropagation();
-            $event.preventDefault();
-            _vm.menuItemClick(sub_button)
-          }
-        }
-      })
-    }), _vm._v(" "), (menu.sub_buttons.length <= 4) ? _c('li', {
-      staticClass: "sub-button btn-sub-plus",
-      on: {
-        "click": function($event) {
-          $event.stopPropagation();
-          $event.preventDefault();
-          _vm.btnAddSubClick()
-        }
-      }
-    }, [_vm._v("+")]) : _vm._e()], 2) : _c('ul', {
-      staticClass: "sub-buttons"
-    }, [_c('li', {
-      staticClass: "sub-button btn-add-sub"
-    }, [_vm._v("+")])])])
-  }), _vm._v(" "), (_vm.menus.length < 3) ? _c('div', {
-    staticClass: "menu-item btn-add-top"
-  }, [_vm._v("+")]) : _vm._e()], 2)])])]), _vm._v(" "), _c('el-col', {
-    attrs: {
-      "span": 16
+      expression: "searchForm.keyword"
     }
-  }, [_c('div', {
-    staticClass: "edit-panel"
-  }, [_c('div', {
-    staticClass: "header"
-  }, [_c('span', {
-    staticClass: "menu-name"
-  }, [_vm._v("菜单名称")]), _vm._v(" "), _c('el-button', {
-    staticClass: "btn-delete-menu",
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-select', {
+    attrs: {
+      "placeholder": "性别筛选"
+    },
     on: {
-      "click": function($event) {
-        $event.stopPropagation();
-        $event.preventDefault();
-        _vm.deleteMenu($event)
-      }
-    }
-  }, [_vm._v("删除菜单")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "body"
-  }, [_c('el-form', {
-    ref: "form",
-    attrs: {
-      "model": _vm.menuEdit,
-      "label-width": "90px"
-    }
-  }, [_c('el-form-item', {
-    attrs: {
-      "label": "菜单名称"
-    }
-  }, [_c('el-input', {
-    attrs: {
-      "placeholder": "字数不超过4个汉字或8个字母"
+      "change": _vm.loadData
     },
     model: {
-      value: (_vm.menuEdit.name),
+      value: (_vm.searchForm.sex),
       callback: function($$v) {
-        _vm.menuEdit.name = $$v
+        _vm.searchForm.sex = $$v
       },
-      expression: "menuEdit.name"
-    }
-  })], 1), _vm._v(" "), _c('el-form-item', {
-    attrs: {
-      "label": "菜单内容"
-    }
-  }, [_c('el-select', {
-    attrs: {
-      "placeholder": ""
-    },
-    model: {
-      value: (_vm.menuEdit.type),
-      callback: function($$v) {
-        _vm.menuEdit.type = $$v
-      },
-      expression: "menuEdit.type"
+      expression: "searchForm.sex"
     }
   }, [_c('el-option', {
     attrs: {
-      "label": "点击推事件",
-      "value": "click"
+      "label": "全部",
+      "value": "all"
     }
   }), _vm._v(" "), _c('el-option', {
     attrs: {
-      "label": "跳转链接",
-      "value": "view"
+      "label": "男",
+      "value": "0"
     }
   }), _vm._v(" "), _c('el-option', {
     attrs: {
-      "label": "扫码推事件",
-      "value": "scancode_push"
+      "label": "女",
+      "value": "1"
     }
   }), _vm._v(" "), _c('el-option', {
     attrs: {
-      "label": "扫码推事件且提示",
-      "value": "scancode_waitmsg"
+      "label": "其它",
+      "value": "2"
     }
-  }), _vm._v(" "), _c('el-option', {
+  })], 1)], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
     attrs: {
-      "label": "弹出系统拍照发图",
-      "value": "pic_sysphoto"
+      "type": "primary",
+      "icon": "search"
+    },
+    on: {
+      "click": _vm.search
     }
-  }), _vm._v(" "), _c('el-option', {
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('el-button', {
     attrs: {
-      "label": "弹出拍照或相册发图",
-      "value": "pic_photo_or_album"
+      "type": "success",
+      "icon": "plus"
+    },
+    on: {
+      "click": _vm.showEditDialog
     }
-  }), _vm._v(" "), _c('el-option', {
+  }, [_vm._v("新增回复规则")])], 1)], 1)], 1), _vm._v(" "), _c('el-table', {
+    staticStyle: {
+      "width": "100%"
+    },
     attrs: {
-      "label": "弹出微信相册发图",
-      "value": "pic_weixin"
+      "data": _vm.replies.data,
+      "border": ""
     }
-  }), _vm._v(" "), _c('el-option', {
+  }, [_c('el-table-column', {
     attrs: {
-      "label": "弹出地理位置选择器",
-      "value": "location_slect"
+      "prop": "trigger_keywords",
+      "label": "触发关键词"
     }
-  }), _vm._v(" "), _c('el-option', {
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "label": "发送消息",
-      "value": "media_id"
+      "prop": "content",
+      "label": "回复内容"
     }
-  }), _vm._v(" "), _c('el-option', {
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "label": "跳转图文消息 URL",
-      "value": "view_limited"
+      "prop": "created_at",
+      "label": "添加时间"
     }
-  })], 1)], 1), _vm._v(" "), _c('el-form-item', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.menuEdit.type === 'click'),
-      expression: "menuEdit.type === 'click'"
-    }],
+  }), _vm._v(" "), _c('el-table-column', {
     attrs: {
-      "label": "关键词"
+      "prop": "updated_at",
+      "label": "修改时间"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "prop": "remark",
+      "label": "命中次数"
+    }
+  }), _vm._v(" "), _c('el-table-column', {
+    attrs: {
+      "label": "操作"
+    },
+    inlineTemplate: {
+      render: function() {
+        var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+          return _c('div', [_c('el-button', {
+            attrs: {
+              "size": "small",
+              "type": "primary"
+            },
+            nativeOn: {
+              "click": function($event) {
+                _vm.showEditDialog(_vm.row)
+              }
+            }
+          }, [_vm._v("修改")]), _vm._v(" "), _c('el-button', {
+            attrs: {
+              "size": "small",
+              "type": "danger"
+            },
+            nativeOn: {
+              "click": function($event) {
+                _vm.deleteReply(_vm.row.id)
+              }
+            }
+          }, [_vm._v("删除")])], 1)
+        
+      },
+      staticRenderFns: []
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "paginator"
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.replies.current_page,
+      "page-size": _vm.replies.per_page,
+      "layout": "total, prev, pager, next, jumper",
+      "total": _vm.replies.tatal
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange
+    }
+  })], 1), _vm._v(" "), _c('el-dialog', {
+    attrs: {
+      "title": "添加文本回复",
+      "modal": false
+    },
+    model: {
+      value: (_vm.dialogFormVisible),
+      callback: function($$v) {
+        _vm.dialogFormVisible = $$v
+      },
+      expression: "dialogFormVisible"
+    }
+  }, [_c('el-form', {
+    attrs: {
+      "model": _vm.replyFormData
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "触发关键词",
+      "label-width": "120"
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": ""
+      "auto-complete": "off",
+      "placeholder": "填写触发关键字"
     },
     model: {
-      value: (_vm.menuEdit.key),
+      value: (_vm.replyFormData.trigger_keywords),
       callback: function($$v) {
-        _vm.menuEdit.key = $$v
+        _vm.replyFormData.trigger_keywords = $$v
       },
-      expression: "menuEdit.key"
+      expression: "replyFormData.trigger_keywords"
     }
   })], 1), _vm._v(" "), _c('el-form-item', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.menuEdit.type === 'view'),
-      expression: "menuEdit.type === 'view'"
-    }],
     attrs: {
-      "label": "页面地址"
+      "label": "回复内容",
+      "label-width": "120"
     }
   }, [_c('el-input', {
     attrs: {
-      "placeholder": ""
+      "type": "textarea",
+      "rows": 5,
+      "placeholder": "填写回复内容"
     },
     model: {
-      value: (_vm.menuEdit.url),
+      value: (_vm.replyFormData.content),
       callback: function($$v) {
-        _vm.menuEdit.url = $$v
+        _vm.replyFormData.content = $$v
       },
-      expression: "menuEdit.url"
+      expression: "replyFormData.content"
     }
-  })], 1)], 1)], 1)])])], 1), _vm._v(" "), _c('el-row', {
-    staticClass: "buttons",
-    attrs: {
-      "type": "flex",
-      "justify": "center"
-    }
-  }, [_c('el-col', {
-    attrs: {
-      "span": 6
-    }
+  })], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "dialog-footer",
+    slot: "footer"
   }, [_c('el-button', {
+    on: {
+      "click": function($event) {
+        _vm.dialogFormVisible = false
+      }
+    }
+  }, [_vm._v("取 消")]), _vm._v(" "), _c('el-button', {
     attrs: {
       "type": "primary"
     },
-    nativeOn: {
-      "click": function($event) {
-        _vm.storeAndPublish($event)
-      }
+    on: {
+      "click": _vm.storeReply
     }
-  }, [_vm._v("保存并发布")]), _vm._v(" "), _c('el-button', {
-    attrs: {
-      "type": "default"
-    }
-  }, [_vm._v("预览")])], 1)], 1)], 1)
+  }, [_vm._v("确 定")])], 1)], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-126bb182", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-00cf82cc", module.exports)
   }
 }
 

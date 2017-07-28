@@ -52,7 +52,6 @@ Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
         Route::get('/qrcode/lists', 'QrcodeController@lists');
         Route::post('/qrcode/create', 'QrcodeController@create');
         Route::post('/qrcode/delete/{id}', 'QrcodeController@delete');
-//        Route::get('/qrcode/download/{id}', 'QrcodeController@download');
 
          // 菜单管理
         Route::get('/menu/lists', 'MenuController@lists');

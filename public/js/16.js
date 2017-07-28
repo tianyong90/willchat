@@ -6,13 +6,13 @@ webpackJsonp([16],{
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(277)
+  __webpack_require__(281)
 }
 var Component = __webpack_require__(42)(
   /* script */
-  __webpack_require__(279),
+  __webpack_require__(283),
   /* template */
-  __webpack_require__(280),
+  __webpack_require__(284),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -45,13 +45,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 277:
+/***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(278);
+var content = __webpack_require__(282);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72,7 +72,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 278:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(12)(undefined);
@@ -87,7 +87,7 @@ exports.push([module.i, "\n.main .post-list[data-v-6cf5ce3e] {\n  display: block
 
 /***/ }),
 
-/***/ 279:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -143,7 +143,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 280:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
