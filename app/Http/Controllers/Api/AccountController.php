@@ -30,7 +30,7 @@ class AccountController extends BaseController
      */
     public function lists(Request $request)
     {
-        $accounts = Account::where('user_id', Auth::id())->get();
+        $accounts = Account::where('user_id', Auth::id())->withCount('fans')->get();
 
         return response()->json(compact('accounts'));
     }

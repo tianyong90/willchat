@@ -80,7 +80,7 @@ exports = module.exports = __webpack_require__(12)(undefined);
 
 
 // module
-exports.push([module.i, "\n.setting-icon[data-v-25790b38] {\n  color: #777;\n  cursor: pointer;\n}\n.plus-card[data-v-25790b38] {\n  display: block;\n  overflow: hidden;\n  background-color: #fff;\n  height: 100%;\n  position: relative;\n}\n.plus-card i[data-v-25790b38] {\n    position: absolute;\n    font-size: 3rem;\n    color: lightgray;\n    top: 50%;\n    left: 50%;\n    margin-top: -1.5rem;\n    margin-left: -1.5rem;\n}\n", ""]);
+exports.push([module.i, "\n.setting-icon[data-v-25790b38] {\n  color: #777;\n  cursor: pointer;\n}\n.account-info[data-v-25790b38] {\n  padding: 0;\n  margin: 0;\n}\n.account-info li[data-v-25790b38] {\n    margin: .5em 0;\n    color: #444;\n}\n.account-info .label[data-v-25790b38] {\n    color: #000;\n    display: block;\n    float: left;\n    width: 4em;\n    text-align-last: justify;\n    margin-right: 1em;\n}\n.plus-card[data-v-25790b38] {\n  display: block;\n  overflow: hidden;\n  background-color: #fff;\n  height: 100%;\n  position: relative;\n}\n.plus-card i[data-v-25790b38] {\n    position: absolute;\n    font-size: 3rem;\n    color: lightgray;\n    top: 50%;\n    left: 50%;\n    margin-top: -1.5rem;\n    margin-left: -1.5rem;\n}\n", ""]);
 
 // exports
 
@@ -172,7 +172,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "line-height": "36px"
       }
     }, [_vm._v(_vm._s(account.name))]), _vm._v(" "), _c('i', {
-      staticClass: "setting-icon el-icon-setting",
+      staticClass: "setting-icon el-icon-edit",
       staticStyle: {
         "float": "right"
       },
@@ -183,7 +183,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.toEdit(account.id)
         }
       }
-    })]), _vm._v(" "), _c('div', [_vm._v("\n            " + _vm._s(account.name) + "\n            " + _vm._s(account.type) + "\n            " + _vm._s(account.created_at) + "\n          ")])])], 1) : _vm._e()
+    })]), _vm._v(" "), _c('ul', {
+      staticClass: "account-info"
+    }, [_c('li', [_c('span', {
+      staticClass: "label"
+    }, [_vm._v("类型")]), _vm._v(" " + _vm._s(account.type))]), _vm._v(" "), _c('li', [_c('span', {
+      staticClass: "label"
+    }, [_vm._v("粉丝数")]), _vm._v(" " + _vm._s(account.fans_count))]), _vm._v(" "), _c('li', [_c('span', {
+      staticClass: "label"
+    }, [_vm._v("添加时间")]), _vm._v(" " + _vm._s(account.created_at))])])])], 1) : _vm._e()
   }), _vm._v(" "), _c('el-col', {
     attrs: {
       "span": 6

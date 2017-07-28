@@ -5,13 +5,13 @@
           <el-card class="box-card" @click.native="toManage(account.id)">
             <div slot="header" class="clearfix">
               <span style="line-height: 36px;">{{ account.name }}</span>
-              <i class="setting-icon el-icon-setting" style="float: right;" @click.stop.prevent="toEdit(account.id)"></i>
+              <i class="setting-icon el-icon-edit" style="float: right;" @click.stop.prevent="toEdit(account.id)"></i>
             </div>
-            <div>
-              {{ account.name }}
-              {{ account.type }}
-              {{ account.created_at }}
-            </div>
+            <ul class="account-info">
+              <li><span class="label">类型</span> {{ account.type }}</li>
+              <li><span class="label">粉丝数</span> {{ account.fans_count }}</li>
+              <li><span class="label">添加时间</span> {{ account.created_at }}</li>
+            </ul>
           </el-card>
       </el-col>
       <el-col :span="6">
@@ -58,6 +58,25 @@
   .setting-icon {
     color: #777;
     cursor: pointer;
+  }
+
+  .account-info {
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: .5em 0;
+      color: #444;
+    }
+
+    .label {
+      color: #000;
+      display: block;
+      float: left;
+      width: 4em;
+      text-align-last: justify;
+      margin-right: 1em;
+    }
   }
   
   .plus-card {

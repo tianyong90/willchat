@@ -67,23 +67,9 @@
         },
       ]
     },
-//    {
-//      title: '微信红包',
-//      icon: 'message',
-//      subItems: [
-//        {
-//          title: '发送红包',
-//          route: '/'
-//        },
-//        {
-//          title: '红包记录',
-//          route: '/'
-//        },
-//      ]
-//    },
     {
       title: '素材管理',
-      icon: 'message',
+      icon: 'picture',
       subItems: [
         {
           title: '图片',
@@ -98,21 +84,7 @@
           route: '/material/video'
         },
       ]
-    },
-//    {
-//      title: '高级群发',
-//      icon: 'message',
-//      subItems: [
-//        {
-//          title: '文本回复',
-//          route: '/'
-//        },
-//        {
-//          title: '图文回复',
-//          route: '/'
-//        },
-//      ]
-//    },
+    }
   ];
   export default {
     data () {

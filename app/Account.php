@@ -93,4 +93,24 @@ class Account extends Model
                 return '未知类型';
         }
     }
+
+    /**
+     * 粉丝
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fans()
+    {
+        return $this->hasMany(\App\Fan::class, 'account_id', 'id');
+    }
+
+    /**
+     * 所属用户
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class, 'user_id', 'id');
+    }
 }

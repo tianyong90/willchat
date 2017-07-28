@@ -3724,7 +3724,7 @@ var MenuConfig = [{
   }]
 }, {
   title: '素材管理',
-  icon: 'message',
+  icon: 'picture',
   subItems: [{
     title: '图片',
     route: '/material/image'
