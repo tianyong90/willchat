@@ -1,18 +1,21 @@
 /node_modules
-/public/storage
 /public/hot
+/public/storage
 /storage/*.key
 /vendor
 /.idea
+/.vscode
+/.vagrant
 Homestead.json
 Homestead.yaml
+npm-debug.log
+yarn-error.log
 .env
 
-_ide_helper.php
-
-# workspace files are user-specific
 *.sublime-workspace
-/*.sublime-project
+*.sublime-project
 
-sftp-config.json
-/npm-debug.log
+# ide-helper files
+/_ide_helper.php
+/_ide_helper_models.php
+/.phpstorm.meta.php

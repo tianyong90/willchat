@@ -1,6 +1,6 @@
 <?php
 
-return [
+return array(
 
     /*
     |--------------------------------------------------------------------------
@@ -11,8 +11,10 @@ return [
     |
     */
 
-    'filename' => '_ide_helper',
-    'format'   => 'php',
+    'filename'  => '_ide_helper',
+    'format'    => 'php',
+    
+    'meta_filename' => '.phpstorm.meta.php',
 
     /*
     |--------------------------------------------------------------------------
@@ -23,7 +25,18 @@ return [
     |
     */
 
-    'include_fluent' => false,
+    'include_fluent' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Write Model Magic methods
+    |--------------------------------------------------------------------------
+    |
+    | Set to false to disable write magic methods of model
+    |
+    */
+
+    'write_model_magic_where' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -37,9 +50,9 @@ return [
 
     'include_helpers' => false,
 
-    'helper_files' => [
+    'helper_files' => array(
         base_path().'/vendor/laravel/framework/src/Illuminate/Support/helpers.php',
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,9 +64,10 @@ return [
     |
     */
 
-    'model_locations' => [
+    'model_locations' => array(
         'app',
-    ],
+    ),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,13 +78,13 @@ return [
     |
     */
 
-    'extra' => [
-        'Eloquent' => ['Illuminate\Database\Eloquent\Builder', 'Illuminate\Database\Query\Builder'],
-        'Session'  => ['Illuminate\Session\Store'],
-    ],
+    'extra' => array(
+        'Eloquent' => array('Illuminate\Database\Eloquent\Builder', 'Illuminate\Database\Query\Builder'),
+        'Session' => array('Illuminate\Session\Store'),
+    ),
 
-    'magic' => [
-        'Log' => [
+    'magic' => array(
+        'Log' => array(
             'debug'     => 'Monolog\Logger::addDebug',
             'info'      => 'Monolog\Logger::addInfo',
             'notice'    => 'Monolog\Logger::addNotice',
@@ -79,8 +93,8 @@ return [
             'critical'  => 'Monolog\Logger::addCritical',
             'alert'     => 'Monolog\Logger::addAlert',
             'emergency' => 'Monolog\Logger::addEmergency',
-        ],
-    ],
+        )
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -92,9 +106,9 @@ return [
     |
     */
 
-    'interfaces' => [
+    'interfaces' => array(
 
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,9 +136,9 @@ return [
     |  ),
     |
     */
-    'custom_db_types' => [
+    'custom_db_types' => array(
 
-    ],
+    ),
 
     /*
      |--------------------------------------------------------------------------
@@ -160,8 +174,8 @@ return [
     | Cast the given "real type" to the given "type".
     |
     */
-    'type_overrides' => [
+   'type_overrides' => array(
         'integer' => 'int',
         'boolean' => 'bool',
-    ],
-];
+   ),
+);

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('/user');
+    return view('welcome');
 });
 
 Route::get('/user/{vue_capture?}', 'UserController@index')->where('vue_capture', '[\/\w\.-]*');
