@@ -17,7 +17,7 @@ class Account
      *
      * @param Account $account
      */
-    public function __construct(Account $account)
+    public function __construct(self $account)
     {
         $this->account = $account;
     }

@@ -32,7 +32,7 @@ class Event
      * @param App\Event $event
      */
     public function __construct(
-        Event $event,
+        self $event,
         MaterialService $materialService
     ) {
         $this->event = $event;

@@ -26,7 +26,7 @@ return [
             'uri' => 'serve',
 
             'attributes' => [
-                'prefix' => 'open-platform',
+                'prefix'     => 'open-platform',
                 'middleware' => null,
             ],
         ],
@@ -62,7 +62,7 @@ return [
          */
         'log' => [
             'level' => env('WECHAT_LOG_LEVEL', 'debug'),
-            'file' => env('WECHAT_LOG_FILE', storage_path('logs/wechat.log')),
+            'file'  => env('WECHAT_LOG_FILE', storage_path('logs/wechat.log')),
         ],
     ],
 
@@ -73,9 +73,9 @@ return [
         /*
          * 账号基本信息，请从微信公众平台/开放平台获取
          */
-        'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID', 'your-app-id'),         // AppID
-        'secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET', 'your-app-secret'),     // AppSecret
-        'token' => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN', 'your-token'),          // Token
+        'app_id'  => env('WECHAT_OFFICIAL_ACCOUNT_APPID', 'your-app-id'),         // AppID
+        'secret'  => env('WECHAT_OFFICIAL_ACCOUNT_SECRET', 'your-app-secret'),     // AppSecret
+        'token'   => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN', 'your-token'),          // Token
         'aes_key' => env('WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                    // EncodingAESKey
 
         /*
@@ -148,15 +148,15 @@ return [
     // ],
 
     'enable_mock' => env('WECHAT_ENABLE_MOCK', false),
-    'mock_user' => [
-        "openid" => env('WECHAT_MOCK_OPENID', ''),
+    'mock_user'   => [
+        'openid' => env('WECHAT_MOCK_OPENID', ''),
         // 以下字段为 scope 为 snsapi_userinfo 时需要
-        "nickname" => "田较瘦",
-        "sex" => "1",
-        "language" => "zh_CN",
-        "province" => "广东",
-        "city" => "深圳",
-        "country" => "中国",
-        "headimgurl" => "http://wx.qlogo.cn/mmopen/XxT9TiaJ1ibf06TNRCMjQADS4opDHvQLguLZHpqkRlvuJYZicvJW4iaOalPsKIs0kpZ3F6864ZzibyObYiaucUQSrdp4pFTNDyIpxw/0",
+        'nickname'   => '田较瘦',
+        'sex'        => '1',
+        'language'   => 'zh_CN',
+        'province'   => '广东',
+        'city'       => '深圳',
+        'country'    => '中国',
+        'headimgurl' => 'http://wx.qlogo.cn/mmopen/XxT9TiaJ1ibf06TNRCMjQADS4opDHvQLguLZHpqkRlvuJYZicvJW4iaOalPsKIs0kpZ3F6864ZzibyObYiaucUQSrdp4pFTNDyIpxw/0',
     ],
 ];

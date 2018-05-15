@@ -29,7 +29,7 @@ class Menu
      *
      * @param Menu $menu
      */
-    public function __construct(Menu $menu, Account $account)
+    public function __construct(self $menu, Account $account)
     {
         $this->menu = $menu;
         $this->account = $account;

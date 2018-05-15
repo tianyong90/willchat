@@ -36,7 +36,7 @@ class Material
      */
     private $mediaService;
 
-    public function __construct(Material $material)
+    public function __construct(self $material)
     {
         $this->material = $material;
     }

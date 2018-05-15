@@ -17,7 +17,7 @@ class User
     /**
      * constructer.
      */
-    public function __construct(User $account)
+    public function __construct(self $account)
     {
         $this->user = $account;
     }

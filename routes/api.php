@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +23,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
     Route::post('/login', 'AuthController@authenticate');
     Route::post('/register', 'AuthController@register');
 
-     // 文章
+    // 文章
     Route::get('/post', 'PostController@lists');
     Route::get('/post/{id}', 'PostController@detail');
 
@@ -34,12 +33,12 @@ Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
         Route::post('/avatar-upload', 'UserController@uploadAvatar');
         Route::post('/user/profile', 'UserController@updateUser');
 
-         // 公众号管理接口
+        // 公众号管理接口
         Route::get('/account/lists', 'AccountController@lists');
         Route::get('/account/show/{id}', 'AccountController@show');
         Route::post('/account/store', 'AccountController@store');
 
-         // 粉丝管理
+        // 粉丝管理
         Route::get('/fans/lists', 'FansController@lists');
         Route::post('/fans/sync', 'FansController@syncFromWechatServer');
 
@@ -55,7 +54,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
         Route::post('/qrcode/create', 'QrcodeController@create');
         Route::post('/qrcode/delete/{id}', 'QrcodeController@delete');
 
-         // 菜单管理
+        // 菜单管理
         Route::get('/menu/lists', 'MenuController@lists');
         Route::post('/menu/store', 'MenuController@store');
         Route::post('/menu/sync', 'MenuController@sync');
@@ -66,7 +65,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Api'], function () {
         Route::post('/material/upload', 'MaterialController@upload');
         Route::get('/material/sync', 'MaterialController@sync');
 
-         // 帮助文档
+        // 帮助文档
         Route::get('/document/lists', 'PostController@lists');
         Route::get('/document/show/{id}', 'PostController@show');
     });
